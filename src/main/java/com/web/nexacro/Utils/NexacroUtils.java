@@ -1,57 +1,83 @@
 package com.web.nexacro.Utils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.nexacro.java.xapi.data.DataSet;
+import com.nexacro.java.xapi.data.DataSetList;
+import com.nexacro.java.xapi.data.PlatformData;
+import com.nexacro.java.xapi.tx.HttpPlatformRequest;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 
 @Component
 public class NexacroUtils {
-    private List<Map<String, Object>> list;
 
-    private Map<String, Object> map;
+    private List<DataSetUtils> dataSets = null;
+    private int code = 0;
+    private String message = "success";
+    private  DataSetList dataSetList;
 
-    private DataSetUtils dataSetUtils;
-
-    private ColumnUtils column;
-
-
-    public Map<String, Object> getMap() {
-        return map;
+    public void setMessOrCode(int code, String message) {
+        this.code = code;
+        this.message = message;
     }
 
-    public void setMap(Map<String, Object> map) {
-        this.map = map;
+    public int getCode() {
+        return code;
     }
 
-    public List<Map<String, Object>> getList() {
-        return list;
+    public void setCode(int code) {
+        this.code = code;
     }
 
-    public void setList(List<Map<String, Object>> list) {
-        this.list = list;
+    public String getMessage() {
+        return message;
     }
 
-    public  List<ColumnUtils> getColumn() {
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public NexacroUtils() {
+        dataSets = new ArrayList<>();
+
+    }
+
+    public void setDataset(String ds_name, List<Map<String, Object>> list) {
+        DataSetUtils dataSetUtils = new DataSetUtils();
+        dataSetUtils.setId(ds_name);
+        dataSetUtils.setRows(list);
+        dataSetUtils.setColumns(getColumn(list));
+
+        this.dataSets.add(dataSetUtils);
+    }
+
+    public List<DataSetUtils> getDataSets() {
+        return dataSets;
+    }
+
+    public void setDataSets(List<DataSetUtils> dataSets) {
+        this.dataSets = dataSets;
+    }
+
+    //create column in dataset
+    public  List<ColumnUtils> getColumn(List<Map<String, Object>> list) {
         List<ColumnUtils> columnUtilsList = null;
-        if (!this.list.isEmpty()){
-            List<Map<String,Object>> mapList = this.list;
+        if (list != null){
+            List<Map<String,Object>> mapList = list;
             columnUtilsList =  columnUtils(mapList.get(0));
-        }else {
-            Map<String,Object> map = this.map;
-            columnUtilsList = columnUtils(map);
         }
         return columnUtilsList;
     }
 
-    public List<ColumnUtils> columnUtils(Map<String,Object> column){
+    private List<ColumnUtils> columnUtils(Map<String,Object> column){
         List<ColumnUtils> columnUtilsList = new ArrayList<>();
-        ObjectMapper objectMapper = new ObjectMapper();
         for (String key: column.keySet()) {
             ColumnUtils columnUtils= new ColumnUtils();
             columnUtils.setId(key);
@@ -62,23 +88,35 @@ public class NexacroUtils {
         return columnUtilsList;
     }
 
+    public static DataSetList getRequestData(HttpServletRequest request) throws IOException {
+        InputStream inputStream = request.getInputStream();
+        try {
+            HttpPlatformRequest httpPlatformRequest = new HttpPlatformRequest(inputStream);
 
-    public List<Map<String,Object>> setData(){
-        return null;
+            // receive data
+            httpPlatformRequest.receiveData();
+            PlatformData data = httpPlatformRequest.getData();
+            return data.getDataSetList();
+        } catch (Exception e) {
+            return null;
+        }finally {
+            inputStream.close();
+        }
     }
 
+    public Map<String,Object> getParamDataSet(HttpServletRequest request) throws IOException {
+        Map<String,Object>  param = new HashMap<>();
+        DataSetList dataSetList = getRequestData(request);
 
-    public static void main(String[] args) {
-        Map<String,Object> s = new HashMap<>();
-        s.put("USER","Tu");
-        s.put("PW","Tu");
-        List<Map<String,Object>> maps = new ArrayList<>();
-        maps.add(s);
+        for (int i = 0; i < dataSetList.size(); i++) {
+            DataSet dataSet = dataSetList.get(i);
+            if(dataSet != null){
+                Map<String, String> row = dataSet.getRowToMap(0);
+                param.put(dataSet.getName(),dataSet.getRowToMap(0));
+            }
+        }
 
-
-        NexacroUtils nexacroUtils = new NexacroUtils();
-        nexacroUtils.setList(maps);
-
-        nexacroUtils.getColumn();
+        return param;
     }
+
 }

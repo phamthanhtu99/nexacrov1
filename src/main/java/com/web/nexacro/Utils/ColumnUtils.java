@@ -16,4 +16,16 @@ public class ColumnUtils {
     public void setSize(String size) {
         this.size = size;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getSize() {
+        return size;
+    }
 }
