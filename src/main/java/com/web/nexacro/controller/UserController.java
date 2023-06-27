@@ -3,6 +3,7 @@ package com.web.nexacro.controller;
 import com.nexacro.java.xapi.data.DataSet;
 import com.web.nexacro.Utils.NexacroUtils;
 import com.web.nexacro.mapper.UserMapper;
+import com.web.nexacro.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -16,18 +17,15 @@ import java.util.Map;
 @Controller
 public class UserController {
     @Autowired
-    UserMapper userMapper;
+    UserService userService;
 
 
-    @GetMapping("/login1")
-    public List<Map<String, Object>> test(@RequestParam Map map) {
-        return userMapper.SelectRoleLogin(map);
-    }
+
 
     @GetMapping("/test")
     public  ModelAndView nexacro(ModelAndView modelAndView){
         NexacroUtils nexacroUtils = new NexacroUtils();
-        nexacroUtils.setDataset("ds_main",userMapper.SelectRoleLogin(null));
+        //nexacroUtils.setDataset("ds_main",userMapper.SelectRoleLogin(null));
         modelAndView.setViewName("nexacroView");
         modelAndView.addObject("data",nexacroUtils);
        return modelAndView;
@@ -39,7 +37,8 @@ public class UserController {
         Map param = nexacroUtils.getParamDataSet(request);
 
         Map input1 = (Map) param.get("dsInput");
-
+        nexacroUtils.setDataset("ds_main",userService.checkLogin(input1,request));
+        modelAndView.addObject("data",nexacroUtils);
         modelAndView.setViewName("nexacroView");
         return modelAndView;
     }

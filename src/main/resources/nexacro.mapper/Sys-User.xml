@@ -5,7 +5,12 @@
 
     <select id="selectLogin" resultType="hashmap" >
         <![CDATA[
-          SELECT * FROM nexacro.user_mst
+            SELECT
+                   USER_CD
+                 , USER_RL
+                 , USER_NM
+                 , CASE WHEN USER_PW = #{USER_PW} THEN 'Y' ELSE 'N' END AS PWCHK
+            FROM NEXACRO.USER_MST WHERE USER_LG = #{USER_LG}
         ]]>
     </select>
 
