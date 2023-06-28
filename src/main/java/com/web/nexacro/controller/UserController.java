@@ -20,24 +20,32 @@ public class UserController {
     UserService userService;
 
 
-
-
-    @GetMapping("/test")
-    public  ModelAndView nexacro(ModelAndView modelAndView){
-        NexacroUtils nexacroUtils = new NexacroUtils();
-        //nexacroUtils.setDataset("ds_main",userMapper.SelectRoleLogin(null));
-        modelAndView.setViewName("nexacroView");
-        modelAndView.addObject("data",nexacroUtils);
-       return modelAndView;
-    }
-
-    @PostMapping("/search")
+    @PostMapping("/login")
     public ModelAndView search(HttpServletRequest request,ModelAndView modelAndView) throws IOException {
         NexacroUtils nexacroUtils = new NexacroUtils();
         Map param = nexacroUtils.getParamDataSet(request);
-
         Map input1 = (Map) param.get("dsInput");
         nexacroUtils.setDataset("ds_main",userService.checkLogin(input1,request));
+        modelAndView.addObject("data",nexacroUtils);
+        modelAndView.setViewName("nexacroView");
+        return modelAndView;
+    }
+
+    @GetMapping("/login")
+    public ModelAndView login(HttpServletRequest request,ModelAndView modelAndView) throws IOException {
+        NexacroUtils nexacroUtils = new NexacroUtils();
+
+        modelAndView.addObject("data",nexacroUtils);
+        modelAndView.setViewName("nexacroView");
+        return modelAndView;
+    }
+
+    @PostMapping("/pm/insertProject.do")
+    public ModelAndView insertProject(HttpServletRequest request,ModelAndView modelAndView) throws IOException {
+        NexacroUtils nexacroUtils = new NexacroUtils();
+        Map params = nexacroUtils.getParamDataSet(request);
+        Map param = (Map) params.get("ds_insert");
+        userService.updatePoject(param);
         modelAndView.addObject("data",nexacroUtils);
         modelAndView.setViewName("nexacroView");
         return modelAndView;

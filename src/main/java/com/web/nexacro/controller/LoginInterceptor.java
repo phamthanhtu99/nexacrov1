@@ -13,14 +13,23 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 
         String requestURI = request.getRequestURI();
 
-        if (!requestURI.equals("/test") ){
+        if (!requestURI.startsWith("/tl") && !requestURI.startsWith("/pm") && !requestURI.startsWith("/mb") ) {
             return true;
         }
+
         Map<String,Object> userInfo = (Map<String, Object>) SessionUtils.getSession("USERINFO");
         if (userInfo == null){
-          return false;
+            response.sendRedirect("/login");
+            return false;
         }
-        return true;
+        //check role
+        String role = (String) userInfo.get("USER_RL");
+        if (requestURI.startsWith("/"+role) ){
+            return true;
+        }
+
+        response.sendRedirect("/login");
+        return false;
     }
 }
 

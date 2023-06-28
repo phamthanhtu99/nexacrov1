@@ -8,4 +8,5 @@ import java.util.Map;
 
 public interface UserService {
     List<Map<String,Object>> checkLogin(Map map, HttpServletRequest request);
+    void updatePoject(Map map);
 }

@@ -34,4 +34,8 @@ public class CommConnectSql {
     public List<Map<String, Object>> selectList(String sql, Map param) {
         return sqlSessionFactory.openSession().selectList(sql, param);
     }
+
+    public int insert (String sql, Map map){
+        return sqlSessionFactory.openSession().insert(sql,map);
+    }
 }

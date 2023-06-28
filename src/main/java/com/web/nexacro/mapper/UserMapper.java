@@ -14,5 +14,8 @@ public class UserMapper extends CommConnectSql {
         return result;
     }
 
+    public int insertProject(Map map){
+        return  insert("insertProject",map);
+    }
 
 }

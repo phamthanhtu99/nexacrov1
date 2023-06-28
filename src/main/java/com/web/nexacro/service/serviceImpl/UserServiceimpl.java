@@ -37,4 +37,9 @@ public class UserServiceimpl implements UserService {
         SessionUtils.setSessionValue("USERINFO",selectlogin.get(0));
         return resultLogin;
     }
+
+    @Override
+    public void updatePoject(Map map) {
+        userMapper.insertProject(map);
+    }
 }

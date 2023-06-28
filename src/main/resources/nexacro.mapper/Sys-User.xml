@@ -7,11 +7,33 @@
         <![CDATA[
             SELECT
                    USER_CD
-                 , USER_RL
+                 , (SELECT ROLE_NM FROM NEXACRO.ROLE_MST WHERE ROLE_CD = USER_RL) AS USER_RL
                  , USER_NM
                  , CASE WHEN USER_PW = #{USER_PW} THEN 'Y' ELSE 'N' END AS PWCHK
             FROM NEXACRO.USER_MST WHERE USER_LG = #{USER_LG}
         ]]>
     </select>
 
+    <insert id="insertProject" >
+        INSERT INTO NEXACRO.PROJECT
+          (   PROJECT_NM
+            , PROJECT_OWN
+            , ST_DT
+            , ED_DT
+            , PROJECT_DESC
+            , TEAM_CD
+            , TAG_CD
+            , PROJECT_STATUS
+          )
+        VALUES
+        (    #{PROJECT_NM}
+           , #{PROJECT_OWN}
+           , #{ST_DT}
+           , #{ED_DT}
+           , #{PROJECT_DESC}
+           , #{TEAM_CD}
+           , #{TAG_CD}
+           , #{PROJECT_STATUS}
+        )
+    </insert>
 </mapper>
