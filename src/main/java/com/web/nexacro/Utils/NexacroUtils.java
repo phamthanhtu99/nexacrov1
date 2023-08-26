@@ -33,7 +33,14 @@ public class NexacroUtils {
     }
 
     public void setCode(int code) {
+        String mess ="System error!";
+        if(code  == 2){
+            mess = "Not Have Access!";
+        }else if (code == -99){
+            mess = "session timeout!";
+        }
         this.code = code;
+        this.message = mess;
     }
 
     public String getMessage() {
@@ -50,12 +57,14 @@ public class NexacroUtils {
     }
 
     public void setDataset(String ds_name, List<Map<String, Object>> list) {
-        DataSetUtils dataSetUtils = new DataSetUtils();
-        dataSetUtils.setId(ds_name);
-        dataSetUtils.setRows(list);
-        dataSetUtils.setColumns(getColumn(list));
+        if(!list.isEmpty()){
+            DataSetUtils dataSetUtils = new DataSetUtils();
+            dataSetUtils.setId(ds_name);
+            dataSetUtils.setRows(list);
+            dataSetUtils.setColumns(getColumn(list));
+            this.dataSets.add(dataSetUtils);
+        }
 
-        this.dataSets.add(dataSetUtils);
     }
 
     public List<DataSetUtils> getDataSets() {

@@ -5,35 +5,42 @@
 
     <select id="selectLogin" resultType="hashmap" >
         <![CDATA[
-            SELECT
-                   USER_CD
-                 , (SELECT ROLE_NM FROM NEXACRO.ROLE_MST WHERE ROLE_CD = USER_RL) AS USER_RL
-                 , USER_NM
-                 , CASE WHEN USER_PW = #{USER_PW} THEN 'Y' ELSE 'N' END AS PWCHK
-            FROM NEXACRO.USER_MST WHERE USER_LG = #{USER_LG}
+           SELECT
+            U.USER_NM
+          , U.PHONE
+          , U.ROLE_ID
+          , R.ROLE_NM
+          , R.ROLE_CD
+          , CASE WHEN U.PWD= #{PW} THEN 'Y' ELSE 'N' END AS PWCHK
+           FROM TB_USER U , TB_ROLE R WHERE  U.ROLE_ID = R.ROLE_ID AND   U.USER_ID = #{USER_ID}
         ]]>
     </select>
 
-    <insert id="insertProject" >
-        INSERT INTO NEXACRO.PROJECT
-          (   PROJECT_NM
-            , PROJECT_OWN
-            , ST_DT
-            , ED_DT
-            , PROJECT_DESC
-            , TEAM_CD
-            , TAG_CD
-            , PROJECT_STATUS
-          )
-        VALUES
-        (    #{PROJECT_NM}
-           , #{PROJECT_OWN}
-           , #{ST_DT}
-           , #{ED_DT}
-           , #{PROJECT_DESC}
-           , #{TEAM_CD}
-           , #{TAG_CD}
-           , #{PROJECT_STATUS}
+    <insert id="insertUser" >
+         INSERT INTO TB_USER
+        (
+              USER_NM
+            , PWD
+            , PHONE
+            , ADDRESS
+            , ROLE_ID
+            , REG_ID
+            , REG_DTM
+            , MOD_ID
+            , MOD_DTM
+            , GROUP_ID
+        ) VALUES
+        (
+             #{USER_NM}
+           , #{PWD}
+           , #{PHONE}
+           , #{ADDRESS}
+           , #{ROLE_ID}
+           , #{USER_ID}
+           , CURDATE()
+           , #{USER_ID}
+           , CURDATE()
+           , 1
         )
     </insert>
 </mapper>
