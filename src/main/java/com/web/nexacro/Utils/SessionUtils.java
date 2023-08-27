@@ -32,7 +32,11 @@ public class SessionUtils {
 
     public static void removeSession(String key ){
         HttpSession session = httpServletRequest().getSession();
-        session.removeAttribute(key);
+        if(key == null){
+            session.invalidate();
+        }else {
+            session.removeAttribute(key);
+        }
     }
 
     public static void setTimeOut(int time,HttpServletRequest request) {

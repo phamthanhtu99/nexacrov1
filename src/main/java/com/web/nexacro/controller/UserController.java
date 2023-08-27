@@ -2,6 +2,7 @@ package com.web.nexacro.controller;
 
 
 import com.web.nexacro.Utils.NexacroUtils;
+import com.web.nexacro.Utils.SessionUtils;
 import com.web.nexacro.mapper.UserMapper;
 import com.web.nexacro.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,5 +64,16 @@ public class UserController {
         return modelAndView;
     }
 
+    @PostMapping("/logout")
+    public ModelAndView logout(HttpServletRequest request,ModelAndView modelAndView){
+        NexacroUtils nexacroUtils = new NexacroUtils();
+        //Map params = nexacroUtils.getParamDataSet(request);
+        // Map param = (Map) params.get("ds_insert");
+
+        SessionUtils.removeSession(null);
+        modelAndView.addObject("data",nexacroUtils);
+        modelAndView.setViewName("nexacroView");
+        return modelAndView;
+    }
 
 }

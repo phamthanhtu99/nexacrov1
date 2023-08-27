@@ -15,7 +15,7 @@ import java.util.Map;
 
 @Service
 @Transactional
-public class UserServiceimpl implements UserService {
+public class UserServiceimpl  implements UserService {
     @Autowired
     UserMapper userMapper;
     @Override
@@ -53,5 +53,20 @@ public class UserServiceimpl implements UserService {
     @Override
     public void updateUser(Map map) {
         userMapper.insertProject(map);
+    }
+
+    @Override
+    public int insert(Map map) {
+        return 0;
+    }
+
+    @Override
+    public int update(Map map) {
+        return 0;
+    }
+
+    @Override
+    public int delete(Map map) {
+        return 0;
     }
 }

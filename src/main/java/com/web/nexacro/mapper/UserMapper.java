@@ -1,13 +1,14 @@
 package com.web.nexacro.mapper;
 
 
+import com.web.nexacro.Utils.ComCrud;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Map;
 
 @Component
-public class UserMapper extends CommConnectSql {
+public class UserMapper extends CommConnectSql implements ComCrud {
 
     public List<Map<String,Object>> SelectRoleLogin(Map param){
         List<Map<String,Object>> result = selectList("selectLogin",param);
@@ -18,4 +19,18 @@ public class UserMapper extends CommConnectSql {
         return  insert("insertUser",map);
     }
 
+    @Override
+    public int insert(Map map) {
+        return 0;
+    }
+
+    @Override
+    public int update(Map map) {
+        return 0;
+    }
+
+    @Override
+    public int delete(Map map) {
+        return 0;
+    }
 }

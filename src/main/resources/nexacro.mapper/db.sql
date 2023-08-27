@@ -30,3 +30,11 @@ create table TB_ROLE(
 INSERT INTO `NEXACRO`.`TB_ROLE` (`ROLE_NM`) VALUES ('PM');
 INSERT INTO `NEXACRO`.`TB_ROLE` (`ROLE_NM`) VALUES ('TL');
 INSERT INTO `NEXACRO`.`TB_ROLE` (`ROLE_NM`) VALUES ('MB');
+
+
+create table TB_GROUP(
+	GROUP_ID int auto_increment primary key,
+    GROUP_NM varchar(255),
+    REG_ID int,
+    REG_DTM nvarchar(255)
+)

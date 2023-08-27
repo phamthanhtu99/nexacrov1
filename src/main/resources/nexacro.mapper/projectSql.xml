@@ -1,0 +1,29 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.web.nexacro.mapper.ProjectMapper">
+    <select id="selectProject" resultType="hashmap" >
+        <![CDATA[
+          SELECT * FROM TB_PROJECT WHERE 1=1
+
+          <if test="PROJECT_ID != null and PROJECT_ID != ''">
+              AND PROJECT_ID = #{PROJECT_ID}
+            </if>
+         ]]>
+    </select>
+
+    <insert id="insertProject" >
+        INSERT INTO TB_PROJECT (PROJECTP_NM, PROJECT_OWNER, ST_DT, ED_DT, DES, PROJECT_YN, TAG_ID, REG_ID, REG_DTM, GROUP_ID)
+                        VALUES (#{PROJECTP_NM},#{PROJECT_OWNER},#{ST_DT}, #{ED_DT}, #{DES}, #{PROJECT_YN}, #{TAG_ID}, #{REG_ID}, #{REG_DTM},#{GROUP_ID})
+    </insert>
+
+    <update id="updateProject">
+        UPDATE NEXACRO.TB_PROJECT SET PROJECTP_NM = #{PROJECTP_NM}, PROJECT_OWNER = #{PROJECT_OWNER}, ST_DT = #{ST_DT}, ED_DT =#{ED_DT}, DES = #{DES}, PROJECT_YN = #{PROJECT_YN}, TAG_ID = #{TAG_ID}, REG_ID = #{REG_ID}, REG_DTM = #{REG_DTM}, GROUP_ID = #{GROUP_ID}
+        WHERE PROJECT_ID =#{PROJECT_ID}
+    </update>
+
+    <delete id="deleteProject">
+        DELETE FROM TB_PROJECT WHERE PROJECT_ID = #{PROJECT_ID}
+    </delete>
+
+</mapper>
