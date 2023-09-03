@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Login" width="1280" height="720" titletext="New Form" background="linear-gradient(to right top,#1e1e1e 50%,#b47b59) #2d2d2d">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Div id="Div00" taborder="5" left="425" top="145" width="35%" height="60%" text="" background="linear-gradient(to right top,#5b5b5b 30%,#b3533b) #c4c4c4" opacity="1" borderRadius="12px">
+          <Layouts>
+            <Layout>
+              <Static id="login_st" taborder="0" text="CREATE ACCOUNT" left="0" top="0" width="100.00%" height="90" textAlign="center" font="normal 700 24px/normal &quot;Malgun Gothic&quot;" color="darkorange" letterSpacing="5px" background="#4c423d"/>
+              <Edit id="Edit00" taborder="1" left="86" top="110" width="61.61%" height="40" background="url('imagerc::image_custom/User_icon_2.svg.png') no-repeat left top /contain" textAlign="center" wordSpacing="12px" font="normal 14pt &quot;Arial&quot;" maxlength="15" borderRadius="10px"/>
+              <Static id="bt_login" taborder="2" text="Register" left="91" top="367" width="59.60%" height="48" textAlign="center" font="normal 700 18px/normal &quot;Malgun Gothic&quot;" letterSpacing="5px" background="#4c423d" opacity="0.5" borderRadius="15px" color="darkorange"/>
+              <Edit id="Edit00_00" taborder="3" left="87" top="170" width="61.61%" height="40" background="url('imagerc::image_custom/pw2_icon.png') no-repeat left center /contain" font="normal 14pt/normal &quot;Arial&quot;" textAlign="center" maxlength="18" borderRadius="10px"/>
+              <Combo id="Combo00" taborder="4" left="86" top="230" width="61.61%" height="40" innerdataset="ds_ROLE" codecolumn="role_Cd" datacolumn="role_Nm" borderRadius="10px" text="Project Manager" index="0" value="1" font="normal 700 18px/normal &quot;Malgun Gothic&quot;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_ROLE">
+        <ColumnInfo>
+          <Column id="role_Cd" type="STRING" size="256"/>
+          <Column id="role_Nm" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="role_Cd">1</Col>
+            <Col id="role_Nm">Project Manager</Col>
+          </Row>
+          <Row>
+            <Col id="role_Cd">2</Col>
+            <Col id="role_Nm">Team Lead</Col>
+          </Row>
+          <Row>
+            <Col id="role_Cd">3</Col>
+            <Col id="role_Nm">Member</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

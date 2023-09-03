@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Report" width="1080" height="670" titletext="New Form" onload="Form_Report_onload">
+    <Layouts>
+      <Layout height="670" mobileorientation="landscape" width="1080">
+        <Div id="divHeader" taborder="0" left="0" top="0" width="100%" height="50" text="">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="Biểu Đồ Gantt" left="14" top="0" width="110" height="50" font="bold 16px/normal &quot;Malgun Gothic&quot;" color="#101010"/>
+              <Static id="Static01" taborder="1" text="Mở Của Tôi" left="Static00:14" top="0" width="125" height="50" font="bold 16px/normal &quot;Malgun Gothic&quot;" cssclass="sta_RT_title07"/>
+              <Static id="Static03" taborder="4" top="10" width="35" height="30" cssclass="sta_RT_title06" right="15"/>
+              <Button id="btnAddTask" taborder="3" text="Thêm Tác Vụ" top="10" height="30" right="Static03:25" width="120" cssclass="btnAddTask" onclick="divHeader_btnAddTask_onclick"/>
+              <Static id="Static02" taborder="2" text="Cột Mốc" top="0" height="50" font="bold 16px/normal &quot;Malgun Gothic&quot;" color="#101010" right="btnAddTask:10" width="80"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="Div00" taborder="2" left="0" top="divHeader:0" width="100%" height="40" background="#f8f8f8">
+          <Layouts>
+            <Layout>
+              <Static id="Static01" taborder="1" left="147" top="6" width="40" height="27"/>
+              <Combo id="cbOption" taborder="1" left="20" top="7" width="150" height="25" background="transparent" border="0px solid #ffffff" displaynulltext="Hiện Thị Tùy Chọn" color="#2f2f2f"/>
+              <Button id="btnFilter" taborder="2" text="..." top="2" width="42" right="20" background="transparent" border="0px none" font="bold 18px/normal &quot;Malgun Gothic&quot;,&quot;Arial Rounded MT Bold&quot;" textAlign="center" height="25" onclick="Div00_btnFilter_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grdTaskInfo" taborder="1" left="0" binddataset="dsReport" height="550" top="Div00:0" treeinitstatus="expand,null" treeusecheckbox="false" treeuseline="false" treeuseimage="false" width="100%" autofittype="col" nodatatext="-">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="250"/>
+                <Column size="50"/>
+                <Column size="150"/>
+                <Column size="100"/>
+                <Column size="90"/>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="130"/>
+                <Column size="100"/>
+                <Column size="90"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="40" band="head"/>
+                <Row size="36"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="TIÊU ĐỀ" textAlign="left"/>
+                <Cell col="1" text="%" textAlign="left"/>
+                <Cell col="2" text="CHỦ SỞ HỮU" textAlign="left"/>
+                <Cell col="3" text="TRẠNG THÁI" textAlign="left"/>
+                <Cell col="4" text="THỜI LƯỢNG" textAlign="left"/>
+                <Cell col="5" text="NGÀY BẮT ĐẦU" textAlign="left"/>
+                <Cell col="6" text="THỜI HẠN" textAlign="left"/>
+                <Cell col="7" text="NGÀY HOÀN THÀNH" textAlign="left"/>
+                <Cell col="8" text="ƯU TIÊN" textAlign="left"/>
+                <Cell col="9" text="TAG" textAlign="left"/>
+                <Cell col="10" text="LOẠI HÓA ĐƠN" textAlign="left"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:TITLE" textAlign="left" displaytype="treeitemcontrol" edittype="tree" treelevel="bind:LEVEL"/>
+                <Cell col="1" text="bind:PERCENT" textAlign="left"/>
+                <Cell col="2" text="expr:OWNER== &quot;&quot;? &quot;-&quot;: OWNER" textAlign="left"/>
+                <Cell col="3" text="expr:STATUS== &quot;&quot;? &quot;-&quot;:STATUS" cssclass="expr:STATUS== &quot;Mở&quot;? &quot;stat1&quot;: STATUS== &quot;Đang tiến hành&quot;? &quot;stat2&quot;:&quot;stat3&quot;" padding="5px 25px 5px 5px" displaytype="buttoncontrol" controlautosizingtype="width"/>
+                <Cell col="4" textAlign="left" expr="comp.parent.fnGetCountDay(currow)"/>
+                <Cell col="5" text="bind:START_DT" textAlign="left" displaytype="date" edittype="date" calendardateformat="dd-MM-yyyy" calendareditformat="dd-MM-yyyy" calendardisplaynulltext="bind:START_DT" calendardisplaynulltype="none"/>
+                <Cell col="6" text="bind:DUE_DT" textAlign="left" displaytype="date" edittype="date" calendardateformat="dd-MM-yyyy" calendareditformat="dd-MM-yyyy" calendardisplaynulltext="bind:DUE_DT" calendardisplaynulltype="none"/>
+                <Cell col="7" text="expr:END_DT== &quot;&quot;? &quot;-&quot;: END_DT" textAlign="left" displaytype="date" edittype="date" calendardateformat="dd-MM-yyyy" calendareditformat="dd-MM-yyyy" calendardisplayinvalidtext="-"/>
+                <Cell col="8" displaytype="decoratetext" edittype="combo" combodataset="dsPriority" combocodecol="PRIO_ID" combodatacol="PRIO_VALUE" text="bind:PRIO_ID"/>
+                <Cell col="9" text="expr:TAG== &quot;&quot;? &quot;-&quot;: TAG" textAlign="left"/>
+                <Cell col="10" displaytype="combotext" edittype="combo" combodataset="dsBillType" combocodecol="BILLT_ID" combodatacol="BILLT_VALUE" text="bind:BILLT_ID"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsReport">
+        <ColumnInfo>
+          <Column id="TITLE" type="STRING" size="256"/>
+          <Column id="PERCENT" type="INT" size="256"/>
+          <Column id="OWNER" type="STRING" size="256"/>
+          <Column id="STATUS" type="STRING" size="256"/>
+          <Column id="TIME" type="STRING" size="256"/>
+          <Column id="START_DT" type="STRING" size="256"/>
+          <Column id="DUE_DT" type="STRING" size="256"/>
+          <Column id="END_DT" type="STRING" size="256"/>
+          <Column id="PRIO_ID" type="STRING" size="256"/>
+          <Column id="TAG" type="STRING" size="256"/>
+          <Column id="BILLT_ID" type="STRING" size="256"/>
+          <Column id="LEVEL" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="TITLE">NG-1 Explore Zoho Projects</Col>
+            <Col id="OWNER">Zoho</Col>
+            <Col id="PERCENT">0</Col>
+            <Col id="STATUS"/>
+            <Col id="START_DT"/>
+            <Col id="DUE_DT"/>
+            <Col id="PRIO_ID"/>
+            <Col id="LEVEL">0</Col>
+            <Col id="BILLT_ID"/>
+            <Col id="END_DT"/>
+            <Col id="TAG"/>
+            <Col id="TIME"/>
+          </Row>
+          <Row>
+            <Col id="TITLE">Getting started with Zoho Projects</Col>
+            <Col id="OWNER">Bắc Ngô Khắc</Col>
+            <Col id="PERCENT">0</Col>
+            <Col id="START_DT">2023-05-30</Col>
+            <Col id="DUE_DT">2023-06-10</Col>
+            <Col id="PRIO_ID"/>
+            <Col id="LEVEL">1</Col>
+            <Col id="BILLT_ID"/>
+            <Col id="STATUS"/>
+            <Col id="END_DT"/>
+            <Col id="TAG"/>
+            <Col id="TIME"/>
+          </Row>
+          <Row>
+            <Col id="TITLE">A Quick way to get started!</Col>
+            <Col id="OWNER"/>
+            <Col id="PERCENT">0</Col>
+            <Col id="STATUS"/>
+            <Col id="START_DT">2023-05-31</Col>
+            <Col id="DUE_DT">2023-06-02</Col>
+            <Col id="PRIO_ID"/>
+            <Col id="LEVEL">2</Col>
+            <Col id="BILLT_ID"/>
+            <Col id="END_DT"/>
+            <Col id="TAG"/>
+            <Col id="TIME"/>
+          </Row>
+          <Row>
+            <Col id="TITLE">Fix bug</Col>
+            <Col id="OWNER">Bắc Ngô Khắc</Col>
+            <Col id="PERCENT">0</Col>
+            <Col id="STATUS">Mở</Col>
+            <Col id="START_DT">2023-05-31</Col>
+            <Col id="DUE_DT">2023-06-02</Col>
+            <Col id="PRIO_ID">&lt;fc v='red'&gt;◆&lt;/fc&gt; Cao</Col>
+            <Col id="LEVEL">3</Col>
+            <Col id="TIME"></Col>
+            <Col id="BILLT_ID">0</Col>
+            <Col id="END_DT"/>
+            <Col id="TAG"/>
+          </Row>
+          <Row>
+            <Col id="TITLE">Basics of Tasks and Milestones</Col>
+            <Col id="PERCENT">0</Col>
+            <Col id="LEVEL">2</Col>
+            <Col id="START_DT">2023-05-30</Col>
+            <Col id="DUE_DT">2023-06-07</Col>
+            <Col id="BILLT_ID"/>
+            <Col id="STATUS"/>
+            <Col id="OWNER"> </Col>
+            <Col id="TIME"/>
+            <Col id="END_DT"/>
+            <Col id="PRIO_ID"/>
+            <Col id="TAG"/>
+          </Row>
+          <Row>
+            <Col id="TITLE">Multiple users can be owner of the project</Col>
+            <Col id="PERCENT">10</Col>
+            <Col id="OWNER">Bắc Ngô Khắc</Col>
+            <Col id="STATUS">Đang tiến hành</Col>
+            <Col id="TIME"></Col>
+            <Col id="START_DT">2023-05-30</Col>
+            <Col id="DUE_DT">2023-05-31</Col>
+            <Col id="PRIO_ID">&lt;fc v='green'&gt;◆&lt;/fc&gt; Thấp</Col>
+            <Col id="LEVEL">3</Col>
+            <Col id="BILLT_ID">0</Col>
+            <Col id="END_DT"/>
+            <Col id="TAG"/>
+          </Row>
+          <Row>
+            <Col id="TITLE">The Start &amp; End (Due) dates can be</Col>
+            <Col id="PERCENT">10</Col>
+            <Col id="OWNER">Bắc Ngô Khắc</Col>
+            <Col id="STATUS">Mở</Col>
+            <Col id="TIME"></Col>
+            <Col id="START_DT">2023-05-30</Col>
+            <Col id="DUE_DT">2023-06-01</Col>
+            <Col id="PRIO_ID">&lt;fc v='orange'&gt;◆&lt;/fc&gt; Trung bình</Col>
+            <Col id="BILLT_ID">0</Col>
+            <Col id="LEVEL">3</Col>
+            <Col id="END_DT"/>
+            <Col id="TAG"/>
+          </Row>
+          <Row>
+            <Col id="TITLE">Click the 'Import Tasks' option</Col>
+            <Col id="PERCENT">10</Col>
+            <Col id="OWNER">Bắc Ngô Khắc</Col>
+            <Col id="STATUS">Mở</Col>
+            <Col id="TIME"></Col>
+            <Col id="START_DT">2023-05-30</Col>
+            <Col id="DUE_DT">2023-06-06</Col>
+            <Col id="BILLT_ID">0</Col>
+            <Col id="LEVEL">3</Col>
+            <Col id="END_DT"/>
+            <Col id="PRIO_ID">&lt;fc v='gray'&gt;◆&lt;/fc&gt; Không có</Col>
+            <Col id="TAG"/>
+          </Row>
+          <Row>
+            <Col id="TITLE">Click the 'Export Tasks' option</Col>
+            <Col id="PERCENT">10</Col>
+            <Col id="OWNER">Bắc Ngô Khắc</Col>
+            <Col id="STATUS">Mở</Col>
+            <Col id="TIME"></Col>
+            <Col id="START_DT">2023-05-30</Col>
+            <Col id="DUE_DT">2023-06-07</Col>
+            <Col id="PRIO_ID">&lt;fc v='orange'&gt;◆&lt;/fc&gt; Trung bình</Col>
+            <Col id="BILLT_ID">0</Col>
+            <Col id="LEVEL">3</Col>
+            <Col id="END_DT"/>
+            <Col id="TAG"/>
+          </Row>
+          <Row>
+            <Col id="TITLE">This task is a recurring one</Col>
+            <Col id="PERCENT">10</Col>
+            <Col id="OWNER">Bắc Ngô Khắc</Col>
+            <Col id="STATUS">Mở</Col>
+            <Col id="TIME"></Col>
+            <Col id="START_DT">2023-05-30</Col>
+            <Col id="DUE_DT">2023-06-07</Col>
+            <Col id="PRIO_ID">&lt;fc v='green'&gt;◆&lt;/fc&gt; Thấp</Col>
+            <Col id="BILLT_ID">0</Col>
+            <Col id="LEVEL">3</Col>
+            <Col id="END_DT"/>
+            <Col id="TAG"/>
+          </Row>
+          <Row>
+            <Col id="TITLE">Missing Modules</Col>
+            <Col id="PERCENT">0</Col>
+            <Col id="OWNER"/>
+            <Col id="START_DT">2023-06-08</Col>
+            <Col id="DUE_DT">2023-06-08</Col>
+            <Col id="PRIO_ID"/>
+            <Col id="BILLT_ID"/>
+            <Col id="LEVEL">2</Col>
+            <Col id="STATUS"/>
+            <Col id="TIME"/>
+            <Col id="END_DT"/>
+            <Col id="TAG"/>
+          </Row>
+          <Row>
+            <Col id="TITLE">Bugs, Timesheet, Pages, and Chat</Col>
+            <Col id="PERCENT">10</Col>
+            <Col id="OWNER">Bắc Ngô Khắc</Col>
+            <Col id="STATUS">Đang tiến hành</Col>
+            <Col id="TIME"></Col>
+            <Col id="START_DT">2023-06-08</Col>
+            <Col id="DUE_DT">2023-06-08</Col>
+            <Col id="PRIO_ID">&lt;fc v='red'&gt;◆&lt;/fc&gt; Cao</Col>
+            <Col id="BILLT_ID">0</Col>
+            <Col id="LEVEL">3</Col>
+            <Col id="END_DT"/>
+            <Col id="TAG"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsPriority">
+        <ColumnInfo>
+          <Column id="PRIO_ID" type="STRING" size="256"/>
+          <Column id="PRIO_VALUE" type="STRING" size="256"/>
+          <Column id="IMAGE_URL" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="PRIO_ID">&lt;fc v='red'&gt;◆&lt;/fc&gt; Cao</Col>
+            <Col id="PRIO_VALUE">Cao</Col>
+            <Col id="IMAGE_URL">imagerc::prio_high.png</Col>
+          </Row>
+          <Row>
+            <Col id="PRIO_ID">&lt;fc v='orange'&gt;◆&lt;/fc&gt; Trung bình</Col>
+            <Col id="PRIO_VALUE">Trung bình</Col>
+            <Col id="IMAGE_URL">imagerc::prio_medium.png</Col>
+          </Row>
+          <Row>
+            <Col id="PRIO_ID">&lt;fc v='green'&gt;◆&lt;/fc&gt; Thấp</Col>
+            <Col id="PRIO_VALUE">Thấp</Col>
+            <Col id="IMAGE_URL">imagerc::prio_low.png</Col>
+          </Row>
+          <Row>
+            <Col id="PRIO_ID">&lt;fc v='gray'&gt;◆&lt;/fc&gt; Không có</Col>
+            <Col id="PRIO_VALUE">Không có</Col>
+            <Col id="IMAGE_URL">imagerc::prio_none.png</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsBillType">
+        <ColumnInfo>
+          <Column id="BILLT_ID" type="STRING" size="256"/>
+          <Column id="BILLT_VALUE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="BILLT_ID">0</Col>
+            <Col id="BILLT_VALUE">Không có</Col>
+          </Row>
+          <Row>
+            <Col id="BILLT_ID">1</Col>
+            <Col id="BILLT_VALUE">Có</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.Form_Report_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	// Code here
+};
+
+this.divHeader_btnAddTask_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.alert("Do something");
+};
+
+this.Div00_btnFilter_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.alert("This is an option button");
+};
+
+
+//////////////////////////////////////////////////////////////////////////
+// USER FUNCTION
+//////////////////////////////////////////////////////////////////////////
+this.fnGetCountDay = function (currow)
+{
+	var strDate = this.dsReport.getColumn(currow, 'START_DT');
+	var dueDate = this.dsReport.getColumn(currow, 'DUE_DT');
+	
+	if (!strDate || !dueDate)
+	{
+		return '-';
+	}
+	
+	var countDay = this.fnCountWeekdays(strDate, dueDate);
+	
+	return `${countDay} Ngày`;
+};
+
+this.fnCountWeekdays = function(startDate, endDate) {
+  const oneDay = 24 * 60 * 60 * 1000; // Number of milliseconds in a day
+
+  let currentDate = new Date(startDate);
+  const targetDate = new Date(endDate);
+
+  let weekdayCount = 0;
+
+  while (currentDate <= targetDate) {
+    const dayOfWeek = currentDate.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
+    if (dayOfWeek !== 0 && dayOfWeek !== 6) {
+      weekdayCount++;
+    }
+
+    currentDate.setTime(currentDate.getTime() + oneDay); // Move to the next day
+  }
+
+  return weekdayCount;
+}]]></Script>
+  </Form>
+</FDL>

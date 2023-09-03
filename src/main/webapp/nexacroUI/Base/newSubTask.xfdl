@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="newTask2" width="580" height="700" titletext="New Form">
+    <Layouts>
+      <Layout height="700" mobileorientation="landscape" width="580">
+        <Static id="Static00" taborder="0" text="NEW SUBTASK" width="100%" height="5%" top="0" left="0" font="normal 700 14pt/normal &quot;Arial&quot;" textAlign="center" background="#f4f4f4"/>
+        <Div id="Div00" taborder="1" width="100%" height="95.00%" bottom="0" right="0" text="">
+          <Layouts>
+            <Layout>
+              <Div id="Div00" taborder="0" left="20" top="140" width="540" height="55" text="">
+                <Layouts>
+                  <Layout>
+                    <Edit id="Edit00" taborder="0" left="0" width="100.00%" height="34" borderRadius="5px" bottom="0"/>
+                    <Static id="Static01" taborder="1" text="Tên SubTask" left="0" top="0" width="81" height="14"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div00_00" taborder="1" left="20" top="15" width="540" height="55" text="">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static01" taborder="1" text="Dự Án" left="0" top="0" width="81" height="14"/>
+                    <Combo id="Combo00" taborder="1" text="Combo00" width="100%" bottom="0" height="34" left="0"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div00_01" taborder="2" left="20" top="205" width="540" height="130" text="">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static01" taborder="1" text="Thêm Mô Tả" left="0" top="0" width="81" height="14"/>
+                    <TextArea id="TextArea00" taborder="1" left="0" width="100.00%" bottom="0" height="100"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Button id="Button00" taborder="3" text="Thêm" left="152" top="611" width="88" height="34" cssclass="btnAdd" onclick="Button00_onclick"/>
+              <Button id="Button01" taborder="4" text="Hủy" left="322" top="611" width="88" height="34" cssclass="btnAdd"/>
+              <Div id="Div00_00_00" taborder="5" left="20" top="75" width="540" height="55" text="">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static01" taborder="1" text="TASK" left="0" top="0" width="81" height="14"/>
+                    <Combo id="Combo00" taborder="1" text="Combo00" width="100%" bottom="0" height="34" left="0"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Static id="Static00" taborder="6" text="Thông Tin SubTask" left="23" top="354" width="126" height="27"/>
+              <Div id="Div01" taborder="7" left="20" top="386" width="540" height="231">
+                <Layouts>
+                  <Layout>
+                    <Div id="Div00_00" taborder="0" left="365" top="10" width="170" height="55" text="">
+                      <Layouts>
+                        <Layout>
+                          <Static id="Static01" taborder="1" text="Chọn Người Làm Task" left="0" top="0" width="130" height="15"/>
+                          <Combo id="Combo00" taborder="1" text="Combo00" width="100%" bottom="0" height="34" left="0"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <Div id="Div00" taborder="1" left="9" top="10" width="329" height="55" text="">
+                      <Layouts>
+                        <Layout>
+                          <Edit id="Edit00" taborder="0" left="0" width="100.00%" height="34" borderRadius="5px" bottom="0"/>
+                          <Static id="Static01" taborder="1" text="Nhóm Đã Liên Kết" left="0" top="0" width="101" height="14"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <Div id="Div00_00_00_00" taborder="2" left="182" top="90" width="28.89%" height="40" text="">
+                      <Layouts>
+                        <Layout>
+                          <Static id="Static01" taborder="1" text="Ngày Kết Thúc" left="0" top="0" width="81" height="14"/>
+                          <Calendar id="Calendar00" taborder="1" left="0" top="17" width="100%" height="23"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <Div id="Div00_00_01" taborder="3" left="9" top="90" width="28.89%" height="40" text="">
+                      <Layouts>
+                        <Layout>
+                          <Static id="Static01" taborder="1" text="Ngày Bắt Đầu" left="0" top="0" width="81" height="14"/>
+                          <Calendar id="Calendar00" taborder="1" left="0" top="17" width="100%" height="23"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <Div id="Div00_00_00" taborder="4" left="365" top="78" width="170" height="55" text="">
+                      <Layouts>
+                        <Layout>
+                          <Static id="Static01" taborder="1" text="Ưu Tiên" left="0" top="0" width="130" height="15"/>
+                          <Combo id="Combo00" taborder="1" text="Combo00" width="100%" bottom="0" height="34" left="0"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <Div id="Div00_01" taborder="5" left="9" top="140" width="329" height="55" text="">
+                      <Layouts>
+                        <Layout>
+                          <Edit id="Edit00" taborder="0" left="0" width="100.00%" height="34" borderRadius="5px" bottom="0"/>
+                          <Static id="Static01" taborder="1" text="Tên SubTask" left="0" top="0" width="81" height="14"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <Div id="Div00_00_00_01" taborder="6" left="365" top="138" width="170" height="55" text="">
+                      <Layouts>
+                        <Layout>
+                          <Static id="Static01" taborder="1" text="Loại Hóa Đơn" left="0" top="0" width="130" height="15"/>
+                          <Combo id="Combo00" taborder="1" text="Combo00" width="100%" bottom="0" height="34" left="0"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

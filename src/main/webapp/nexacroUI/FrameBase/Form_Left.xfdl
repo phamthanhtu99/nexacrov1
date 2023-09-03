@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Left" width="220" height="670" titletext="Form_Left" background="#16100d" onload="Form_Left_onload" cssclass="static01" stepshowtype="action" scrollbartrackbarsize="0" scrolltype="none">
+    <Layouts>
+      <Layout width="220" height="670">
+        <Static id="Static00" taborder="2" left="2" top="0" height="50" right="2" border="0px none,0px none,1px solid #2e2826"/>
+        <Static id="Static00_00" taborder="0" left="8" top="10" width="35" onclick="Static00_00_onclick" text="" height="36" background="url('imagerc::image_custom/menu_LNC.png') no-repeat left center /contain"/>
+        <Static id="Static01" taborder="1" left="45" top="13" height="28" text="LNC Projects" textAlign="center" font="normal 800 16px/normal &quot;Malgun Gothic&quot;,&quot;Algerian&quot;" padding="0px 0px 0px 15px" color="#eaffff" onclick="Div00_Div00_Static01_onclick" background="url('imagerc::image_custom/logo.png') no-repeat left center /contain" width="165"/>
+      </Layout>
+      <Layout name="screen00_02" width="200" height="720" screenid="screen00_02,Desktop_screen"/>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.Form_Left_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.createMenuButton();
+};
+
+this.createMenuButton = function()
+{
+var myObject = nexacro.getApplication();
+
+
+	var left=0, mainTop=72, subTop=0, mainHeight=40, subHeight=50, right=0, gap=0;
+	
+	for (var i = 0, len = this.dsMenu.rowcount; i < len; i++) {
+		var id = this.dsMenu.getColumn(i, "id"),
+			caption = this.dsMenu.getColumn(i, "caption"),
+			level = this.dsMenu.getColumn(i, "level"),
+			upid = this.dsMenu.getColumn(i, "upid")
+			urlImg = this.dsMenu.getColumn(i, "url");
+
+		if (level == 0) {
+			var objId = "btnMenu_"+id,
+				objIconId = "icon_"+id,
+				menuTitle = new Button(objId, 38, mainTop, null, mainHeight, right, null),
+				staticTag = new Static(objIconId, 10, mainTop, 20, mainHeight);
+			
+				cssclass = "";
+			
+			switch(id) {
+			case "10000":
+				cssclass = "btn_MLF_Lmenu01";
+				break;
+			case "20000":
+				cssclass = "btn_MLF_Lmenu02";
+				break;
+			case "30000":
+				cssclass = "btn_MLF_Lmenu03";
+				break;
+			case "40000":
+				cssclass = "btn_MLF_Lmenu04";
+				break;
+ 			case "50000":
+ 				cssclass = "btn_MLF_Lmenu05";
+ 				break;
+ 			case "60000":
+ 				cssclass = "btn_MLF_Lmenu06";
+ 				break;
+			}
+			
+			staticTag.set_cssclass("icon_style");
+			staticTag.set_background("url('" + urlImg + "') no-repeat left center /20px 20px");
+ 			this.addChild(objIconId, staticTag);
+ 			staticTag.show();
+			
+			menuTitle.set_cssclass(cssclass);
+			menuTitle.set_text(caption);
+			menuTitle.menuId = id;
+			menuTitle.addEventHandler("onclick", this.menuTitle_onclick, this);
+			this.addChild(objId, menuTitle);
+			menuTitle.show();
+			
+			mainTop = objId + ":0";
+			objId = "divSubMenu_"+id;
+
+			var container = new Div(objId, left, mainTop, null, 0, right, null);
+			container.set_cssclass("div_MLF_subMenu");
+			
+			this.addChild(objId, container);
+			container.show();
+	
+			mainTop = objId + ":0";
+		} else {
+			var objId = "btnMenu_"+id,
+				button = new Button(objId, left, subTop, null, subHeight, right, null);
+
+			button.set_cssclass("btn_MLF_subMenu");
+			button.set_text(caption);
+			button.menuId = id; 
+			button.addEventHandler("onclick", this.menuButton_onclick, this);
+			this.components["divSubMenu_" + upid].addChild(objId, button);
+			//this.components["divSubMenu_"+upid].addChild(objId, button);
+			
+			button.show();
+			
+			subTop = objId + ":0";
+		}
+	}
+};
+
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.createMenuButton();	
+
+};
+this.menuTitle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var cssclasses = obj.cssclass.split(","),
+		container = this.components["divSubMenu_"+obj.menuId];
+	
+	// expanded
+	if (cssclasses.length > 1 && cssclasses[1] == "btn_MLF_LmenuS") {
+		container.set_height(0);
+		obj.set_cssclass(cssclasses[0]);
+		this.selectedMenu = "";
+	}
+	// collapsed
+	else {
+		if (this.selectedMenu)	this.components[this.selectedMenu].click();
+		
+		container.set_height(container.form.components.length * 50 + 2);
+		obj.set_cssclass(cssclasses[0] + ",btn_MLF_LmenuS");
+		this.selectedMenu = obj.name;
+	    var path = this.dsMenu.getColumn(this.dsMenu.findRow("id",obj.menuId),"path");
+
+	}
+	
+	this.resetScroll();
+};
+
+this.menuButton_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var menuId = obj.menuId;
+	var path = this.dsMenu.getColumn(this.dsMenu.findRow("id",obj.menuId),"path");
+	
+	nexacro.getApplication().mainframe.HFrameSet00.VFrameSet00.WorkFrame.form.fn_addTab(path);
+	
+	
+//  	if(menuId == '20100') {
+//  		nexacro.getApplication().mainframe.HFrameSet00.VFrameSet00.WorkFrame.form.Div00.form.Static00.set_visible(false)
+//  		nexacro.getApplication().mainframe.HFrameSet00.VFrameSet00.WorkFrame.form.Div00.form.Div_container_prj.set_top(0);
+//  	}
+};
+
+
+
+
+]]></Script>
+    <Objects>
+      <Dataset id="dsMenu">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="caption" type="STRING" size="256"/>
+          <Column id="level" type="STRING" size="256"/>
+          <Column id="upid" type="STRING" size="256"/>
+          <Column id="url" type="STRING" size="256"/>
+          <Column id="tooltiptext" type="STRING" size="256"/>
+          <Column id="path" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">10000</Col>
+            <Col id="caption">Trang chủ</Col>
+            <Col id="level">0</Col>
+            <Col id="upid">10000</Col>
+            <Col id="url">imagerc::image_custom/home_icon.png</Col>
+            <Col id="path"/>
+          </Row>
+          <Row>
+            <Col id="id">20000</Col>
+            <Col id="caption">Thông tin mới</Col>
+            <Col id="level">0</Col>
+            <Col id="upid">20000</Col>
+            <Col id="url">imagerc::image_custom/info_icon.png</Col>
+            <Col id="path"/>
+          </Row>
+          <Row>
+            <Col id="id">30000</Col>
+            <Col id="caption">Thảo luận</Col>
+            <Col id="level">0</Col>
+            <Col id="upid">30000</Col>
+            <Col id="url">imagerc::image_custom/discuss_icon1.png</Col>
+            <Col id="path"/>
+          </Row>
+          <Row>
+            <Col id="id">40000</Col>
+            <Col id="caption">Báo cáo</Col>
+            <Col id="level">0</Col>
+            <Col id="upid">40000</Col>
+            <Col id="url">imagerc::image_custom/report_icon.png</Col>
+            <Col id="path"></Col>
+          </Row>
+          <Row>
+            <Col id="id">40001</Col>
+            <Col id="caption">Báo cáo dự án</Col>
+            <Col id="level">1</Col>
+            <Col id="upid">40000</Col>
+            <Col id="path">Base::Form_Report.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="id">40002</Col>
+            <Col id="caption">Báo cáo task</Col>
+            <Col id="level">1</Col>
+            <Col id="upid">40000</Col>
+          </Row>
+          <Row>
+            <Col id="id">50000</Col>
+            <Col id="caption">Lịch</Col>
+            <Col id="level">0</Col>
+            <Col id="upid">50000</Col>
+            <Col id="url">imagerc::image_custom/calendar_icon.png</Col>
+            <Col id="path"/>
+          </Row>
+          <Row>
+            <Col id="id">60000</Col>
+            <Col id="caption">Dự án</Col>
+            <Col id="level">0</Col>
+            <Col id="upid">60000</Col>
+            <Col id="url">imagerc::image_custom/project_icon.png</Col>
+            <Col id="path"/>
+          </Row>
+          <Row>
+            <Col id="id">10100</Col>
+            <Col id="caption">Tạo tác vụ</Col>
+            <Col id="level">1</Col>
+            <Col id="upid">60000</Col>
+            <Col id="path">Base::newTask.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="id">20100</Col>
+            <Col id="caption">Tạo dự án</Col>
+            <Col id="level">1</Col>
+            <Col id="upid">60000</Col>
+            <Col id="path">Base::addProject.xfdl</Col>
+          </Row>
+          <Row>
+            <Col id="id">20200</Col>
+            <Col id="caption">Thông tin dự án</Col>
+            <Col id="level">1</Col>
+            <Col id="upid">60000</Col>
+            <Col id="path">Base::ProjectList.xfdl</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

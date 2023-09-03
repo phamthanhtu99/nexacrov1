@@ -4,11 +4,7 @@
 <mapper namespace="com.web.nexacro.mapper.ProjectMapper">
     <select id="selectProject" resultType="hashmap" >
         <![CDATA[
-          SELECT * FROM TB_PROJECT WHERE 1=1
-
-          <if test="PROJECT_ID != null and PROJECT_ID != ''">
-              AND PROJECT_ID = #{PROJECT_ID}
-            </if>
+          SELECT * FROM TB_PROJECT P ,TB_USER U WHERE 1=1 AND P.PROJECT_OWNER = USER_ID
          ]]>
     </select>
 

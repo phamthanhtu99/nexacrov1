@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="add_project_Popup" width="550" height="800" titletext="Form_Popup_Sub" onload="form_onload" border="1px solid #9c9c9c">
+    <Layouts>
+      <Layout height="800" width="550">
+        <Edit id="prjNm_txt" taborder="0" left="19" top="70" width="511" height="30"/>
+        <Static id="Static01" taborder="1" text="Tiêu đề dự án" left="20" top="40" width="90" height="30" color="black" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Button id="btn_add" taborder="2" text="Thêm" left="18" top="725" width="70" height="30" onclick="btn_rtn_string_onclick" borderRadius="24px" color="white" background="#FF6200"/>
+        <Button id="btn_cancel" taborder="3" text="Hủy" left="100" top="725" width="70" height="30" onclick="btn_rtn_obj_onclick" borderRadius="24px" color="#ff6200" border="1px solid #FF6200" background="#fff"/>
+        <Static id="Static06" taborder="4" text="Dự án mới" left="0" top="0" width="548" height="30" cssclass="sta_WF_Subtitle" color="black" onclick="Static06_onclick" padding="0px 0px 0px 20px" font="normal 700 12pt/normal &quot;Arial&quot;" background="#FAFAFA"/>
+        <Static id="Static01_01" taborder="5" text="*" left="105" top="40" width="90" height="30" font="normal 900 20px/normal &quot;Arial&quot;" color="#ff6200"/>
+        <Static id="owner_lbl" taborder="6" text="Chủ sở hữu" left="18" top="105" width="90" height="30" color="black" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Combo id="cbx_owner" taborder="7" left="20" top="140" width="254" height="30" value="" index="-1" innerdataset="ds_user" codecolumn="id" datacolumn="name"/>
+        <Static id="template_lbl" taborder="8" text="Mẫu" left="289" top="105" width="90" height="30" color="black" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Combo id="cbx_owner00" taborder="9" left="291" top="140" width="239" height="30" value="" index="-1" innerdataset="ds_template" codecolumn="ID" datacolumn="Template_name"/>
+        <Static id="strdt_lbl" taborder="10" text="Ngày bắt đầu" left="20" top="185" width="90" height="30" color="black" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Static id="endt_lbl" taborder="11" text="Ngày kết thúc" left="289" top="185" width="90" height="30" color="black" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Calendar id="stdt_cld" taborder="12" left="20" top="225" width="254" height="30"/>
+        <Calendar id="endt_cld" taborder="13" left="291" top="225" width="239" height="30"/>
+        <CheckBox id="isTight_chx" taborder="14" left="19" top="265" width="340" height="35" font="normal 700 10pt/normal &quot;Arial&quot;" color="black" text="Cài đặt nội dung này thành dự án chặt chẽ"/>
+        <Static id="des_lbl" taborder="15" text="Mô tả" left="20" top="295" width="90" height="30" color="black" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <TextArea id="des_txt" taborder="16" left="19" top="330" width="511" height="110"/>
+        <Static id="group_lbl" taborder="17" text="Tên nhóm" left="20" top="450" width="90" height="30" color="black" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Static id="addgroup_lbl" taborder="18" text="Thêm nhóm mới" left="225" top="450" width="95" height="30" font="normal 700 12px/normal &quot;Arial&quot;" color="#ff6200" onclick="addgroup_lbl_onclick"/>
+        <Combo id="cbx_group" taborder="19" left="19" top="480" width="301" height="30" value="" index="-1" innerdataset="ds_group" codecolumn="ID" datacolumn="Group_nm" text=""/>
+        <Static id="tag_lbl" taborder="20" text="Tag" left="20" top="510" width="90" height="30" color="black" font="normal bold 10pt/normal &quot;Arial&quot;"/>
+        <Edit id="tag_txt" taborder="21" left="20" top="540" width="510" height="30"/>
+        <Static id="group_lbl00" taborder="22" left="20" top="580" width="120" height="30" color="black" font="normal bold 10pt/normal &quot;Arial&quot;" text="Truy cập dự án"/>
+        <Radio id="access_rdo" taborder="23" left="19" top="600" width="491" height="90" codecolumn="codecolumn" datacolumn="datacolumn" value="dropdown" onitemchanged="Radio00_onitemchanged" index="0" innerdataset="innerdataset" rowcount="2" fittocontents="width" font="normal 600 10pt/normal &quot;Arial&quot;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">1</Col>
+                <Col id="datacolumn">Riêng tư</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">2</Col>
+                <Col id="datacolumn">Công khai</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Static id="Static00" taborder="24" text="Chỉ có người dùng dự án mới có thể xem và truy cập dự án này." left="20" top="630" width="510" height="28"/>
+        <Static id="Static00_00" taborder="25" text="Người dùng cổng chỉ có thể xem, theo dõi, và nhận xét trong khi người dùng dự án sẽ có toàn quyền truy cập." left="20" top="670" width="510" height="50" onclick="Static00_00_onclick" wordWrap="english" verticalAlign="middle" letterSpacing="0px"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_child"/>
+      <Dataset id="ds_user">
+        <ColumnInfo>
+          <Column id="id" type="INT" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="role" type="STRING" size="256"/>
+          <Column id="status" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">1</Col>
+            <Col id="name">NamVH7</Col>
+            <Col id="role">1</Col>
+            <Col id="status">1</Col>
+          </Row>
+          <Row>
+            <Col id="id">2</Col>
+            <Col id="name">SaLT</Col>
+            <Col id="role">1</Col>
+            <Col id="status">1</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_template">
+        <ColumnInfo>
+          <Column id="ID" type="INT" size="256"/>
+          <Column id="Template_name" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="ID">1</Col>
+            <Col id="Template_name">template 1</Col>
+          </Row>
+          <Row>
+            <Col id="ID">2</Col>
+            <Col id="Template_name">template 2</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_group">
+        <ColumnInfo>
+          <Column id="ID" type="INT" size="256"/>
+          <Column id="Group_nm" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var strParam1 = this.parent.param1;
+	var strParam2 = this.parent.param2;
+	var objParam  = this.parent.param3;
+
+	this.prjNm_txt.set_value(strParam1);
+		
+};
+
+this.btn_rtn_string_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var strReturn = this.Edit00.value;
+	this.close(strReturn);
+};
+
+this.btn_rtn_obj_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.opener.fn_parent(this.ds_child);
+	this.close();
+};
+
+this.btn_rtn_obj2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.opener.ds_parent.clearData();
+	var nRow = this.opener.ds_parent.addRow();
+	this.opener.ds_parent.copyRow(nRow, this.ds_child, this.ds_child.rowposition);
+	this.close();
+};
+
+this.addgroup_lbl_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	var objChildFrame = new ChildFrame();
+	objChildFrame.init("chf_popup2"
+	                  , 0
+					  , 0
+					  , 500
+					  , 400
+					  , null
+					  , null
+					  , "FrameBase::add_group_Popup.xfdl");
+
+	objChildFrame.set_dragmovetype("all");
+	objChildFrame.set_openalign("center middle");
+	objChildFrame.set_overlaycolor("RGBA(196,196,196,0.5)")
+	
+	objChildFrame.showModal(this.getOwnerFrame()
+						  , null
+						  , this
+						  , "fn_popupCallback");
+};
+
+this.fn_popupCallback = function(strPopupID, strReturn)
+{
+	if(strReturn == undefined){
+		return;
+	}
+
+	if(strPopupID == "chf_popup2"){
+		this.alert("Return Value: " + strReturn);
+	}
+};
+
+this.Static00_00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="cbx_owner" propid="value" datasetid="ds_user" columnid="id"/>
+      <BindItem id="item1" compid="cbx_owner00" propid="value" datasetid="ds_user" columnid="id"/>
+      <BindItem id="item2" compid="cbx_group" propid="value" datasetid="ds_user" columnid="id"/>
+    </Bind>
+  </Form>
+</FDL>

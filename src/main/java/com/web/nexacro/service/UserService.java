@@ -10,4 +10,5 @@ import java.util.Map;
 public interface UserService extends ComCrud {
     List<Map<String,Object>> checkLogin(Map map, HttpServletRequest request);
     void updateUser(Map map);
+    List<Map<String,Object>>  selectRole(Map map);
 }

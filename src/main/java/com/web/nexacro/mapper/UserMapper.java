@@ -15,8 +15,17 @@ public class UserMapper extends CommConnectSql implements ComCrud {
         return result;
     }
 
+    public List<Map<String,Object>> selectRole(Map param){
+        List<Map<String,Object>> result = selectList("selectUserPm",param);
+        return result;
+    }
     public int insertProject(Map map){
         return  insert("insertUser",map);
+    }
+
+    @Override
+    public List<Map<String, Object>> select(Map map) {
+        return null;
     }
 
     @Override

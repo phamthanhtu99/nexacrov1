@@ -8,6 +8,7 @@ import com.nexacro.java.xapi.tx.HttpPlatformRequest;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class NexacroUtils {
 
     private List<DataSetUtils> dataSets = null;
     private int code = 0;
-    private String message = "success";
+    private String message = "sssss";
     private  DataSetList dataSetList;
 
     public void setMessOrCode(int code, String message) {
@@ -117,14 +118,16 @@ public class NexacroUtils {
         Map<String,Object>  param = new HashMap<>();
         DataSetList dataSetList = getRequestData(request);
 
+        Map<String,Object> userInfo = (Map<String, Object>) SessionUtils.getSession("USERINFO");
+
         for (int i = 0; i < dataSetList.size(); i++) {
             DataSet dataSet = dataSetList.get(i);
             if(dataSet != null){
-                Map<String, String> row = dataSet.getRowToMap(0);
+
                 param.put(dataSet.getName(),dataSet.getRowToMap(0));
             }
-        }
 
+        }
         return param;
     }
 

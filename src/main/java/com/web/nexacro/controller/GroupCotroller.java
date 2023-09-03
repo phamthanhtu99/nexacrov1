@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/group")
@@ -19,17 +21,23 @@ public class GroupCotroller {
     GroupService groupService;
 
     @PostMapping("/pm/createGroup")
-    public ModelAndView creteGroup(HttpServletRequest request, ModelAndView modelAndView){
+    public ModelAndView creteGroup(HttpServletRequest request, ModelAndView modelAndView) throws IOException {
         NexacroUtils nexacroUtils = new NexacroUtils();
-        groupService.insert(new HashMap());
+        Map params = nexacroUtils.getParamDataSet(request);
+        Map param = (Map) params.get("ds_creatGroup");
+        groupService.insert(param);
         modelAndView.addObject("data",nexacroUtils);
         modelAndView.setViewName("nexacroView");
         return modelAndView;
     }
 
-    @PostMapping("/mb/selectListGroup")
-    public ModelAndView selectListGroup(HttpServletRequest request, ModelAndView modelAndView){
+    @PostMapping("/selectListGroup")
+    public ModelAndView selectListGroup(HttpServletRequest request, ModelAndView modelAndView) throws IOException {
         NexacroUtils nexacroUtils = new NexacroUtils();
+        Map params = nexacroUtils.getParamDataSet(request);
+        Map param = (Map) params.get("ds_cond");
+
+        nexacroUtils.setDataset("ds_owner",groupService.select(param));
         modelAndView.addObject("data",nexacroUtils);
         modelAndView.setViewName("nexacroView");
         return modelAndView;

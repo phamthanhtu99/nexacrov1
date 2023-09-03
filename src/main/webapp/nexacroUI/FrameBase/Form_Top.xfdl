@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Top" width="1280" height="49" titletext="Form_Top">
+    <Layouts>
+      <Layout width="1280" height="49">
+        <Static id="Static00" taborder="0" text="Dự án" left="0" top="0" width="13.28%" height="100.00%" padding="0px 0px 0px 40px" font="normal 700 14pt/normal &quot;Arial&quot;"/>
+        <Static id="Static_setting" taborder="1" text="" top="17" height="15" padding="0px 0px 0px 40px" font="normal 700 14pt/normal &quot;Arial&quot;" background="url('imagerc::image_custom/setup.png') no-repeat center center /15px 15px" onclick="Static00_00_onclick" right="93" width="15"/>
+        <Static id="Static_img" taborder="2" top="7" height="33" padding="0px 0px 0px 40px" font="normal 700 14pt/normal &quot;Arial&quot;" right="30" width="33" background="url('imagerc::image_custom/user.png') no-repeat center center /33px 33px" onclick="Static_img_onclick"/>
+        <Static id="Static_store" taborder="3" text="" top="17" height="15" padding="0px 0px 0px 40px" font="normal 700 14pt/normal &quot;Arial&quot;" background="url('imagerc::image_custom/store.png') no-repeat center center /15px 15px" onclick="Static00_00_onclick" right="153" width="15"/>
+        <Static id="Static_notify" taborder="4" text="" top="17" height="15" padding="0px 0px 0px 40px" font="normal 700 14pt/normal &quot;Arial&quot;" background="url('imagerc::image_custom/notify_top.png') no-repeat center center /15px 15px" onclick="Static00_00_onclick" right="213" width="15"/>
+        <Static id="Static_search" taborder="5" text="" top="17" height="15" padding="0px 0px 0px 40px" font="normal 700 14pt/normal &quot;Arial&quot;" background="url('imagerc::image_custom/search.png') no-repeat center top /15px 15px" onclick="Static00_00_onclick" right="273" width="15"/>
+        <Static id="Static_add" taborder="6" text="" top="17" height="15" padding="0px 0px 0px 40px" font="normal 700 14pt/normal &quot;Arial&quot;" background="url('imagerc::image_custom/add.png') no-repeat center center /15px 15px" onclick="Static00_00_onclick" right="333" width="15"/>
+      </Layout>
+      <Layout name="screen00_02" width="1080" height="50" screenid="screen00_02,Desktop_screen"/>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.fn_test = function()
+{
+	this.Static00.set_text("abc");
+	this.alert("abc");
+}
+
+
+this.Static_img_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	var objChildFrame = new ChildFrame();
+	objChildFrame.init("chf_popup2"
+	                  , 0
+					  , 0
+					  , 500
+					  , 400
+					  , null
+					  , null
+					  , "Base::Login.xfdl");
+
+	objChildFrame.set_dragmovetype("all");
+	objChildFrame.set_openalign("center middle");
+
+	
+	objChildFrame.showModal(this.getOwnerFrame()
+						  , null
+						  , this
+						  , "fn_popupCallback");
+};
+]]></Script>
+  </Form>
+</FDL>

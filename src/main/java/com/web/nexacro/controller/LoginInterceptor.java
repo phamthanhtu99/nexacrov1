@@ -26,11 +26,21 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             return false;
         }
 
+
         Resource resource = new ClassPathResource("/application.properties");
         Properties props = PropertiesLoaderUtils.loadProperties(resource);
 
         String[] allowUrl =props.getProperty("allow.url").split(",");
-        boolean ChkAllowUrl = Arrays.asList(allowUrl).contains(requestURI);
+        boolean ChkAllowUrl = true;
+
+        for (String url:  allowUrl ) {
+            ChkAllowUrl = requestURI.startsWith(url);
+            if (ChkAllowUrl){
+                break;
+            }
+        }
+
+       // ChkAllowUrl = Arrays.asList(allowUrl).contains(requestURI);
 
         if(ChkAllowUrl){
             return  true;

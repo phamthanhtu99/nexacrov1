@@ -25,12 +25,10 @@ public class UserController {
     @PostMapping("/login")
     public ModelAndView search(HttpServletRequest request,ModelAndView modelAndView) throws IOException {
         NexacroUtils nexacroUtils = new NexacroUtils();
-        //Map param = nexacroUtils.getParamDataSet(request);
-       // Map input1 = (Map) param.get("dsInput");
-        Map input1 = new HashMap();
-        input1.put("PW","123");
-        input1.put("USER_ID","1001");
-        nexacroUtils.setDataset("ds_main",userService.checkLogin(input1,request));
+        Map param = nexacroUtils.getParamDataSet(request);
+        Map input1 = (Map) param.get("dsInput");
+
+        nexacroUtils.setDataset("ds_output",userService.checkLogin(input1,request));
         modelAndView.addObject("data",nexacroUtils);
         modelAndView.setViewName("nexacroView");
         return modelAndView;
@@ -71,6 +69,18 @@ public class UserController {
         // Map param = (Map) params.get("ds_insert");
 
         SessionUtils.removeSession(null);
+        modelAndView.addObject("data",nexacroUtils);
+        modelAndView.setViewName("nexacroView");
+        return modelAndView;
+    }
+
+    @PostMapping("/com/selectRole")
+    public ModelAndView selectRole(HttpServletRequest request,ModelAndView modelAndView) throws IOException {
+        NexacroUtils nexacroUtils = new NexacroUtils();
+        Map params = nexacroUtils.getParamDataSet(request);
+        Map param = (Map) params.get("ds_cond");
+
+        nexacroUtils.setDataset("ds_owner",userService.selectRole(param));
         modelAndView.addObject("data",nexacroUtils);
         modelAndView.setViewName("nexacroView");
         return modelAndView;

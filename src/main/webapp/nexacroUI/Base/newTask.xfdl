@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="newTask" width="580" height="910" titletext="New Form" onload="new_task_onload">
+    <Layouts>
+      <Layout height="910" mobileorientation="landscape" width="580">
+        <Div id="Div00" taborder="1" width="580" height="900" text="" left="0" font="normal 18pt/normal &quot;normal/normal&quot;" top="0">
+          <Layouts>
+            <Layout>
+              <Div id="Div00" taborder="0" left="20" top="110" width="540" height="55" text="">
+                <Layouts>
+                  <Layout>
+                    <Edit id="Edit00" taborder="0" left="0" width="100.00%" height="34" borderRadius="5px" bottom="0" onchanged="Div00_Div00_Edit00_onchanged"/>
+                    <Static id="Static01" taborder="1" text="Tên Tác Vụ" left="0" top="0" width="92" height="18" font="normal 16px/normal &quot;Arial&quot;"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div00_00" taborder="1" left="20" top="15" width="540" height="55" text="">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static00_00" taborder="2" text="*" top="0" width="14" left="52" height="15" textAlign="left" onclick="Div_container_prj_Div00_Static00_onclick" color="red"/>
+                    <Static id="Static01" taborder="1" text="Dự Án" left="0" top="0" width="58" height="18" font="normal 16px/normal &quot;Arial&quot;"/>
+                    <Combo id="Combo00" taborder="1" text="" width="100%" bottom="0" height="34" left="0" index="-1" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" displaynulltext="Chọn dự án" value="" onitemchanged="Div00_Div00_00_Combo00_onitemchanged">
+                      <Dataset id="innerdataset">
+                        <ColumnInfo>
+                          <Column id="codecolumn" size="256"/>
+                          <Column id="datacolumn" size="256"/>
+                        </ColumnInfo>
+                        <Rows>
+                          <Row>
+                            <Col id="codecolumn">NhanDV7</Col>
+                            <Col id="datacolumn">SSG Property</Col>
+                          </Row>
+                          <Row>
+                            <Col id="codecolumn">LocNH14</Col>
+                            <Col id="datacolumn">SSG Emart2</Col>
+                          </Row>
+                          <Row>
+                            <Col id="codecolumn">CamNV2</Col>
+                            <Col id="datacolumn">SSG Everyday</Col>
+                          </Row>
+                        </Rows>
+                      </Dataset>
+                    </Combo>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div00_01" taborder="3" left="20" top="205" width="540" height="170" text="">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static01" taborder="1" text="Thêm Mô Tả" left="0" top="0" width="126" height="18" font="normal 16px/normal &quot;Arial&quot;"/>
+                    <TextArea id="TextArea00" taborder="0" left="0" width="100%" bottom="0" height="144"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div00_0111" taborder="2" width="540" text="" left="20" height="40" top="850">
+                <Layouts>
+                  <Layout>
+                    <Button id="Button00" taborder="3" text="Thêm" left="2" top="3" width="88" height="34" cssclass="btnAdd" onclick="Button00_onclick"/>
+                    <Button id="Button01" taborder="3" text="Thêm Nữa" left="126" top="3" width="104" height="34" cssclass="btnAdd" color="#ff6400" background="#ffffff" onclick="Div_container_prj_Button01_onclick"/>
+                    <Button id="Button01_00" taborder="4" text="Hủy" left="270" top="3" width="88" height="34" cssclass="btnAdd" color="#ff6400" background="#ffffff" onclick="Div_container_prj_Button01_onclick"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Static id="Static00" taborder="4" text="*" top="106" width="10" left="110" height="15" textAlign="left" onclick="Div_container_prj_Div00_Static00_onclick" color="red"/>
+              <Div id="Div_task_info" taborder="8" left="20" top="395" width="150" height="30" visible="false">
+                <Layouts>
+                  <Layout>
+                    <Static id="Static_title_task" taborder="6" left="0" top="0" width="20" height="20" border="1px solid #FF6400" borderRadius="10px" background="url('theme::blue/images/btn_expand.png') no-repeat center" onclick="Div00_Div_task_info_Static_title_task_onclick"/>
+                    <Static id="Static02" taborder="7" text="Thông tin tác vụ" left="22" top="0" width="125" height="26" font="normal 16px/normal &quot;Arial&quot;" verticalAlign="top"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="Div00_02" taborder="1" left="20" top="435" width="540" height="395" text="" accessibilityenable="false" visible="false">
+                <Layouts>
+                  <Layout>
+                    <Div id="Div00_00" taborder="0" top="77" width="540" height="60" text="" left="0">
+                      <Layouts>
+                        <Layout>
+                          <Static id="Static01" taborder="1" text="Chọn người làm task" left="0" top="0" width="170" height="20" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Combo id="Combo00" taborder="1" width="540" height="34" left="0" top="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+                            <Dataset id="innerdataset">
+                              <ColumnInfo>
+                                <Column id="codecolumn" size="256"/>
+                                <Column id="datacolumn" size="256"/>
+                              </ColumnInfo>
+                              <Rows>
+                                <Row>
+                                  <Col id="codecolumn">PM</Col>
+                                  <Col id="datacolumn">Loc Nguyen Hoang</Col>
+                                </Row>
+                                <Row>
+                                  <Col id="codecolumn">DEV</Col>
+                                  <Col id="datacolumn">Cam Nguyen Van</Col>
+                                </Row>
+                                <Row>
+                                  <Col id="codecolumn">TEST</Col>
+                                  <Col id="datacolumn">Long Nguyen Hoang Phi</Col>
+                                </Row>
+                                <Row>
+                                  <Col id="codecolumn">LEAD</Col>
+                                  <Col id="datacolumn">Nhan Duong Van</Col>
+                                </Row>
+                              </Rows>
+                            </Dataset>
+                          </Combo>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <Div id="Div_group_link" taborder="1" left="0" top="0" width="540" height="60">
+                      <Layouts>
+                        <Layout>
+                          <Edit id="Edit00" taborder="0" left="0" width="540" height="34" borderRadius="5px" top="25"/>
+                          <Static id="Static01" taborder="1" text="Nhóm đã liên kết" left="0" top="0" width="140" height="20" font="normal 16px/normal &quot;Arial&quot;"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <Div id="Div00_00_00_00" taborder="2" top="157" width="265" height="60" text="" right="0">
+                      <Layouts>
+                        <Layout>
+                          <Static id="Static01" taborder="1" text="Ngày Kết Thúc" left="0" top="0" width="110" height="20" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Calendar id="Calendar00" taborder="1" left="0" top="25" width="100%" height="34"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <Div id="Div00_00_01" taborder="3" left="2" top="157" width="265" height="60" text="">
+                      <Layouts>
+                        <Layout>
+                          <Static id="Static01" taborder="1" text="Ngày Bắt Đầu" left="0" top="0" width="110" height="20" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Calendar id="Calendar00" taborder="1" left="0" top="25" width="100%" height="34"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <Div id="Div00_00_00" taborder="4" left="0" top="237" width="540" height="60" text="">
+                      <Layouts>
+                        <Layout>
+                          <Static id="Static01" taborder="1" text="Ưu Tiên" left="0" top="0" width="130" height="20" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Combo id="Combo00" taborder="1" width="100%" height="34" left="0" top="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" text="" index="-1" onitemchanged="Div00_Div00_02_Div00_00_00_Combo00_onitemchanged" displaynulltext="Không có">
+                            <Dataset id="innerdataset">
+                              <ColumnInfo>
+                                <Column id="codecolumn" size="256"/>
+                                <Column id="datacolumn" size="256"/>
+                              </ColumnInfo>
+                              <Rows>
+                                <Row>
+                                  <Col id="codecolumn">1</Col>
+                                  <Col id="datacolumn">High</Col>
+                                </Row>
+                                <Row>
+                                  <Col id="codecolumn">2</Col>
+                                  <Col id="datacolumn">Medium</Col>
+                                </Row>
+                                <Row>
+                                  <Col id="codecolumn">3</Col>
+                                  <Col id="datacolumn">Low</Col>
+                                </Row>
+                              </Rows>
+                            </Dataset>
+                          </Combo>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <Div id="Div00_01" taborder="5" left="0" top="317" width="265" height="60" text="">
+                      <Layouts>
+                        <Layout>
+                          <Edit id="Edit00" taborder="0" left="0" width="100.00%" height="34" borderRadius="5px" top="25"/>
+                          <Static id="Static01" taborder="1" text="Tên SubTask" left="0" top="0" width="110" height="20" font="normal 16px/normal &quot;Arial&quot;"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                    <Div id="Div00_00_00_01" taborder="6" top="317" height="60" text="" right="0" width="265">
+                      <Layouts>
+                        <Layout>
+                          <Static id="Static01" taborder="1" text="Tag" left="0" top="0" width="130" height="20" font="normal 16px/normal &quot;Arial&quot;"/>
+                          <Edit id="Edit00" taborder="1" left="0" width="100.00%" height="34" borderRadius="5px" top="25"/>
+                        </Layout>
+                      </Layouts>
+                    </Div>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.new_task_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	nexacro.getApplication().mainframe.HFrameSet00.VFrameSet00.TopFrame.form.Static00.set_text('Tác vụ mới');
+	this.Div00.form.Div00_0111.set_top(395);
+};
+
+
+
+
+this.Div00_Div00_00_Combo00_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	if(obj.value != '') {
+		if(!this.Div00.form.Div_task_info.visible ) {
+			this.Div00.form.Div00_02.set_visible(true);
+			this.Div00.form.Div_task_info.set_visible(true);
+			this.Div00.form.Div00_0111.set_top(850);
+		} 
+	}else {
+		this.Div00.form.Div00_02.set_visible(false);
+		this.Div00.form.Div_task_info.set_visible(false);
+	}
+};
+
+this.Div00_Div_task_info_Static_title_task_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	 if (this.Div00.form.Div00_02.visible) {
+			// If the input is visible, hide it
+			 this.Div00.form.Div00_02.set_visible(false);
+			 this.Div00.form.Div_task_info.form.Static_title_task.set_background('url(\'theme::blue/images/cmb_WF_Drop1_P.png\') no-repeat center');
+			 this.Div00.form.Div00_0111.set_top(435);			 
+		} else {
+			// If the input is hidden, show it
+			this.Div00.form.Div00_02.set_visible(true);
+			this.Div00.form.Div_task_info.form.Static_title_task.set_background('url(\'theme::blue/images/btn_expand.png\') no-repeat center');
+		    this.Div00.form.Div00_0111.set_top(850);
+		}
+};
+]]></Script>
+  </Form>
+</FDL>

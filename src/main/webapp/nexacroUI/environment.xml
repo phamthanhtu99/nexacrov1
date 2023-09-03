@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ENV version="2.1">
+  <Environment themeid="theme::blue" datatyperule="2.0">
+    <ScreenDefinition>
+      <Screen id="Desktop_screen" type="desktop"/>
+      <Screen id="screen00_02" type="desktop" themeid="theme::blue"/>
+    </ScreenDefinition>
+    <Variables/>
+    <Cookies/>
+    <httpheader/>
+  </Environment>
+  <Script type="xscript5.1"><![CDATA[this.transactionDB = function ()
+{
+	 var id = "getAll";  
+     var url = "http://localhost:8080/login";
+     var reqDs = "dsInput =dsInput";
+     var respDs = "ds_tranction=IDDataset";
+     var args = "";
+     var callback = "received";
+     this.transaction(id, url, reqDs, respDs, args, callback, true, 0, false);
+};
+
+]]></Script>
+</ENV>

@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="GridTree" width="1670" height="1080" titletext="New Form" onload="GridTree_onload">
+    <Layouts>
+      <Layout height="1080" width="1670">
+        <Grid id="grd_project" taborder="0" left="0" top="80" width="1650" bottom="15" binddataset="ds_project" onheadclick="Grid00_onheadclick" autofittype="col" treeusecheckbox="false" treeinitstatus="expand,null" cssclass="grd-project">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="243"/>
+                <Column size="76"/>
+                <Column size="149"/>
+                <Column size="155"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="200"/>
+                <Column size="215"/>
+                <Column size="215"/>
+                <Column size="215"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="40" band="head"/>
+                <Row size="40"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="TÊN DỰ ÁN" textAlign="left" padding="0px 0px 0px 10px" border="0px none,0px none,1px solid #E4E3E3"/>
+                <Cell col="1" text="%"/>
+                <Cell col="2" text="CHỦ SỞ HỮU"/>
+                <Cell col="3" text="TRẠNG THÁI"/>
+                <Cell col="4" text="TÁC VỤ"/>
+                <Cell col="5" text="CÁC CỘT MỐC"/>
+                <Cell col="6" text="VẤN ĐỀ"/>
+                <Cell col="7" text="NGÀY BẮT ĐẦU"/>
+                <Cell col="8" text="NGÀY KẾT THÚC" displaytype="normal"/>
+                <Cell col="9" text="ĐÃ HOÀN THÀNH"/>
+                <Cell col="10" text="BỐ CỤC"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:PROJECTP_NM" padding="0px 0px 0px 10px"/>
+                <Cell col="1" accessibilityrole="progressbar" displaytype="normal" progressbarsmooth="true" text="bind:PROJECT_PERCENT"/>
+                <Cell col="2" text="bind:USER_NM" displaytype="normal" combodataset="ds_user" combodatacol="name" combocodecol="id"/>
+                <Cell col="3" text="bind:PROJECTP_STATUS" displaytype="combocontrol" combodataset="ds_status" combocodecol="ID" combodatacol="STATUS_NM" textAlign="center" suppressalign="first" autosizecol="none" autosizerow="none" combobuttonsize="0 0" cssclass="expr:PROJECTP_STATUS== '1' ? &quot;info&quot;: PROJECTP_STATUS== '2' ? &quot;inprogress&quot; : &quot;cancel&quot;" padding="10px 10px 10px 15px"/>
+                <Cell col="4" displaytype="progressbarcontrol" cssclass="progress-task-bar" textAlign="center" progressbardirection="forward" progressbarsmooth="true" padding="10px 40px" suppressalign="first" text="bind:PROJECT_PROCESS"/>
+                <Cell col="5" displaytype="progressbarcontrol" text="bind:PROJECT_PROCESS" progressbarsmooth="true" padding="10px 40px"/>
+                <Cell col="6" text="bind:PROJECT_PROCESS" displaytype="progressbarcontrol" progressbarsmooth="true" padding="10px 40px"/>
+                <Cell col="7" text="bind:ST_DT" displaytype="date" calendardateformat="yyyy-MM-dd"/>
+                <Cell col="8" displaytype="date" text="bind:ED_DT" calendardateformat="yyyy-MM-dd"/>
+                <Cell col="9" displaytype="checkboxcontrol" checkboxfalsevalue="0" checkboxtruevalue="1" text="bind:PROJECT_YN" edittype="checkbox"/>
+                <Cell col="10" text="bind:END_DATE"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Div id="Div00" taborder="2" left="1" top="0" width="1669" height="80" cssclass="top-info">
+          <Layouts>
+            <Layout>
+              <Button id="btn_filter" taborder="1" left="1587" top="25" width="20" height="20" cssclass="btn-menu" background="url('imagerc::filter.png') repeat center center"/>
+              <Button id="btn_menu" taborder="0" left="1627" top="25" width="20" height="20" icon="url('imagerc::dots.png')" cssclass="btn-menu" background="url('imagerc::filter.png') repeat left top"/>
+              <Combo id="cbx_projects" taborder="2" text="Tất cả dự án" left="20" top="20" width="120" height="30" index="-1" cssclass="cbx-project-search" value=""/>
+              <Static id="Static00" taborder="3" text="(Có hiệu lực)" left="150" top="20" width="120" height="30"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_add" taborder="1" text="Dự án mới" left="1470" top="20" width="100" height="30" onclick="btn_add_onclick" cssclass="btn-add-project"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_project">
+        <ColumnInfo>
+          <Column id="PROJECT_ID" type="STRING" size="256"/>
+          <Column id="PROJECTP_NM" type="STRING" size="256"/>
+          <Column id="PROJECT_OWNER" type="STRING" size="256"/>
+          <Column id="ST_DT" type="STRING" size="256"/>
+          <Column id="ED_DT" type="STRING" size="256"/>
+          <Column id="DES" type="STRING" size="256"/>
+          <Column id="PROJECT_YN" type="STRING" size="256"/>
+          <Column id="TAG_ID" type="STRING" size="256"/>
+          <Column id="PROJECTP_REOPLVE" type="STRING" size="256"/>
+          <Column id="PROJECTP_STATUS" type="STRING" size="256"/>
+          <Column id="PROJECT_PROCESS" type="STRING" size="256"/>
+          <Column id="PROJECT_PERCENT" type="INT" size="256"/>
+          <Column id="USER_NM" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_status">
+        <ColumnInfo>
+          <Column id="ID" type="STRING" size="256"/>
+          <Column id="STATUS" type="STRING" size="256"/>
+          <Column id="STATUS_NM" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="ID">1</Col>
+            <Col id="STATUS">CO_HIEU_LUC</Col>
+            <Col id="STATUS_NM">Có hiệu lực</Col>
+          </Row>
+          <Row>
+            <Col id="ID">2</Col>
+            <Col id="STATUS">DANG_TRIEN_KHAI</Col>
+            <Col id="STATUS_NM">Đang triển khai</Col>
+          </Row>
+          <Row>
+            <Col id="ID">3</Col>
+            <Col id="STATUS">HUY_BO</Col>
+            <Col id="STATUS_NM">Hủy bỏ</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_priority">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="priority" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">1</Col>
+            <Col id="priority">none</Col>
+          </Row>
+          <Row>
+            <Col id="id">2</Col>
+            <Col id="priority">low</Col>
+          </Row>
+          <Row>
+            <Col id="id">3</Col>
+            <Col id="priority">medium</Col>
+          </Row>
+          <Row>
+            <Col id="id">4</Col>
+            <Col id="priority">hight</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_user">
+        <ColumnInfo>
+          <Column id="id" type="INT" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="role" type="STRING" size="256"/>
+          <Column id="status" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">1</Col>
+            <Col id="name">NamVH7</Col>
+            <Col id="role">1</Col>
+            <Col id="status">1</Col>
+          </Row>
+          <Row>
+            <Col id="id">2</Col>
+            <Col id="name">SaTTL1</Col>
+            <Col id="role">1</Col>
+            <Col id="status">1</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objChildFrame = new ChildFrame();
+	objChildFrame.init("chf_popup1", 0, 0, 800, 700, null, null, "Base::addProject.xfdl");
+
+	objChildFrame.set_dragmovetype("all");
+	objChildFrame.set_openalign("center middle");
+	objChildFrame.set_overlaycolor("RGBA(196,196,196,0.5)")
+	
+	objChildFrame.showModal(this.getOwnerFrame()
+						  , null
+						  , this
+						  , "fn_popupCallback");
+};
+
+this.fn_popupCallback = function(strPopupID, strReturn)
+{
+	if(strReturn == true) {
+		this.getListProject();
+	}	
+};
+
+this.getListProject = function ()
+{
+
+	 var id = "getListProject";  
+     var url = "http://localhost:8080/project/mb/selectListGroup";
+     var reqDs = "dsInput =dsInput";
+     var respDs = "ds_project=ds_project";
+     var args = "";
+     var callback = "fc_callback";
+     this.transaction(id, url, reqDs, respDs, args, callback, true, 0, false);
+};
+
+
+this.fc_callback = function (serviceID, errCD, errMSG)
+{
+    if (errCD == -99)
+    {
+    	this.alert("session timeout!");
+		return;
+    }
+	
+	switch(serviceID) {
+	case 'getListProject':
+	    
+		break;
+	case "getListGroupPm":
+		break;
+	case "insertGroup":
+		
+	break;
+	case "creatproject":
+		
+	break;
+	default:
+	}
+};
+
+this.GridTree_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.getListProject();
+};
+]]></Script>
+  </Form>
+</FDL>

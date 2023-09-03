@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ADL version="2.0">
+  <Application id="Application_Desktop" screenid="screen00_02">
+    <Layout>
+      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="true" left="0" top="0" width="1280" height="720" titletext="LeftTopFrame">
+        <HFrameSet id="HFrameSet00" separatesize="200,*" border="0px none">
+          <Frames>
+            <ChildFrame id="LeftFrame" showtitlebar="false" showstatusbar="false" formurl="FrameBase::Form_Left.xfdl" border="0px none"/>
+            <VFrameSet id="VFrameSet00" separatesize="50,*" border="0px none" top="1">
+              <Frames>
+                <ChildFrame id="TopFrame" showtitlebar="false" showstatusbar="false" formurl="FrameBase::Form_Top.xfdl" border="0px none,0px none,1px solid #ebebeb" background="" height="270"/>
+                <ChildFrame id="WorkFrame" showtitlebar="false" showstatusbar="false" formurl="FrameBase::Form_Work.xfdl" border="0px none" bottom="0"/>
+              </Frames>
+            </VFrameSet>
+          </Frames>
+        </HFrameSet>
+      </MainFrame>
+    </Layout>
+    <Style url="xcssrc::theme1.xcss"/>
+  </Application>
+  <Script type="xscript5.1"><![CDATA[]]></Script>
+</ADL>

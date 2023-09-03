@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Menu" width="200" height="720" titletext="New Form" background="#2d2d2d">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="200">
+        <Static id="Static00" taborder="0" left="0" top="0" cssclass="sta_MWF_leftBg" text="" onclick="Static00_onclick" width="100.00%" height="100%"/>
+        <Static id="Static01" taborder="1" left="50" top="0" width="150" height="6.81%" background="url('imagerc::image_custom/iconProject.png') no-repeat left center /contain" text="PROJECT" textAlign="center" font="normal 700 18px/normal &quot;Malgun Gothic&quot;,&quot;Algerian&quot;" padding="0px 0px 0px 15px" color="#eaffff" onclick="Div00_Div00_Static01_onclick"/>
+        <Static id="Static00_00" taborder="2" left="0" top="5" width="30" background="url('imagerc::image_custom/menu.png') no-repeat left center /contain" onclick="Static00_00_onclick" text="" height="36"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+
+this.createMenuButton = function()
+{
+var myObject = nexacro.getApplication();
+	var app = nexacro.getApplication();
+
+	var left=0, mainTop=70, subTop=0, mainHeight=40, subHeight=50, right=0, gap=0;
+	
+	for (var i = 0, len = this.dsMenu.rowcount; i < len; i++) {
+		var id = this.dsMenu.getColumn(i, "id"),
+			caption = this.dsMenu.getColumn(i, "caption"),
+			level = this.dsMenu.getColumn(i, "level"),
+			upid = this.dsMenu.getColumn(i, "upid")
+			urlImg = this.dsMenu.getColumn(i, "url");
+
+		if (level == 0) {
+			var objId = "btnMenu_"+id,
+				menuTitle = new Button(objId, left, mainTop, null, mainHeight, right, null),
+				cssclass = "";
+			
+			switch(id) {
+			case "10000":
+				cssclass = "btn_MLF_Lmenu01";
+				break;
+			case "20000":
+				cssclass = "btn_MLF_Lmenu02";
+				break;
+			case "30000":
+				cssclass = "btn_MLF_Lmenu03";
+				break;
+			case "40000":
+				cssclass = "btn_MLF_Lmenu04";
+				break;
+			case "50000":
+				cssclass = "btn_MLF_Lmenu05";
+				break;
+			}
+			menuTitle.set_cssclass(cssclass);
+			menuTitle.set_text(caption);
+			menuTitle.menuId = id;
+			menuTitle.addEventHandler("onclick", this.menuTitle_onclick, this);
+			this.addChild(objId, menuTitle);
+			menuTitle.show();
+			//menuTitle.set_background("url('imagerc::image_custom/menu.png') no-repeat left center /contain");
+			menuTitle.set_background("url('" + urlImg + "') no-repeat left center /contain");
+			mainTop = objId + ":0";
+			objId = "divSubMenu_"+id;
+
+			var container = new Div(objId, left, mainTop, null, 0, right, null);
+			container.set_cssclass("div_MLF_subMenu");
+			
+			this.addChild(objId, container);
+			container.show();
+	
+			mainTop = objId + ":0";
+		} else {
+			var objId = "btnMenu_"+id,
+				button = new Button(objId, left, subTop, null, subHeight, right, null);
+
+			button.set_cssclass("brn_MLF_subMenu");
+			button.set_text(caption);
+			button.menuId = id; 
+			button.addEventHandler("onclick", this.menuButton_onclick, this);
+			this.components["divSubMenu_" + upid].addChild(objId, button);
+			//this.components["divSubMenu_"+upid].addChild(objId, button);
+			
+			button.show();
+			
+			subTop = objId + ":0";
+		}
+	}
+};
+
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.createMenuButton();	
+
+};
+this.menuTitle_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var cssclasses = obj.cssclass.split(","),
+		container = this.components["divSubMenu_"+obj.menuId];
+	
+	// expanded
+	if (cssclasses.length > 1 && cssclasses[1] == "btn_MLF_LmenuS") {
+		container.set_height(0);
+		obj.set_cssclass(cssclasses[0]);
+		this.selectedMenu = "";
+	}
+	// collapsed
+	else {
+		if (this.selectedMenu)	this.components[this.selectedMenu].click();
+		
+		container.set_height(container.form.components.length * 50 + 2);
+		obj.set_cssclass(cssclasses[0] + ",btn_MLF_LmenuS");
+		this.selectedMenu = obj.name;
+	}
+	
+	this.resetScroll();
+};
+
+
+
+this.Static00_00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	this.createMenuButton();
+};
+]]></Script>
+    <Objects>
+      <Dataset id="db_menu_left">
+        <ColumnInfo>
+          <Column id="MENU_CD" type="STRING" size="256"/>
+          <Column id="UP_MENU_CD" type="STRING" size="256"/>
+          <Column id="MENU_NM" type="STRING" size="256"/>
+          <Column id="MENU_LVL" type="STRING" size="256"/>
+          <Column id="PGM_PATH" type="STRING" size="256"/>
+          <Column id="PGM_ID" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="MENU_CD">0000</Col>
+            <Col id="UP_MENU_CD">0</Col>
+            <Col id="MENU_LVL">0</Col>
+            <Col id="MENU_NM">TRANG CHỦ</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">1111</Col>
+            <Col id="UP_MENU_CD">1</Col>
+            <Col id="MENU_NM">Thông Tin Mới</Col>
+            <Col id="MENU_LVL">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">1112</Col>
+            <Col id="UP_MENU_CD"/>
+            <Col id="MENU_NM">Thông Tin Mới 1</Col>
+            <Col id="MENU_LVL">1</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">1113</Col>
+            <Col id="UP_MENU_CD"/>
+            <Col id="MENU_NM">Thông Tin Mới 2</Col>
+            <Col id="MENU_LVL">1</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">2222</Col>
+            <Col id="UP_MENU_CD">1</Col>
+            <Col id="MENU_NM">Thảo Luận</Col>
+            <Col id="MENU_LVL">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">3333</Col>
+            <Col id="UP_MENU_CD"/>
+            <Col id="MENU_NM">Báo Cáo</Col>
+            <Col id="MENU_LVL">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">4444</Col>
+            <Col id="UP_MENU_CD"/>
+            <Col id="MENU_NM">Lịch</Col>
+            <Col id="MENU_LVL">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">5555</Col>
+            <Col id="UP_MENU_CD"/>
+            <Col id="MENU_NM">Dự Án</Col>
+            <Col id="MENU_LVL">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">6666</Col>
+            <Col id="UP_MENU_CD"/>
+            <Col id="MENU_NM">Tổng Quan Công Việc</Col>
+            <Col id="MENU_LVL">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">7777</Col>
+            <Col id="UP_MENU_CD"/>
+            <Col id="MENU_NM">Các Dự Án Gần</Col>
+            <Col id="MENU_LVL">0</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">2221</Col>
+            <Col id="UP_MENU_CD"/>
+            <Col id="MENU_NM">Thông Tin Mới 1</Col>
+            <Col id="MENU_LVL">1</Col>
+          </Row>
+          <Row>
+            <Col id="MENU_CD">2222</Col>
+            <Col id="UP_MENU_CD"/>
+            <Col id="MENU_NM">Thông Tin Mới 2</Col>
+            <Col id="MENU_LVL">1</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsMenu">
+        <ColumnInfo>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="caption" type="STRING" size="256"/>
+          <Column id="level" type="STRING" size="256"/>
+          <Column id="upid" type="STRING" size="256"/>
+          <Column id="url" type="STRING" size="256"/>
+          <Column id="tooltiptext" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">10000</Col>
+            <Col id="caption">MENU1</Col>
+            <Col id="level">0</Col>
+            <Col id="upid">10000</Col>
+            <Col id="url">imagerc::image_custom/menu.png</Col>
+          </Row>
+          <Row>
+            <Col id="id">20000</Col>
+            <Col id="caption">MENU2</Col>
+            <Col id="level">0</Col>
+            <Col id="upid">20000</Col>
+          </Row>
+          <Row>
+            <Col id="id">10100</Col>
+            <Col id="caption">MENU1.1</Col>
+            <Col id="level">1</Col>
+            <Col id="upid">10000</Col>
+          </Row>
+          <Row>
+            <Col id="id">20100</Col>
+            <Col id="caption">MENU2.1</Col>
+            <Col id="level">1</Col>
+            <Col id="upid">20000</Col>
+          </Row>
+          <Row>
+            <Col id="id">20200</Col>
+            <Col id="caption">MENU2.2</Col>
+            <Col id="level">1</Col>
+            <Col id="upid">20000</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

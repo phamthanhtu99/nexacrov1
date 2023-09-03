@@ -31,20 +31,22 @@ public class UserServiceimpl  implements UserService {
             lgChk= false;
             resutl.put("CODE", 1);
             resutl.put("MSQ", "USER NOT EXIT !");
+            resultLogin.add(resutl);
+            return resultLogin;
         }
 
         if ("N".equals(selectlogin.get(0).get("PWCHK"))){
             lgChk= false;
             resutl.put("CODE", 2);
             resutl.put("MSQ", "Invalid password !");
-        }
-
-        if (!lgChk){
             resultLogin.add(resutl);
             return resultLogin;
         }
 
         resutl.put("CODE", 0);
+        resutl.put("MSQ", "Login SUCCESS!");
+
+        resutl.putAll(selectlogin.get(0));
         resultLogin.add(resutl);
         SessionUtils.setSessionValue("USERINFO",selectlogin.get(0));
         return resultLogin;
@@ -53,6 +55,16 @@ public class UserServiceimpl  implements UserService {
     @Override
     public void updateUser(Map map) {
         userMapper.insertProject(map);
+    }
+
+    @Override
+    public List<Map<String, Object>> selectRole(Map map) {
+        return  userMapper.selectRole(map);
+    }
+
+    @Override
+    public List<Map<String, Object>> select(Map map) {
+        return null;
     }
 
     @Override

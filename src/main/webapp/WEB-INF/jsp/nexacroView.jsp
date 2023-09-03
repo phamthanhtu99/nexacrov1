@@ -3,7 +3,9 @@
 <Root xmlns="http://www.tobesoft.com/platform/dataset" ver="5000">
     <Parameters>
         <Parameter id="ErrorCode" type="int">${data.code}</Parameter>
-        <Parameter id="ErrorMsq" type="string">${data.message}</Parameter>
+
+
+
     </Parameters>
     <c:forEach items="${data.dataSets}" var ="dataset">
         <Dataset id="${dataset.id}">
