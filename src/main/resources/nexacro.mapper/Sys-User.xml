@@ -13,7 +13,7 @@
           , R.ROLE_NM
           , R.ROLE_CD
           , CASE WHEN U.PWD= #{USER_PW} THEN 'Y' ELSE 'N' END AS PWCHK
-           FROM TB_USER U , TB_ROLE R WHERE  U.ROLE_ID = R.ROLE_ID AND   U.USER_ID = #{USER_LOGIN}
+           FROM TB_USER U , TB_ROLE R WHERE  U.ROLE_ID = R.ROLE_ID AND   U.USER_NM = #{USER_LOGIN}
         ]]>
     </select>
 

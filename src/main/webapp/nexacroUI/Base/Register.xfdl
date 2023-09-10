@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Login" width="1280" height="720" titletext="New Form" background="linear-gradient(to right top,#1e1e1e 50%,#b47b59) #2d2d2d">
+  <Form id="Login" width="400" height="380" titletext="New Form" background="linear-gradient(to right top,#1e1e1e 50%,#b47b59) #2d2d2d" borderRadius="12px">
     <Layouts>
-      <Layout height="720" mobileorientation="landscape" width="1280">
-        <Div id="Div00" taborder="5" left="425" top="145" width="35%" height="60%" text="" background="linear-gradient(to right top,#5b5b5b 30%,#b3533b) #c4c4c4" opacity="1" borderRadius="12px">
+      <Layout height="380" mobileorientation="landscape" width="400">
+        <Div id="Div00" taborder="0" left="-5" top="0" width="101.25%" height="100.00%" text="" background="linear-gradient(to right top,#5b5b5b 30%,#b3533b) #c4c4c4" opacity="1" borderRadius="12px">
           <Layouts>
             <Layout>
               <Static id="login_st" taborder="0" text="CREATE ACCOUNT" left="0" top="0" width="100.00%" height="90" textAlign="center" font="normal 700 24px/normal &quot;Malgun Gothic&quot;" color="darkorange" letterSpacing="5px" background="#4c423d"/>
-              <Edit id="Edit00" taborder="1" left="86" top="110" width="61.61%" height="40" background="url('imagerc::image_custom/User_icon_2.svg.png') no-repeat left top /contain" textAlign="center" wordSpacing="12px" font="normal 14pt &quot;Arial&quot;" maxlength="15" borderRadius="10px"/>
-              <Static id="bt_login" taborder="2" text="Register" left="91" top="367" width="59.60%" height="48" textAlign="center" font="normal 700 18px/normal &quot;Malgun Gothic&quot;" letterSpacing="5px" background="#4c423d" opacity="0.5" borderRadius="15px" color="darkorange"/>
-              <Edit id="Edit00_00" taborder="3" left="87" top="170" width="61.61%" height="40" background="url('imagerc::image_custom/pw2_icon.png') no-repeat left center /contain" font="normal 14pt/normal &quot;Arial&quot;" textAlign="center" maxlength="18" borderRadius="10px"/>
-              <Combo id="Combo00" taborder="4" left="86" top="230" width="61.61%" height="40" innerdataset="ds_ROLE" codecolumn="role_Cd" datacolumn="role_Nm" borderRadius="10px" text="Project Manager" index="0" value="1" font="normal 700 18px/normal &quot;Malgun Gothic&quot;"/>
+              <Edit id="Edit00" taborder="1" left="66" top="110" width="61.19%" height="40" background="url('imagerc::image_custom/User_icon_2.svg.png') no-repeat left top /contain" textAlign="center" wordSpacing="12px" font="normal 14pt &quot;Arial&quot;" maxlength="15" borderRadius="10px"/>
+              <Static id="bt_login" taborder="2" text="Register" left="71" top="287" width="50.45%" height="48" textAlign="center" font="normal 700 18px/normal &quot;Malgun Gothic&quot;" letterSpacing="5px" background="#4c423d" opacity="0.5" borderRadius="15px" color="darkorange" onclick="Div00_bt_login_onclick"/>
+              <Edit id="Edit00_00" taborder="3" left="67" top="170" width="61.19%" height="40" background="url('imagerc::image_custom/pw2_icon.png') no-repeat left center /contain" font="normal 14pt/normal &quot;Arial&quot;" textAlign="center" maxlength="18" borderRadius="10px"/>
+              <Combo id="Combo00" taborder="4" left="66" top="230" width="61.19%" height="40" innerdataset="ds_ROLE" codecolumn="role_Cd" datacolumn="role_Nm" borderRadius="10px" text="Project Manager" index="0" value="1" font="normal 700 18px/normal &quot;Malgun Gothic&quot;"/>
             </Layout>
           </Layouts>
         </Div>
@@ -37,6 +37,49 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="ds_register">
+        <ColumnInfo>
+          <Column id="USER_NM" type="STRING" size="256"/>
+          <Column id="PWD" type="STRING" size="256"/>
+          <Column id="ROLE_ID" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.Edit00" propid="value" datasetid="ds_register" columnid="USER_NM"/>
+      <BindItem id="item1" compid="Div00.form.Edit00_00" propid="value" datasetid="ds_register" columnid="PWD"/>
+      <BindItem id="item2" compid="Div00.form.Combo00" propid="value" datasetid="ds_register" columnid="ROLE_ID"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[
+this.Div00_bt_login_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	 var id = "register";  
+     var url = "http://localhost:8080/insertUser";
+     var reqDs = "ds_register=ds_register";
+     var respDs = "ds_output=ds_output";
+     var args = "";
+     var callback = "fc_callback";
+
+ 
+
+     this.transaction(id, url, reqDs, respDs, args, callback, true, 0, false);
+};
+
+this.fc_callback = function (serviceID, errCD, errMSG)
+{
+	 if (errCD == 1)
+    {
+    	this.alert("System error!");
+		return;
+    }
+	switch(serviceID) {
+	   case 'register':
+			this.close("Y");
+	   break;
+	}
+};]]></Script>
   </Form>
 </FDL>

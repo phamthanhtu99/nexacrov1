@@ -1,6 +1,7 @@
 package com.web.nexacro.controller;
 
 import com.web.nexacro.Utils.NexacroUtils;
+import com.web.nexacro.mapper.CommConnectSql;
 import com.web.nexacro.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,9 @@ import java.util.Map;
 public class ProjectController {
     @Autowired
     ProjectService projectService;
+
+    @Autowired
+    CommConnectSql commConnectSql;
 
     @PostMapping("/pm/createProject")
     public ModelAndView createProject(HttpServletRequest request, ModelAndView modelAndView) throws IOException {
@@ -37,6 +41,19 @@ public class ProjectController {
         Map param = (Map) params.get("ds_cond");
 
         nexacroUtils.setDataset("ds_project",projectService.select(param));
+        modelAndView.addObject("data",nexacroUtils);
+        modelAndView.setViewName("nexacroView");
+        return modelAndView;
+    }
+
+
+    @PostMapping("/pm/selectUserProject")
+    public ModelAndView selectUserProject(HttpServletRequest request, ModelAndView modelAndView) throws IOException {
+        NexacroUtils nexacroUtils = new NexacroUtils();
+        Map params = nexacroUtils.getParamDataSet(request);
+        Map param = (Map) params.get("ds_cond");
+
+        nexacroUtils.setDataset("ds_userProject",commConnectSql.selectList("selectUserProject",param));
         modelAndView.addObject("data",nexacroUtils);
         modelAndView.setViewName("nexacroView");
         return modelAndView;

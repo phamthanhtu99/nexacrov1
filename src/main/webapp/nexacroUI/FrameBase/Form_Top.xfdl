@@ -41,6 +41,32 @@ this.Static_img_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
 						  , this
 						  , "fn_popupCallback");
 };
-]]></Script>
+
+this.fn_popupCallback = function (id,type)
+{
+	if(type == "R"){
+		var objChildFrame = new ChildFrame();
+		objChildFrame.init("chf_popup2"
+						  , 0
+						  , 0
+						  , 500
+						  , 400
+						  , null
+						  , null
+						  , "Base::Register.xfdl");
+
+		objChildFrame.set_dragmovetype("all");
+		objChildFrame.set_openalign("center middle");
+
+		
+		objChildFrame.showModal(this.getOwnerFrame()
+							  , null
+							  , this
+							  , "fn_popupCallback");
+	}
+	if(type == "Y"){
+	  this.Static_img_onclick();
+	}
+};]]></Script>
   </Form>
 </FDL>

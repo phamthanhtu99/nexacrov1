@@ -2,6 +2,7 @@ package com.web.nexacro.controller;
 
 import com.web.nexacro.Utils.NexacroUtils;
 import com.web.nexacro.service.GroupService;
+import com.web.nexacro.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,8 @@ import java.util.Map;
 public class CommController {
     @Autowired
     GroupService groupService;
-
+    @Autowired
+    ProjectService projectService;
     @PostMapping("/selectListGroup")
     public ModelAndView selectListGroup(HttpServletRequest request, ModelAndView modelAndView) throws IOException {
         NexacroUtils nexacroUtils = new NexacroUtils();
@@ -25,6 +27,18 @@ public class CommController {
         Map param = (Map) params.get("ds_cond");
 
         nexacroUtils.setDataset("ds_group",groupService.select(param));
+        modelAndView.addObject("data",nexacroUtils);
+        modelAndView.setViewName("nexacroView");
+        return modelAndView;
+    }
+
+    @PostMapping("/selectListProject")
+    public ModelAndView selectListProject(HttpServletRequest request, ModelAndView modelAndView) throws IOException {
+        NexacroUtils nexacroUtils = new NexacroUtils();
+        Map params = nexacroUtils.getParamDataSet(request);
+        Map param = (Map) params.get("ds_cond");
+
+        nexacroUtils.setDataset("ds_project",projectService.select(param));
         modelAndView.addObject("data",nexacroUtils);
         modelAndView.setViewName("nexacroView");
         return modelAndView;

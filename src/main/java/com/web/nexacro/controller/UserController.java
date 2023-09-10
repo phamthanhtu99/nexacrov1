@@ -46,15 +46,9 @@ public class UserController {
     @PostMapping("/insertUser")
     public ModelAndView insertProject(HttpServletRequest request,ModelAndView modelAndView) throws IOException {
         NexacroUtils nexacroUtils = new NexacroUtils();
-        //Map params = nexacroUtils.getParamDataSet(request);
-       // Map param = (Map) params.get("ds_insert");
+        Map params = nexacroUtils.getParamDataSet(request);
+        Map param = (Map) params.get("ds_register");
 
-        Map param = new HashMap();
-        param.put("USER_NM","TU1");
-        param.put("PWD","123123");
-        param.put("PHONE","0366925447");
-        param.put("ADDRESS","QN");
-        param.put("ROLE_ID","2");
         userService.updateUser(param);
 
         modelAndView.addObject("data",nexacroUtils);

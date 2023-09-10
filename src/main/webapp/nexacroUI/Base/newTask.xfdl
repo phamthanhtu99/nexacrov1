@@ -19,28 +19,7 @@
                   <Layout>
                     <Static id="Static00_00" taborder="2" text="*" top="0" width="14" left="52" height="15" textAlign="left" onclick="Div_container_prj_Div00_Static00_onclick" color="red"/>
                     <Static id="Static01" taborder="1" text="Dự Án" left="0" top="0" width="58" height="18" font="normal 16px/normal &quot;Arial&quot;"/>
-                    <Combo id="Combo00" taborder="1" text="" width="100%" bottom="0" height="34" left="0" index="-1" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" displaynulltext="Chọn dự án" value="" onitemchanged="Div00_Div00_00_Combo00_onitemchanged">
-                      <Dataset id="innerdataset">
-                        <ColumnInfo>
-                          <Column id="codecolumn" size="256"/>
-                          <Column id="datacolumn" size="256"/>
-                        </ColumnInfo>
-                        <Rows>
-                          <Row>
-                            <Col id="codecolumn">NhanDV7</Col>
-                            <Col id="datacolumn">SSG Property</Col>
-                          </Row>
-                          <Row>
-                            <Col id="codecolumn">LocNH14</Col>
-                            <Col id="datacolumn">SSG Emart2</Col>
-                          </Row>
-                          <Row>
-                            <Col id="codecolumn">CamNV2</Col>
-                            <Col id="datacolumn">SSG Everyday</Col>
-                          </Row>
-                        </Rows>
-                      </Dataset>
-                    </Combo>
+                    <Combo id="Combo00" taborder="1" text="" width="100%" bottom="0" height="34" left="0" index="-1" innerdataset="ds_project" codecolumn="PROJECT_ID" datacolumn="PROJECTP_NM" displaynulltext="Chọn dự án" value="" onitemchanged="Div00_Div00_00_Combo00_onitemchanged"/>
                   </Layout>
                 </Layouts>
               </Div>
@@ -77,32 +56,7 @@
                       <Layouts>
                         <Layout>
                           <Static id="Static01" taborder="1" text="Chọn người làm task" left="0" top="0" width="170" height="20" font="normal 16px/normal &quot;Arial&quot;"/>
-                          <Combo id="Combo00" taborder="1" width="540" height="34" left="0" top="25" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
-                            <Dataset id="innerdataset">
-                              <ColumnInfo>
-                                <Column id="codecolumn" size="256"/>
-                                <Column id="datacolumn" size="256"/>
-                              </ColumnInfo>
-                              <Rows>
-                                <Row>
-                                  <Col id="codecolumn">PM</Col>
-                                  <Col id="datacolumn">Loc Nguyen Hoang</Col>
-                                </Row>
-                                <Row>
-                                  <Col id="codecolumn">DEV</Col>
-                                  <Col id="datacolumn">Cam Nguyen Van</Col>
-                                </Row>
-                                <Row>
-                                  <Col id="codecolumn">TEST</Col>
-                                  <Col id="datacolumn">Long Nguyen Hoang Phi</Col>
-                                </Row>
-                                <Row>
-                                  <Col id="codecolumn">LEAD</Col>
-                                  <Col id="datacolumn">Nhan Duong Van</Col>
-                                </Row>
-                              </Rows>
-                            </Dataset>
-                          </Combo>
+                          <Combo id="Combo00" taborder="1" width="540" height="34" left="0" top="25" innerdataset="ds_userProject" codecolumn="USER_ID" datacolumn="USER_NM"/>
                         </Layout>
                       </Layouts>
                     </Div>
@@ -187,6 +141,7 @@
 {
 	nexacro.getApplication().mainframe.HFrameSet00.VFrameSet00.TopFrame.form.Static00.set_text('Tác vụ mới');
 	this.Div00.form.Div00_0111.set_top(395);
+	this.getListProject();
 };
 
 
@@ -200,9 +155,13 @@ this.Div00_Div00_00_Combo00_onitemchanged = function(obj:nexacro.Combo,e:nexacro
 			this.Div00.form.Div_task_info.set_visible(true);
 			this.Div00.form.Div00_0111.set_top(850);
 		} 
+		this.ds_cond.setColumn(0, "PROJECTP_NM", this.ds_project.getColumn(obj.index,"PROJECTP_NM"));
+		this.ds_cond.setColumn(0, "DES", this.ds_project.getColumn(obj.index,"DES"));
+		this.getUserProject();
 	}else {
 		this.Div00.form.Div00_02.set_visible(false);
 		this.Div00.form.Div_task_info.set_visible(false);
+		
 	}
 };
 
@@ -220,6 +179,114 @@ this.Div00_Div_task_info_Static_title_task_onclick = function(obj:nexacro.Static
 		    this.Div00.form.Div00_0111.set_top(850);
 		}
 };
+
+this.getListProject = function ()
+{
+
+	 var id = "selectListProject";  
+     var url = "http://localhost:8080/com/selectListProject";
+     var reqDs = "ds_cond = ds_cond";
+     var respDs = "ds_project=ds_project";
+     var args = "";
+     var callback = "fc_callback";
+     this.transaction(id, url, reqDs, respDs, args, callback, true, 0, false);
+};
+
+this.getUserProject = function ()
+{
+	this.ds_userProject.clear();
+	var id = "selectUserProject";  
+     var url = "http://localhost:8080/project/pm/selectUserProject";
+     var reqDs = "ds_cond = ds_cond";
+     var respDs = "ds_userProject=ds_userProject";
+     var args = "";
+     var callback = "fc_callback";
+     this.transaction(id, url, reqDs, respDs, args, callback, true, 0, false);
+};
+
+this.fc_callback = function (serviceID, errCD, errMSG)
+{
+    if (errCD == -99)
+    {
+    	this.alert("please login!");
+		return;
+    }
+	
+	switch(serviceID) {
+	case 'selectListProject':
+	    var idx = this.ds_project.insertRow(0);
+		this.ds_project.setColumn(idx, "PROJECT_ID","");
+		this.ds_project.setColumn(idx, "PROJECTP_NM","Chọn dự án")
+		break;
+		case 'saveTask':
+	    var idx = this.ds_project.insertRow(0);
+		this.ds_project.setColumn(idx, "PROJECT_ID","");
+		this.ds_project.setColumn(idx, "PROJECTP_NM","Chọn dự án")
+		break;
+	
+	default:
+	}
+};
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+	var id = "saveTask";  
+     var url = "http://localhost:8080/task/pm/createTask";
+     var reqDs = "ds_cond = ds_cond";
+     var respDs = "ds_userProject=ds_userProject";
+     var args = "";
+     var callback = "fc_callback";
+     this.transaction(id, url, reqDs, respDs, args, callback, true, 0, false);
+};
 ]]></Script>
+    <Objects>
+      <Dataset id="ds_project">
+        <ColumnInfo>
+          <Column id="PROJECT_ID" type="STRING" size="256"/>
+          <Column id="PROJECTP_NM" type="STRING" size="256"/>
+          <Column id="DES" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_userProject">
+        <ColumnInfo>
+          <Column id="USER_ID" type="STRING" size="256"/>
+          <Column id="USER_NM" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cond">
+        <ColumnInfo>
+          <Column id="TASK_ID" type="STRING" size="256"/>
+          <Column id="TB_OWNER" type="STRING" size="256"/>
+          <Column id="ED_DT" type="STRING" size="256"/>
+          <Column id="DES" type="STRING" size="256"/>
+          <Column id="TASK_STATUS" type="STRING" size="256"/>
+          <Column id="RESOLVE_DT" type="STRING" size="256"/>
+          <Column id="TAG_ID" type="STRING" size="256"/>
+          <Column id="PRJORITY" type="STRING" size="256"/>
+          <Column id="BILL" type="STRING" size="256"/>
+          <Column id="PROJECT_ID" type="STRING" size="256"/>
+          <Column id="TASK_NM" type="STRING" size="256"/>
+          <Column id="ST_DT" type="STRING" size="256"/>
+          <Column id="TASK_NM_SUB" type="STRING" size="256"/>
+          <Column id="TAG" type="STRING" size="256"/>
+          <Column id="PROJECTP_NM" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.Div00_00.form.Combo00" propid="value" datasetid="ds_cond" columnid="PROJECT_ID"/>
+      <BindItem id="item3" compid="Div00.form.Div00_02.form.Div00_00.form.Combo00" propid="value" datasetid="ds_cond" columnid="TB_OWNER"/>
+      <BindItem id="item4" compid="Div00.form.Div00_02.form.Div00_00_01.form.Calendar00" propid="value" datasetid="ds_cond" columnid="ST_DT"/>
+      <BindItem id="item5" compid="Div00.form.Div00_02.form.Div00_00_00_00.form.Calendar00" propid="value" datasetid="ds_cond" columnid="ED_DT"/>
+      <BindItem id="item6" compid="Div00.form.Div00_02.form.Div00_00_00.form.Combo00" propid="value" datasetid="ds_cond" columnid="PRJORITY"/>
+      <BindItem id="item7" compid="Div00.form.Div00_02.form.Div00_01.form.Edit00" propid="value" datasetid="ds_cond" columnid="TASK_NM_SUB"/>
+      <BindItem id="item8" compid="Div00.form.Div00_02.form.Div00_00_00_01.form.Edit00" propid="value" datasetid="ds_cond" columnid="TAG"/>
+      <BindItem id="item1" compid="Div00.form.Div00.form.Edit00" propid="value" datasetid="ds_cond" columnid="PROJECTP_NM"/>
+      <BindItem id="item2" compid="Div00.form.Div00_01.form.TextArea00" propid="value" datasetid="ds_cond" columnid="DES"/>
+    </Bind>
   </Form>
 </FDL>

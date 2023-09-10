@@ -8,7 +8,7 @@
          ]]>
     </select>
 
-    <insert id="insertProject" >
+    <insert id="insertProject"  >
         INSERT INTO TB_PROJECT (PROJECTP_NM, PROJECT_OWNER, ST_DT, ED_DT, DES, PROJECT_YN, TAG_ID, REG_ID, REG_DTM, GROUP_ID)
                         VALUES (#{PROJECTP_NM},#{PROJECT_OWNER},#{ST_DT}, #{ED_DT}, #{DES}, #{PROJECT_YN}, #{TAG_ID}, #{REG_ID}, #{REG_DTM},#{GROUP_ID})
     </insert>
@@ -22,4 +22,15 @@
         DELETE FROM TB_PROJECT WHERE PROJECT_ID = #{PROJECT_ID}
     </delete>
 
+    <select id="selectUserProject" resultType="hashmap" >
+        <![CDATA[
+          SELECT *
+            FROM TB_USER U
+               , TB_GROUP G
+               , TB_PROJECT P
+           WHERE U.GROUP_ID = G.GROUP_ID
+             AND P.GROUP_ID = G.GROUP_ID
+             AND P.PROJECT_ID = #{PROJECT_ID}
+         ]]>
+    </select>
 </mapper>

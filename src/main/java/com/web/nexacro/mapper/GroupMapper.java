@@ -15,7 +15,7 @@ public class GroupMapper extends CommConnectSql implements ComCrud {
 
     @Override
     public int insert(Map map) {
-        return insert("insertProject",map);
+        return insert("insertGroup",map);
     }
 
     @Override

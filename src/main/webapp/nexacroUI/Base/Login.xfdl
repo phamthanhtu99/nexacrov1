@@ -7,6 +7,7 @@
         <Edit id="user_nm" taborder="1" left="80" top="110" width="75.00%" height="40" background="url('imagerc::image_custom/User_icon_2.svg.png') no-repeat left top /contain" textAlign="center" wordSpacing="12px" font="normal 14pt &quot;Arial&quot;" maxlength="15" borderRadius="10px"/>
         <Static id="bt_login" taborder="2" text="Login" left="200" top="296" width="23.08%" height="48" textAlign="center" font="normal 700 18px/normal &quot;Malgun Gothic&quot;" letterSpacing="5px" background="#4c423d" opacity="0.5" borderRadius="15px" color="darkorange" onclick="Div00_bt_login_onclick"/>
         <Edit id="user_pw" taborder="3" left="80" top="180" width="75.00%" height="40" background="url('imagerc::image_custom/pw2_icon.png') no-repeat left center /contain" textAlign="center" wordSpacing="12px" font="normal 14pt &quot;Arial&quot;" maxlength="15" borderRadius="10px"/>
+        <Static id="Static00" taborder="4" text="Register" left="297" top="233" width="143" height="35" font="normal 15px/normal &quot;Arial&quot;" color="chartreuse" onclick="Static00_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -73,7 +74,12 @@ this.fc_callback = function (serviceID, errCD, errMSG)
 		break;
 	default:
 	}
-};]]></Script>
+};
+this.Static00_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	this.close("R");
+};
+]]></Script>
     <Bind>
       <BindItem id="item0" compid="user_nm" propid="value" datasetid="dsInput" columnid="USER_LOGIN"/>
       <BindItem id="item2" compid="user_pw" propid="value" datasetid="dsInput" columnid="USER_PW"/>
