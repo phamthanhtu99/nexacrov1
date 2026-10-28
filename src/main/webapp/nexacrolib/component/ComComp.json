@@ -1,6 +1,6 @@
 ﻿{
   "name": "ComComp",
-  "version": "21.0.0.1400",
+  "version": "24.0.0.1003",
   "description": "Nexacro N Unified Framework Library",
   "license": "",
   "scripts": [
@@ -22,6 +22,7 @@
     "ComComp/metainfo/Static.info",
     "ComComp/metainfo/Button.info",
     "ComComp/metainfo/CheckBox.info",
+    "ComComp/metainfo/CheckBoxSet.info",
     "ComComp/metainfo/Edit.info",
     "ComComp/metainfo/Div.info",
     "ComComp/metainfo/PopupDiv.info",
@@ -32,6 +33,10 @@
     "ComComp/metainfo/ListBox.info",
     "ComComp/metainfo/ListBoxItemControl.info",
     "ComComp/metainfo/Combo.info",
+    "ComComp/metainfo/MultiCombo.info",
+    "ComComp/metainfo/MultiComboTagBoxControl.info",
+    "ComComp/metainfo/TagBoxControl.info",
+    "ComComp/metainfo/MultiComboListControl.info",
     "ComComp/metainfo/FileDialog.info",
     "ComComp/metainfo/FileDownload.info",
     "ComComp/metainfo/FileDownTransfer.info",
@@ -43,6 +48,8 @@
     "ComComp/metainfo/MaskEdit.info",
     "ComComp/metainfo/Menu.info",
     "ComComp/metainfo/MenuItemControl.info",
+    "ComComp/metainfo/Panel.info",
+    "ComComp/metainfo/PanelItem.info",
     "ComComp/metainfo/PopupMenu.info",
     "ComComp/metainfo/PopupMenuItemControl.info",
     "ComComp/metainfo/ProgressBar.info",
@@ -61,6 +68,7 @@
     "ComComp/metainfo/DatePickerControl.info",
     "ComComp/metainfo/DatePickerBodyControl.info",
     "ComComp/metainfo/DatePickerDayItemControl.info",
+    "ComComp/metainfo/DatePickerYearItemControl.info",
     "ComComp/metainfo/DatePickerWeekItemControl.info",
     "ComComp/metainfo/DatePickerHeadControl.info",
     "ComComp/metainfo/Calendar.info",
@@ -148,6 +156,7 @@
     "ComComp/Design/DesignRadio.js",
     "ComComp/Design/DesignListBox.js",
     "ComComp/Design/DesignCombo.js",
+    "ComComp/Design/DesignMultiCombo.js",
     "ComComp/Design/DesignDiv.js",
     "ComComp/Design/DesignProgressBar.js",
     "ComComp/Design/DesignPopupDiv.js",
@@ -167,6 +176,7 @@
     "ComComp/Design/DesignSketch.js",
     "ComComp/Design/DesignPlugin.js",
     "ComComp/Design/DesignView.js",
-    "ComComp/Design/DesignVirtualFile.js"
+    "ComComp/Design/DesignVirtualFile.js",
+    "ComComp/Design/DesignPanel.js"
   ]
 }

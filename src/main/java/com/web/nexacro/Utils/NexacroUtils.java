@@ -4,6 +4,7 @@ package com.web.nexacro.Utils;
 import com.nexacro.java.xapi.data.DataSet;
 import com.nexacro.java.xapi.data.DataSetList;
 import com.nexacro.java.xapi.data.PlatformData;
+import com.nexacro.java.xapi.tx.PlatformType;
 import com.nexacro.java.xapi.tx.HttpPlatformRequest;
 import org.springframework.stereotype.Component;
 
@@ -101,7 +102,10 @@ public class NexacroUtils {
     public static DataSetList getRequestData(HttpServletRequest request) throws IOException {
         InputStream inputStream = request.getInputStream();
         try {
-            HttpPlatformRequest httpPlatformRequest = new HttpPlatformRequest(inputStream);
+            String contentType = request.getContentType();
+            HttpPlatformRequest httpPlatformRequest = (contentType != null && contentType.startsWith("text/xml"))
+                    ? new HttpPlatformRequest(inputStream, PlatformType.CONTENT_TYPE_XML)
+                    : new HttpPlatformRequest(inputStream);
 
             // receive data
             httpPlatformRequest.receiveData();

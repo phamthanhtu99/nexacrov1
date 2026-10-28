@@ -1,0 +1,5236 @@
+﻿
+        
+.nexainput.nexaleftalign
+{
+  text-align:left;
+}
+.nexainput.nexarightalign
+{
+  text-align:right;
+}
+.nexainput.nexacenteralign
+{
+  text-align:center;
+}
+
+.nexacontentsbox.nexaleftalign
+{
+  text-align:left;
+}
+.nexacontentsbox.nexarightalign
+{
+  text-align:right;
+}
+.nexacontentsbox.nexacenteralign
+{
+  text-align:center;
+}
+.celltreeline
+{
+  border : 1px dotted #999999;
+}
+.Edit, .MaskEdit, .TextArea, .EditControl, .MaskEditControl, .TextAreaControl
+{
+  cursor:text;
+}
+.Button .nexacontentsbox, .ButtonControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.FileDownload  .nexacontentsbox, .FileDownloadControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.IconTextControl .nexacontentsbox, .IconControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.DatePickerDayItemControl .nexacontentsbox, .DatePickerWeekItemControl .nexacontentsbox, .DatepickerYearItemControl .nexacontentsbox, .TitleBarButtonControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.MainFrame, .VScrollBarControl, .HScrollBarControl
+{
+  cursor:default;
+}
+
+.Sketch .nexacontentsbox
+{
+   text-align:center;
+}
+
+.nexainput
+{
+  cursor:inherit;
+}
+
+.MainFrame
+{
+	border : 1px solid #00103f;
+	background : #ffffff;
+}
+.Form
+{
+	background : #ffffff;
+	color : #000000;
+}
+.Form.frm_MainBg
+{
+	background : #f4f6fd;
+}
+.ChildFrame
+{
+	background : #ffffff;
+}
+.FrameSet
+{
+	background : #ffffff;
+}
+.HFrameSet
+{
+	background : #ffffff;
+}
+.TileFrameSet
+{
+	background : #ffffff;
+}
+.VFrameSet
+{
+	background : #ffffff;
+}
+.TitleBarControl
+{
+	background : #1b292b;
+	color : #ffffff;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.StatusBarControl
+{
+	border : 1px solid #c2c2c2;
+	background : #ebebeb;
+	color : #1b292b;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.StatusBarControl .progressbar
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.StatusBarControl .progressbar .progressbaritem
+{
+	background : #b4b9c6;
+}
+.Static.sta_WF_GTitle
+{
+	border : 1px solid #b4b9c6;
+	background : #dee3eb;
+	color : #3e4044;
+	font : 600 12px "Segoe UI", "Malgun Gothic";
+	letter-spacing : 1px;
+}
+.Static.sta_WF_GTitle .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_WF_GLabel
+{
+	border : 1px solid #b4b9c6;
+	background : #f4f6fa;
+	color : #3e4044;
+	font : 12px "Segoe UI", "Malgun Gothic";
+	letter-spacing : 1px;
+}
+.Static.sta_WF_GLabel .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_WF_GArea
+{
+	border : 1px solid #b4b9c6;
+	background : #ffffff;
+}
+.Static.sta_WF_GStatus
+{
+	color : #3e4044;
+	font : 13px "Consolas";
+}
+.Static.sta_WF_GSize
+{
+	background : #ff0000;
+	color : #000000;
+	font : 600 12px "Segoe UI", "Malgun Gothic";
+	opacity : 0.3;
+}
+.Static.sta_WF_GSize .nexacontentsbox
+{
+	text-align : center;
+	-nexa-word-wrap : char;
+}
+.Static.sta_WF_GLineV
+{
+	-nexa-edge : URL('./images/sta_WF_GLineV.png') 5px 2px;
+}
+.Static.sta_WF_GLineH
+{
+	-nexa-edge : URL('./images/sta_WF_GLineH.png') 5px 2px;
+}
+.Static.sta_WF_GTxt
+{
+	color : #ff000c;
+	font : 13px "Consolas";
+}
+.Static.sta_WF_GDes
+{
+	color : #006c83;
+	font : bold 13px/21px "Segoe UI","Malgun Gothic";
+}
+.Static.sta_WF_GDes .nexacontentsbox
+{
+	-nexa-word-wrap : char;
+}
+.Edit
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.Edit.edt_WF_Essential
+{
+	border : 1px solid #c15e3b;
+	background : url('./images/icon_Essential.png') no-repeat left top #fef7eb;
+}
+.MaskEdit
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.MaskEdit.msk_WF_Essential
+{
+	border : 1px solid #c15e3b;
+	background : url('./images/icon_Essential.png') no-repeat left top #fef7eb;
+}
+.TextArea
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.TextArea .nexacontentsbox
+{
+	-nexa-word-wrap : char;
+}
+.TextArea .nexatextarea
+{
+	-nexa-word-wrap : char;
+}
+.TextArea.txt_WF_Essential
+{
+	border : 1px solid #c15e3b;
+	background : url('./images/icon_Essential.png') no-repeat left top #fef7eb;
+}
+.ListBox
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ListBoxControl
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.Combo
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.MultiCombo
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.MultiComboListControl.popupMultiCombomulticombolist.dummy
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.MultiComboListControl.popupMultiCombomulticombolist.dummy .multicomboedit
+{
+	border : 0px none,0px none,1px solid #acacac;
+	background : #f9f9fa;
+	padding : 8px;
+}
+.Calendar
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.DatePickerControl
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.DatePickerControl .head
+{
+	background : #002795;
+}
+.DatePickerControl .head .monthstatic
+{
+	color : #ffffff;
+}
+.DatePickerControl .head .yearstatic
+{
+	color : #ffffff;
+}
+.DatePickerControl .body .weekband
+{
+	background : #e1e1e1;
+}
+.FileDownload
+{
+	border : 1px solid #364f60;
+	background : #4e7890;
+	color : #ffffff;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton
+{
+	border : 1px solid #364f60;
+	background : #4e7890;
+	color : #ffffff;
+}
+.FileUpload .fileuploaditem .fileuploaditemedit
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ImageViewer
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ImageViewer .imagetext .nexacontentsbox
+{
+	text-align : center;
+}
+.GroupBox .groupboxcontents
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.GroupBox .groupboxtitle
+{
+	background : #ffffff;
+}
+.ProgressBar
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ProgressBarControl
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ProgressBar .progressbaritem
+{
+	background : #2f59bf;
+}
+.ProgressBarControl .progressbaritem
+{
+	background : #2f59bf;
+}
+.ProgressBar .progressbartext
+{
+	color : #ffffff;
+}
+.ProgressBarControl .progressbartext
+{
+	color : #ffffff;
+}
+.Menu
+{
+	background : #002795;
+}
+.Menu .menuitem
+{
+	color : #ccdaff;
+}
+.PopupMenu
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.PopupMenuControl
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.PopupMenu .popupmenuitem .popupmenuitemhotkeytext
+{
+	font : 11px "Segoe UI", "Malgun Gothic";
+}
+.PopupMenuControl .popupmenuitem .popupmenuitemhotkeytext
+{
+	font : 11px "Segoe UI", "Malgun Gothic";
+}
+.Form
+{
+	color : #222222;
+	font : 13px "Segoe UI", "Malgun Gothic";
+}
+.HScrollBarControl
+{
+	border : 1px solid #acacac,0px none,0px none,0px none;
+	background : #ebebeb;
+}
+.HScrollBarControl .trackbar
+{
+	background : #c2c2c2;
+}
+.VScrollBarControl
+{
+	border : 0px none,0px none,0px none,1px solid #acacac;
+	background : #ebebeb;
+}
+.VScrollBarControl .trackbar
+{
+	background : #c2c2c2;
+}
+.Edit
+{
+	padding : 0px 6px 2px 6px;
+}
+.MaskEdit
+{
+	padding : 0px 6px 2px 6px;
+}
+.TextArea
+{
+	padding : 4px 6px;
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+}
+.Button
+{
+	border : 1px solid #acacac;
+	cursor : pointer;
+	background : #ffffff;
+}
+.Spin
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.Spin.spn_WF_Essential
+{
+	border : 1px solid #c15e3b;
+	background : url('./images/icon_Essential.png') no-repeat left top #fef7eb;
+}
+.Spin .spinedit
+{
+	padding : 0px 8px;
+}
+.Spin .spinedit .nexainput
+{
+	text-align : left;
+}
+.Spin .spinedit .nexacontentsbox
+{
+	text-align : left;
+}
+.Combo .comboedit
+{
+	padding : 0px 0px 0px 8px;
+}
+.Combo.cbo_WF_Essential
+{
+	border : 1px solid #c15e3b;
+	background : url('./images/icon_Essential.png') no-repeat left top #fef7eb;
+}
+.MultiCombo .multicombotext
+{
+	padding : 0px 0px 0px 8px;
+}
+.MultiCombo .multicombotagbox .tagboxedit
+{
+	border : 1px solid #c7c7c7;
+	background : #ffffff;
+	border-radius : 18px;
+	padding : 3px 10px;
+}
+.MultiCombo .multicombotagbox .tagboxitem
+{
+	background : #f3f3f3;
+	border-radius : 18px;
+}
+.MultiCombo .multicombotagbox .tagboxitem .tagbutton
+{
+	border : 0px none;
+	background : url('./images/mcbo_WF_TagBtn.png') no-repeat center center;
+}
+.Tab .tabbuttonitemTab
+{
+	border : 1px solid #acacac;
+	background : #f9f9f9;
+	color : #858585;
+	font : 14px "Segoe UI", "Malgun Gothic";
+}
+.Tab .tabpageTab
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.Calendar .calendaredit
+{
+	padding : 0px 0px 0px 8px;
+}
+.Calendar .calendarspindownbutton
+{
+	border : 1px solid #acacac,0px none,0px none,1px solid #acacac;
+}
+.Calendar .calendarspinupbutton
+{
+	border : 0px none,0px none,0px none,1px solid #acacac;
+}
+.Calendar.cal_WF_Essential
+{
+	border : 1px solid #c15e3b;
+	background : url('./images/icon_Essential.png') no-repeat left top #fef7eb;
+}
+.Calendar.cal_WF_Month
+{
+	border : 0px none;
+}
+.DatePickerControl .head .yearspin .spinedit
+{
+	color : #ffffff;
+	font : 12px "Segoe UI", "Malgun Gothic";
+}
+.DatePickerControl .head .monthspin .spinedit
+{
+	color : #ffffff;
+	font : 12px "Segoe UI", "Malgun Gothic";
+}
+.DateRangePicker
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.PopupDateRangePicker
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.DateRangePicker .cancelbutton
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.DateRangePickerControl .cancelbutton
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.PopupDateRangePicker .cancelbutton
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.DateRangePicker .okbutton
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.DateRangePickerControl .okbutton
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.PopupDateRangePicker .okbutton
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.DateRangePicker .closebutton
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.DateRangePickerControl .closebutton
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.PopupDateRangePicker .closebutton
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.DateRangePicker .datepickergroup
+{
+	border : 0px none;
+	background : #ffffff;
+	padding : 5px 0px;
+}
+.PopupDateRangePicker .datepickergroup
+{
+	border : 0px none;
+	background : #ffffff;
+	padding : 5px 0px;
+}
+.DateRangePicker .datepickergroup .splitline
+{
+	border : 1px solid #acacac;
+}
+.DateRangePickerControl .datepickergroup .splitline
+{
+	border : 1px solid #acacac;
+}
+.PopupDateRangePicker .datepickergroup .splitline
+{
+	border : 1px solid #acacac;
+}
+.DateRangePicker .datepickergroup .datepicker
+{
+	border : 0px none;
+}
+.DateRangePickerControl .datepickergroup .datepicker
+{
+	border : 0px none;
+}
+.PopupDateRangePicker .datepickergroup .datepicker
+{
+	border : 0px none;
+}
+.DateRangePicker .datepickergroup .datepicker .head
+{
+	background : #ffffff;
+}
+.DateRangePickerControl .datepickergroup .datepicker .head
+{
+	background : #ffffff;
+}
+.PopupDateRangePicker .datepickergroup .datepicker .head
+{
+	background : #ffffff;
+}
+.DateRangePicker .datepickergroup .datepicker .head .monthstatic
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.DateRangePickerControl .datepickergroup .datepicker .head .monthstatic
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.PopupDateRangePicker .datepickergroup .datepicker .head .monthstatic
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.DateRangePicker .datepickergroup .datepicker .head .yearstatic
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.DateRangePickerControl .datepickergroup .datepicker .head .yearstatic
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.PopupDateRangePicker .datepickergroup .datepicker .head .yearstatic
+{
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.DateRangePicker .datepickergroup .datepicker .body .weekband
+{
+	background : #ffffff;
+	border : 0px none,0px none,1px solid #acacac;
+}
+.DateRangePickerControl .datepickergroup .datepicker .body .weekband
+{
+	background : #ffffff;
+	border : 0px none,0px none,1px solid #acacac;
+}
+.PopupDateRangePicker .datepickergroup .datepicker .body .weekband
+{
+	background : #ffffff;
+	border : 0px none,0px none,1px solid #acacac;
+}
+.DateRangePicker .datepickergroup .datepicker .body .selection
+{
+	background : #e4e3ee;
+}
+.DateRangePickerControl .datepickergroup .datepicker .body .selection
+{
+	background : #e4e3ee;
+}
+.PopupDateRangePicker .datepickergroup .datepicker .body .selection
+{
+	background : #e4e3ee;
+}
+.DateRangePicker .datetabbutton
+{
+	border : 0px none;
+	background : #ebebeb;
+}
+.PopupDateRangePicker .datetabbutton
+{
+	border : 0px none;
+	background : #ebebeb;
+}
+.DateRangePicker .timetabbutton
+{
+	border : 0px none;
+	background : #ebebeb;
+}
+.PopupDateRangePicker .timetabbutton
+{
+	border : 0px none;
+	background : #ebebeb;
+}
+.DateRangePicker .timepickergroup
+{
+	border : 0px none;
+	background : #ffffff;
+	padding : 5px 0px;
+}
+.PopupDateRangePicker .timepickergroup
+{
+	border : 0px none;
+	background : #ffffff;
+	padding : 5px 0px;
+}
+.DateRangePicker .timepickergroup .splitline
+{
+	border : 1px solid #acacac;
+}
+.DateRangePickerControl .timepickergroup .splitline
+{
+	border : 1px solid #acacac;
+}
+.PopupDateRangePicker .timepickergroup .splitline
+{
+	border : 1px solid #acacac;
+}
+.PickerHeadLineControl
+{
+	background : #483d8b;
+}
+.PickerHeadLineControl .splitline
+{
+	background : #e4e3ee;
+	border : 1px solid #e4e3ee;
+}
+.PickerHeadLineControl .startdate
+{
+	color : #ffffff;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.PickerHeadLineControl .enddate
+{
+	color : #ffffff;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.PickerHeadLineControl .endsubdate
+{
+	color : #ffffff;
+}
+.PickerHeadLineControl .startsubdate
+{
+	color : #ffffff;
+}
+.TimePickerControl
+{
+	background : #ffffff;
+}
+.TimePickerControl .ampmspinner .spinneritem
+{
+	font : 13px "Segoe UI", "Malgun Gothic";
+}
+.TimePickerControl .ampmspinner .spinneritem .nexacontentsbox
+{
+	text-align : center;
+}
+.TimePickerControl .hourspinner .spinneritem .nexacontentsbox
+{
+	text-align : center;
+}
+.TimePickerControl .minspinner .spinneritem .nexacontentsbox
+{
+	text-align : center;
+}
+.TimePickerControl .secspinner .spinneritem .nexacontentsbox
+{
+	text-align : center;
+}
+.TimePickerControl .hourspinner .overlaybottom
+{
+	background : linear-gradient(to bottom,rgba(255,255,255, 0) 0%,#ffffff);
+	border : 1px solid #bfbfbf, 0px none, 0px none;
+}
+.TimePickerControl .minspinner .overlaybottom
+{
+	background : linear-gradient(to bottom,rgba(255,255,255, 0) 0%,#ffffff);
+	border : 1px solid #bfbfbf, 0px none, 0px none;
+}
+.TimePickerControl .secspinner .overlaybottom
+{
+	background : linear-gradient(to bottom,rgba(255,255,255, 0) 0%,#ffffff);
+	border : 1px solid #bfbfbf, 0px none, 0px none;
+}
+.TimePickerControl .hourspinner .overlaytop
+{
+	background : linear-gradient(to top,rgba(255,255,255, 0) 0%,#ffffff);
+	border : 0px none, 0px none, 1px solid #bfbfbf;
+}
+.TimePickerControl .minspinner .overlaytop
+{
+	background : linear-gradient(to top,rgba(255,255,255, 0) 0%,#ffffff);
+	border : 0px none, 0px none, 1px solid #bfbfbf;
+}
+.TimePickerControl .secspinner .overlaytop
+{
+	background : linear-gradient(to top,rgba(255,255,255, 0) 0%,#ffffff);
+	border : 0px none, 0px none, 1px solid #bfbfbf;
+}
+.DateField .box
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+	border-radius : 5px;
+	padding : 0px 0px 0px 10px;
+}
+.DateField .box .dropbutton
+{
+	background : url('./images/cal_WF_Drop.png') no-repeat center center;
+}
+.DateField .nulltext
+{
+	color : #acacac;
+}
+.DateRangePickerControl
+{
+	border : 1px solid #acacac;
+	background : #ebebeb;
+}
+.DateRangePickerControl .datetabbutton
+{
+	background : #ebebeb;
+}
+.DateRangePickerControl .timetabbutton
+{
+	background : #ebebeb;
+}
+.TextField .box
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+	border-radius : 5px;
+	padding : 0px 0px 0px 10px;
+}
+.TextField .box .leadingbutton
+{
+	background : url('./images/icon_WF_Email.png') no-repeat center center;
+}
+.TextField .box .trailingbutton
+{
+	background : url('./images/icon_WF_Delete.png') no-repeat center center;
+}
+.TextField .box .postfixtext
+{
+	color : #acacac;
+}
+.TextField .box .prefixtext
+{
+	color : #acacac;
+}
+.TextField .charcounttext
+{
+	font : 11px "Segoe UI", "Malgun Gothic";
+	color : #666666;
+}
+.TextField .charcounttext .nexacontentsbox
+{
+	text-align : right;
+}
+.TextField .nulltext
+{
+	color : #acacac;
+}
+.FieldBaseTextControl
+{
+	font : 11px "Segoe UI", "Malgun Gothic";
+	color : #666666;
+}
+.FieldBaseLabelControl
+{
+	color : #778899;
+}
+.MultiLineTextField .box
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+	border-radius : 5px;
+	padding : 10px;
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+}
+.MultiLineTextField .box .nexacontentsbox
+{
+	-nexa-word-wrap : char;
+}
+.MultiLineTextField .box .nexatextarea
+{
+	-nexa-word-wrap : char;
+}
+.MultiLineTextField .charcounttext
+{
+	font : 11px "Segoe UI", "Malgun Gothic";
+	color : #666666;
+}
+.MultiLineTextField .charcounttext .nexacontentsbox
+{
+	text-align : right;
+}
+.MultiLineTextField .nulltext
+{
+	color : #acacac;
+}
+.Grid
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.Grid .body .selection
+{
+	border : 2px solid #1e90ff;
+}
+.Grid .body .row .cell
+{
+	background : #ffffff;
+	border : 1px solid #cdcece;
+	letter-spacing : 0px;
+}
+.Grid .body .row .cell.oddcell
+{
+	background : #fdfdfd;
+}
+.Grid .head .row .cell
+{
+	background : #eff1f7;
+	border : 1px solid #cdcece;
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Grid .head .row .cell .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid .head .row .cell .subcell .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid .summary .row .cell
+{
+	background : #fef9ea;
+	border : 1px solid #cdcece;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Grid .summary .row .cell .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid .vscrollbar
+{
+	border : 0px none;
+}
+.GridCellControl .cellbutton
+{
+	border : 1px solid #acacac;
+	background : linear-gradient(#ffffff 0%,#e6e6e6 100%);
+	cursor : pointer;
+}
+.GridCellControl .cellcalendar
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.GridCellControl .cellcalendar .calendaredit
+{
+	padding : 0px 0px 0px 8px;
+}
+.GridCellControl .cellcombo
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.GridCellControl .cellcombo .comboedit
+{
+	padding : 0px 0px 0px 8px;
+}
+.GridCellControl .celledit
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+	padding : 0px 0px 0px 8px;
+}
+.GridCellControl .cellmaskedit
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+	padding : 0px 8px;
+}
+.GridCellControl .celltextarea
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+	padding : 4px 8px;
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+}
+.GridCellControl .celltextarea .nexacontentsbox
+{
+	-nexa-word-wrap : char;
+}
+.GridCellControl .celltextarea .nexatextarea
+{
+	-nexa-word-wrap : char;
+}
+.GridCellControl .cellselection
+{
+	border : 2px solid #6a5acd;
+}
+.GridCellControl .cellmulticombo
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.GridCellControl .cellmulticombo .multicombotext
+{
+	padding : 0px 0px 0px 8px;
+}
+.MultiComboListControl.popupGridCellControlcellmulticombomulticombolist.dummy.dummy
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.MultiComboListControl.popupGridCellControlcellmulticombomulticombolist.dummy.dummy .multicomboedit
+{
+	border : 0px none,0px none,1px solid #acacac;
+	background : #f9f9fa;
+	padding : 8px;
+}
+.GridCellControl .cellmulticombo .multicombotagbox .tagboxedit
+{
+	border : 1px solid #c7c7c7;
+	background : #ffffff;
+	border-radius : 18px;
+	padding : 3px 10px;
+}
+.GridCellControl .cellmulticombo .multicombotagbox .tagboxitem
+{
+	background : #f3f3f3;
+	border-radius : 18px;
+}
+.GridCellControl .cellmulticombo .multicombotagbox .tagboxitem .tagbutton
+{
+	border : 0px none;
+	background : url('./images/mcbo_WF_TagBtn.png') no-repeat center center;
+}
+.GridCellControl .celltreeline
+{
+	border : 1px dotted #acacac;
+}
+.ListView
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ListView .body .cell.lstv_WF_BLabel
+{
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	color : #444444;
+}
+.ListView .body .cell.lstv_WF_BContents
+{
+	color : #616161;
+}
+.ListView .detail
+{
+	border : 1px solid #dbdee2, 0px none;
+	background : #e8eaef;
+}
+.ListViewDetailBandControl.popupListViewdetail.dummy
+{
+	border : 1px solid #dbdee2, 0px none;
+	background : #e8eaef;
+}
+.ListView .detail .cell.lstv_WF_DLabel
+{
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	color : #444444;
+}
+.ListViewDetailBandControl.popupListViewdetail.dummy .cell.lstv_WF_DLabel
+{
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	color : #444444;
+}
+.ListView .detail .cell.lstv_WF_DContents
+{
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+	color : #616161;
+}
+.ListViewDetailBandControl.popupListViewdetail.dummy .cell.lstv_WF_DContents
+{
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+	color : #616161;
+}
+.ListView .detail .cell.lstv_WF_DContents .nexacontentsbox
+{
+	-nexa-word-wrap : english;
+	vertical-align : top;
+}
+.ListViewDetailBandControl.popupListViewdetail.dummy .cell.lstv_WF_DContents .nexacontentsbox
+{
+	-nexa-word-wrap : english;
+	vertical-align : top;
+}
+.ListViewCellControl .cellbutton
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+	cursor : pointer;
+}
+.ListViewCellControl .cellcalendar
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ListViewCellControl .cellcalendar .calendaredit
+{
+	padding : 0px 0px 0px 8px;
+}
+.ListViewCellControl .cellcombo
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ListViewCellControl .cellcombo .comboedit
+{
+	padding : 0px 0px 0px 8px;
+}
+.ListViewCellControl .celledit
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+	padding : 0px 0px 0px 8px;
+}
+.ListViewCellControl .cellmaskedit
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+	padding : 0px 8px;
+}
+.ListViewCellControl .celltextarea
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+	padding : 8px;
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+}
+.ListViewCellControl .celltextarea .nexacontentsbox
+{
+	-nexa-word-wrap : char;
+}
+.ListViewCellControl .celltextarea .nexatextarea
+{
+	-nexa-word-wrap : char;
+}
+.ListViewCellControl .cellmulticombo
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ListViewCellControl .cellmulticombo .multicombotext
+{
+	padding : 0px 0px 0px 8px;
+}
+.MultiComboListControl.popupListViewCellControlcellmulticombomulticombolist.dummy.dummy
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.MultiComboListControl.popupListViewCellControlcellmulticombomulticombolist.dummy.dummy .multicomboedit
+{
+	border : 0px none,0px none,1px solid #acacac;
+	background : #f9f9fa;
+	padding : 8px;
+}
+.ListViewCellControl .cellmulticombo .multicombotagbox .tagboxedit
+{
+	border : 1px solid #c7c7c7;
+	background : #ffffff;
+	border-radius : 18px;
+	padding : 3px 10px;
+}
+.ListViewCellControl .cellmulticombo .multicombotagbox .tagboxitem
+{
+	background : #f3f3f3;
+	border-radius : 18px;
+}
+.ListViewCellControl .cellmulticombo .multicombotagbox .tagboxitem .tagbutton
+{
+	border : 0px none;
+	background : url('./images/mcbo_WF_TagBtn.png') no-repeat center center;
+}
+.Button.btn_LOGIN_Login
+{
+	border : 1px solid #483d8b;
+	background : #483d8b;
+	color : #ffffff;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+	letter-spacing : 1px;
+}
+.TextField.txtf_LOGIN_ID .box
+{
+	border : 0px none,0px none,1px solid #002795;
+	border-radius : 0px;
+	background : transparent;
+}
+.TextField.txtf_LOGIN_ID .box .leadingbutton
+{
+	background : url('./images/icon_LOGIN_ID.png') no-repeat left center;
+}
+.TextField.txtf_LOGIN_PW .box
+{
+	border : 0px none,0px none,1px solid #002795;
+	border-radius : 0px;
+	background : transparent;
+}
+.TextField.txtf_LOGIN_PW .box .leadingbutton
+{
+	background : url('./images/icon_LOGIN_PW.png') no-repeat left center;
+}
+.Static.sta_LOGIN_Logo
+{
+	background : url('./images/sta_LOGIN_Tobe.png') no-repeat center center;
+}
+.Static.sta_LOGIN_Logo2
+{
+	background : url('./images/img_LOGIN_Login.png') no-repeat center center;
+}
+.Button.btn_MDI_Home
+{
+	border : 1px solid #d6dee3;
+	background : #eef1f6;
+}
+.Button.btn_MDI_Max
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_Min
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_Open
+{
+	background : transparent;
+	border : 0px none, 1px solid #e3e4e9, 1px solid #e3e4e9, 1px solid #e3e4e9;
+}
+.Button.btn_MDI_Verti
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_Close
+{
+	background : transparent;
+	border : 0px none;
+	border : 0px none, 1px solid #e3e4e9, 1px solid #e3e4e9, 1px solid #e3e4e9;
+}
+.Button.btn_MDI_Collapse
+{
+	border : 0px none;
+	background : url('./images/btn_MDI_Collapse.png') no-repeat top center;
+}
+.Button.btn_MDI_Expand
+{
+	border : 0px none;
+	background : url('./images/btn_MDI_Expand.png') no-repeat top center;
+}
+.Button.btn_MF_Close
+{
+	border : 0px none;
+	background : url('./images/btn_MF_Close.png') no-repeat center center;
+}
+.Button.btn_MDI_Horz
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_AllX
+{
+	border : 0px none;
+	background : transparent;
+}
+.Tab.tab_MDI_Tab .tabbuttonitemTab.tabbuttonitemTabtab_MDI_Tab
+{
+	border : 1px solid #d6dee3;
+	background : #eef1f6;
+	color : #c3c3c3;
+}
+.Tab.tab_MDI_Tab .tabpageTab.tabpageTabtab_MDI_Tab
+{
+	border : 1px solid #d6dee3;
+}
+.Tab.tab_MDI_Tab .tabbuttonitemTab.tabbuttonitemTabtab_MDI_Tab .tabbuttonitemtext .nexacontentsbox
+{
+	text-align : left;
+}
+.Static.sta_MDI_Bg
+{
+	background : #eef1f6;
+}
+.Static.sta_TF_Bg
+{
+	border : 0px none,0px none,1px solid #e3e4e9,0px none;
+	background : #ffffff;
+}
+.Static.sta_TF_Tobe
+{
+	background : url('./images/sta_TF_Tobe.png') no-repeat center center #dee3f2;
+	border : 0px none,0px none,1px solid #e3e4e9,0px none;
+}
+.Static.sta_TF_PushCount
+{
+	background : #d60000;
+	color : #ffffff;
+	font : 11px "Segoe UI", "Malgun Gothic";
+	border-radius : 6px;
+}
+.Static.sta_TF_PushCount .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_TF_NexacroN
+{
+	background : url('./images/sta_TF_NexacroN.png') no-repeat center center #ffffff;
+	border : 0px none,0px none,1px solid #e3e4e9,0px none;
+}
+.Static.sta_TF_Welcome
+{
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	color : #222222;
+}
+.Button.btn_TF_LogoIcon
+{
+	background : #475a9e;
+	border : 0px none;
+}
+.Button.btn_TF_Logout
+{
+	border : 0px none,0px none,0px none,1px solid #acacac;
+	background : transparent;
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_TF_Menu
+{
+	background : #ffffff;
+	border : 0px none;
+	color : #71797c;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_TF_Prev
+{
+	border : 0px none;
+	background : URL("./images/btn_TF_Prev.png") no-repeat center center transparent;
+}
+.Button.btn_TF_Next
+{
+	border : 0px none;
+	background : URL("./images/btn_TF_Next.png") no-repeat center center transparent;
+}
+.Button.btn_TF_PushN
+{
+	border : 0px none;
+	background : url('./images/img_TF_PushN.png') no-repeat center center transparent;
+}
+.Menu.mnu_TF_Menu
+{
+	background : transparent;
+}
+.Menu.mnu_TF_Menu .menuitem
+{
+	color : #222222;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_LF_Bg
+{
+	background : #f6f7fb;
+	box-shadow : 2px 2px 5px 0px #b7b7b7;
+}
+.Static.sta_LF_Line
+{
+	background : #b5bdd8;
+}
+.Grid.grd_LF_Detail
+{
+	border : 0px none;
+}
+.Grid.grd_LF_Detail .vscrollbar
+{
+	background : #7aaed9;
+	border : 0px none;
+}
+.Grid.grd_LF_Detail .vscrollbar .trackbar
+{
+	background : #08497f;
+}
+.Grid.grd_LF_Detail .body .row .cell
+{
+	border : 0px none;
+	background : #4f8fc5;
+	font : 12px "Segoe UI", "Malgun Gothic";
+	color : #ffffff;
+}
+.Grid.grd_LF_Detail .body .row .cell.oddcell
+{
+	background : #4f8fc5;
+}
+.Grid.grd_LF_Detail .body .row .cell .nexacontentsbox
+{
+	text-align : center;
+}
+.Grid.grd_LF_Tree
+{
+	border : 0px none;
+	background : transparent;
+}
+.Grid.grd_LF_Tree .body .row .cell
+{
+	background : transparent;
+	border : 0px none;
+	color : #1c1c1c;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Grid.grd_LF_Tree .body .row .cell.oddcell
+{
+	background : transparent;
+}
+.Grid.grd_LF_Tree .body .row .cell.grd_LF_TreeCell
+{
+	background : transparent;
+	border : 0px none;
+	color : #1c1c1c;
+	font : 13px "Segoe UI", "Malgun Gothic";
+}
+.Grid.grd_LF_Tree .body .row .cell.grd_LF_TreeCell.oddcell
+{
+	background : transparent;
+}
+.Button.btn_LF_Mnu
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Home
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Bookmark
+{
+	background : transparent;
+	border : 0px none;
+}
+.Edit.edt_LF_Search
+{
+	background : #7aaed9;
+	border : 0px none;
+	padding : 0px 30px 0px 8px;
+	color : #ffffff;
+	border-radius : 5px;
+	font : 12px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_LF_Search
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Setting
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Find
+{
+	border : 1px solid #17a2b8;
+	background : #17a2b8;
+	border-radius : 3px;
+}
+.Button.btn_LF_Change
+{
+	border : 1px solid #17a2b8;
+	background : #17a2b8;
+	border-radius : 3px;
+}
+.Button.btn_LF_Pin
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Logout
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Quick
+{
+	background : transparent;
+	border : 1px solid #a3adcf;
+	border-radius : 5px;
+	font : 600 12px "Segoe UI", "Malgun Gothic";
+	color : #a3adcf;
+}
+.Static.sta_LF_MnuBg
+{
+	background : #475a9e;
+}
+.Static.sta_LF_MnuTitle
+{
+	color : #b5bdd8;
+	font : 11px "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_MainTitle
+{
+	font : 700 38px "Segoe UI", "Malgun Gothic";
+	color : #07152F;
+}
+.Static.sta_WF_MainDes
+{
+	font : 600 18px/26px  "Segoe UI", "Malgun Gothic";
+	color : #7e7e7e;
+	letter-spacing : -1px;
+}
+.Static.sta_WF_MainDes .nexacontentsbox
+{
+	-nexa-word-wrap : char;
+}
+.Static.sta_WF_MainTitleSub
+{
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_KeyClient
+{
+	background : url('./images/img_KeyClient.png') no-repeat left center;
+	color : #4d4f5c;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_KeyClientTxt
+{
+	color : #17a2b8;
+	font : 700 38px "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_BuildRef
+{
+	background : url('./images/img_BuildRef.png') no-repeat left center;
+	color : #4d4f5c;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_BuildRefTxt
+{
+	color : #28a745;
+	font : 700 38px "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_Share
+{
+	background : url('./images/img_Share.png') no-repeat left center;
+	color : #4d4f5c;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_ShareTxt
+{
+	color : #007bff;
+	font : 700 38px "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_DevOps
+{
+	background : url('./images/img_DevOps.png') no-repeat center center #ffffff;
+	border-radius : 5px;
+	box-shadow : 2px 2px 3px #cccccc;
+}
+.Static.sta_WF_NexaAssist
+{
+	background : url('./images/img_NexaAssist.png') no-repeat center center #ffffff;
+	border-radius : 5px;
+	box-shadow : 2px 2px 3px #cccccc;
+	font : 600 13px/19px  "Segoe UI", "Malgun Gothic";
+	color : #4d4f5c;
+}
+.Static.sta_WF_NexaAssist .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_WF_TOBEPro
+{
+	background : url('./images/img_TobePro.png') no-repeat center center #ffffff;
+	border-radius : 5px;
+	box-shadow : 2px 2px 3px #cccccc;
+}
+.Static.sta_WF_XAgent
+{
+	background : url('./images/img_XAgent.png') no-repeat center center #ffffff;
+	border-radius : 5px;
+	box-shadow : 2px 2px 3px #cccccc;
+}
+.Static.sta_WF_NexacroN
+{
+	background : url('./images/img_NexacroN.png') no-repeat center center #ffffff;
+	border-radius : 5px;
+	box-shadow : 2px 2px 3px #cccccc;
+}
+.Div.div_WF_NoticeBg
+{
+	background : #ffffff;
+	border-radius : 5px;
+	box-shadow : 2px 2px 3px #cccccc;
+}
+.Grid.grd_WF_Main
+{
+	border : 1px solid #d6d7d8,0px none,0px none,0px none;
+	background : transparent;
+}
+.Grid.grd_WF_Main .body .row .cell
+{
+	background : transparent;
+	border : 0px none;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	color : #4d4f5c;
+}
+.Grid.grd_WF_Main .body .row .cell.oddcell
+{
+	background : transparent;
+}
+.Grid.grd_WF_Main .body .row .cell.cell_WF_Right
+{
+	color : #acacac;
+	font : 13px "Segoe UI", "Malgun Gothic";
+}
+.Grid.grd_WF_Main .body .row .cell.cell_WF_Right .nexacontentsbox
+{
+	text-align : right;
+	text-decoration : none;
+}
+.Static.sta_WF_TOBE
+{
+	background : url('./images/sta_LOGIN_Tobe.png') no-repeat center center;
+	opacity : 50%;
+}
+.Button.btn_WF_Paging
+{
+	border : 0px none;
+	background : transparent;
+	color : #222222;
+	font : 600 15px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_PagingNext
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingNext.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingPrev
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingPrev.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingDNext
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingDNext.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingDPrev
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingDPrev.png') no-repeat center center transparent;
+}
+.Button.btn_WF_Play
+{
+	border : 0px none;
+	background : #eff1f3;
+	box-shadow : 2px 2px 5px 0px #b7b7b7;
+	border-radius : 15px;
+	font : 18px "Segoe UI", "Malgun Gothic";
+	color : #a4b0af;
+}
+.Button.btn_WF_Guide
+{
+	border : 0px none;
+	background : #ffffff;
+	box-shadow : 2px 2px 5px 0px #b7b7b7;
+	border-radius : 15px;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+	color : #777777;
+}
+.Button.btn_WF_Support
+{
+	border : 0px none;
+	background : #ffffff;
+	box-shadow : 2px 2px 5px 0px #b7b7b7;
+	border-radius : 15px;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+	color : #777777;
+}
+.Button.btn_WF_Add
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_Delete
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_Exec
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_Exec .nexacontentsbox
+{
+	text-align : left;
+}
+.Static.sta_WF_Mainbg
+{
+	background : linear-gradient(to right bottom,#072859 0%,#3dbcd4 100%);
+}
+.Static.sta_WF_MianImg
+{
+	background : url('./images/sta_WF_MainImg.png') no-repeat center center;
+}
+.Static.sta_WF_MainTxt
+{
+	background : url('./images/sta_WF_MainTxt.png') no-repeat center center;
+}
+.Static.sta_WF_Intro
+{
+	font : 16px "Segoe UI", "Malgun Gothic";
+	color : #808080;
+}
+.Static.sta_POP_Title
+{
+	background : #3230bf;
+	color : #ffffff;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+	letter-spacing : 1px;
+}
+.Static.sta_POP_Body
+{
+	background : #ffffff;
+	border : 1px solid #3230bf;
+}
+.Button.btn_POP_Close
+{
+	border : 0px none;
+	background : transparent;
+}
+.ProgressBar.pgb_WF_Image .progressbaritem
+{
+	background : url('./images/pgb_WF_BarImage.png') repeat-x left top transparent;
+}
+.ProgressBar.pgb_WF_Gradient .progressbaritem
+{
+	background : linear-gradient(to right,#1e90ff 0%,#142651 100%);
+}
+.Static.sta_MF_Center
+{
+	background : url('./images/img_Main.png') no-repeat center center;
+}
+.Static.sta_MF_Notice
+{
+	background : url('./images/img_MF_Notice.png') no-repeat center center;
+}
+.Div.div_MF_Notice
+{
+	border : 1px solid #a3bbc1;
+	background : #FFFFFF;
+	border-radius : 10px 10px 0px 0px;
+}
+.Div.div_WF_Area
+{
+	border : 1px solid #d3dce1;
+	background : #ffffff;
+}
+.PopupDiv.pdiv_WF_Area
+{
+	border : 1px solid #d3dce1;
+	background : #ffffff;
+}
+.Button.btn_WF_CRUD
+{
+	border : 1px solid #2f59bf;
+	background : #2f59bf;
+	color : #ffffff;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_Title
+{
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_Title1
+{
+	font : 600 18px  "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_Title2
+{
+	background : url('./images/icon_Dot.png') no-repeat left center;
+	font : 600 15px  "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_Title3
+{
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_Title4
+{
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Div.div_WF_Search
+{
+	border : 1px solid #d3dce1;
+	background : #f8f8ff;
+}
+.Static.sta_WF_Label
+{
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_DetailLabel
+{
+	border : 1px solid #d3dce1;
+	background : #f7f8f9;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	color : #222222;
+}
+.Static.sta_WF_CompLabel
+{
+	border : 1px solid #d3dce1;
+	background : #f7f8f9;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	color : #222222;
+}
+.Static.sta_WF_DetailArea
+{
+	border : 1px solid #d3dce1;
+	background : #ffffff;
+}
+.Static.sta_WF_SubTitle
+{
+	background : url('./images/sta_WF_SubTitle.png') no-repeat left center;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_Find
+{
+	background : transparent;
+	border : 0px none;
+}
+.Static.sta_WF_SchLabel
+{
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_Contents
+{
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+	color : #616161;
+}
+.Static.sta_WF_Contents .nexacontentsbox
+{
+	-nexa-word-wrap : english;
+	vertical-align : top;
+}
+.ImageViewer.img_WF_Noborder
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleL
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleR
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleT
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleB
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_Status
+{
+	border : 1px solid #51ba97;
+	background : #51ba97;
+	color : #ffffff;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Grid .body .row .cell.cell_WF_UploadBtn .cellbutton
+{
+	background : url('./images/cell_WF_UploadBtn.png') no-repeat left center #59b220;
+	border : 0px none;
+	color : #ffffff;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	border-radius : 5px;
+}
+.Grid .body .row .cell.cell_WF_DnloadBtn .cellbutton
+{
+	background : url('./images/cell_WF_DnloadBtn.png') no-repeat left center #8b6cbc;
+	border : 0px none;
+	color : #ffffff;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	border-radius : 5px;
+}
+.Grid .body .row .cell.cell_WF_EdtEssential .celledit
+{
+	border : 1px solid #c15e3b;
+	background : url('./images/icon_Essential.png') no-repeat left top #fef7eb;
+}
+.Grid .body .row .cell.cell_WF_ExprF
+{
+	color : #dc3545;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+}
+.Grid .body .row .cell.cell_WF_ExprM
+{
+	color : #007bff;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_PlayIcon
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+}
+.Button.btn_WF_PlayIcon .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_WF_LineBlue
+{
+	border : 1px solid #007bff;
+	background : #ffffff;
+	color : #007bff;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_LineGray
+{
+	border : 1px solid #6c757d;
+	background : #ffffff;
+	color : #6c757d;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_LineYellow
+{
+	border : 1px solid #ffbf05;
+	background : #ffffff;
+	color : #ffbf05;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_LineGreen
+{
+	border : 1px solid #28a745;
+	background : #ffffff;
+	color : #28a745;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_LineTeal
+{
+	border : 1px solid #17a2b8;
+	background : #ffffff;
+	color : #17a2b8;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_LineRed
+{
+	border : 1px solid #dc3545;
+	background : #ffffff;
+	color : #dc3545;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_FillBlue
+{
+	border : 1px solid #007bff;
+	background : #007bff;
+	color : #ffffff;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_FillBlueSub
+{
+	border : 1px solid #1d9cff;
+	background : #1d9cff;
+	color : #ffffff;
+	border-radius : 3px;
+	font : 600 12px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_FillGray
+{
+	border : 1px solid #6c757d;
+	background : #6c757d;
+	color : #ffffff;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_FillYellow
+{
+	border : 1px solid #ffbf05;
+	background : #ffbf05;
+	color : #ffffff;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_FillGreen
+{
+	border : 1px solid #28a745;
+	background : #28a745;
+	color : #ffffff;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_FillTeal
+{
+	border : 1px solid #17a2b8;
+	background : #17a2b8;
+	color : #ffffff;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_FillRed
+{
+	border : 1px solid #dc3545;
+	background : #dc3545;
+	color : #ffffff;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_BaseL
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseR
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseT
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseB
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BookMark
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_WF_BookMarkS
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_WF_CalMonthNext
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_CalMonthPrev
+{
+	border : 0px none;
+	background : transparent;
+}
+.Static.sta_WF_MonthBg
+{
+	border : 1px solid #918bb9;
+	background : #f9f9fb;
+}
+.Static.sta_WF_Cal
+{
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_Cal .nexacontentsbox
+{
+	text-align : center;
+}
+.Button.btn_WF_CalMonth
+{
+	border : 1px solid #c2c2c5;
+	background : #ffffff;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_POP_Bg
+{
+	background : #ebeff3;
+}
+.TextArea.txt_POP_Message
+{
+	border : 0px none;
+	background : #ffffff;
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+	padding : 20px 20px 0px 80px;
+}
+.TextArea.txt_WF_Desc
+{
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+	padding : 6px 10px;
+	border : 1px solid #dedede;
+	background : #FFFFCC;
+	color : #000000;
+	letter-spacing : 0px;
+}
+.TextArea.txt_WF_Desc .nexacontentsbox
+{
+	-nexa-word-wrap : none;
+}
+.TextArea.txt_WF_Desc .nexatextarea
+{
+	-nexa-word-wrap : none;
+}
+.Static.sta_POP_Confirm
+{
+	background : url('./images/img_Confirm.png') no-repeat center center;
+}
+.Static.sta_POP_Error
+{
+	background : url('./images/img_Error.png') no-repeat center center;
+}
+.Static.sta_POP_Info
+{
+	background : url('./images/img_Info.png') no-repeat center center;
+}
+.Static.sta_POP_Warning
+{
+	background : url('./images/img_Warning.png') no-repeat center center;
+}
+.Static.sta_POP_Question
+{
+	background : url('./images/img_Question.png') no-repeat center center;
+}
+.Button.btn_WF_RShuttle
+{
+	background : linear-gradient(#ffffff 0%,#d9d9d9 100%);
+}
+.Button.btn_WF_LShuttle
+{
+	background : linear-gradient(#ffffff 0%,#d9d9d9 100%);
+}
+.Div.div_LF_Bg
+{
+	background : #ffffff;
+	border : 0px none, 1px solid #d6dee3, 1px solid #d6dee3, 1px solid #d6dee3;
+}
+.Div.div_WF_Bg
+{
+	background : #ffffff;
+	border : 0px none,1px solid #d6dee3,1px solid #d6dee3;
+}
+.TitleBarControl .closebutton[status=mouseover]
+{
+	background : #495455;
+}
+.TitleBarControl .maxbutton[status=mouseover]
+{
+	background : #495455;
+}
+.TitleBarControl .minbutton[status=mouseover]
+{
+	background : #495455;
+}
+.TitleBarControl .normalbutton[status=mouseover]
+{
+	background : #495455;
+}
+.Edit[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.Edit[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.Edit[status=readonly]
+{
+	background : #f5f5f5;
+}
+.MaskEdit[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.MaskEdit[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.MaskEdit[status=readonly]
+{
+	background : #f5f5f5;
+}
+.TextArea[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.TextArea[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.TextArea[status=readonly]
+{
+	background : #f5f5f5;
+}
+.ListBox .listboxitem[status=mouseover]
+{
+	color : #2f59bf;
+}
+.ListBoxControl .listboxitem[status=mouseover]
+{
+	color : #2f59bf;
+}
+.Combo[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.Combo[status=readonly]
+{
+	background : #f5f5f5;
+}
+.MultiCombo[status=readonly]
+{
+	background : #f5f5f5;
+}
+.MultiCombo[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.Calendar[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.Calendar[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.Calendar[status=readonly]
+{
+	background : #f5f5f5;
+}
+.DatePickerControl .body .dayitem[status=mouseover]
+{
+	background : #f3f3f3;
+}
+.DatePickerControl .body .yearitem[status=mouseover]
+{
+	background : #daedfe;
+}
+.DatePickerControl .body .monthitem[status=mouseover]
+{
+	background : #daedfe;
+}
+.FileDownload[status=mouseover]
+{
+	border : 1px solid #364f60;
+	background : #364f60;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton[status=mouseover]
+{
+	border : 1px solid #364f60;
+	background : #364f60;
+}
+.Menu .menuitem[status=mouseover]
+{
+	color : #ffffff;
+}
+.PopupMenu .popupmenuitem[status=mouseover]
+{
+	background : #f7f7f7;
+}
+.PopupMenuControl .popupmenuitem[status=mouseover]
+{
+	background : #f7f7f7;
+}
+.HScrollBarControl .trackbar[status=mouseover]
+{
+	background : #898989;
+}
+.VScrollBarControl .trackbar[status=mouseover]
+{
+	background : #898989;
+}
+.Button[status=mouseover]
+{
+	border : 1px solid #858ba3;
+	background : #858ba3;
+	color : #ffffff;
+}
+.Button[status=focused]
+{
+	border : 1px solid #858ba3;
+	background : #858ba3;
+	color : #ffffff;
+}
+.Spin[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.Spin[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.Spin[status=readonly]
+{
+	background : #f5f5f5;
+}
+.CheckBoxSet .checkboxsetitem[status=readonly]
+{
+	color : #7d7d7d;
+}
+.MultiComboListControl.popupMultiCombomulticombolist.dummy .selectallcheckbox[status=mouseover]
+{
+	color : #b71d26;
+}
+.MultiComboListControl.popupMultiCombomulticombolist.dummy .checkboxset .checkboxsetitem[status=mouseover]
+{
+	color : #2f59bf;
+}
+.MultiComboListControl.popupMultiCombomulticombolist.dummy .checkboxset .checkboxsetitem[status=readonly]
+{
+	color : #7d7d7d;
+}
+.MultiCombo .multicombotagbox .tagboxitem .tagbutton[status=mouseover]
+{
+	border : 0px none;
+	background : url('./images/mcbo_WF_TagBtn.png') no-repeat center center;
+}
+.MultiCombo .multicombotagbox .tagboxitem .tagbutton[status=focused]
+{
+	border : 0px none;
+	background : url('./images/mcbo_WF_TagBtn.png') no-repeat center center;
+}
+.Tab .tabbuttonitemTab[status=mouseover]
+{
+	color : #222222;
+}
+.Calendar .calendarspindownbutton[status=mouseover]
+{
+	border : 1px solid #2f59bf,0px none,0px none,1px solid #2f59bf;
+}
+.Calendar .calendarspinupbutton[status=mouseover]
+{
+	border : 0px none,0px none,0px none,1px solid #2f59b;
+}
+.Calendar.cal_WF_Month[status=mouseover]
+{
+	border : 0px none;
+}
+.Calendar.cal_WF_Month[status=focused]
+{
+	border : 0px none;
+}
+.DateRangePicker .cancelbutton[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.DateRangePickerControl .cancelbutton[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.PopupDateRangePicker .cancelbutton[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.DateRangePicker .okbutton[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.DateRangePickerControl .okbutton[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.PopupDateRangePicker .okbutton[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.DateRangePicker .closebutton[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.DateRangePickerControl .closebutton[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.PopupDateRangePicker .closebutton[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.DateRangePicker .datepickergroup .datepicker .body .dayitem[status=mouseover]
+{
+	background : #bfbfbf;
+}
+.DateRangePickerControl .datepickergroup .datepicker .body .dayitem[status=mouseover]
+{
+	background : #bfbfbf;
+}
+.PopupDateRangePicker .datepickergroup .datepicker .body .dayitem[status=mouseover]
+{
+	background : #bfbfbf;
+}
+.DateRangePicker .datetabbutton[status=mouseover]
+{
+	border : 0px none;
+	background : #ebebeb;
+}
+.PopupDateRangePicker .datetabbutton[status=mouseover]
+{
+	border : 0px none;
+	background : #ebebeb;
+}
+.DateRangePicker .timetabbutton[status=mouseover]
+{
+	border : 0px none;
+	background : #ebebeb;
+}
+.PopupDateRangePicker .timetabbutton[status=mouseover]
+{
+	border : 0px none;
+	background : #ebebeb;
+}
+.DateField .box[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.DateField .box[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.TextField .box[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.TextField .box[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.MultiLineTextField .box[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.MultiLineTextField .box[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.Grid .body .row .cell[status=mouseover]
+{
+	background : #e5f3ff;
+}
+.GridCellControl .celledit[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.GridCellControl .celledit[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.GridCellControl .cellmaskedit[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.GridCellControl .cellmaskedit[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.GridCellControl .celltextarea[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.GridCellControl .celltextarea[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.MultiComboListControl.popupGridCellControlcellmulticombomulticombolist.dummy.dummy .selectallcheckbox[status=mouseover]
+{
+	color : #b71d26;
+}
+.MultiComboListControl.popupGridCellControlcellmulticombomulticombolist.dummy.dummy .checkboxset .checkboxsetitem[status=mouseover]
+{
+	color : #2f59bf;
+}
+.MultiComboListControl.popupGridCellControlcellmulticombomulticombolist.dummy.dummy .checkboxset .checkboxsetitem[status=readonly]
+{
+	color : #7d7d7d;
+}
+.ListViewCellControl .celledit[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.ListViewCellControl .celledit[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.ListViewCellControl .cellmaskedit[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.ListViewCellControl .cellmaskedit[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.ListViewCellControl .celltextarea[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.ListViewCellControl .celltextarea[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.MultiComboListControl.popupListViewCellControlcellmulticombomulticombolist.dummy.dummy .selectallcheckbox[status=mouseover]
+{
+	color : #b71d26;
+}
+.MultiComboListControl.popupListViewCellControlcellmulticombomulticombolist.dummy.dummy .checkboxset .checkboxsetitem[status=mouseover]
+{
+	color : #2f59bf;
+}
+.MultiComboListControl.popupListViewCellControlcellmulticombomulticombolist.dummy.dummy .checkboxset .checkboxsetitem[status=readonly]
+{
+	color : #7d7d7d;
+}
+.Button.btn_LOGIN_Login[status=mouseover]
+{
+	border : 1px solid #483d8b;
+	background : #483d8b;
+	color : #ffffff;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+	letter-spacing : 1px;
+}
+.Button.btn_LOGIN_Login[status=focused]
+{
+	border : 1px solid #483d8b;
+	background : #483d8b;
+	color : #ffffff;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+	letter-spacing : 1px;
+}
+.TextField.txtf_LOGIN_ID .box[status=mouseover]
+{
+	border : 0px none,0px none,1px solid #bf952f;
+	border-radius : 0px;
+}
+.TextField.txtf_LOGIN_ID .box[status=focused]
+{
+	border : 0px none,0px none,1px solid #bf952f;
+	border-radius : 0px;
+}
+.TextField.txtf_LOGIN_PW .box[status=mouseover]
+{
+	border : 0px none,0px none,1px solid #bf952f;
+	border-radius : 0px;
+}
+.TextField.txtf_LOGIN_PW .box[status=focused]
+{
+	border : 0px none,0px none,1px solid #bf952f;
+	border-radius : 0px;
+}
+.Button.btn_MDI_Home[status=focused]
+{
+	border : 1px solid #d6dee3;
+	background : #eef1f6;
+}
+.Button.btn_MDI_Home[status=mouseover]
+{
+	border : 1px solid #d6dee3;
+	background : #eef1f6;
+}
+.Button.btn_MDI_Max[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_Max[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_Min[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_Min[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_Open[status=mouseover]
+{
+	background : transparent;
+	border : 0px none, 1px solid #e3e4e9, 1px solid #e3e4e9, 1px solid #e3e4e9;
+}
+.Button.btn_MDI_Open[status=focused]
+{
+	background : transparent;
+	border : 0px none, 1px solid #e3e4e9, 1px solid #e3e4e9, 1px solid #e3e4e9;
+}
+.Button.btn_MDI_Verti[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_Verti[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_Close[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+	border : 0px none, 1px solid #e3e4e9, 1px solid #e3e4e9, 1px solid #e3e4e9;
+}
+.Button.btn_MDI_Close[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+	border : 0px none, 1px solid #e3e4e9, 1px solid #e3e4e9, 1px solid #e3e4e9;
+}
+.Button.btn_MDI_Collapse[status=mouseover]
+{
+	border : 0px none;
+	background : url('./images/btn_MDI_Collapse.png') no-repeat top center;
+}
+.Button.btn_MDI_Collapse[status=focused]
+{
+	border : 0px none;
+	background : url('./images/btn_MDI_Collapse.png') no-repeat top center;
+}
+.Button.btn_MDI_Expand[status=mouseover]
+{
+	border : 0px none;
+	background : url('./images/btn_MDI_Expand.png') no-repeat top center;
+}
+.Button.btn_MDI_Expand[status=focused]
+{
+	border : 0px none;
+	background : url('./images/btn_MDI_Expand.png') no-repeat top center;
+}
+.Button.btn_MF_Close[status=mouseover]
+{
+	border : 0px none;
+	background : url('./images/btn_MF_Close.png') no-repeat center center;
+}
+.Button.btn_MF_Close[status=focused]
+{
+	border : 0px none;
+	background : url('./images/btn_MF_Close.png') no-repeat center center;
+}
+.Button.btn_MDI_Horz[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_Horz[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_AllX[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_AllX[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Tab.tab_MDI_Tab .tabbuttonitemTab.tabbuttonitemTabtab_MDI_Tab[status=mouseover]
+{
+	border : 1px solid #d6dee3;
+	background : #eef1f6;
+	color : #c3c3c3;
+}
+.Tab.tab_MDI_Tab .tabbuttonitemTab.tabbuttonitemTabtab_MDI_Tab[status=focused]
+{
+	border : 1px solid #d6dee3;
+	background : #eef1f6;
+	color : #c3c3c3;
+}
+.Button.btn_TF_LogoIcon[status=focused]
+{
+	background : #475a9e;
+	border : 0px none;
+}
+.Button.btn_TF_LogoIcon[status=mouseover]
+{
+	background : #475a9e;
+	border : 0px none;
+}
+.Button.btn_TF_Logout[status=focused]
+{
+	border : 0px none,0px none,0px none,1px solid #acacac;
+	background : transparent;
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_TF_Logout[status=mouseover]
+{
+	border : 0px none,0px none,0px none,1px solid #acacac;
+	background : transparent;
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_TF_Menu[status=focused]
+{
+	background : #ffffff;
+	border : 0px none;
+	color : #71797c;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_TF_Menu[status=mouseover]
+{
+	background : #ffffff;
+	border : 0px none;
+	color : #71797c;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_TF_Prev[status=mouseover]
+{
+	border : 0px none;
+	background : URL("./images/btn_TF_Prev.png") no-repeat center center transparent;
+}
+.Button.btn_TF_Prev[status=focused]
+{
+	border : 0px none;
+	background : URL("./images/btn_TF_Prev.png") no-repeat center center transparent;
+}
+.Button.btn_TF_Next[status=mouseover]
+{
+	border : 0px none;
+	background : URL("./images/btn_TF_Next.png") no-repeat center center transparent;
+}
+.Button.btn_TF_Next[status=focused]
+{
+	border : 0px none;
+	background : URL("./images/btn_TF_Next.png") no-repeat center center transparent;
+}
+.Button.btn_TF_PushN[status=mouseover]
+{
+	border : 0px none;
+	background : url('./images/img_TF_PushN.png') no-repeat center center transparent;
+}
+.Button.btn_TF_PushN[status=focused]
+{
+	border : 0px none;
+	background : url('./images/img_TF_PushN.png') no-repeat center center transparent;
+}
+.Menu.mnu_TF_Menu .menuitem[status=mouseover]
+{
+	color : #ffc601;
+}
+.Grid.grd_LF_Detail .vscrollbar .trackbar[status=mouseover]
+{
+	background : #08497f;
+}
+.Grid.grd_LF_Detail .body .row .cell[status=mouseover]
+{
+	color : #262626;
+	background : #4f8fc5;
+	cursor : pointer;
+}
+.Grid.grd_LF_Detail .body .row .cell.oddcell[status=mouseover]
+{
+	background : #4f8fc5;
+}
+.Grid.grd_LF_Tree .body .row .cell[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+	color : #002795;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Grid.grd_LF_Tree .body .row .cell.oddcell[status=mouseover]
+{
+	background : transparent;
+}
+.Grid.grd_LF_Tree .body .row .cell.grd_LF_TreeCell[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+	color : #002795;
+	font : 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_LF_Mnu[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Mnu[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Home[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Home[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Bookmark[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Bookmark[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Edit.edt_LF_Search[status=focused]
+{
+	background : #7aaed9;
+	border : 0px none;
+	padding : 0px 30px 0px 8px;
+	color : #ffffff;
+	border-radius : 5px;
+	font : 12px "Segoe UI", "Malgun Gothic";
+}
+.Edit.edt_LF_Search[status=mouseover]
+{
+	background : #7aaed9;
+	border : 0px none;
+	padding : 0px 30px 0px 8px;
+	color : #ffffff;
+	border-radius : 5px;
+	font : 12px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_LF_Search[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Search[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Setting[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Setting[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Find[status=mouseover]
+{
+	border : 1px solid #17a2b8;
+	background : #17a2b8;
+	border-radius : 3px;
+}
+.Button.btn_LF_Find[status=focused]
+{
+	border : 1px solid #17a2b8;
+	background : #17a2b8;
+	border-radius : 3px;
+}
+.Button.btn_LF_Change[status=mouseover]
+{
+	border : 1px solid #17a2b8;
+	background : #17a2b8;
+	border-radius : 3px;
+}
+.Button.btn_LF_Change[status=focused]
+{
+	border : 1px solid #17a2b8;
+	background : #17a2b8;
+	border-radius : 3px;
+}
+.Button.btn_LF_Pin[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Pin[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Logout[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Logout[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Quick[status=focused]
+{
+	background : transparent;
+	border : 1px solid #a3ad4f;
+	border-radius : 5px;
+	font : 600 12px "Segoe UI", "Malgun Gothic";
+	color : #a3ad4f;
+}
+.Button.btn_LF_Quick[status=mouseover]
+{
+	background : transparent;
+	border : 1px solid #a3ad4f;
+	border-radius : 5px;
+	font : 600 12px "Segoe UI", "Malgun Gothic";
+	color : #a3ad4f;
+}
+.Grid.grd_WF_Main .body .row .cell[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	color : #4d4f5c;
+}
+.Grid.grd_WF_Main .body .row .cell.oddcell[status=mouseover]
+{
+	background : transparent;
+}
+.Grid.grd_WF_Main .body .row .cell[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.Grid.grd_WF_Main .body .row .cell.cell_WF_Right[status=mouseover]
+{
+	color : #acacac;
+	font : 13px "Segoe UI", "Malgun Gothic";
+}
+.Grid.grd_WF_Main .body .row .cell.cell_WF_Right[status=mouseover] .nexacontentsbox
+{
+	text-align : right;
+	text-decoration : none;
+}
+.Button.btn_WF_Paging[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+	color : #222222;
+	font : 600 15px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_Paging[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+	color : #17a2b8;
+	font : 600 15px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_PagingNext[status=mouseover]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingNext.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingNext[status=focused]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingNext.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingPrev[status=mouseover]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingPrev.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingPrev[status=focused]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingPrev.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingDNext[status=mouseover]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingDNext.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingDNext[status=focused]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingDNext.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingDPrev[status=mouseover]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingDPrev.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingDPrev[status=focused]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingDPrev.png') no-repeat center center transparent;
+}
+.Button.btn_WF_Play[status=focused]
+{
+	border : 0px none;
+	background : #eff1f3;
+	box-shadow : 2px 2px 5px 0px #b7b7b7;
+	border-radius : 15px;
+	font : 18px "Segoe UI", "Malgun Gothic";
+	color : #a4b0af;
+}
+.Button.btn_WF_Play[status=mouseover]
+{
+	border : 0px none;
+	background : #eff1f3;
+	box-shadow : 2px 2px 5px 0px #b7b7b7;
+	border-radius : 15px;
+	font : 18px "Segoe UI", "Malgun Gothic";
+	color : #a4b0af;
+}
+.Button.btn_WF_Guide[status=focused]
+{
+	border : 0px none;
+	background : #ffffff;
+	box-shadow : 2px 2px 5px 0px #b7b7b7;
+	border-radius : 15px;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+	color : #777777;
+}
+.Button.btn_WF_Guide[status=mouseover]
+{
+	border : 0px none;
+	background : #ffffff;
+	box-shadow : 2px 2px 5px 0px #b7b7b7;
+	border-radius : 15px;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+	color : #777777;
+}
+.Button.btn_WF_Support[status=focused]
+{
+	border : 0px none;
+	background : #ffffff;
+	box-shadow : 2px 2px 5px 0px #b7b7b7;
+	border-radius : 15px;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+	color : #777777;
+}
+.Button.btn_WF_Support[status=mouseover]
+{
+	border : 0px none;
+	background : #ffffff;
+	box-shadow : 2px 2px 5px 0px #b7b7b7;
+	border-radius : 15px;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+	color : #777777;
+}
+.Button.btn_WF_Add[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_Add[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_Delete[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_Delete[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_Exec[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_Exec[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_POP_Close[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_POP_Close[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_CRUD[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+	background : #2f59bf;
+	color : #ffffff;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_CRUD[status=focused]
+{
+	border : 1px solid #1a326d;
+	background : #1a326d;
+	color : #ffffff;
+}
+.Button.btn_WF_Find[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_WF_Find[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_WF_ShuttleL[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleL[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleR[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleR[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleT[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleT[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleB[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleB[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_Status[status=focused]
+{
+	border : 1px solid #51ba97;
+	background : #51ba97;
+	color : #ffffff;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_Status[status=mouseover]
+{
+	border : 1px solid #ff930f;
+	background : #ff930f;
+	color : #ffffff;
+}
+.Grid .body .row .cell.cell_WF_UploadBtn .cellbutton[status=mouseover]
+{
+	background : url('./images/cell_WF_UploadBtn.png') no-repeat left center #59b220;
+	border : 0px none;
+	color : #ffffff;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	border-radius : 5px;
+}
+.Grid .body .row .cell.cell_WF_DnloadBtn .cellbutton[status=mouseover]
+{
+	background : url('./images/cell_WF_DnloadBtn.png') no-repeat left center #8b6cbc;
+	border : 0px none;
+	color : #ffffff;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	border-radius : 5px;
+}
+.Button.btn_WF_PlayIcon[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+}
+.Button.btn_WF_PlayIcon[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_WF_PlayIcon[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_WF_PlayIcon[status=mouseover] .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.Button.btn_WF_LineBlue[status=mouseover]
+{
+	border : 1px solid #007bff;
+	background : #ebf5ff;
+	color : #007bff;
+}
+.Button.btn_WF_LineBlue[status=focused]
+{
+	border : 1px solid #007bff;
+	background : #ebf5ff;
+	color : #007bff;
+}
+.Button.btn_WF_LineGray[status=mouseover]
+{
+	border : 1px solid #6c757d;
+	background : #f3f4f5;
+	color : #6c757d;
+}
+.Button.btn_WF_LineGray[status=focused]
+{
+	border : 1px solid #6c757d;
+	background : #f3f4f5;
+	color : #6c757d;
+}
+.Button.btn_WF_LineYellow[status=mouseover]
+{
+	border : 1px solid #ffbf05;
+	background : #fff3d0;
+	color : #ffbf05;
+}
+.Button.btn_WF_LineYellow[status=focused]
+{
+	border : 1px solid #ffbf05;
+	background : #fff3d0;
+	color : #ffbf05;
+}
+.Button.btn_WF_LineGreen[status=mouseover]
+{
+	border : 1px solid #28a745;
+	background : #eef8f0;
+	color : #28a745;
+}
+.Button.btn_WF_LineGreen[status=focused]
+{
+	border : 1px solid #28a745;
+	background : #eef8f0;
+	color : #28a745;
+}
+.Button.btn_WF_LineTeal[status=mouseover]
+{
+	border : 1px solid #17a2b8;
+	background : #edf8f9;
+	color : #17a2b8;
+}
+.Button.btn_WF_LineTeal[status=focused]
+{
+	border : 1px solid #17a2b8;
+	background : #edf8f9;
+	color : #17a2b8;
+}
+.Button.btn_WF_LineRed[status=mouseover]
+{
+	border : 1px solid #dc3545;
+	background : #fceff0;
+	color : #dc3545;
+}
+.Button.btn_WF_LineRed[status=focused]
+{
+	border : 1px solid #dc3545;
+	background : #fceff0;
+	color : #dc3545;
+}
+.Button.btn_WF_FillBlue[status=mouseover]
+{
+	border : 1px solid #007bff;
+	background : #007bff;
+	color : #ffffff;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_FillBlue[status=focused]
+{
+	border : 1px solid #0069d9;
+	background : #0069d9;
+	color : #ffffff;
+}
+.Button.btn_WF_FillBlueSub[status=mouseover]
+{
+	border : 1px solid #1d9cff;
+	background : #1d9cff;
+	color : #ffffff;
+	border-radius : 3px;
+	font : 600 12px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_FillBlueSub[status=focused]
+{
+	border : 1px solid #1883d6;
+	background : #1676c1;
+	color : #ffffff;
+}
+.Button.btn_WF_FillGray[status=mouseover]
+{
+	border : 1px solid #6c757d;
+	background : #6c757d;
+	color : #ffffff;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_FillGray[status=focused]
+{
+	border : 1px solid #5a6268;
+	background : #5a6268;
+	color : #ffffff;
+}
+.Button.btn_WF_FillYellow[status=mouseover]
+{
+	border : 1px solid #ffbf05;
+	background : #ffbf05;
+	color : #ffffff;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_FillYellow[status=focused]
+{
+	border : 1px solid #ffa105;
+	background : #ffa105;
+	color : #ffffff;
+}
+.Button.btn_WF_FillGreen[status=mouseover]
+{
+	border : 1px solid #28a745;
+	background : #28a745;
+	color : #ffffff;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_FillGreen[status=focused]
+{
+	border : 1px solid #218838;
+	background : #218838;
+	color : #ffffff;
+}
+.Button.btn_WF_FillTeal[status=mouseover]
+{
+	border : 1px solid #17a2b8;
+	background : #17a2b8;
+	color : #ffffff;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_FillTeal[status=focused]
+{
+	border : 1px solid #138496;
+	background : #138496;
+	color : #ffffff;
+}
+.Button.btn_WF_FillRed[status=mouseover]
+{
+	border : 1px solid #dc3545;
+	background : #dc3545;
+	color : #ffffff;
+	border-radius : 3px;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_FillRed[status=focused]
+{
+	border : 1px solid #c82333;
+	background : #c82333;
+	color : #ffffff;
+}
+.Button.btn_WF_BaseL[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseL[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseR[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseR[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseT[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseT[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseB[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseB[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BookMark[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_WF_BookMark[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_WF_BookMarkS[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_WF_BookMarkS[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_WF_CalMonthNext[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_CalMonthNext[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_CalMonthPrev[status=mouseover]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_CalMonthPrev[status=focused]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_CalMonth[status=focused]
+{
+	border : 1px solid #808186;
+	background : #808186;
+	color : #ffffff;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_CalMonth[status=mouseover]
+{
+	border : 1px solid #808186;
+	background : #808186;
+	color : #ffffff;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.TextArea.txt_POP_Message[status=focused]
+{
+	border : 0px none;
+	background : #ffffff;
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+	padding : 20px 20px 0px 80px;
+}
+.TextArea.txt_POP_Message[status=mouseover]
+{
+	border : 0px none;
+	background : #ffffff;
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+	padding : 20px 20px 0px 80px;
+}
+.TextArea.txt_POP_Message[status=readonly]
+{
+	border : 0px none;
+	background : #ffffff;
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+	padding : 20px 20px 0px 80px;
+}
+.TextArea.txt_WF_Desc[status=mouseover]
+{
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+	padding : 6px 10px;
+	border : 1px solid #dedede;
+	background : #FFFFCC;
+	color : #000000;
+	letter-spacing : 0px;
+}
+.TextArea.txt_WF_Desc[status=mouseover] .nexacontentsbox
+{
+	-nexa-word-wrap : none;
+}
+.TextArea.txt_WF_Desc[status=mouseover] .nexatextarea
+{
+	-nexa-word-wrap : none;
+}
+.TextArea.txt_WF_Desc[status=focused]
+{
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+	padding : 6px 10px;
+	border : 1px solid #dedede;
+	background : #FFFFCC;
+	color : #000000;
+	letter-spacing : 0px;
+}
+.TextArea.txt_WF_Desc[status=focused] .nexacontentsbox
+{
+	-nexa-word-wrap : none;
+}
+.TextArea.txt_WF_Desc[status=focused] .nexatextarea
+{
+	-nexa-word-wrap : none;
+}
+.TextArea.txt_WF_Desc[status=readonly]
+{
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+	padding : 6px 10px;
+	border : 1px solid #dedede;
+	background : #FFFFCC;
+	color : #000000;
+	letter-spacing : 0px;
+}
+.TextArea.txt_WF_Desc[status=readonly] .nexacontentsbox
+{
+	-nexa-word-wrap : none;
+}
+.TextArea.txt_WF_Desc[status=readonly] .nexatextarea
+{
+	-nexa-word-wrap : none;
+}
+.Button.btn_WF_RShuttle[status=mouseover]
+{
+	background : linear-gradient(#ffffff 0%,#d9d9d9 100%);
+}
+.Button.btn_WF_RShuttle[status=focused]
+{
+	background : linear-gradient(#ffffff 0%,#d9d9d9 100%);
+}
+.Button.btn_WF_LShuttle[status=mouseover]
+{
+	background : linear-gradient(#ffffff 0%,#d9d9d9 100%);
+}
+.Button.btn_WF_LShuttle[status=focused]
+{
+	background : linear-gradient(#ffffff 0%,#d9d9d9 100%);
+}
+.Form[userstatus=contents]
+{
+	background : transparent;
+}
+.TitleBarControl .closebutton[userstatus=pushed]
+{
+	background : #ffffff;
+}
+.TitleBarControl .maxbutton[userstatus=pushed]
+{
+	background : #ffffff;
+}
+.TitleBarControl .minbutton[userstatus=pushed]
+{
+	background : #ffffff;
+}
+.TitleBarControl .normalbutton[userstatus=pushed]
+{
+	background : #ffffff;
+}
+.Edit[userstatus=nulltext]
+{
+	color : #acacac;
+}
+.MaskEdit[userstatus=nulltext]
+{
+	color : #acacac;
+}
+.MaskEdit[userstatus=invalidtext]
+{
+	color : #b71d26;
+}
+.TextArea[userstatus=nulltext]
+{
+	color : #acacac;
+}
+.ListBox .listboxitem[userstatus=selected]
+{
+	background : #2f59bf;
+	color : #ffffff;
+}
+.ListBoxControl .listboxitem[userstatus=selected]
+{
+	background : #2f59bf;
+	color : #ffffff;
+}
+.Combo .comboedit[userstatus=nulltext]
+{
+	color : #acacac;
+}
+.Calendar[userstatus=invalidtext]
+{
+	color : #b71d26;
+}
+.Calendar .calendaredit[userstatus=nulltext]
+{
+	color : #acacac;
+}
+.DatePickerControl .body .weekitem[userstatus=sunday]
+{
+	color : #e33645;
+}
+.DatePickerControl .body .weekitem[userstatus=saturday]
+{
+	color : #0f62d6;
+}
+.DatePickerControl .body .dayitem[userstatus=saturday]
+{
+	color : #0f62d6;
+}
+.DatePickerControl .body .dayitem[userstatus=selected]
+{
+	background : #4788f7;
+	color : #ffffff;
+}
+.DatePickerControl .body .dayitem[userstatus=sunday]
+{
+	color : #e33645;
+}
+.DatePickerControl .body .dayitem[userstatus=today]
+{
+	background : #daedfe;
+}
+.DatePickerControl .body .dayitem[userstatus=trailingday]
+{
+	color : #a9a9a9;
+}
+.DatePickerControl .body .yearitem[userstatus=selected]
+{
+	background : #4788f7;
+	color : #ffffff;
+}
+.DatePickerControl .body .monthitem[userstatus=selected]
+{
+	background : #4788f7;
+	color : #ffffff;
+}
+.FileDownload[userstatus=pushed]
+{
+	border : 1px solid #364f60;
+	background : #364f60;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton[userstatus=pushed]
+{
+	border : 1px solid #364f60;
+	background : #364f60;
+}
+.Menu .menuitem[userstatus=selected]
+{
+	color : #ffffff;
+}
+.PopupMenu .popupmenuitem[userstatus=selected]
+{
+	background : #e0e6f5;
+}
+.PopupMenuControl .popupmenuitem[userstatus=selected]
+{
+	background : #e0e6f5;
+}
+.HScrollBarControl .trackbar[userstatus=pushed]
+{
+	background : #898989;
+}
+.VScrollBarControl .trackbar[userstatus=pushed]
+{
+	background : #898989;
+}
+.Button[userstatus=selected]
+{
+	border : 1px solid #4b4f5e;
+	background : #4b4f5e;
+	color : #ffffff;
+}
+.Button[userstatus=pushed]
+{
+	border : 1px solid #4b4f5e;
+	background : #4b4f5e;
+	color : #ffffff;
+}
+.MultiComboListControl.popupMultiCombomulticombolist.dummy .selectallcheckbox[userstatus=selected]
+{
+	background : #b71d26;
+	color : #ffffff;
+}
+.MultiComboListControl.popupMultiCombomulticombolist.dummy .checkboxset .checkboxsetitem[userstatus=selected]
+{
+	color : #2f59bf;
+}
+.Tab .tabbuttonitemTab[userstatus=selected]
+{
+	border : 2px solid #2f59bf, 1px solid #acacac, 0px none, 1px solid #acacac;
+	background : #ffffff;
+	color : #222222;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Calendar .calendarspindownbutton[userstatus=pushed]
+{
+	border : 1px solid #2f59bf,0px none,0px none,1px solid #2f59bf;
+}
+.Calendar .calendarspinupbutton[userstatus=pushed]
+{
+	border : 0px none,0px none,0px none,1px solid #2f59b;
+}
+.DateRangePicker .datepickergroup .datepicker .body .weekitem[userstatus=saturday]
+{
+	color : #0f62d6;
+}
+.DateRangePickerControl .datepickergroup .datepicker .body .weekitem[userstatus=saturday]
+{
+	color : #0f62d6;
+}
+.PopupDateRangePicker .datepickergroup .datepicker .body .weekitem[userstatus=saturday]
+{
+	color : #0f62d6;
+}
+.DateRangePicker .datepickergroup .datepicker .body .weekitem[userstatus=sunday]
+{
+	color : #e33645;
+}
+.DateRangePickerControl .datepickergroup .datepicker .body .weekitem[userstatus=sunday]
+{
+	color : #e33645;
+}
+.PopupDateRangePicker .datepickergroup .datepicker .body .weekitem[userstatus=sunday]
+{
+	color : #e33645;
+}
+.DateRangePicker .datepickergroup .datepicker .body .dayitem[userstatus=saturday]
+{
+	color : #0f62d6;
+}
+.DateRangePickerControl .datepickergroup .datepicker .body .dayitem[userstatus=saturday]
+{
+	color : #0f62d6;
+}
+.PopupDateRangePicker .datepickergroup .datepicker .body .dayitem[userstatus=saturday]
+{
+	color : #0f62d6;
+}
+.DateRangePicker .datepickergroup .datepicker .body .dayitem[userstatus=selected]
+{
+	background : #191970;
+	color : #ffffff;
+}
+.DateRangePickerControl .datepickergroup .datepicker .body .dayitem[userstatus=selected]
+{
+	background : #191970;
+	color : #ffffff;
+}
+.PopupDateRangePicker .datepickergroup .datepicker .body .dayitem[userstatus=selected]
+{
+	background : #191970;
+	color : #ffffff;
+}
+.DateRangePicker .datepickergroup .datepicker .body .dayitem[userstatus=sunday]
+{
+	color : #e33645;
+}
+.DateRangePickerControl .datepickergroup .datepicker .body .dayitem[userstatus=sunday]
+{
+	color : #e33645;
+}
+.PopupDateRangePicker .datepickergroup .datepicker .body .dayitem[userstatus=sunday]
+{
+	color : #e33645;
+}
+.DateRangePicker .datepickergroup .datepicker .body .dayitem[userstatus=today]
+{
+	background : #3d8b48;
+	color : #ffffff;
+}
+.DateRangePickerControl .datepickergroup .datepicker .body .dayitem[userstatus=today]
+{
+	background : #3d8b48;
+	color : #ffffff;
+}
+.PopupDateRangePicker .datepickergroup .datepicker .body .dayitem[userstatus=today]
+{
+	background : #3d8b48;
+	color : #ffffff;
+}
+.DateRangePicker .datetabbutton[userstatus=selected]
+{
+	border : 0px none;
+	background : #ffffff;
+	border : 0px none;
+}
+.PopupDateRangePicker .datetabbutton[userstatus=selected]
+{
+	border : 0px none;
+	background : #ffffff;
+	border : 0px none;
+}
+.DateRangePicker .timetabbutton[userstatus=selected]
+{
+	border : 0px none;
+	background : #ffffff;
+	border : 0px none;
+}
+.PopupDateRangePicker .timetabbutton[userstatus=selected]
+{
+	border : 0px none;
+	background : #ffffff;
+	border : 0px none;
+}
+.TimePickerControl .ampmspinner .spinneritem[userstatus=selected]
+{
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.TimePickerControl .hourspinner .spinneritem[userstatus=selected]
+{
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.TimePickerControl .minspinner .spinneritem[userstatus=selected]
+{
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.TimePickerControl .secspinner .spinneritem[userstatus=selected]
+{
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.DateField .box[userstatus=invalid]
+{
+	border : 1px solid #b71d26;
+	color : #b71d26;
+}
+.DateField .box[userstatus=valid]
+{
+	border : 1px solid #618e02;
+	color : #618e02;
+}
+.DateField .box .dropbutton[userstatus=invalid]
+{
+	background : url('./images/dtf_WF_DropInvalidIcon.png') no-repeat center center;
+}
+.DateField .box .dropbutton[userstatus=valid]
+{
+	background : url('./images/dtf_WF_DropvalidIcon.png') no-repeat center center;
+}
+.DateRangePickerControl .datetabbutton[userstatus=selected]
+{
+	background : #ffffff;
+}
+.DateRangePickerControl .timetabbutton[userstatus=selected]
+{
+	background : #ffffff;
+}
+.TextField .box[userstatus=invalid]
+{
+	border : 1px solid #b71d26;
+}
+.TextField .box[userstatus=valid]
+{
+	border : 1px solid #618e02;
+}
+.TextField .box .trailingbutton[userstatus=invalid]
+{
+	background : url('./images/txtf_WF_InvalidIcon.png') no-repeat center center;
+}
+.TextField .box .trailingbutton[userstatus=valid]
+{
+	background : url('./images/txtf_WF_ValidIcon.png') no-repeat center center;
+}
+.FieldBaseTextControl[userstatus=valid]
+{
+	color : #618e02;
+}
+.FieldBaseTextControl[userstatus=invalid]
+{
+	color : #b71d26;
+}
+.FieldBaseLabelControl[userstatus=floating]
+{
+	background : #ffffff;
+	font : 12px "Segoe UI", "Malgun Gothic";
+}
+.FieldBaseLabelControl[userstatus=floatinginvalid]
+{
+	color : #b71d26;
+	background : #ffffff;
+	font : 12px "Segoe UI", "Malgun Gothic";
+}
+.FieldBaseLabelControl[userstatus=floatingvalid]
+{
+	color : #618e02;
+	background : #ffffff;
+	font : 12px "Segoe UI", "Malgun Gothic";
+}
+.Grid .body .row .cell[userstatus=selected]
+{
+	background : #f9eef0;
+}
+.GridCellControl .cellbutton[userstatus=pushed]
+{
+	border : 1px solid #acacac;
+	background : linear-gradient(#e6e6e6 0%,#ffffff 100%);
+}
+.MultiComboListControl.popupGridCellControlcellmulticombomulticombolist.dummy.dummy .selectallcheckbox[userstatus=selected]
+{
+	background : #b71d26;
+	color : #ffffff;
+}
+.MultiComboListControl.popupGridCellControlcellmulticombomulticombolist.dummy.dummy .checkboxset .checkboxsetitem[userstatus=selected]
+{
+	color : #2f59bf;
+}
+.ListViewCellControl .cellbutton[userstatus=pushed]
+{
+	border : 1px solid #2f59bf;
+	background : #2f59bf;
+	color : #ffffff;
+}
+.MultiComboListControl.popupListViewCellControlcellmulticombomulticombolist.dummy.dummy .selectallcheckbox[userstatus=selected]
+{
+	background : #b71d26;
+	color : #ffffff;
+}
+.MultiComboListControl.popupListViewCellControlcellmulticombomulticombolist.dummy.dummy .checkboxset .checkboxsetitem[userstatus=selected]
+{
+	color : #2f59bf;
+}
+.Button.btn_LOGIN_Login[userstatus=pushed]
+{
+	border : 1px solid #483d8b;
+	background : #483d8b;
+	color : #ffffff;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+	letter-spacing : 1px;
+}
+.TextField.txtf_LOGIN_ID .label[userstatus=floating]
+{
+	background : #f3f5f6;
+	color : #002795;
+}
+.TextField.txtf_LOGIN_PW .label[userstatus=floating]
+{
+	background : #f3f5f6;
+	color : #002795;
+}
+.Button.btn_MDI_Home[userstatus=pushed]
+{
+	border : 1px solid #d6dee3;
+	background : #eef1f6;
+}
+.Button.btn_MDI_Max[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_Min[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_Open[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none, 1px solid #e3e4e9, 1px solid #e3e4e9, 1px solid #e3e4e9;
+}
+.Button.btn_MDI_Open[userstatus=selected]
+{
+	background : transparent;
+	border : 0px none, 1px solid #e3e4e9, 1px solid #e3e4e9, 1px solid #e3e4e9;
+}
+.Button.btn_MDI_Verti[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_Close[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none;
+	border : 0px none, 1px solid #e3e4e9, 1px solid #e3e4e9, 1px solid #e3e4e9;
+}
+.Button.btn_MDI_Close[userstatus=selected]
+{
+	background : transparent;
+	border : 0px none;
+	border : 0px none, 1px solid #e3e4e9, 1px solid #e3e4e9, 1px solid #e3e4e9;
+}
+.Button.btn_MDI_Collapse[userstatus=pushed]
+{
+	border : 0px none;
+	background : url('./images/btn_MDI_Collapse.png') no-repeat top center;
+}
+.Button.btn_MDI_Collapse[userstatus=selected]
+{
+	border : 0px none;
+	background : url('./images/btn_MDI_Collapse.png') no-repeat top center;
+}
+.Button.btn_MDI_Expand[userstatus=pushed]
+{
+	border : 0px none;
+	background : url('./images/btn_MDI_Expand.png') no-repeat top center;
+}
+.Button.btn_MDI_Expand[userstatus=selected]
+{
+	border : 0px none;
+	background : url('./images/btn_MDI_Expand.png') no-repeat top center;
+}
+.Button.btn_MF_Close[userstatus=selected]
+{
+	border : 0px none;
+	background : url('./images/btn_MF_Close.png') no-repeat center center;
+}
+.Button.btn_MF_Close[userstatus=pushed]
+{
+	border : 0px none;
+	background : url('./images/btn_MF_Close.png') no-repeat center center;
+}
+.Button.btn_MDI_Horz[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_MDI_AllX[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Tab.tab_MDI_Tab .tabbuttonitemTab.tabbuttonitemTabtab_MDI_Tab[userstatus=selected]
+{
+	border : 1px solid #d6dee3, 1px solid #d6dee3, 0px none, 1px solid #d6dee3;
+	background : #ffffff;
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_TF_LogoIcon[userstatus=pushed]
+{
+	background : #475a9e;
+	border : 0px none;
+}
+.Button.btn_TF_LogoIcon[userstatus=selected]
+{
+	background : #475a9e;
+	border : 0px none;
+}
+.Button.btn_TF_Logout[userstatus=pushed]
+{
+	border : 0px none,0px none,0px none,1px solid #acacac;
+	background : transparent;
+	color : #222222;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_TF_Menu[userstatus=pushed]
+{
+	background : #ffffff;
+	border : 0px none;
+	color : #71797c;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_TF_Menu[userstatus=selected]
+{
+	background : #ffffff;
+	border : 0px none,0px none,3px solid #17a2b8;
+	color : #212529;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_TF_Prev[userstatus=selected]
+{
+	border : 0px none;
+	background : URL("./images/btn_TF_Prev.png") no-repeat center center transparent;
+}
+.Button.btn_TF_Prev[userstatus=pushed]
+{
+	border : 0px none;
+	background : URL("./images/btn_TF_Prev.png") no-repeat center center transparent;
+}
+.Button.btn_TF_Next[userstatus=selected]
+{
+	border : 0px none;
+	background : URL("./images/btn_TF_Next.png") no-repeat center center transparent;
+}
+.Button.btn_TF_Next[userstatus=pushed]
+{
+	border : 0px none;
+	background : URL("./images/btn_TF_Next.png") no-repeat center center transparent;
+}
+.Button.btn_TF_PushN[userstatus=selected]
+{
+	border : 0px none;
+	background : url('./images/img_TF_PushN.png') no-repeat center center transparent;
+}
+.Button.btn_TF_PushN[userstatus=pushed]
+{
+	border : 0px none;
+	background : url('./images/img_TF_PushN.png') no-repeat center center transparent;
+}
+.Menu.mnu_TF_Menu .menuitem[userstatus=selected]
+{
+	color : #ffc601;
+}
+.Grid.grd_LF_Detail .body .row .cell[userstatus=selected]
+{
+	color : #262626;
+	background : #d3dce1;
+	font : 12px "Segoe UI", "Malgun Gothic";
+}
+.Grid.grd_LF_Detail .body .row .cell.oddcell[userstatus=selected]
+{
+	background : #d3dce1;
+}
+.Grid.grd_LF_Tree .body .row .cell[userstatus=selected]
+{
+	background : transparent;
+	border : 0px none;
+	color : #002795;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Grid.grd_LF_Tree .body .row .cell.oddcell[userstatus=selected]
+{
+	background : transparent;
+}
+.Grid.grd_LF_Tree .body .row .cell.grd_LF_TreeCell[userstatus=selected]
+{
+	color : #dc3545;
+	background : transparent;
+	border : 0px none;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_LF_Mnu[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Home[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Bookmark[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Edit.edt_LF_Search[userstatus=nulltext]
+{
+	background : #7aaed9;
+	border : 0px none;
+	padding : 0px 30px 0px 8px;
+	color : #ffffff;
+	border-radius : 5px;
+	font : 12px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_LF_Search[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Setting[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Find[userstatus=pushed]
+{
+	border : 1px solid #17a2b8;
+	background : #17a2b8;
+	border-radius : 3px;
+}
+.Button.btn_LF_Find[userstatus=selected]
+{
+	border : 1px solid #17a2b8;
+	background : #17a2b8;
+	border-radius : 3px;
+}
+.Button.btn_LF_Change[userstatus=pushed]
+{
+	border : 1px solid #17a2b8;
+	background : #17a2b8;
+	border-radius : 3px;
+}
+.Button.btn_LF_Change[userstatus=selected]
+{
+	border : 1px solid #17a2b8;
+	background : #17a2b8;
+	border-radius : 3px;
+}
+.Button.btn_LF_Pin[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Pin[userstatus=selected]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Logout[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_LF_Quick[userstatus=pushed]
+{
+	background : #6c7b7e;
+	border : 1px solid #a3ad4f;
+	border-radius : 5px;
+	font : 600 12px "Segoe UI", "Malgun Gothic";
+	color : #dade20;
+}
+.Button.btn_LF_Quick[userstatus=selected]
+{
+	background : #6c7b7e;
+	border : 1px solid #a3ad4f;
+	border-radius : 5px;
+	font : 600 12px "Segoe UI", "Malgun Gothic";
+	color : #dade20;
+}
+.Grid.grd_WF_Main .body .row .cell[userstatus=selected]
+{
+	background : transparent;
+	border : 0px none;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	color : #4d4f5c;
+}
+.Grid.grd_WF_Main .body .row .cell.oddcell[userstatus=selected]
+{
+	background : transparent;
+}
+.Grid.grd_WF_Main .body .row .cell.cell_WF_Right[userstatus=selected]
+{
+	color : #acacac;
+	font : 13px "Segoe UI", "Malgun Gothic";
+}
+.Grid.grd_WF_Main .body .row .cell.cell_WF_Right[userstatus=selected] .nexacontentsbox
+{
+	text-align : right;
+	text-decoration : none;
+}
+.Button.btn_WF_Paging[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+	color : #17a2b8;
+	font : 600 15px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_Paging[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+	color : #17a2b8;
+	font : 600 15px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_PagingNext[userstatus=pushed]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingNext.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingNext[userstatus=selected]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingNext.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingPrev[userstatus=pushed]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingPrev.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingPrev[userstatus=selected]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingPrev.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingDNext[userstatus=pushed]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingDNext.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingDNext[userstatus=selected]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingDNext.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingDPrev[userstatus=pushed]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingDPrev.png') no-repeat center center transparent;
+}
+.Button.btn_WF_PagingDPrev[userstatus=selected]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingDPrev.png') no-repeat center center transparent;
+}
+.Button.btn_WF_Play[userstatus=pushed]
+{
+	border : 0px none;
+	background : #eff1f3;
+	box-shadow : 2px 2px 5px 0px #b7b7b7;
+	border-radius : 15px;
+	font : 18px "Segoe UI", "Malgun Gothic";
+	color : #a4b0af;
+}
+.Button.btn_WF_Guide[userstatus=pushed]
+{
+	border : 0px none;
+	background : #ffffff;
+	box-shadow : 2px 2px 5px 0px #b7b7b7;
+	border-radius : 15px;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+	color : #777777;
+}
+.Button.btn_WF_Support[userstatus=pushed]
+{
+	border : 0px none;
+	background : #ffffff;
+	box-shadow : 2px 2px 5px 0px #b7b7b7;
+	border-radius : 15px;
+	font : 600 16px  "Segoe UI", "Malgun Gothic";
+	color : #777777;
+}
+.Button.btn_WF_Add[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_Add[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_Delete[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_Delete[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_Exec[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_Exec[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_WF_Exec[userstatus=selected]
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_Exec[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_POP_Close[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_POP_Close[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_CRUD[userstatus=pushed]
+{
+	border : 1px solid #1a326d;
+	background : #1a326d;
+	color : #ffffff;
+}
+.Button.btn_WF_Find[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_WF_ShuttleL[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleL[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleR[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleR[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleT[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleT[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleB[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleB[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_Status[userstatus=pushed]
+{
+	border : 1px solid #dc3545;
+	background : #dc3545;
+	color : #ffffff;
+}
+.Button.btn_WF_Status[userstatus=selected]
+{
+	border : 1px solid #007bff;
+	background : #007bff;
+	color : #ffffff;
+}
+.Grid .body .row .cell.cell_WF_UploadBtn .cellbutton[userstatus=pushed]
+{
+	background : url('./images/cell_WF_UploadBtn.png') no-repeat left center #59b220;
+	border : 0px none;
+	color : #ffffff;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	border-radius : 5px;
+}
+.Grid .body .row .cell.cell_WF_DnloadBtn .cellbutton[userstatus=pushed]
+{
+	background : url('./images/cell_WF_DnloadBtn.png') no-repeat left center #8b6cbc;
+	border : 0px none;
+	color : #ffffff;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	border-radius : 5px;
+}
+.Button.btn_WF_PlayIcon[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+}
+.Button.btn_WF_PlayIcon[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_WF_PlayIcon[userstatus=selected]
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+}
+.Button.btn_WF_PlayIcon[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_WF_LineBlue[userstatus=pushed]
+{
+	border : 1px solid #cfe6ff;
+	background : #007bff;
+	color : #ffffff;
+}
+.Button.btn_WF_LineBlue[userstatus=selected]
+{
+	border : 1px solid #cfe6ff;
+	background : #007bff;
+	color : #ffffff;
+}
+.Button.btn_WF_LineGray[userstatus=pushed]
+{
+	border : 1px solid #e3e5e7;
+	background : #6c757d;
+	color : #ffffff;
+}
+.Button.btn_WF_LineGray[userstatus=selected]
+{
+	border : 1px solid #e3e5e7;
+	background : #6c757d;
+	color : #ffffff;
+}
+.Button.btn_WF_LineYellow[userstatus=pushed]
+{
+	border : 1px solid #fffaeb;
+	background : #ffbf05;
+	color : #ffffff;
+}
+.Button.btn_WF_LineYellow[userstatus=selected]
+{
+	border : 1px solid #fffaeb;
+	background : #ffbf05;
+	color : #ffffff;
+}
+.Button.btn_WF_LineGreen[userstatus=pushed]
+{
+	border : 1px solid #d7eedc;
+	background : #28a745;
+	color : #ffffff;
+}
+.Button.btn_WF_LineGreen[userstatus=selected]
+{
+	border : 1px solid #d7eedc;
+	background : #28a745;
+	color : #ffffff;
+}
+.Button.btn_WF_LineTeal[userstatus=pushed]
+{
+	border : 1px solid #d3edf2;
+	background : #17a2b8;
+	color : #ffffff;
+}
+.Button.btn_WF_LineTeal[userstatus=selected]
+{
+	border : 1px solid #d3edf2;
+	background : #17a2b8;
+	color : #ffffff;
+}
+.Button.btn_WF_LineRed[userstatus=pushed]
+{
+	border : 1px solid #f8d9dc;
+	background : #dc3545;
+	color : #ffffff;
+}
+.Button.btn_WF_LineRed[userstatus=selected]
+{
+	border : 1px solid #f8d9dc;
+	background : #dc3545;
+	color : #ffffff;
+}
+.Button.btn_WF_FillBlue[userstatus=pushed]
+{
+	border : 1px solid #0069d9;
+	background : #0069d9;
+	color : #ffffff;
+}
+.Button.btn_WF_FillBlue[userstatus=selected]
+{
+	border : 1px solid #0069d9;
+	background : #0069d9;
+	color : #ffffff;
+}
+.Button.btn_WF_FillBlueSub[userstatus=pushed]
+{
+	border : 1px solid #1883d6;
+	background : #1676c1;
+	color : #ffffff;
+}
+.Button.btn_WF_FillBlueSub[userstatus=selected]
+{
+	border : 1px solid #1883d6;
+	background : #1676c1;
+	color : #ffffff;
+}
+.Button.btn_WF_FillGray[userstatus=pushed]
+{
+	border : 1px solid #5a6268;
+	background : #5a6268;
+	color : #ffffff;
+}
+.Button.btn_WF_FillGray[userstatus=selected]
+{
+	border : 1px solid #5a6268;
+	background : #5a6268;
+	color : #ffffff;
+}
+.Button.btn_WF_FillYellow[userstatus=pushed]
+{
+	border : 1px solid #ffa105;
+	background : #ffa105;
+	color : #ffffff;
+}
+.Button.btn_WF_FillYellow[userstatus=selected]
+{
+	border : 1px solid #ffa105;
+	background : #ffa105;
+	color : #ffffff;
+}
+.Button.btn_WF_FillGreen[userstatus=pushed]
+{
+	border : 1px solid #218838;
+	background : #218838;
+	color : #ffffff;
+}
+.Button.btn_WF_FillGreen[userstatus=selected]
+{
+	border : 1px solid #218838;
+	background : #218838;
+	color : #ffffff;
+}
+.Button.btn_WF_FillTeal[userstatus=pushed]
+{
+	border : 1px solid #138496;
+	background : #138496;
+	color : #ffffff;
+}
+.Button.btn_WF_FillTeal[userstatus=selected]
+{
+	border : 1px solid #138496;
+	background : #138496;
+	color : #ffffff;
+}
+.Button.btn_WF_FillRed[userstatus=pushed]
+{
+	border : 1px solid #c82333;
+	background : #c82333;
+	color : #ffffff;
+}
+.Button.btn_WF_FillRed[userstatus=selected]
+{
+	border : 1px solid #c82333;
+	background : #c82333;
+	color : #ffffff;
+}
+.Button.btn_WF_BaseL[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseL[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseR[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseR[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseT[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseT[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseB[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseB[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BookMark[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_WF_BookMark[userstatus=selected]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_WF_BookMarkS[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_WF_BookMarkS[userstatus=selected]
+{
+	background : transparent;
+	border : 0px none;
+}
+.Button.btn_WF_CalMonthNext[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_CalMonthNext[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_CalMonthPrev[userstatus=pushed]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_CalMonthPrev[userstatus=selected]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_CalMonth[userstatus=pushed]
+{
+	border : 1px solid #808186;
+	background : #808186;
+	color : #ffffff;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_CalMonth[userstatus=selected]
+{
+	border : 1px solid #808186;
+	background : #808186;
+	color : #ffffff;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_RShuttle[userstatus=pushed]
+{
+	background : linear-gradient(#ffffff 0%,#d9d9d9 100%);
+}
+.Button.btn_WF_RShuttle[userstatus=selected]
+{
+	background : linear-gradient(#ffffff 0%,#d9d9d9 100%);
+}
+.Button.btn_WF_LShuttle[userstatus=pushed]
+{
+	background : linear-gradient(#ffffff 0%,#d9d9d9 100%);
+}
+.Button.btn_WF_LShuttle[userstatus=selected]
+{
+	background : linear-gradient(#ffffff 0%,#d9d9d9 100%);
+}
+.Static[status=disabled]
+{
+	color : #a9a9a9;
+}
+.Edit[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.MaskEdit[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.TextArea[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ListBox[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ListBoxControl[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.Combo[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.MultiCombo[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.Calendar[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.FileDownload[status=disabled]
+{
+	opacity : 70%;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton[status=disabled]
+{
+	opacity : 70%;
+}
+.FileUpload .fileuploaditem .fileuploaditemedit[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ImageViewer[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.GroupBox .groupboxcontents[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+}
+.GroupBox .groupboxtitle[status=disabled]
+{
+	color : #a9a9a9;
+}
+.ProgressBar[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ProgressBarControl[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ProgressBar .progressbaritem[status=disabled]
+{
+	background : #e1e7f5;
+}
+.ProgressBarControl .progressbaritem[status=disabled]
+{
+	background : #e1e7f5;
+}
+.ProgressBar .progressbartext[status=disabled]
+{
+	color : #a9a9a9;
+}
+.ProgressBarControl .progressbartext[status=disabled]
+{
+	color : #a9a9a9;
+}
+.Menu[status=disabled]
+{
+	background : #f9f9f9;
+}
+.Menu .menuitem[status=disabled]
+{
+	color : #a9a9a9;
+}
+.PopupMenu .popupmenuitem[status=disabled]
+{
+	color : #a9a9a9;
+}
+.PopupMenuControl .popupmenuitem[status=disabled]
+{
+	color : #a9a9a9;
+}
+.HScrollBarControl[status=disabled]
+{
+	border : 1px solid #e6e6e6, 0px none,0px none,0px none;
+	background : #f9f9f9;
+}
+.HScrollBarControl .trackbar[status=disabled]
+{
+	background : #e3e3e3;
+}
+.VScrollBarControl[status=disabled]
+{
+	border : 0px none,0px none,0px none,1px solid #e6e6e6;
+	background : #f9f9f9;
+}
+.VScrollBarControl .trackbar[status=disabled]
+{
+	background : #e3e3e3;
+}
+.Button[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.Spin[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.CheckBox[status=disabled]
+{
+	color : #a9a9a9;
+}
+.CheckBoxSet .checkboxsetitem[status=disabled]
+{
+	color : #a9a9a9;
+}
+.Radio .radioitem[status=disabled]
+{
+	color : #a9a9a9;
+}
+.Tab .tabbuttonitemTab[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.Calendar .calendarspindownbutton[status=disabled]
+{
+	border : 1px solid #e6e6e6,0px none,0px none,1px solid #e6e6e6;
+	background : #f9f9f9;
+}
+.Calendar .calendarspinupbutton[status=disabled]
+{
+	border : 0px none,0px none, 0px none,1px solid #e6e6e6;
+	background : #f9f9f9;
+}
+.DateField .box[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	color : #a9a9a9;
+}
+.DateField .box .dropbutton[status=disabled]
+{
+	background : url('./images/cal_WF_DropD.png') no-repeat center center;
+}
+.TextField .box[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	color : #a9a9a9;
+}
+.TextField .charcounttext[status=disabled]
+{
+	color : #a9a9a9;
+}
+.FieldBaseTextControl[status=disabled]
+{
+	color : #a9a9a9;
+}
+.FieldBaseLabelControl[status=disabled]
+{
+	color : #a9a9a9;
+}
+.MultiLineTextField .box[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	color : #a9a9a9;
+}
+.MultiLineTextField .charcounttext[status=disabled]
+{
+	color : #a9a9a9;
+}
+.GridCellControl .cellbutton[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.GridCellControl .celledit[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.GridCellControl .cellmaskedit[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.GridCellControl .celltextarea[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ListViewCellControl .cellbutton[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ListViewCellControl .celledit[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ListViewCellControl .cellmaskedit[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ListViewCellControl .celltextarea[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.Button.btn_MDI_Collapse[status=disabled]
+{
+	border : 0px none;
+	background : url('./images/btn_MDI_Collapse.png') no-repeat top center;
+}
+.Button.btn_MDI_Expand[status=disabled]
+{
+	border : 0px none;
+	background : url('./images/btn_MDI_Expand.png') no-repeat top center;
+}
+.Button.btn_TF_Menu[status=disabled]
+{
+	background : #ffffff;
+	border : 0px none;
+	color : #71797c;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_TF_Prev[status=disabled]
+{
+	border : 0px none;
+	background : URL("./images/btn_TF_Prev.png") no-repeat center center transparent;
+}
+.Button.btn_TF_Next[status=disabled]
+{
+	border : 0px none;
+	background : URL("./images/btn_TF_Next.png") no-repeat center center transparent;
+}
+.Button.btn_WF_PagingNext[status=disabled]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingNext.png') no-repeat center center transparent;
+	opacity : 0.5;
+}
+.Button.btn_WF_PagingPrev[status=disabled]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingPrev.png') no-repeat center center transparent;
+	opacity : 0.5;
+}
+.Button.btn_WF_PagingDNext[status=disabled]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingDNext.png') no-repeat center center transparent;
+	opacity : 0.5;
+}
+.Button.btn_WF_PagingDPrev[status=disabled]
+{
+	border : 0px none;
+	background : url('./images/btn_WF_PagingDPrev.png') no-repeat center center transparent;
+	opacity : 0.5;
+}
+.Button.btn_WF_Exec[status=disabled]
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_Exec[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_POP_Close[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleL[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleR[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleT[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_ShuttleB[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Grid .body .row .cell.cell_WF_UploadBtn .cellbutton[status=disabled]
+{
+	background : url('./images/cell_WF_UploadBtn.png') no-repeat left center #59b220;
+	border : 0px none;
+	color : #ffffff;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	border-radius : 5px;
+}
+.Grid .body .row .cell.cell_WF_DnloadBtn .cellbutton[status=disabled]
+{
+	background : url('./images/cell_WF_DnloadBtn.png') no-repeat left center #8b6cbc;
+	border : 0px none;
+	color : #ffffff;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+	border-radius : 5px;
+}
+.Button.btn_WF_PlayIcon[status=disabled]
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+}
+.Button.btn_WF_PlayIcon[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_WF_FillBlue[status=disabled]
+{
+	border : 1px solid #58aaff;
+	background : #58aaff;
+	color : #b8d1ff;
+}
+.Button.btn_WF_FillBlueSub[status=disabled]
+{
+	border : 1px solid #1883d6;
+	background : #58aaff;
+	color : #b8d1ff;
+}
+.Button.btn_WF_FillGray[status=disabled]
+{
+	border : 1px solid #b0b6ba;
+	background : #b0b6ba;
+	color : #cccfd1;
+}
+.Button.btn_WF_FillYellow[status=disabled]
+{
+	border : 1px solid #ffd75e;
+	background : #ffd75e;
+	color : #fff2b9;
+}
+.Button.btn_WF_FillGreen[status=disabled]
+{
+	border : 1px solid #74c686;
+	background : #74c686;
+	color : #b6dbbc;
+}
+.Button.btn_WF_FillTeal[status=disabled]
+{
+	border : 1px solid #67c3d0;
+	background : #67c3d0;
+	color : #b3d9e2;
+}
+.Button.btn_WF_FillRed[status=disabled]
+{
+	border : 1px solid #e97b86;
+	background : #e97b86;
+	color : #f0b9bc;
+}
+.Button.btn_WF_BaseL[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseR[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseT[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_BaseB[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_CalMonthNext[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.Button.btn_WF_CalMonthPrev[status=disabled]
+{
+	border : 0px none;
+	background : transparent;
+}
+.TextArea.txt_WF_Desc[status=disabled]
+{
+	font : 13px/21px "Segoe UI","Malgun Gothic";
+	padding : 6px 10px;
+	border : 1px solid #dedede;
+	background : #FFFFCC;
+	color : #000000;
+	letter-spacing : 0px;
+}
+.TextArea.txt_WF_Desc[status=disabled] .nexacontentsbox
+{
+	-nexa-word-wrap : none;
+}
+.TextArea.txt_WF_Desc[status=disabled] .nexatextarea
+{
+	-nexa-word-wrap : none;
+}
+.Button.btn_WF_RShuttle[status=disabled]
+{
+	opacity : 0.6;
+}
+.Button.btn_WF_LShuttle[status=disabled]
+{
+	opacity : 0.6;
+}
+.CheckBox[status=disabled][userstatus=selected]
+{
+	color : #a9a9a9;
+}
+.CheckBoxSet .checkboxsetitem[status=disabled][userstatus=selected]
+{
+	color : #a9a9a9;
+}
+.Radio .radioitem[status=disabled][userstatus=selected]
+{
+	color : #a9a9a9;
+}
+.FieldBaseLabelControl[status=focused][userstatus=floating]
+{
+	color : #2f59bf;
+}
+.FieldBaseLabelControl[status=mouseover][userstatus=floating]
+{
+	color : #2f59bf;
+}

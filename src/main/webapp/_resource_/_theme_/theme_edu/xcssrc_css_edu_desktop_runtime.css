@@ -1,0 +1,197 @@
+﻿.Button.btn_WF_GuideExec
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_GuideExec .nexacontentsbox
+{
+	text-align : left;
+}
+.Static.sta_WF_GuideScript
+{
+	font : normal 13px/23px "Consolas";
+	border : 1px solid #dedede;
+	background : #f8f8f8;
+}
+.Static.sta_WF_GuideScript .nexacontentsbox
+{
+	-nexa-word-wrap : english;
+}
+.Static.sta_WF_GuideRefer
+{
+	font : 600 12px "Consolas";
+	color : #143a84;
+}
+.Static.sta_WF_GuideRefer .nexacontentsbox
+{
+	text-decoration : underline;
+}
+.Static.sta_WF_GuideResult
+{
+	font : 13px "Segoe UI", "Malgun Gothic";
+	border : 1px solid #dedede;
+}
+.Static.sta_WF_GuideTitle1
+{
+	font : 600 18px "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_GuideTitle2
+{
+	background : url('./images/icon_Dot.png') no-repeat left center;
+	font : 600 15px "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_GuideTitle3
+{
+	font : 600 14px "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_GuideTitle4
+{
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Static.sta_WF_GuideLabel
+{
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.TextArea.txt_WF_GuideDesc
+{
+	font : normal 13px/22px "Consolas";
+	padding : 6px 10px;
+	border : 1px solid #dedede;
+	background : #FFFFCC;
+	color : #000000;
+	letter-spacing : 0px;
+}
+.TextArea.txt_WF_GuideDesc .nexacontentsbox
+{
+	-nexa-word-wrap : none;
+}
+.TextArea.txt_WF_GuideDesc .nexatextarea
+{
+	-nexa-word-wrap : none;
+}
+.Button.btn_WF_GuideExec[status=focused]
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_GuideExec[status=focused] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_WF_GuideExec[status=mouseover]
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+	font : 13px "Consolas";
+}
+.Button.btn_WF_GuideExec[status=mouseover] .nexacontentsbox
+{
+	text-align : left;
+	text-decoration : underline;
+}
+.TextArea.txt_WF_GuideDesc[status=mouseover]
+{
+	font : normal 13px/22px "Consolas";
+	padding : 6px 10px;
+	border : 1px solid #dedede;
+	background : #FFFFCC;
+	color : #000000;
+	letter-spacing : 0px;
+}
+.TextArea.txt_WF_GuideDesc[status=mouseover] .nexacontentsbox
+{
+	-nexa-word-wrap : none;
+}
+.TextArea.txt_WF_GuideDesc[status=mouseover] .nexatextarea
+{
+	-nexa-word-wrap : none;
+}
+.TextArea.txt_WF_GuideDesc[status=focused]
+{
+	font : normal 13px/22px "Consolas";
+	padding : 6px 10px;
+	border : 1px solid #dedede;
+	background : #FFFFCC;
+	color : #000000;
+	letter-spacing : 0px;
+}
+.TextArea.txt_WF_GuideDesc[status=focused] .nexacontentsbox
+{
+	-nexa-word-wrap : none;
+}
+.TextArea.txt_WF_GuideDesc[status=focused] .nexatextarea
+{
+	-nexa-word-wrap : none;
+}
+.TextArea.txt_WF_GuideDesc[status=readonly]
+{
+	font : normal 13px/22px "Consolas";
+	padding : 6px 10px;
+	border : 1px solid #dedede;
+	background : #FFFFCC;
+	color : #000000;
+	letter-spacing : 0px;
+}
+.TextArea.txt_WF_GuideDesc[status=readonly] .nexacontentsbox
+{
+	-nexa-word-wrap : none;
+}
+.TextArea.txt_WF_GuideDesc[status=readonly] .nexatextarea
+{
+	-nexa-word-wrap : none;
+}
+.Button.btn_WF_GuideExec[userstatus=pushed]
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_GuideExec[userstatus=pushed] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_WF_GuideExec[userstatus=selected]
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_GuideExec[userstatus=selected] .nexacontentsbox
+{
+	text-align : left;
+}
+.Button.btn_WF_GuideExec[status=disabled]
+{
+	background : transparent;
+	border : 0px none;
+	color : #003d9f;
+	font : 600 13px "Segoe UI", "Malgun Gothic";
+}
+.Button.btn_WF_GuideExec[status=disabled] .nexacontentsbox
+{
+	text-align : left;
+}
+.TextArea.txt_WF_GuideDesc[status=disabled]
+{
+	font : normal 13px/22px "Consolas";
+	padding : 6px 10px;
+	border : 1px solid #dedede;
+	background : #FFFFCC;
+	color : #000000;
+	letter-spacing : 0px;
+}
+.TextArea.txt_WF_GuideDesc[status=disabled] .nexacontentsbox
+{
+	-nexa-word-wrap : none;
+}
+.TextArea.txt_WF_GuideDesc[status=disabled] .nexatextarea
+{
+	-nexa-word-wrap : none;
+}

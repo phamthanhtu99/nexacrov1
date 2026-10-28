@@ -22,6 +22,17 @@
     <script src="./nexacrolib/component/Grid.js"></script>
     <script src="./nexacrolib/component/ListView.js"></script>
     <script src="./nexacrolib/component/DeviceAPI.js"></script>
+    <script src="./nexacrolib/component/MobileComp.js"></script>
+    <script src="./nexacrolib/component/Graphics.js"></script>
+    <script src="./nexacrolib/component/EduJS/EduComp.js"></script>
+    <script src="./nexacrolib/component/EduJS/EduFrame.js"></script>
+    <script src="./nexacrolib/component/EduJS/EduUtil.js"></script>
+    <script src="./nexacrolib/component/EduJS/EduTransaction.js"></script>
+    <script src="./nexacrolib/component/EduJS/EduValidation.js"></script>
+    <script src="./nexacrolib/component/EduJS/EduPopup.js"></script>
+    <script src="./nexacrolib/component/EduJS/EduMessage.js"></script>
+    <script src="./nexacrolib/component/EduJS/EduGrid.js"></script>
+    <script src="./nexacrolib/component/EduJS/EduExcel.js"></script>
 	
 	<!-- ENVIRONMENT_LIBRARY : application environment path (path of Environment.xml.js) -->
     <script src="./environment.xml.js"></script>
@@ -56,8 +67,7 @@
 		nexacro._quickview_formurl = urlParams.formname;
 		/* SCREEN_INFORMATION : create screen information defined in Environment > ScreenDefinition */
 		var screeninfo = [
-        {"id":"Desktop_screen","type":"desktop","themeid":"theme::blue",},
-        {"id":"screen00_02","type":"desktop","themeid":"theme::blue","xadl":"Application_Desktop.xadl.quickview.js"}
+        {"id":"Desktop_screen","type":"desktop","themeid":"theme::theme_edu","xadl":"EduSysN24.xadl.quickview.js"}
 		];
 		nexacro._initHTMLSysEvent(window, document);
 		nexacro._initEnvironment(screeninfo);

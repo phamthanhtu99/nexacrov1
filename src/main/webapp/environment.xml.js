@@ -3,8 +3,11 @@ if (nexacro.Environment)
     var env = nexacro._environment = new nexacro.Environment();
     env.on_init = function ()
     {
-        this.set_themeid("theme::blue");
-        this.set_datatyperule("2.0");
+        this.set_themeid("theme::theme_edu");
+        this.set_scrollbarsize("8");
+        this.set_usestringresource("true");
+        this.set_enableaccessibility("true");
+        this.set_accessibilitycontentsearchkey("true");
     };
     env.on_initEvent = function ()
     {
@@ -19,8 +22,19 @@ if (nexacro.Environment)
         nexacro._addService("xcssrc", "file", "./_resource_/_xcss_/", "session", null, "", "0", "");
         nexacro._addService("imagerc", "file", "./_resource_/_images_/", "session", null, "", "0", "");
         nexacro._addService("font", "file", "./_resource_/_font_/", "session", null, "", "0", "");
-        nexacro._addService("Base", "form", "./Base/", "session", null, "", "0", "0");
+        nexacro._addService("stringrc", "file", "./_resource_/_stringrc_/", "session", null, "", "0", "");
+        nexacro._addService("extlib", "file", "./_extlib_/", "session", null, "", "0", "");
         nexacro._addService("FrameBase", "form", "./FrameBase/", "session", null, "", "0", "0");
+        nexacro._addService("Base", "form", "./Base/", "session", null, "", "0", "0");
+        nexacro._addService("Form", "form", "./Form/", "session", null, "", "0", "0");
+        nexacro._addService("Comm", "form", "./Comm/", "session", null, "", "0", "0");
+        nexacro._addService("Sample", "form", "./Sample/", "session", null, "", "0", "0");
+        nexacro._addService("Guide", "form", "./Guide/", "session", null, "", "0", "0");
+        nexacro._addService("Lib", "js", "./Lib/", "session", null, "", "0", "0");
+        nexacro._addService("SvcUrl", "JSP", "http://demo.nexacro.com/edu/edusysN24/", "none", null, "", "0", "0");
+        nexacro._addService("LocalUrl", "JSP", "http://localhost:8088/edusysN24/", "none", null, "", "0", "0");
+        nexacro._addService("XeniUrl", "JSP", "http://demo.nexacro.com/nexacroN24-xeni/", "none", null, "", "0", "0");
+        nexacro._addService("EduJS", "js", "./_extlib_/EduJS/", "session", null, "", "0", "0");
     	nexacro._component_uri = (nexacro._arg_compurl ? nexacro._arg_compurl : "./nexacrolib/component/");
     	nexacro._theme_uri = "./_resource_/_theme_/";
     	// load components
@@ -48,14 +62,36 @@ if (nexacro.Environment)
         		{"id":"Plugin", "classname":"nexacro.Plugin", "type":"JavaScript"},
         		{"id":"Dataset", "classname":"nexacro.NormalDataset", "type":"JavaScript"},
         		{"id":"ListView", "classname":"nexacro.ListView", "type":"JavaScript"},
-        		{"id":"DataObject", "classname":"nexacro.DataObject", "type":"JavaScript"}
+        		{"id":"DataObject", "classname":"nexacro.DataObject", "type":"JavaScript"},
+        		{"id":"CheckBoxSet", "classname":"nexacro.CheckBoxSet", "type":"JavaScript"},
+        		{"id":"MultiCombo", "classname":"nexacro.MultiCombo", "type":"JavaScript"},
+        		{"id":"Panel", "classname":"nexacro.Panel", "type":"JavaScript"},
+        		{"id":"DateRangePicker", "classname":"nexacro.DateRangePicker", "type":"JavaScript"},
+        		{"id":"TextField", "classname":"nexacro.TextField", "type":"JavaScript"},
+        		{"id":"MultiLineTextField", "classname":"nexacro.MultiLineTextField", "type":"JavaScript"},
+        		{"id":"DateField", "classname":"nexacro.DateField", "type":"JavaScript"},
+        		{"id":"PopupDateRangePicker", "classname":"nexacro.PopupDateRangePicker", "type":"JavaScript"},
+        		{"id":"LiteDBConnection", "classname":"nexacro.LiteDBConnection", "type":"JavaScript"},
+        		{"id":"LiteDBStatement", "classname":"nexacro.LiteDBStatement", "type":"JavaScript"},
+        		{"id":"Graphics", "classname":"nexacro.Graphics", "type":"JavaScript"},
+        		{"id":"FileDialog", "classname":"nexacro.FileDialog", "type":"JavaScript"},
+        		{"id":"FileUpload", "classname":"nexacro.FileUpload", "type":"JavaScript"},
+        		{"id":"FileDownload", "classname":"nexacro.FileDownload", "type":"JavaScript"},
+        		{"id":"FileUpTransfer", "classname":"nexacro.FileUpTransfer", "type":"JavaScript"},
+        		{"id":"FileDownTransfer", "classname":"nexacro.FileDownTransfer", "type":"JavaScript"},
+        		{"id":"Sketch", "classname":"nexacro.Sketch", "type":"JavaScript"},
+        		{"id":"WebView", "classname":"nexacro.WebView", "type":"JavaScript"}
         ];
     	nexacro._addClasses(registerclass);
     };
     env.on_loadVariables = function ()
     {
         // Variables
-
+        nexacro.setEnvironmentVariable("ev_runMode", "0");
+        nexacro.setEnvironmentVariable("ev_messagePopup", "true");
+        nexacro.setEnvironmentVariable("ev_userID", "");
+        nexacro.setEnvironmentVariable("ev_userName", "");
+        nexacro.setEnvironmentVariable("evLanguageChange", "KR");
         // Cookies
 
         // HTTP Header
@@ -66,21 +102,20 @@ if (nexacro.Environment)
         // load device adatpor
 
 	};
-    // User Script
-    env.registerScript("environment.xml", function() {
-    this.transactionDB = function ()
+	
+    // StringResource Information
+    env.on_getResourceLanguageInfo = function ()
     {
-    	 var id = "getAll";
-         var url = "http://localhost:8080/login";
-         var reqDs = "dsInput =dsInput";
-         var respDs = "ds_tranction=IDDataset";
-         var args = "";
-         var callback = "received";
-         this.transaction(id, url, reqDs, respDs, args, callback, true, 0, false);
+    	return { "en":true, "ko":true, "ar":true };
     };
+    env.on_getStringResourceFileExt = function ()
+    {
+    	return "json";
+    };
+	
+    // User Script
 
-
-    });
 					
     env = null;
+    nexacro._getExtUserCssScreenType = nexacro._getCurrentScreenType;
 }

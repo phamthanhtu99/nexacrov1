@@ -1,0 +1,741 @@
+﻿
+        
+.nexainput.nexaleftalign
+{
+  text-align:left;
+}
+.nexainput.nexarightalign
+{
+  text-align:right;
+}
+.nexainput.nexacenteralign
+{
+  text-align:center;
+}
+
+.nexacontentsbox.nexaleftalign
+{
+  text-align:left;
+}
+.nexacontentsbox.nexarightalign
+{
+  text-align:right;
+}
+.nexacontentsbox.nexacenteralign
+{
+  text-align:center;
+}
+.celltreeline
+{
+  border : 1px dotted #999999;
+}
+.Edit, .MaskEdit, .TextArea, .EditControl, .MaskEditControl, .TextAreaControl
+{
+  cursor:text;
+}
+.Button .nexacontentsbox, .ButtonControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.FileDownload  .nexacontentsbox, .FileDownloadControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.IconTextControl .nexacontentsbox, .IconControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.DatePickerDayItemControl .nexacontentsbox, .DatePickerWeekItemControl .nexacontentsbox, .DatepickerYearItemControl .nexacontentsbox, .TitleBarButtonControl .nexacontentsbox
+{
+  text-align:center;
+}
+
+.MainFrame, .VScrollBarControl, .HScrollBarControl
+{
+  cursor:default;
+}
+
+.Sketch .nexacontentsbox
+{
+   text-align:center;
+}
+
+.nexainput
+{
+  cursor:inherit;
+}
+
+.MainFrame
+{
+	border : 1px solid #00103f;
+	background : #ffffff;
+}
+.Form
+{
+	background : #ffffff;
+	color : #000000;
+}
+.Form.frm_MainBg
+{
+	background : #f4f6fd;
+}
+.ChildFrame
+{
+	background : #ffffff;
+}
+.FrameSet
+{
+	background : #ffffff;
+}
+.HFrameSet
+{
+	background : #ffffff;
+}
+.TileFrameSet
+{
+	background : #ffffff;
+}
+.VFrameSet
+{
+	background : #ffffff;
+}
+.TitleBarControl
+{
+	background : #1b292b;
+	color : #ffffff;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.StatusBarControl
+{
+	border : 1px solid #c2c2c2;
+	background : #ebebeb;
+	color : #1b292b;
+	font : 600 14px  "Segoe UI", "Malgun Gothic";
+}
+.StatusBarControl .progressbar
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.StatusBarControl .progressbar .progressbaritem
+{
+	background : #b4b9c6;
+}
+.Static.sta_WF_GTitle
+{
+	border : 1px solid #b4b9c6;
+	background : #dee3eb;
+	color : #3e4044;
+	font : 600 12px "Segoe UI", "Malgun Gothic";
+	letter-spacing : 1px;
+}
+.Static.sta_WF_GTitle .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_WF_GLabel
+{
+	border : 1px solid #b4b9c6;
+	background : #f4f6fa;
+	color : #3e4044;
+	font : 12px "Segoe UI", "Malgun Gothic";
+	letter-spacing : 1px;
+}
+.Static.sta_WF_GLabel .nexacontentsbox
+{
+	text-align : center;
+}
+.Static.sta_WF_GArea
+{
+	border : 1px solid #b4b9c6;
+	background : #ffffff;
+}
+.Static.sta_WF_GStatus
+{
+	color : #3e4044;
+	font : 13px "Consolas";
+}
+.Static.sta_WF_GSize
+{
+	background : #ff0000;
+	color : #000000;
+	font : 600 12px "Segoe UI", "Malgun Gothic";
+	opacity : 0.3;
+}
+.Static.sta_WF_GSize .nexacontentsbox
+{
+	text-align : center;
+	-nexa-word-wrap : char;
+}
+.Static.sta_WF_GLineV
+{
+	-nexa-edge : URL('./images/sta_WF_GLineV.png') 5px 2px;
+}
+.Static.sta_WF_GLineH
+{
+	-nexa-edge : URL('./images/sta_WF_GLineH.png') 5px 2px;
+}
+.Static.sta_WF_GTxt
+{
+	color : #ff000c;
+	font : 13px "Consolas";
+}
+.Static.sta_WF_GDes
+{
+	color : #006c83;
+	font : bold 13px/21px "Segoe UI","Malgun Gothic";
+}
+.Static.sta_WF_GDes .nexacontentsbox
+{
+	-nexa-word-wrap : char;
+}
+.Edit
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.Edit.edt_WF_Essential
+{
+	border : 1px solid #c15e3b;
+	background : url('./images/icon_Essential.png') no-repeat left top #fef7eb;
+}
+.MaskEdit
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.MaskEdit.msk_WF_Essential
+{
+	border : 1px solid #c15e3b;
+	background : url('./images/icon_Essential.png') no-repeat left top #fef7eb;
+}
+.TextArea
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.TextArea .nexacontentsbox
+{
+	-nexa-word-wrap : char;
+}
+.TextArea .nexatextarea
+{
+	-nexa-word-wrap : char;
+}
+.TextArea.txt_WF_Essential
+{
+	border : 1px solid #c15e3b;
+	background : url('./images/icon_Essential.png') no-repeat left top #fef7eb;
+}
+.ListBox
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ListBoxControl
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.Combo
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.MultiCombo
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.MultiComboListControl.popupMultiCombomulticombolist.dummy
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.MultiComboListControl.popupMultiCombomulticombolist.dummy .multicomboedit
+{
+	border : 0px none,0px none,1px solid #acacac;
+	background : #f9f9fa;
+	padding : 8px;
+}
+.Calendar
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.DatePickerControl
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.DatePickerControl .head
+{
+	background : #002795;
+}
+.DatePickerControl .head .monthstatic
+{
+	color : #ffffff;
+}
+.DatePickerControl .head .yearstatic
+{
+	color : #ffffff;
+}
+.DatePickerControl .body .weekband
+{
+	background : #e1e1e1;
+}
+.FileDownload
+{
+	border : 1px solid #364f60;
+	background : #4e7890;
+	color : #ffffff;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton
+{
+	border : 1px solid #364f60;
+	background : #4e7890;
+	color : #ffffff;
+}
+.FileUpload .fileuploaditem .fileuploaditemedit
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ImageViewer
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ImageViewer .imagetext .nexacontentsbox
+{
+	text-align : center;
+}
+.GroupBox .groupboxcontents
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.GroupBox .groupboxtitle
+{
+	background : #ffffff;
+}
+.ProgressBar
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ProgressBarControl
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ProgressBar .progressbaritem
+{
+	background : #2f59bf;
+}
+.ProgressBarControl .progressbaritem
+{
+	background : #2f59bf;
+}
+.ProgressBar .progressbartext
+{
+	color : #ffffff;
+}
+.ProgressBarControl .progressbartext
+{
+	color : #ffffff;
+}
+.Menu
+{
+	background : #002795;
+}
+.Menu .menuitem
+{
+	color : #ccdaff;
+}
+.PopupMenu
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.PopupMenuControl
+{
+	border : 1px solid #acacac;
+	background : #ffffff;
+}
+.PopupMenu .popupmenuitem .popupmenuitemhotkeytext
+{
+	font : 11px "Segoe UI", "Malgun Gothic";
+}
+.PopupMenuControl .popupmenuitem .popupmenuitemhotkeytext
+{
+	font : 11px "Segoe UI", "Malgun Gothic";
+}
+.TitleBarControl .closebutton[status=mouseover]
+{
+	background : #495455;
+}
+.TitleBarControl .maxbutton[status=mouseover]
+{
+	background : #495455;
+}
+.TitleBarControl .minbutton[status=mouseover]
+{
+	background : #495455;
+}
+.TitleBarControl .normalbutton[status=mouseover]
+{
+	background : #495455;
+}
+.Edit[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.Edit[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.Edit[status=readonly]
+{
+	background : #f5f5f5;
+}
+.MaskEdit[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.MaskEdit[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.MaskEdit[status=readonly]
+{
+	background : #f5f5f5;
+}
+.TextArea[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.TextArea[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.TextArea[status=readonly]
+{
+	background : #f5f5f5;
+}
+.ListBox .listboxitem[status=mouseover]
+{
+	color : #2f59bf;
+}
+.ListBoxControl .listboxitem[status=mouseover]
+{
+	color : #2f59bf;
+}
+.Combo[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.Combo[status=readonly]
+{
+	background : #f5f5f5;
+}
+.MultiCombo[status=readonly]
+{
+	background : #f5f5f5;
+}
+.MultiCombo[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.Calendar[status=mouseover]
+{
+	border : 1px solid #2f59bf;
+}
+.Calendar[status=focused]
+{
+	border : 1px solid #2f59bf;
+}
+.Calendar[status=readonly]
+{
+	background : #f5f5f5;
+}
+.DatePickerControl .body .dayitem[status=mouseover]
+{
+	background : #f3f3f3;
+}
+.DatePickerControl .body .yearitem[status=mouseover]
+{
+	background : #daedfe;
+}
+.DatePickerControl .body .monthitem[status=mouseover]
+{
+	background : #daedfe;
+}
+.FileDownload[status=mouseover]
+{
+	border : 1px solid #364f60;
+	background : #364f60;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton[status=mouseover]
+{
+	border : 1px solid #364f60;
+	background : #364f60;
+}
+.Menu .menuitem[status=mouseover]
+{
+	color : #ffffff;
+}
+.PopupMenu .popupmenuitem[status=mouseover]
+{
+	background : #f7f7f7;
+}
+.PopupMenuControl .popupmenuitem[status=mouseover]
+{
+	background : #f7f7f7;
+}
+.Form[userstatus=contents]
+{
+	background : transparent;
+}
+.TitleBarControl .closebutton[userstatus=pushed]
+{
+	background : #ffffff;
+}
+.TitleBarControl .maxbutton[userstatus=pushed]
+{
+	background : #ffffff;
+}
+.TitleBarControl .minbutton[userstatus=pushed]
+{
+	background : #ffffff;
+}
+.TitleBarControl .normalbutton[userstatus=pushed]
+{
+	background : #ffffff;
+}
+.Edit[userstatus=nulltext]
+{
+	color : #acacac;
+}
+.MaskEdit[userstatus=nulltext]
+{
+	color : #acacac;
+}
+.MaskEdit[userstatus=invalidtext]
+{
+	color : #b71d26;
+}
+.TextArea[userstatus=nulltext]
+{
+	color : #acacac;
+}
+.ListBox .listboxitem[userstatus=selected]
+{
+	background : #2f59bf;
+	color : #ffffff;
+}
+.ListBoxControl .listboxitem[userstatus=selected]
+{
+	background : #2f59bf;
+	color : #ffffff;
+}
+.Combo .comboedit[userstatus=nulltext]
+{
+	color : #acacac;
+}
+.Calendar[userstatus=invalidtext]
+{
+	color : #b71d26;
+}
+.Calendar .calendaredit[userstatus=nulltext]
+{
+	color : #acacac;
+}
+.DatePickerControl .body .weekitem[userstatus=sunday]
+{
+	color : #e33645;
+}
+.DatePickerControl .body .weekitem[userstatus=saturday]
+{
+	color : #0f62d6;
+}
+.DatePickerControl .body .dayitem[userstatus=saturday]
+{
+	color : #0f62d6;
+}
+.DatePickerControl .body .dayitem[userstatus=selected]
+{
+	background : #4788f7;
+	color : #ffffff;
+}
+.DatePickerControl .body .dayitem[userstatus=sunday]
+{
+	color : #e33645;
+}
+.DatePickerControl .body .dayitem[userstatus=today]
+{
+	background : #daedfe;
+}
+.DatePickerControl .body .dayitem[userstatus=trailingday]
+{
+	color : #a9a9a9;
+}
+.DatePickerControl .body .yearitem[userstatus=selected]
+{
+	background : #4788f7;
+	color : #ffffff;
+}
+.DatePickerControl .body .monthitem[userstatus=selected]
+{
+	background : #4788f7;
+	color : #ffffff;
+}
+.FileDownload[userstatus=pushed]
+{
+	border : 1px solid #364f60;
+	background : #364f60;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton[userstatus=pushed]
+{
+	border : 1px solid #364f60;
+	background : #364f60;
+}
+.Menu .menuitem[userstatus=selected]
+{
+	color : #ffffff;
+}
+.PopupMenu .popupmenuitem[userstatus=selected]
+{
+	background : #e0e6f5;
+}
+.PopupMenuControl .popupmenuitem[userstatus=selected]
+{
+	background : #e0e6f5;
+}
+.Static[status=disabled]
+{
+	color : #a9a9a9;
+}
+.Edit[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.MaskEdit[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.TextArea[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ListBox[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ListBoxControl[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.Combo[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.MultiCombo[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.Calendar[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.FileDownload[status=disabled]
+{
+	opacity : 70%;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton[status=disabled]
+{
+	opacity : 70%;
+}
+.FileUpload .fileuploaditem .fileuploaditemedit[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ImageViewer[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.GroupBox .groupboxcontents[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+}
+.GroupBox .groupboxtitle[status=disabled]
+{
+	color : #a9a9a9;
+}
+.ProgressBar[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ProgressBarControl[status=disabled]
+{
+	border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ProgressBar .progressbaritem[status=disabled]
+{
+	background : #e1e7f5;
+}
+.ProgressBarControl .progressbaritem[status=disabled]
+{
+	background : #e1e7f5;
+}
+.ProgressBar .progressbartext[status=disabled]
+{
+	color : #a9a9a9;
+}
+.ProgressBarControl .progressbartext[status=disabled]
+{
+	color : #a9a9a9;
+}
+.Menu[status=disabled]
+{
+	background : #f9f9f9;
+}
+.Menu .menuitem[status=disabled]
+{
+	color : #a9a9a9;
+}
+.PopupMenu .popupmenuitem[status=disabled]
+{
+	color : #a9a9a9;
+}
+.PopupMenuControl .popupmenuitem[status=disabled]
+{
+	color : #a9a9a9;
+}
