@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<license version="1.2">
-	<product>
-		<name>Nexacro&#32;N</name>
-		<version>21</version>
-		<function>Runtime,WebBrowser</function>
-	</product>
-	<customer>
-		<name>TOBESOFT</name>
-		<coreCount>0</coreCount>
-		<ipAddress>0.0.0.0</ipAddress>
-		<targetPlatform>Windows,WindowsRT,macOS,iOS,Android</targetPlatform>
-	</customer>
-	<date>
-		<activation>2023-08-01</activation>
-		<term unit="month">2</term>
-	</date>
-	<key>TNBTB79CU5DZ4DKKT7EFUWRFNYWC74M7Q</key>
-</license>
+ <license version="1.2">
+ <product>
+ <name>Nexacro N</name>
+ <version>24</version>
+ <function>Runtime,WebBrowser</function>
+ </product>
+ <customer>
+ <name>TOBESOFT</name>
+ <coreCount>0</coreCount>
+ <ipAddress>0.0.0.0</ipAddress>
+ <targetPlatform>Windows,WindowsRT,macOS,iOS,Android</targetPlatform>
+ </customer>
+ <date>
+ <activation>2026-10-01</activation>
+ <term unit="month">2</term>
+ </date>
+ <key>DKRT6FCJVRUAF9JRMZWMDCZNS2GD7EUMJ</key>
+ <SignatureValue>fIuMCEG9eFYTE2yGdAESeOqxau/kT2NISRTlK2vhx5U6gAJjpGkCqu/iK5pCjcMh
+ OuYNs+8a6Jyzm+oezDQ0AxnBFujwLSo6spe/Pr+VqNlHIVZB/AnkhvjPCWHTEjgP
+ aCl95AKp3ixZ6zDdwiQ0K2efF6k8L2u6tPoGuUub9vngAmHNcTEITKWgdG4P0GG8
+ uFCXuEhnA4Vmi7a4ZMGtVnWm8G4TbSyq/qNMsZ5XfEccp1a3m3LWgGplSRmFXVcE
+ /nw0pzOFrPBkUBhzT9r3JTDoEWXLBB+yTYp1aDStVBfByCHV0UiJVldOHFs2NqS/
+ PqaQeuLfn0HguLHoOqPT2w==</SignatureValue>
+ </license>
