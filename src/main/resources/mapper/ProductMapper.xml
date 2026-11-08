@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.nexacro.mapper.ProductMapper">
+
+    <!-- OUT when quantity = 0, LOW when quantity <= threshold, otherwise IN -->
+    <sql id="availability">
+        CASE WHEN P.QUANTITY = 0 THEN 'OUT'
+             WHEN P.QUANTITY &gt; P.THRESHOLD_VALUE THEN 'IN'
+             ELSE 'LOW' END
+    </sql>
+
+    <!-- search condition of the inventory list, the count and the CSV download -->
+    <sql id="listWhere">
+        WHERE P.IS_DELETED = FALSE
+        <if test="KEYWORD != null and KEYWORD != ''">
+            AND (LOWER(P.PRODUCT_NAME) LIKE '%' || LOWER(#{KEYWORD}) || '%'
+              OR LOWER(P.PRODUCT_CODE) LIKE '%' || LOWER(#{KEYWORD}) || '%')
+        </if>
+        <if test="CATEGORY != null and CATEGORY != ''">
+            AND P.CATEGORY_CODE = #{CATEGORY}
+        </if>
+        <if test="AVAILABILITY != null and AVAILABILITY != ''">
+            AND (<include refid="availability"/>) = #{AVAILABILITY}
+        </if>
+    </sql>
+
+    <!-- one page; the image is left out on purpose, it is only needed on the detail screen -->
+    <select id="selectList" parameterType="map" resultType="map">
+        SELECT P.PRODUCT_ID, P.PRODUCT_CODE, P.PRODUCT_NAME, P.CATEGORY_CODE
+             , P.BUYING_PRICE, P.QUANTITY, P.UNIT
+             , TO_CHAR(P.EXPIRY_DATE, 'YYYYMMDD') AS EXPIRY_DATE
+             , P.THRESHOLD_VALUE
+             , <include refid="availability"/> AS AVAILABILITY
+             , (SELECT C.CODE_NAME FROM COMMON_CODE C
+                 WHERE C.GROUP_CODE = 'AVAILABILITY' AND C.CODE = <include refid="availability"/>) AS AVAILABILITY_NAME
+          FROM PRODUCT P
+        <include refid="listWhere"/>
+         ORDER BY P.PRODUCT_ID DESC
+         LIMIT #{PAGE_SIZE} OFFSET #{OFFSET}
+    </select>
+
+    <select id="selectCount" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+          FROM PRODUCT P
+        <include refid="listWhere"/>
+    </select>
+
+    <!-- same columns as selectList, every row, for the CSV download -->
+    <select id="selectExport" parameterType="map" resultType="map">
+        SELECT P.PRODUCT_CODE, P.PRODUCT_NAME, P.CATEGORY_CODE, P.BUYING_PRICE, P.QUANTITY, P.UNIT
+             , TO_CHAR(P.EXPIRY_DATE, 'YYYY-MM-DD') AS EXPIRY_DATE, P.THRESHOLD_VALUE
+             , <include refid="availability"/> AS AVAILABILITY
+          FROM PRODUCT P
+        <include refid="listWhere"/>
+         ORDER BY P.PRODUCT_ID DESC
+    </select>
+
+    <!-- dashboard metrics of the inventory screen -->
+    <select id="selectSummary" resultType="map">
+        <![CDATA[
+        SELECT (SELECT COUNT(DISTINCT CATEGORY_CODE) FROM PRODUCT WHERE IS_DELETED = FALSE) AS CATEGORY_COUNT
+             , (SELECT COUNT(*) FROM PRODUCT WHERE IS_DELETED = FALSE) AS PRODUCT_COUNT
+             , (SELECT COALESCE(SUM(-M.QUANTITY * M.UNIT_PRICE), 0) FROM STOCK_MOVEMENT M
+                 WHERE M.MOVEMENT_TYPE = 'SALE' AND M.MOVEMENT_DATE >= CURRENT_TIMESTAMP - INTERVAL '7 days') AS REVENUE
+             , (SELECT COUNT(DISTINCT M.PRODUCT_ID) FROM STOCK_MOVEMENT M
+                 WHERE M.MOVEMENT_TYPE = 'SALE' AND M.MOVEMENT_DATE >= CURRENT_TIMESTAMP - INTERVAL '7 days') AS TOP_SELLING
+             , (SELECT COALESCE(SUM(-M.QUANTITY * P.BUYING_PRICE), 0)
+                  FROM STOCK_MOVEMENT M JOIN PRODUCT P ON P.PRODUCT_ID = M.PRODUCT_ID
+                 WHERE M.MOVEMENT_TYPE = 'SALE' AND M.MOVEMENT_DATE >= CURRENT_TIMESTAMP - INTERVAL '7 days') AS TOP_SELLING_COST
+             , (SELECT COUNT(*) FROM PRODUCT
+                 WHERE IS_DELETED = FALSE AND QUANTITY > 0 AND QUANTITY <= THRESHOLD_VALUE) AS LOW_STOCK
+             , (SELECT COUNT(*) FROM PRODUCT WHERE IS_DELETED = FALSE AND QUANTITY = 0) AS OUT_OF_STOCK
+        ]]>
+    </select>
+
+    <!-- product with its supplier; the supplier is matched by product name (supplier.product_name) -->
+    <select id="selectDetail" parameterType="map" resultType="map">
+        SELECT P.PRODUCT_ID, P.PRODUCT_CODE, P.PRODUCT_NAME, P.CATEGORY_CODE, C.CODE_NAME AS CATEGORY_NAME
+             , P.BUYING_PRICE, P.QUANTITY, P.UNIT
+             , TO_CHAR(P.EXPIRY_DATE, 'YYYYMMDD') AS EXPIRY_DATE
+             , P.THRESHOLD_VALUE, P.IMAGE_DATA
+             , <include refid="availability"/> AS AVAILABILITY
+             , (SELECT A.CODE_NAME FROM COMMON_CODE A
+                 WHERE A.GROUP_CODE = 'AVAILABILITY' AND A.CODE = <include refid="availability"/>) AS AVAILABILITY_NAME
+             , TO_CHAR(P.CREATED_AT, 'YYYYMMDD') AS CREATED_DATE
+             , S.SUPPLIER_ID, S.SUPPLIER_NAME, S.CONTACT_NUMBER AS SUPPLIER_CONTACT
+             , S.EMAIL AS SUPPLIER_EMAIL, S.RETURN_TYPE AS SUPPLIER_RETURN_TYPE
+             , (SELECT R.CODE_NAME FROM COMMON_CODE R
+                 WHERE R.GROUP_CODE = 'RETURN_TYPE' AND R.CODE = S.RETURN_TYPE) AS SUPPLIER_RETURN_TYPE_NAME
+             , (SELECT COALESCE(SUM(M.QUANTITY), 0) FROM STOCK_MOVEMENT M
+                 WHERE M.PRODUCT_ID = P.PRODUCT_ID AND M.MOVEMENT_TYPE = 'PURCHASE') AS PURCHASED_QTY
+             , (SELECT COALESCE(-SUM(M.QUANTITY), 0) FROM STOCK_MOVEMENT M
+                 WHERE M.PRODUCT_ID = P.PRODUCT_ID AND M.MOVEMENT_TYPE = 'SALE') AS SOLD_QTY
+          FROM PRODUCT P
+          LEFT JOIN COMMON_CODE C ON C.GROUP_CODE = 'CATEGORY' AND C.CODE = P.CATEGORY_CODE
+          LEFT JOIN LATERAL (SELECT * FROM SUPPLIER X
+                              WHERE X.IS_DELETED = FALSE AND LOWER(X.PRODUCT_NAME) = LOWER(P.PRODUCT_NAME)
+                              ORDER BY X.SUPPLIER_ID LIMIT 1) S ON TRUE
+         WHERE P.PRODUCT_ID = CAST(#{PRODUCT_ID} AS BIGINT)
+           AND P.IS_DELETED = FALSE
+    </select>
+
+    <!-- stock per location (Product Info: Stock Locations) -->
+    <select id="selectStock" parameterType="map" resultType="map">
+        SELECT S.LOCATION_NAME, S.QUANTITY
+          FROM PRODUCT_STOCK S
+         WHERE S.PRODUCT_ID = CAST(#{PRODUCT_ID} AS BIGINT)
+         ORDER BY S.QUANTITY DESC, S.LOCATION_NAME
+    </select>
+
+    <!-- purchases, adjustments and sales (Product Info: Purchases / Adjustments / History) -->
+    <select id="selectMovement" parameterType="map" resultType="map">
+        SELECT M.MOVEMENT_ID, M.MOVEMENT_TYPE, C.CODE_NAME AS MOVEMENT_TYPE_NAME
+             , M.QUANTITY, M.UNIT_PRICE, M.NOTE
+             , TO_CHAR(M.MOVEMENT_DATE, 'YYYYMMDDHH24MISS') AS MOVEMENT_DATE
+             , COALESCE(U.USER_NAME, 'System') AS USER_NAME
+          FROM STOCK_MOVEMENT M
+          LEFT JOIN APP_USER U ON U.USER_ID = M.USER_ID
+          LEFT JOIN COMMON_CODE C ON C.GROUP_CODE = 'MOVEMENT_TYPE' AND C.CODE = M.MOVEMENT_TYPE
+         WHERE M.PRODUCT_ID = CAST(#{PRODUCT_ID} AS BIGINT)
+         ORDER BY M.MOVEMENT_DATE DESC, M.MOVEMENT_ID DESC
+    </select>
+
+    <select id="countByCode" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+          FROM PRODUCT
+         WHERE LOWER(PRODUCT_CODE) = LOWER(#{PRODUCT_CODE})
+    </select>
+
+    <insert id="insert" parameterType="map" useGeneratedKeys="true" keyProperty="PRODUCT_ID" keyColumn="product_id">
+        INSERT INTO PRODUCT (PRODUCT_CODE, PRODUCT_NAME, CATEGORY_CODE, BUYING_PRICE, QUANTITY, UNIT,
+                             EXPIRY_DATE, THRESHOLD_VALUE, IMAGE_DATA)
+        VALUES (#{PRODUCT_CODE}, #{PRODUCT_NAME}, #{CATEGORY_CODE},
+                CAST(#{BUYING_PRICE} AS NUMERIC), CAST(#{QUANTITY} AS INT), #{UNIT},
+                TO_DATE(#{EXPIRY_DATE}, 'YYYYMMDD'), CAST(#{THRESHOLD_VALUE} AS INT),
+                NULLIF(CAST(#{IMAGE_DATA} AS TEXT), ''))
+    </insert>
+
+    <insert id="insertStock" parameterType="map">
+        INSERT INTO PRODUCT_STOCK (PRODUCT_ID, LOCATION_NAME, QUANTITY)
+        VALUES (CAST(#{PRODUCT_ID} AS BIGINT), #{LOCATION_NAME}, CAST(#{QUANTITY} AS INT))
+    </insert>
+
+    <insert id="insertMovement" parameterType="map">
+        INSERT INTO STOCK_MOVEMENT (PRODUCT_ID, MOVEMENT_TYPE, QUANTITY, UNIT_PRICE, NOTE, USER_ID)
+        VALUES (CAST(#{PRODUCT_ID} AS BIGINT), #{MOVEMENT_TYPE}, CAST(#{QUANTITY} AS INT),
+                CAST(#{UNIT_PRICE} AS NUMERIC), #{NOTE},
+                CAST(NULLIF(CAST(#{USER_ID} AS VARCHAR), '') AS BIGINT))
+    </insert>
+</mapper>

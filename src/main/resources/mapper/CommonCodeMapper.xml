@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.nexacro.mapper.CommonCodeMapper">
+
+    <!-- column names match gds_comCode on the client (GROUP, GROUP_NAME, CODE, CODE_NAME).
+         groups is "CATEGORY,RETURN_TYPE"; no <foreach> because UpperCaseMapWrapperFactory
+         upper-cases the parameters MyBatis creates for it -->
+    <select id="select" resultType="map">
+        SELECT C.GROUP_CODE AS "GROUP", C.GROUP_NAME, C.CODE, C.CODE_NAME
+          FROM COMMON_CODE C
+         WHERE C.USE_YN = 'Y'
+        <if test="groups != null and groups != ''">
+           AND C.GROUP_CODE = ANY (STRING_TO_ARRAY(#{groups}, ','))
+        </if>
+         ORDER BY C.GROUP_CODE, C.SORT_ORDER, C.CODE
+    </select>
+
+    <select id="exists" resultType="int">
+        SELECT COUNT(*)
+          FROM COMMON_CODE
+         WHERE GROUP_CODE = #{group}
+           AND CODE = #{code}
+           AND USE_YN = 'Y'
+    </select>
+</mapper>

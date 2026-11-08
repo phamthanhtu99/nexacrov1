@@ -106,6 +106,15 @@ pForm.gfn_callback = function(svcID, errorCode, errorMsg)
 				this.gfn_alert("msg.server.error");
 				break;
 				
+			case -99 :
+				// 세션 종료 (Kanban LoginInterceptor) : one message, the login screen after OK
+				var objApp = pForm.gfn_getApplication();
+				if (objApp.gv_sessionExpired != true) {
+					objApp.gv_sessionExpired = true;
+					this.gfn_alert("msg.session.timeout", "", "msgSessionTimeout", "gfn_sessionCallback");
+				}
+				return;
+
 			case -2463215:
 				//@todo : 임의 에러코드  처리
 				//return false;
@@ -143,6 +152,19 @@ pForm.gfn_callback = function(svcID, errorCode, errorMsg)
 	if (this[objSvcID.callback]) {
         this.lookupFunc(objSvcID.callback).call(objSvcID.svcId, errorCode, errorMsg);
     }
+};
+
+/**
+ * @class 세션 종료 메세지 후 callback : 로그인 화면으로 이동
+ * (the frame cannot change its form while the message popup is open, so it is done here)
+ */
+pForm.gfn_sessionCallback = function(sPopupId, sReturn)
+{
+	var objApp = pForm.gfn_getApplication();
+	objApp.gv_sessionExpired = false;
+	objApp.gds_user.clearData();
+	// the "Remember me" token is kept: Form_Login logs in again with it
+	objApp.mainframe.VFrameSet.LoginFrame.set_formurl("Base::Form_Login.xfdl");
 };
 
 /**

@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### uploaded product / supplier images (app.upload-dir) ###
+src/main/webapp/uploads/

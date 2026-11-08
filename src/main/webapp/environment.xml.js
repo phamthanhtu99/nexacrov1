@@ -34,6 +34,7 @@ if (nexacro.Environment)
         nexacro._addService("SvcUrl", "JSP", "http://demo.nexacro.com/edu/edusysN24/", "none", null, "", "0", "0");
         nexacro._addService("LocalUrl", "JSP", "http://localhost:8088/edusysN24/", "none", null, "", "0", "0");
         nexacro._addService("XeniUrl", "JSP", "http://demo.nexacro.com/nexacroN24-xeni/", "none", null, "", "0", "0");
+        nexacro._addService("KanbanUrl", "JSP", "http://localhost:8080/", "none", null, "", "0", "0");
         nexacro._addService("EduJS", "js", "./_extlib_/EduJS/", "session", null, "", "0", "0");
     	nexacro._component_uri = (nexacro._arg_compurl ? nexacro._arg_compurl : "./nexacrolib/component/");
     	nexacro._theme_uri = "./_resource_/_theme_/";

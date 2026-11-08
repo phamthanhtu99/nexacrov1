@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.web.nexacro.mapper.SupplierMapper">
+
+    <!-- the image is left out on purpose to keep the response small -->
+    <select id="selectList" parameterType="map" resultType="map">
+        SELECT S.SUPPLIER_ID, S.SUPPLIER_NAME, S.PRODUCT_NAME, S.CATEGORY_CODE
+             , S.BUYING_PRICE, S.CONTACT_NUMBER, S.EMAIL
+             , S.RETURN_TYPE, C.CODE_NAME AS RETURN_TYPE_NAME, S.ON_THE_WAY
+          FROM SUPPLIER S
+          LEFT JOIN COMMON_CODE C ON C.GROUP_CODE = 'RETURN_TYPE' AND C.CODE = S.RETURN_TYPE
+         WHERE S.IS_DELETED = FALSE
+        <if test="KEYWORD != null and KEYWORD != ''">
+           AND (LOWER(S.SUPPLIER_NAME) LIKE '%' || LOWER(#{KEYWORD}) || '%'
+             OR LOWER(S.PRODUCT_NAME) LIKE '%' || LOWER(#{KEYWORD}) || '%'
+             OR LOWER(S.EMAIL) LIKE '%' || LOWER(#{KEYWORD}) || '%')
+        </if>
+        <if test="CATEGORY != null and CATEGORY != ''">
+           AND S.CATEGORY_CODE = #{CATEGORY}
+        </if>
+        <if test="RETURN_TYPE != null and RETURN_TYPE != ''">
+           AND S.RETURN_TYPE = #{RETURN_TYPE}
+        </if>
+         ORDER BY S.SUPPLIER_ID DESC
+    </select>
+
+    <insert id="insert" parameterType="map" useGeneratedKeys="true" keyProperty="SUPPLIER_ID" keyColumn="supplier_id">
+        INSERT INTO SUPPLIER (SUPPLIER_NAME, PRODUCT_NAME, CATEGORY_CODE, BUYING_PRICE, CONTACT_NUMBER,
+                              EMAIL, RETURN_TYPE, ON_THE_WAY, IMAGE_DATA)
+        VALUES (#{SUPPLIER_NAME}, #{PRODUCT_NAME}, #{CATEGORY_CODE}, CAST(#{BUYING_PRICE} AS NUMERIC),
+                #{CONTACT_NUMBER}, NULLIF(CAST(#{EMAIL} AS VARCHAR), ''), #{RETURN_TYPE}, 0,
+                NULLIF(CAST(#{IMAGE_DATA} AS TEXT), ''))
+    </insert>
+</mapper>

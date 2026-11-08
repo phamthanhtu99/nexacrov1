@@ -46,7 +46,7 @@
         	"launch":"./EduSysN24.xadl.js",
         	"quickview":"./EduSysN24.xadl.quickview.js",
         	"form":[
-        				"./FrameBase/Frame_Login.xfdl.js",
+        				"./Base/Form_Login.xfdl.js",
         		"./FrameBase/Frame_Top.xfdl.js",
         		"./FrameBase/Frame_LeftBar.xfdl.js",
         		"./FrameBase/Frame_Left.xfdl.js",

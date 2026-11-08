@@ -8432,6 +8432,96 @@
             								}
             							}
             						}
+            					},
+            					{
+            						"cell_WF_StockIn" :
+            						{
+            							"parent" :
+            							{
+            								"row" :
+            								{
+            									"parent" :
+            									{
+            										"body" :
+            										{
+            											"parent" :
+            											{
+            												"Grid" :
+            												{
+            													"self" :
+            													{
+            														"enabled" :
+            														{
+            															"color" : nexacro.ColorObject("#10a760")
+            														}
+            													}
+            												}
+            											}
+            										}
+            									}
+            								}
+            							}
+            						}
+            					},
+            					{
+            						"cell_WF_StockLow" :
+            						{
+            							"parent" :
+            							{
+            								"row" :
+            								{
+            									"parent" :
+            									{
+            										"body" :
+            										{
+            											"parent" :
+            											{
+            												"Grid" :
+            												{
+            													"self" :
+            													{
+            														"enabled" :
+            														{
+            															"color" : nexacro.ColorObject("#e19133")
+            														}
+            													}
+            												}
+            											}
+            										}
+            									}
+            								}
+            							}
+            						}
+            					},
+            					{
+            						"cell_WF_StockOut" :
+            						{
+            							"parent" :
+            							{
+            								"row" :
+            								{
+            									"parent" :
+            									{
+            										"body" :
+            										{
+            											"parent" :
+            											{
+            												"Grid" :
+            												{
+            													"self" :
+            													{
+            														"enabled" :
+            														{
+            															"color" : nexacro.ColorObject("#da3e33")
+            														}
+            													}
+            												}
+            											}
+            										}
+            									}
+            								}
+            							}
+            						}
             					}
             				]
             			},

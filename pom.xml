@@ -88,6 +88,15 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<!-- EduSysN24/ is the Nexacro Studio source project (the app runs the generated files next to it),
+					     uploads/ holds the images uploaded on this machine -->
+					<packagingExcludes>EduSysN24/**,uploads/**</packagingExcludes>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 

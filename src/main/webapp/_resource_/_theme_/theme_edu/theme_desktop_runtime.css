@@ -1914,6 +1914,18 @@
 	color : #007bff;
 	font : 600 16px  "Segoe UI", "Malgun Gothic";
 }
+.Grid .body .row .cell.cell_WF_StockIn
+{
+	color : #10a760;
+}
+.Grid .body .row .cell.cell_WF_StockLow
+{
+	color : #e19133;
+}
+.Grid .body .row .cell.cell_WF_StockOut
+{
+	color : #da3e33;
+}
 .Button.btn_WF_PlayIcon
 {
 	background : transparent;

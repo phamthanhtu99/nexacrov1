@@ -89,14 +89,25 @@ public class NexacroUtils {
 
     private List<ColumnUtils> columnUtils(Map<String,Object> column){
         List<ColumnUtils> columnUtilsList = new ArrayList<>();
-        for (String key: column.keySet()) {
+        for (Map.Entry<String, Object> entry : column.entrySet()) {
             ColumnUtils columnUtils= new ColumnUtils();
-            columnUtils.setId(key);
-            columnUtils.setType("STRING");
+            columnUtils.setId(entry.getKey());
+            // numeric columns keep their type so Nexacro sorts and sums them as numbers
+            columnUtils.setType(columnType(entry.getValue()));
             columnUtils.setSize("255");
             columnUtilsList.add(columnUtils);
         }
         return columnUtilsList;
+    }
+
+    static String columnType(Object value) {
+        if (value instanceof Integer || value instanceof Long || value instanceof Short) {
+            return "INT";
+        }
+        if (value instanceof Number) {
+            return "DECIMAL";
+        }
+        return "STRING";
     }
 
     public static DataSetList getRequestData(HttpServletRequest request) throws IOException {
@@ -121,12 +132,13 @@ public class NexacroUtils {
     public Map<String,Object> getParamDataSet(HttpServletRequest request) throws IOException {
         Map<String,Object>  param = new HashMap<>();
         DataSetList dataSetList = getRequestData(request);
-
-        Map<String,Object> userInfo = (Map<String, Object>) SessionUtils.getSession("USERINFO");
+        if (dataSetList == null) {
+            return param;
+        }
 
         for (int i = 0; i < dataSetList.size(); i++) {
             DataSet dataSet = dataSetList.get(i);
-            if(dataSet != null){
+            if(dataSet != null && dataSet.getRowCount() > 0){
 
                 param.put(dataSet.getName(),dataSet.getRowToMap(0));
             }
