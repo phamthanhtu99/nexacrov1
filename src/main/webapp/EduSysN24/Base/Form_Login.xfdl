@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Login" width="1280" height="720" titletext="Log in" background="#ffffff" onload="Form_onload">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Static id="sta_base" taborder="11" visible="false" left="0" top="0" width="50%" height="50%"/>
+        <Div id="div_brand" taborder="12" left="0" top="0" width="50%" bottom="0" border="0px none">
+          <Layouts>
+            <Layout>
+              <Static id="sta_center" taborder="0" visible="false" left="0" top="0" width="50%" height="50%"/>
+              <ImageViewer id="img_logo" taborder="1" left="sta_center:-130" top="sta_center:-170" width="260" height="260" image="url('imagerc::kanban_logo.png')" stretch="fit" border="0px none" background="transparent"/>
+              <Static id="sta_brand" taborder="2" text="KANBAN" left="sta_center:-130" top="sta_center:95" width="260" height="60" textAlign="center" color="#1e9ad6" font="bold 40px &quot;Segoe UI&quot;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_login" taborder="0" left="sta_base:90" top="sta_base:-265" width="380" height="530" border="0px none">
+          <Layouts>
+            <Layout>
+              <ImageViewer id="img_logo_small" taborder="9" left="166" top="0" width="48" height="48" image="url('imagerc::kanban_logo.png')" stretch="fit" border="0px none" background="transparent"/>
+              <Static id="sta_title" taborder="10" text="Log in to your account" left="0" top="62" width="380" height="40" textAlign="center" color="#101828" font="600 26px &quot;Segoe UI&quot;"/>
+              <Static id="sta_subtitle" taborder="11" text="Welcome back! Please enter your details." left="0" top="106" width="380" height="24" textAlign="center" color="#667085" font="14px &quot;Segoe UI&quot;"/>
+              <Static id="sta_email" taborder="12" text="Email" left="0" top="156" width="380" height="20" color="#344054" font="13px &quot;Segoe UI&quot;"/>
+              <Edit id="edt_email" taborder="0" left="0" top="180" width="380" height="42" maxlength="255" displaynulltext="Enter your email" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 14px" font="14px &quot;Segoe UI&quot;" onkeydown="div_login_edt_onkeydown"/>
+              <Static id="sta_password" taborder="14" text="Password" left="0" top="244" width="380" height="20" color="#344054" font="13px &quot;Segoe UI&quot;"/>
+              <Edit id="edt_password" taborder="1" left="0" top="268" width="380" height="42" password="true" displaynulltext="Enter your password" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 14px" font="14px &quot;Segoe UI&quot;" onkeydown="div_login_edt_onkeydown"/>
+              <CheckBox id="chk_remember" taborder="2" truevalue="Y" falsevalue="N" text="Remember for 30 days" left="0" top="336" width="200" height="24" color="#344054" font="13px &quot;Segoe UI&quot;"/>
+              <Static id="sta_forgot" taborder="3" text="Forgot password" left="240" top="336" width="140" height="24" textAlign="right" color="#1a5fd9" font="600 13px &quot;Segoe UI&quot;" cursor="pointer" onclick="div_login_sta_forgot_onclick"/>
+              <Button id="btn_signin" taborder="4" text="Sign in" left="0" top="376" width="380" height="44" background="#1a5fd9" color="#ffffff" borderRadius="8px" border="0px none" font="600 15px &quot;Segoe UI&quot;" onclick="div_login_btn_signin_onclick"/>
+              <Static id="sta_noaccount" taborder="16" text="Don't have an account?" left="70" top="436" width="160" height="24" textAlign="right" color="#667085" font="13px &quot;Segoe UI&quot;"/>
+              <Static id="sta_signup" taborder="5" text="Sign up" left="235" top="436" width="70" height="24" color="#1a5fd9" font="600 13px &quot;Segoe UI&quot;" cursor="pointer" onclick="div_login_sta_signup_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_login">
+        <ColumnInfo>
+          <Column id="EMAIL" type="STRING" size="255"/>
+          <Column id="PASSWORD" type="STRING" size="100"/>
+          <Column id="REMEMBER" type="STRING" size="1"/>
+          <Column id="TOKEN" type="STRING" size="64"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="REMEMBER">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_user"/>
+    </Objects>
+    <Bind>
+      <BindItem id="bind_email" compid="div_login.form.edt_email" propid="value" datasetid="ds_login" columnid="EMAIL"/>
+      <BindItem id="bind_password" compid="div_login.form.edt_password" propid="value" datasetid="ds_login" columnid="PASSWORD"/>
+      <BindItem id="bind_remember" compid="div_login.form.chk_remember" propid="value" datasetid="ds_login" columnid="REMEMBER"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[include "Lib::Lib_Comm.xjs";
+
+this.CONST_TOKEN_KEY = "kanban_token";
+
+this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	// token saved by "Remember for 30 days" -> log in without the password
+	var sToken = nexacro.getPrivateProfile(this.CONST_TOKEN_KEY);
+	if(this.gfn_isNull(sToken)) return;
+
+	this.ds_login.setColumn(0, "TOKEN", sToken);
+
+    var sSvcID    = "svcTokenLogin";
+    var sURL      = "KanbanUrl::auth/tokenLogin";
+    var sInDs     = "ds_login=ds_login";
+    var sOutDs    = "ds_user=ds_user";
+    var sParam    = "";
+    var sCallBack = "fn_callback";
+	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);
+};
+
+// Sign in Button
+this.div_login_btn_signin_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.gfn_clearValidation(this.ds_login);
+	this.gfn_setValidation(this.ds_login, "EMAIL"   , "Email"   , "required,isemail");
+	this.gfn_setValidation(this.ds_login, "PASSWORD", "Password", "required");
+	if(this.gfn_validation(this.ds_login, "A") == false) return;
+
+    var sSvcID    = "svcLogin";
+    var sURL      = "KanbanUrl::auth/login";
+    var sInDs     = "ds_login=ds_login";
+    var sOutDs    = "ds_user=ds_user";
+    var sParam    = "";
+    var sCallBack = "fn_callback";
+	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);
+};
+
+this.fn_callback = function(svcId, errCd, errMsg)
+{
+	if(errCd < 0){
+		// the saved token is no longer valid: stay here and let the user type the password
+		if(svcId == "svcTokenLogin"){
+			nexacro.removePrivateProfile(this.CONST_TOKEN_KEY);
+			return;
+		}
+		this.gfn_alert("msg.err.validator", [errMsg]);
+		return;
+	}
+
+	if(svcId == "svcLogin" || svcId == "svcTokenLogin"){
+		this.fn_setUser(svcId == "svcTokenLogin" || this.ds_login.getColumn(0, "REMEMBER") == "Y");
+		this.getOwnerFrame().set_formurl("Base::Form_Layout.xfdl");
+	}
+};
+
+// keeps the user in gds_user and the token in ev_token (and in the private profile for "Remember me")
+this.fn_setUser = function(bRemember)
+{
+	var objUser = this.gfn_getApplication().gds_user;
+	objUser.clearData();
+	var nRow = objUser.addRow();
+	objUser.setColumn(nRow, "USER_ID"  , this.ds_user.getColumn(0, "USER_ID"));
+	objUser.setColumn(nRow, "USER_NAME", this.ds_user.getColumn(0, "USER_NAME"));
+	objUser.setColumn(nRow, "E_MAIL"   , this.ds_user.getColumn(0, "EMAIL"));
+
+	var sToken = this.ds_user.getColumn(0, "TOKEN");
+	nexacro.setEnvironmentVariable("ev_token", sToken);
+	if(bRemember){
+		nexacro.setPrivateProfile(this.CONST_TOKEN_KEY, sToken);
+	}
+	else{
+		nexacro.removePrivateProfile(this.CONST_TOKEN_KEY);
+	}
+};
+
+this.div_login_edt_onkeydown = function(obj:nexacro.Edit,e:nexacro.KeyEventInfo)
+{
+	if(e.keycode == 13){
+		this.div_login_btn_signin_onclick(this.div_login.form.btn_signin, e);
+	}
+};
+
+// Forgot password Link
+this.div_login_sta_forgot_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	this.gfn_alert("msg.kanban.notready", ["Password reset"]);
+};
+
+// Sign up Link
+this.div_login_sta_signup_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	this.getOwnerFrame().set_formurl("Base::Form_Register.xfdl");
+};
+]]></Script>
+  </Form>
+</FDL>

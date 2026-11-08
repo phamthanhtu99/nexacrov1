@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_ProductInfo" width="1050" height="648" titletext="Product Info" background="#f0f1f3" onload="Form_onload">
+    <Layouts>
+      <Layout height="648" width="1050">
+        <Static id="sta_bg" taborder="5" left="24" top="16" right="24" bottom="16" background="#ffffff" borderRadius="8px"/>
+        <Button id="btn_back" taborder="0" text="‹  Back to Inventory" left="40" top="28" width="150" height="30" background="transparent" color="#1a5fd9" border="0px none" textAlign="left" font="600 13px &quot;Segoe UI&quot;" onclick="btn_back_onclick"/>
+        <Static id="sta_title" taborder="6" text="Loading..." left="40" top="60" width="600" height="36" color="#383e49" font="600 20px &quot;Segoe UI&quot;"/>
+        <Static id="sta_availability" taborder="7" right="40" top="64" width="160" height="28" textAlign="center" borderRadius="14px" font="600 13px &quot;Segoe UI&quot;"/>
+        <Tab id="tab_detail" taborder="1" left="40" top="104" right="40" bottom="28" tabindex="0">
+          <Tabpages>
+              <Tabpage id="tpg_overview" text="Overview">
+                <Layouts>
+                  <Layout>
+                      <Static id="sta_h_primary" taborder="0" text="Primary Details" left="16" top="14" width="300" height="28" color="#383e49" font="600 16px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_name" taborder="1" text="Product name" left="16" top="48" width="150" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_name" taborder="2" text="-" left="166" top="48" width="330" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_code" taborder="3" text="Product ID" left="16" top="78" width="150" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_code" taborder="4" text="-" left="166" top="78" width="330" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_category" taborder="5" text="Category" left="16" top="108" width="150" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_category" taborder="6" text="-" left="166" top="108" width="330" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_price" taborder="7" text="Buying price" left="16" top="138" width="150" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_price" taborder="8" text="-" left="166" top="138" width="330" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_unit" taborder="9" text="Unit" left="16" top="168" width="150" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_unit" taborder="10" text="-" left="166" top="168" width="330" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_expiry" taborder="11" text="Expiry Date" left="16" top="198" width="150" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_expiry" taborder="12" text="-" left="166" top="198" width="330" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_threshold" taborder="13" text="Threshold Value" left="16" top="228" width="150" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_threshold" taborder="14" text="-" left="166" top="228" width="330" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_h_supplier" taborder="15" text="Supplier Details" left="16" top="270" width="300" height="28" color="#383e49" font="600 16px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_supplier" taborder="16" text="Supplier name" left="16" top="304" width="150" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_supplier" taborder="17" text="-" left="166" top="304" width="330" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_contact" taborder="18" text="Contact number" left="16" top="334" width="150" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_contact" taborder="19" text="-" left="166" top="334" width="330" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_email" taborder="20" text="Email" left="16" top="364" width="150" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_email" taborder="21" text="-" left="166" top="364" width="330" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_return" taborder="22" text="Return type" left="16" top="394" width="150" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_return" taborder="23" text="-" left="166" top="394" width="330" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <ImageViewer id="img_photo" taborder="24" left="560" top="16" width="150" height="150" stretch="fixaspectratio" border="1px dashed #98a2b3" borderRadius="8px" background="#f9fafb"/>
+                      <Static id="sta_noimage" taborder="25" text="No image" left="560" top="16" width="150" height="150" textAlign="center" color="#98a2b3" font="12px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_purchased" taborder="26" text="Opening stock" left="560" top="180" width="140" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_purchased" taborder="27" text="-" left="700" top="180" width="200" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_quantity" taborder="28" text="Remaining stock" left="560" top="210" width="140" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_quantity" taborder="29" text="-" left="700" top="210" width="200" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_sold" taborder="30" text="Sold" left="560" top="240" width="140" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_sold" taborder="31" text="-" left="700" top="240" width="200" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_l_created" taborder="32" text="Added on" left="560" top="270" width="140" height="26" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_created" taborder="33" text="-" left="700" top="270" width="200" height="26" color="#383e49" font="600 13px &quot;Segoe UI&quot;"/>
+                      <Static id="sta_h_stock" taborder="34" text="Stock Locations" left="560" top="304" width="300" height="28" color="#383e49" font="600 16px &quot;Segoe UI&quot;"/>
+                      <Grid id="grd_stock" taborder="35" left="560" top="336" right="16" height="110" autofittype="col" border="1px solid #f0f1f3" selecttype="row">
+                        <Formats>
+                          <Format id="default">
+                            <Columns>
+                              <Column size="220"/>
+                              <Column size="120"/>
+                            </Columns>
+                            <Rows>
+                              <Row size="30" band="head"/>
+                              <Row size="30"/>
+                            </Rows>
+                            <Band id="head">
+                              <Cell text="Store Name" textAlign="left" background="#f9fafb" color="#667085" font="600 12px &quot;Segoe UI&quot;" padding="0px 8px"/>
+                              <Cell col="1" text="Stock in hand" textAlign="right" background="#f9fafb" color="#667085" font="600 12px &quot;Segoe UI&quot;" padding="0px 8px"/>
+                            </Band>
+                            <Band id="body">
+                              <Cell text="bind:LOCATION_NAME" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" padding="0px 8px"/>
+                              <Cell col="1" text="bind:QUANTITY" textAlign="right" color="#10a760" font="600 13px &quot;Segoe UI&quot;" padding="0px 8px"/>
+                            </Band>
+                          </Format>
+                        </Formats>
+                      </Grid>
+                  </Layout>
+                </Layouts>
+              </Tabpage>
+              <Tabpage id="tpg_purchase" text="Purchases">
+                <Layouts>
+                  <Layout>
+                      <Grid id="grd_movement" taborder="0" left="16" top="16" right="16" bottom="16" autofittype="col" border="0px none" selecttype="row">
+                        <Formats>
+                          <Format id="default">
+                            <Columns>
+                              <Column size="160"/>
+                              <Column size="110"/>
+                              <Column size="130"/>
+                              <Column size="280"/>
+                              <Column size="150"/>
+                            </Columns>
+                            <Rows>
+                              <Row size="34" band="head"/>
+                              <Row size="34"/>
+                            </Rows>
+                            <Band id="head">
+                              <Cell text="Date" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="1" text="Quantity" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="2" text="Unit price" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="3" text="Note" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="4" text="By" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                            </Band>
+                            <Band id="body">
+                              <Cell text="bind:DATE_TEXT" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="1" text="bind:QTY_TEXT" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="2" text="bind:PRICE_TEXT" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="3" text="bind:NOTE" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="4" text="bind:USER_NAME" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                            </Band>
+                          </Format>
+                        </Formats>
+                      </Grid>
+                      <Static id="sta_nodata" taborder="1" visible="false" text="Nothing recorded yet." left="16" top="70" right="16" height="40" textAlign="center" color="#858d9d" font="14px &quot;Segoe UI&quot;"/>
+                  </Layout>
+                </Layouts>
+              </Tabpage>
+              <Tabpage id="tpg_adjust" text="Adjustments">
+                <Layouts>
+                  <Layout>
+                      <Grid id="grd_movement" taborder="0" left="16" top="16" right="16" bottom="16" autofittype="col" border="0px none" selecttype="row">
+                        <Formats>
+                          <Format id="default">
+                            <Columns>
+                              <Column size="160"/>
+                              <Column size="110"/>
+                              <Column size="130"/>
+                              <Column size="280"/>
+                              <Column size="150"/>
+                            </Columns>
+                            <Rows>
+                              <Row size="34" band="head"/>
+                              <Row size="34"/>
+                            </Rows>
+                            <Band id="head">
+                              <Cell text="Date" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="1" text="Quantity" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="2" text="Unit price" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="3" text="Note" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="4" text="By" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                            </Band>
+                            <Band id="body">
+                              <Cell text="bind:DATE_TEXT" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="1" text="bind:QTY_TEXT" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="2" text="bind:PRICE_TEXT" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="3" text="bind:NOTE" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="4" text="bind:USER_NAME" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                            </Band>
+                          </Format>
+                        </Formats>
+                      </Grid>
+                      <Static id="sta_nodata" taborder="1" visible="false" text="Nothing recorded yet." left="16" top="70" right="16" height="40" textAlign="center" color="#858d9d" font="14px &quot;Segoe UI&quot;"/>
+                  </Layout>
+                </Layouts>
+              </Tabpage>
+              <Tabpage id="tpg_history" text="History">
+                <Layouts>
+                  <Layout>
+                      <Grid id="grd_movement" taborder="0" left="16" top="16" right="16" bottom="16" autofittype="col" border="0px none" selecttype="row">
+                        <Formats>
+                          <Format id="default">
+                            <Columns>
+                              <Column size="150"/>
+                              <Column size="120"/>
+                              <Column size="100"/>
+                              <Column size="120"/>
+                              <Column size="240"/>
+                              <Column size="140"/>
+                            </Columns>
+                            <Rows>
+                              <Row size="34" band="head"/>
+                              <Row size="34"/>
+                            </Rows>
+                            <Band id="head">
+                              <Cell text="Date" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="1" text="Type" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="2" text="Quantity" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="3" text="Unit price" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="4" text="Note" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="5" text="By" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                            </Band>
+                            <Band id="body">
+                              <Cell text="bind:DATE_TEXT" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="1" text="bind:TYPE_NAME" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="2" text="bind:QTY_TEXT" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="3" text="bind:PRICE_TEXT" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="4" text="bind:NOTE" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                              <Cell col="5" text="bind:USER_NAME" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                            </Band>
+                          </Format>
+                        </Formats>
+                      </Grid>
+                      <Static id="sta_nodata" taborder="1" visible="false" text="Nothing recorded yet." left="16" top="70" right="16" height="40" textAlign="center" color="#858d9d" font="14px &quot;Segoe UI&quot;"/>
+                  </Layout>
+                </Layouts>
+              </Tabpage>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_cond">
+        <ColumnInfo>
+          <Column id="PRODUCT_ID" type="STRING" size="20"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_product"/>
+      <Dataset id="ds_stock"/>
+      <Dataset id="ds_movement"/>
+      <Dataset id="ds_purchase"/>
+      <Dataset id="ds_adjust"/>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[include "Lib::Lib_Comm.xjs";
+
+this.CONST_MONTH = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	// grids in tab pages are bound by script: the datasets live in this form
+	this.tab_detail.tpg_overview.form.grd_stock.set_binddataset(this.ds_stock);
+	this.tab_detail.tpg_purchase.form.grd_movement.set_binddataset(this.ds_purchase);
+	this.tab_detail.tpg_adjust.form.grd_movement.set_binddataset(this.ds_adjust);
+	this.tab_detail.tpg_history.form.grd_movement.set_binddataset(this.ds_movement);
+
+	this.fn_searchDetail();
+};
+
+// product with its supplier (ds_product), stock per location (ds_stock), every stock movement (ds_movement)
+this.fn_searchDetail = function()
+{
+	var oLayout = this.parent.parent;
+	var sProductId = (oLayout && oLayout.fv_sProductId) ? oLayout.fv_sProductId : "1";
+	this.ds_cond.setColumn(0, "PRODUCT_ID", sProductId);
+
+    var sSvcID    = "svcProductDetail";
+    var sURL      = "KanbanUrl::product/detail";
+    var sInDs     = "ds_cond=ds_cond";
+    var sOutDs    = "ds_product=ds_product ds_stock=ds_stock ds_movement=ds_movement";
+    var sParam    = "";
+    var sCallBack = "fn_callback";
+	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);
+};
+
+this.fn_callback = function(svcId, errCd, errMsg)
+{
+	if(errCd < 0){
+		this.gfn_alert("msg.err.validator", [errMsg]);
+		return;
+	}
+
+	if(svcId == "svcProductDetail"){
+		this.fn_showProduct();
+		this.fn_showMovement();
+		// no row is selected at first in the read-only grids
+		this.ds_stock.set_rowposition(-1);
+		this.ds_movement.set_rowposition(-1);
+		this.ds_purchase.set_rowposition(-1);
+		this.ds_adjust.set_rowposition(-1);
+	}
+};
+
+// value of ds_product, "-" when it is empty
+this.fn_getValue = function(sColId)
+{
+	var sValue = this.ds_product.getColumn(0, sColId);
+	return this.gfn_isNull(sValue) ? "-" : String(sValue);
+};
+
+// yyyyMMdd -> dd MMM yyyy
+this.fn_formatDate = function(sDate)
+{
+	if(this.gfn_isNull(sDate) || String(sDate).length < 8) return "-";
+	sDate = String(sDate);
+	return sDate.substr(6, 2) + " " + this.CONST_MONTH[parseInt(sDate.substr(4, 2), 10) - 1] + " " + sDate.substr(0, 4);
+};
+
+// yyyyMMddHHmmss -> dd/MM/yyyy HH:mm
+this.fn_formatDateTime = function(sDate)
+{
+	if(this.gfn_isNull(sDate) || String(sDate).length < 12) return "";
+	sDate = String(sDate);
+	return sDate.substr(6, 2) + "/" + sDate.substr(4, 2) + "/" + sDate.substr(0, 4) + " " + sDate.substr(8, 2) + ":" + sDate.substr(10, 2);
+};
+
+this.fn_showProduct = function()
+{
+	var oOverview = this.tab_detail.tpg_overview.form;
+	var sUnit = this.fn_getValue("UNIT");
+
+	this.sta_title.set_text(this.fn_getValue("PRODUCT_NAME"));
+	this.fn_showAvailability();
+
+	oOverview.sta_name.set_text(this.fn_getValue("PRODUCT_NAME"));
+	oOverview.sta_code.set_text(this.fn_getValue("PRODUCT_CODE"));
+	oOverview.sta_category.set_text(this.fn_getValue("CATEGORY_NAME"));
+	oOverview.sta_price.set_text("₹" + this.gfn_appendComma(this.ds_product.getColumn(0, "BUYING_PRICE")));
+	oOverview.sta_unit.set_text(sUnit);
+	oOverview.sta_expiry.set_text(this.fn_formatDate(this.ds_product.getColumn(0, "EXPIRY_DATE")));
+	oOverview.sta_threshold.set_text(this.fn_getValue("THRESHOLD_VALUE") + " " + sUnit);
+
+	var bSupplier = !this.gfn_isNull(this.ds_product.getColumn(0, "SUPPLIER_NAME"));
+	oOverview.sta_supplier.set_text(bSupplier ? this.fn_getValue("SUPPLIER_NAME") : "No supplier for this product yet");
+	oOverview.sta_contact.set_text(this.fn_getValue("SUPPLIER_CONTACT"));
+	oOverview.sta_email.set_text(this.fn_getValue("SUPPLIER_EMAIL"));
+	oOverview.sta_return.set_text(this.fn_getValue("SUPPLIER_RETURN_TYPE_NAME"));
+
+	oOverview.sta_purchased.set_text(this.fn_getValue("PURCHASED_QTY") + " " + sUnit);
+	oOverview.sta_quantity.set_text(this.fn_getValue("QUANTITY") + " " + sUnit);
+	oOverview.sta_sold.set_text(this.fn_getValue("SOLD_QTY") + " " + sUnit);
+	oOverview.sta_created.set_text(this.fn_formatDate(this.ds_product.getColumn(0, "CREATED_DATE")));
+
+	// IMAGE_DATA is the path returned by file/upload ("file/<name>")
+	var sImage = this.ds_product.getColumn(0, "IMAGE_DATA");
+	oOverview.sta_noimage.set_visible(this.gfn_isNull(sImage));
+	if(!this.gfn_isNull(sImage)){
+		oOverview.img_photo.set_image("url('" + nexacro.getEnvironment().services["KanbanUrl"].url + sImage + "')");
+	}
+};
+
+this.fn_showAvailability = function()
+{
+	var sCode = this.ds_product.getColumn(0, "AVAILABILITY");
+	var oColor = {IN : ["#10a760", "#ecfdf3"], LOW : ["#e19133", "#fffaeb"], OUT : ["#da3e33", "#fef3f2"]}[sCode] || ["#667085", "#f2f4f7"];
+	this.sta_availability.set_text(this.fn_getValue("AVAILABILITY_NAME"));
+	this.sta_availability.set_color(oColor[0]);
+	this.sta_availability.set_background(oColor[1]);
+};
+
+// adds the display columns, then fills the Purchases / Adjustments copies
+this.fn_showMovement = function()
+{
+	var objDs = this.ds_movement;
+	objDs.set_enableevent(false);
+	objDs.addColumn("DATE_TEXT" , "STRING");
+	objDs.addColumn("TYPE_NAME" , "STRING");
+	objDs.addColumn("QTY_TEXT"  , "STRING");
+	objDs.addColumn("PRICE_TEXT", "STRING");
+	for(var i=0; i<objDs.rowcount; i++){
+		var nQty   = parseInt(objDs.getColumn(i, "QUANTITY"), 10);
+		var vPrice = objDs.getColumn(i, "UNIT_PRICE");
+		objDs.setColumn(i, "DATE_TEXT" , this.fn_formatDateTime(objDs.getColumn(i, "MOVEMENT_DATE")));
+		objDs.setColumn(i, "TYPE_NAME" , objDs.getColumn(i, "MOVEMENT_TYPE_NAME"));
+		objDs.setColumn(i, "QTY_TEXT"  , (nQty > 0 ? "+" : "") + nQty);
+		objDs.setColumn(i, "PRICE_TEXT", this.gfn_isNull(vPrice) ? "-" : "₹" + this.gfn_appendComma(vPrice));
+	}
+	objDs.set_enableevent(true);
+
+	this.fn_copyMovement(this.ds_purchase, "PURCHASE"  , this.tab_detail.tpg_purchase.form);
+	this.fn_copyMovement(this.ds_adjust  , "ADJUSTMENT", this.tab_detail.tpg_adjust.form);
+	this.tab_detail.tpg_history.form.sta_nodata.set_visible(objDs.rowcount == 0);
+};
+
+this.fn_copyMovement = function(objTarget, sType, oPage)
+{
+	objTarget.copyData(this.ds_movement);
+	objTarget.filter("MOVEMENT_TYPE=='" + sType + "'");
+	oPage.sta_nodata.set_visible(objTarget.rowcount == 0);
+};
+
+// Back to Inventory Button
+this.btn_back_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var oLayout = this.parent.parent;
+	if(oLayout && oLayout.fn_openMenu){
+		oLayout.fn_openMenu("inventory", "Inventory");
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

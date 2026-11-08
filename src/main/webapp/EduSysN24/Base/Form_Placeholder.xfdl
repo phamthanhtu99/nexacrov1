@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Placeholder" width="1050" height="648" titletext="Placeholder" background="#f0f1f3" onload="Form_onload">
+    <Layouts>
+      <Layout height="648" width="1050">
+        <Static id="sta_bg" taborder="0" left="24" top="16" right="24" bottom="16" background="#ffffff" borderRadius="8px"/>
+        <Static id="sta_title" taborder="1" left="40" top="30" width="500" height="36" color="#383e49" font="600 18px &quot;Segoe UI&quot;"/>
+        <Static id="sta_message" taborder="2" text="This screen is not available yet." left="40" top="70" width="500" height="24" color="#667085" font="14px &quot;Segoe UI&quot;"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.fn_setTitle = function(sTitle)
+{
+	this.sta_title.set_text(sTitle);
+};
+
+this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fn_setTitle(this.parent.parent.fv_sMenuTitle);
+};
+]]></Script>
+  </Form>
+</FDL>

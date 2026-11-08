@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Menu" width="230" height="720" titletext="Menu" background="#ffffff" onload="Form_onload">
+    <Layouts>
+      <Layout height="720" width="230">
+        <ImageViewer id="img_logo" taborder="8" left="28" top="16" width="40" height="40" image="url('imagerc::kanban_logo.png')" stretch="fit" border="0px none" background="transparent"/>
+        <Static id="sta_logo" taborder="9" text="KANBAN" left="74" top="16" width="120" height="40" color="#1e9ad6" font="bold 16px &quot;Segoe UI&quot;"/>
+        <Button id="btn_dashboard" taborder="0" text="Dashboard" left="16" top="86" width="198" height="40" icon="url('imagerc::kanban/ic_dashboard.png')" textAlign="left" textPadding="0px 0px 0px 12px" padding="0px 12px" background="transparent" border="0px none" color="#5d6679" font="14px &quot;Segoe UI&quot;" onclick="btn_menu_onclick"/>
+        <Button id="btn_inventory" taborder="1" text="Inventory" left="16" top="134" width="198" height="40" icon="url('imagerc::kanban/ic_inventory.png')" textAlign="left" textPadding="0px 0px 0px 12px" padding="0px 12px" background="transparent" border="0px none" color="#5d6679" font="14px &quot;Segoe UI&quot;" onclick="btn_menu_onclick"/>
+        <Button id="btn_reports" taborder="2" text="Reports" left="16" top="182" width="198" height="40" icon="url('imagerc::kanban/ic_reports.png')" textAlign="left" textPadding="0px 0px 0px 12px" padding="0px 12px" background="transparent" border="0px none" color="#5d6679" font="14px &quot;Segoe UI&quot;" onclick="btn_menu_onclick"/>
+        <Button id="btn_suppliers" taborder="3" text="Suppliers" left="16" top="230" width="198" height="40" icon="url('imagerc::kanban/ic_suppliers.png')" textAlign="left" textPadding="0px 0px 0px 12px" padding="0px 12px" background="transparent" border="0px none" color="#5d6679" font="14px &quot;Segoe UI&quot;" onclick="btn_menu_onclick"/>
+        <Button id="btn_orders" taborder="4" text="Orders" left="16" top="278" width="198" height="40" icon="url('imagerc::kanban/ic_orders.png')" textAlign="left" textPadding="0px 0px 0px 12px" padding="0px 12px" background="transparent" border="0px none" color="#5d6679" font="14px &quot;Segoe UI&quot;" onclick="btn_menu_onclick"/>
+        <Button id="btn_store" taborder="5" text="Manage Store" left="16" top="326" width="198" height="40" icon="url('imagerc::kanban/ic_store.png')" textAlign="left" textPadding="0px 0px 0px 12px" padding="0px 12px" background="transparent" border="0px none" color="#5d6679" font="14px &quot;Segoe UI&quot;" onclick="btn_menu_onclick"/>
+        <Button id="btn_settings" taborder="6" text="Settings" left="16" bottom="64" width="198" height="40" icon="url('imagerc::kanban/ic_settings.png')" textAlign="left" textPadding="0px 0px 0px 12px" padding="0px 12px" background="transparent" border="0px none" color="#5d6679" font="14px &quot;Segoe UI&quot;" onclick="btn_menu_onclick"/>
+        <Button id="btn_logout" taborder="7" text="Log Out" left="16" bottom="16" width="198" height="40" icon="url('imagerc::kanban/ic_logout.png')" textAlign="left" textPadding="0px 0px 0px 12px" padding="0px 12px" background="transparent" border="0px none" color="#5d6679" font="14px &quot;Segoe UI&quot;" onclick="btn_logout_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.fv_oActive = null;
+
+this.fn_setActive = function(objBtn)
+{
+	if (this.fv_oActive) {
+		this.fn_setButtonStyle(this.fv_oActive, false);
+	}
+	this.fn_setButtonStyle(objBtn, true);
+	this.fv_oActive = objBtn;
+};
+
+this.fn_setButtonStyle = function(objBtn, bActive)
+{
+	var sMenuId = objBtn.name.replace("btn_", "");
+	objBtn.set_icon("url('imagerc::kanban/ic_" + sMenuId + (bActive ? "_on" : "") + ".png')");
+	objBtn.set_color(bActive ? "#1a5fd9" : "#5d6679");
+	objBtn.set_font((bActive ? "600 " : "") + "14px \"Segoe UI\"");
+};
+
+this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fn_setActive(this.btn_inventory);
+};
+
+this.btn_menu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	// no early return for the active menu: Inventory must also leave the product detail screen
+	if (obj != this.fv_oActive) {
+		this.fn_setActive(obj);
+	}
+	this.parent.parent.fn_openMenu(obj.name.replace("btn_", ""), obj.text);
+};
+
+this.btn_logout_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.parent.parent.fn_logout();
+};
+]]></Script>
+  </Form>
+</FDL>

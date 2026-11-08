@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Header" width="1050" height="72" titletext="Header" background="#ffffff" onload="Form_onload">
+    <Layouts>
+      <Layout height="72" width="1050">
+        <Static id="sta_user" taborder="4" right="122" top="16" width="240" height="40" textAlign="right" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
+        <Edit id="edt_search" taborder="0" left="24" top="16" width="280" height="40" displaynulltext="Search product, supplier, order" borderRadius="6px" border="1px solid #f0f1f3" padding="0px 12px 0px 40px" font="14px &quot;Segoe UI&quot;" oninput="edt_search_oninput"/>
+        <ImageViewer id="img_search" taborder="1" left="36" top="26" width="20" height="20" image="url('imagerc::kanban/ic_search.png')" stretch="fit" border="0px none" background="transparent"/>
+        <ImageViewer id="img_bell" taborder="2" right="84" top="26" width="20" height="20" image="url('imagerc::kanban/ic_bell.png')" stretch="fit" border="0px none" background="transparent"/>
+        <ImageViewer id="img_avatar" taborder="3" right="30" top="16" width="40" height="40" image="url('imagerc::kanban/img_avatar.png')" stretch="fit" border="0px none" background="transparent"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var objUser = nexacro.getApplication().gds_user;
+	this.sta_user.set_text(objUser.rowcount > 0 ? objUser.getColumn(0, "USER_NAME") : "");
+};
+
+this.fn_clearSearch = function()
+{
+	this.edt_search.set_value("");
+};
+
+this.edt_search_oninput = function(obj:nexacro.Edit,e:nexacro.InputEventInfo)
+{
+	this.parent.parent.fn_search(obj.text);
+};
+]]></Script>
+  </Form>
+</FDL>

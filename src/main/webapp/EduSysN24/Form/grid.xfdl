@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="grid" width="1010" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1010">
+        <Div id="Div00" taborder="0" text="Div00" left="0" top="46" height="44" cssclass="div_WF_Search" right="0" background="darkgray">
+          <Layouts>
+            <Layout>
+              <Static id="Static02" taborder="0" text="Department" left="0" top="8" width="107" height="26" cssclass="sta_WF_Label"/>
+              <Edit id="Edit00" taborder="1" left="107.00" top="8" width="90" height="26"/>
+              <Button id="Button00" taborder="2" left="197.00" top="8" width="26" height="26" cssclass="btn_WF_Find"/>
+              <Edit id="Edit01" taborder="3" left="223.00" top="8" width="175" height="26"/>
+              <Static id="Static00" taborder="4" text="Gender" left="498.00" top="8" width="77" height="26" cssclass="sta_WF_Label"/>
+              <Radio id="Radio00" taborder="5" left="575.00" top="8" width="280" height="26" innerdataset="ds_rdo" codecolumn="code" datacolumn="data" direction="vertical" columncount="-1" rowcount="-1"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_rdo">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="data" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">1</Col>
+            <Col id="data">All</Col>
+          </Row>
+          <Row>
+            <Col id="code">2</Col>
+            <Col id="data">Female</Col>
+          </Row>
+          <Row>
+            <Col id="code">3</Col>
+            <Col id="data">Male</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

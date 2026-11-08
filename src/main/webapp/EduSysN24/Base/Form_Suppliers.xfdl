@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Suppliers" width="1050" height="648" titletext="Suppliers" background="#f0f1f3" onload="Form_onload">
+    <Layouts>
+      <Layout height="648" width="1050">
+        <Static id="sta_bg" taborder="4" left="24" top="16" right="24" bottom="16" background="#ffffff" borderRadius="8px"/>
+        <Static id="sta_title" taborder="5" text="Suppliers" left="40" top="30" width="120" height="36" color="#383e49" font="600 18px &quot;Segoe UI&quot;"/>
+        <Static id="sta_filter_info" taborder="6" left="150" top="30" width="320" height="36" color="#1a5fd9" font="12px &quot;Segoe UI&quot;"/>
+        <Static id="sta_count" taborder="7" right="240" top="30" width="160" height="36" textAlign="right" color="#858d9d" font="12px &quot;Segoe UI&quot;"/>
+        <Button id="btn_add" taborder="0" text="Add Supplier" right="134" top="30" width="100" height="36" background="#1a5fd9" color="#ffffff" borderRadius="4px" border="0px none" font="600 13px &quot;Segoe UI&quot;" onclick="btn_add_onclick"/>
+        <Button id="btn_filter" taborder="1" text="Filters" right="40" top="30" width="84" height="36" icon="url('imagerc::kanban/ic_filter.png')" textPadding="0px 0px 0px 6px" background="#ffffff" color="#5d6679" borderRadius="4px" border="1px solid #d0d3d9" font="13px &quot;Segoe UI&quot;" onclick="btn_filter_onclick"/>
+        <Grid id="grd_supplier" taborder="3" left="40" top="72" right="40" bottom="28" binddataset="ds_supplier" autofittype="col" border="0px none" selecttype="row" onheadclick="grd_supplier_onheadclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="170"/>
+                <Column size="150"/>
+                <Column size="150"/>
+                <Column size="190"/>
+                <Column size="170"/>
+                <Column size="90"/>
+              </Columns>
+              <Rows>
+                <Row size="34" band="head"/>
+                <Row size="34"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="Supplier Name" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" padding="0px 4px 0px 0px" border="0px none, 0px none, 1px solid #f0f1f3, 0px none" cursor="pointer"/>
+                <Cell col="1" text="Product" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" padding="0px 4px 0px 0px" border="0px none, 0px none, 1px solid #f0f1f3, 0px none" cursor="pointer"/>
+                <Cell col="2" text="Contact Number" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" padding="0px 4px 0px 0px" border="0px none, 0px none, 1px solid #f0f1f3, 0px none" cursor="pointer"/>
+                <Cell col="3" text="Email" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" padding="0px 4px 0px 0px" border="0px none, 0px none, 1px solid #f0f1f3, 0px none" cursor="pointer"/>
+                <Cell col="4" text="Type" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" padding="0px 4px 0px 0px" border="0px none, 0px none, 1px solid #f0f1f3, 0px none" cursor="pointer"/>
+                <Cell col="5" text="On the way" textAlign="left" background="#ffffff" color="#667085" font="600 13px &quot;Segoe UI&quot;" padding="0px 4px 0px 0px" border="0px none, 0px none, 1px solid #f0f1f3, 0px none" cursor="pointer"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:SUPPLIER_NAME" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" padding="0px 4px 0px 0px" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                <Cell col="1" text="bind:PRODUCT_NAME" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" padding="0px 4px 0px 0px" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                <Cell col="2" text="bind:CONTACT_NUMBER" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" padding="0px 4px 0px 0px" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                <Cell col="3" text="bind:EMAIL" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" padding="0px 4px 0px 0px" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                <Cell col="4" text="bind:RETURN_TYPE_NAME" textAlign="left" cssclass="expr:RETURN_TYPE=='TAKING'?'cell_WF_StockIn':'cell_WF_StockOut'" font="13px &quot;Segoe UI&quot;" padding="0px 4px 0px 0px" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+                <Cell col="5" text="bind:ON_THE_WAY" textAlign="left" color="#48505e" font="13px &quot;Segoe UI&quot;" padding="0px 4px 0px 0px" border="0px none, 0px none, 1px solid #f0f1f3, 0px none"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="sta_nodata" taborder="8" visible="false" text="No suppliers match your search." left="40" top="140" right="40" height="40" textAlign="center" color="#858d9d" font="14px &quot;Segoe UI&quot;"/>
+        <PopupDiv id="pdv_filter" visible="false" left="0" top="0" width="260" height="210" background="#ffffff" border="1px solid #e4e7ec" borderRadius="8px">
+          <Layouts>
+            <Layout>
+              <Static id="sta_l_category" taborder="4" text="Category" left="16" top="12" width="228" height="20" color="#48505e" font="600 12px &quot;Segoe UI&quot;"/>
+              <Combo id="cmb_category" taborder="0" codecolumn="CODE" datacolumn="CODE_NAME" left="16" top="34" width="228" height="36" borderRadius="6px" border="1px solid #d0d5dd" font="13px &quot;Segoe UI&quot;"/>
+              <Static id="sta_l_type" taborder="5" text="Type" left="16" top="80" width="228" height="20" color="#48505e" font="600 12px &quot;Segoe UI&quot;"/>
+              <Combo id="cmb_type" taborder="1" codecolumn="CODE" datacolumn="CODE_NAME" left="16" top="102" width="228" height="36" borderRadius="6px" border="1px solid #d0d5dd" font="13px &quot;Segoe UI&quot;"/>
+              <Button id="btn_reset" taborder="2" text="Reset" left="16" top="156" width="108" height="36" background="#ffffff" color="#5d6679" borderRadius="6px" border="1px solid #d0d5dd" font="600 13px &quot;Segoe UI&quot;" onclick="pdv_filter_btn_reset_onclick"/>
+              <Button id="btn_apply" taborder="3" text="Apply" left="136" top="156" width="108" height="36" background="#1a5fd9" color="#ffffff" borderRadius="6px" border="0px none" font="600 13px &quot;Segoe UI&quot;" onclick="pdv_filter_btn_apply_onclick"/>
+            </Layout>
+          </Layouts>
+        </PopupDiv>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_cond">
+        <ColumnInfo>
+          <Column id="KEYWORD" type="STRING" size="100"/>
+          <Column id="CATEGORY" type="STRING" size="30"/>
+          <Column id="RETURN_TYPE" type="STRING" size="20"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_supplier"/>
+      <Dataset id="ds_codeCond">
+        <ColumnInfo>
+          <Column id="GROUP_CODES" type="STRING" size="200"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_code"/>
+      <Dataset id="ds_category">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="30"/>
+          <Column id="CODE_NAME" type="STRING" size="100"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_type">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="30"/>
+          <Column id="CODE_NAME" type="STRING" size="100"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[include "Lib::Lib_Comm.xjs";
+
+this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var oFilter = this.pdv_filter.form;
+	oFilter.cmb_category.set_innerdataset(this.ds_category);
+	oFilter.cmb_type.set_innerdataset(this.ds_type);
+
+	this.fn_searchCode();
+};
+
+// common codes of the filter combos
+this.fn_searchCode = function()
+{
+	this.ds_codeCond.setColumn(0, "GROUP_CODES", "CATEGORY,RETURN_TYPE");
+
+    var sSvcID    = "svcCommonCode";
+    var sURL      = "KanbanUrl::common/code";
+    var sInDs     = "ds_cond=ds_codeCond";
+    var sOutDs    = "ds_code=ds_code";
+    var sParam    = "";
+    var sCallBack = "fn_callback";
+	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);
+};
+
+this.fn_searchList = function()
+{
+	// the server sends no dataset when nothing matches, so clear it first
+	this.ds_supplier.clearData();
+
+    var sSvcID    = "svcSupplierList";
+    var sURL      = "KanbanUrl::supplier/list";
+    var sInDs     = "ds_cond=ds_cond";
+    var sOutDs    = "ds_supplier=ds_supplier";
+    var sParam    = "";
+    var sCallBack = "fn_callback";
+	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);
+};
+
+this.fn_callback = function(svcId, errCd, errMsg)
+{
+	if(errCd < 0){
+		this.gfn_alert("msg.err.validator", [errMsg]);
+		return;
+	}
+
+	if(svcId == "svcCommonCode"){
+		var arrCode = new Array();
+		arrCode.push({codeGroup:"CATEGORY"   , obj:this.pdv_filter.form.cmb_category, first:"2::All categories"});
+		arrCode.push({codeGroup:"RETURN_TYPE", obj:this.pdv_filter.form.cmb_type    , first:"2::All"});
+		this.gfn_getCommonCode(arrCode, this.ds_code);
+
+		this.fn_searchList();
+	}
+	else if(svcId == "svcSupplierList"){
+		this.ds_supplier.set_rowposition(-1);
+		this.sta_count.set_text(this.ds_supplier.rowcount + " suppliers");
+		this.sta_nodata.set_visible(this.ds_supplier.rowcount == 0);
+	}
+};
+
+// Called by Form_Layout when the header search changes (already debounced there)
+this.fn_search = function(sKeyword)
+{
+	this.ds_cond.setColumn(0, "KEYWORD", sKeyword);
+	this.fn_searchList();
+};
+
+// Filters Button
+this.btn_filter_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.pdv_filter.trackPopupByComponent(obj, obj.getOffsetWidth() - this.pdv_filter.getOffsetWidth(), obj.getOffsetHeight() + 4);
+};
+
+// Apply Button (filter popup)
+this.pdv_filter_btn_apply_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var oFilter = this.pdv_filter.form;
+	this.ds_cond.setColumn(0, "CATEGORY"   , oFilter.cmb_category.value);
+	this.ds_cond.setColumn(0, "RETURN_TYPE", oFilter.cmb_type.value);
+	this.pdv_filter.closePopup();
+
+	var arrText = new Array();
+	if(!this.gfn_isNull(oFilter.cmb_category.value)) arrText.push(oFilter.cmb_category.text);
+	if(!this.gfn_isNull(oFilter.cmb_type.value))     arrText.push(oFilter.cmb_type.text);
+	this.sta_filter_info.set_text(arrText.length > 0 ? "Filtered: " + arrText.join(", ") : "");
+
+	this.fn_searchList();
+};
+
+// Reset Button (filter popup)
+this.pdv_filter_btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.pdv_filter.form.cmb_category.set_index(0);
+	this.pdv_filter.form.cmb_type.set_index(0);
+	this.pdv_filter_btn_apply_onclick(obj, e);
+};
+
+// Add Supplier Button
+this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objChild = new ChildFrame("popNewSupplier", 0, 0, 480, 626);
+	objChild.formurl = "Base::Form_NewSupplier.xfdl";
+	objChild.openalign = "center middle";
+	objChild.dragmovetype = "all";
+	objChild.overlaycolor = "RGBA(0, 0, 0, 0.2)";
+	objChild.set_showtitlebar(false);
+
+    objChild.showModal(this.getOwnerFrame()
+                     , {}
+                     , this
+                     , "fn_callbackPopup");
+};
+
+this.fn_callbackPopup = function(sPopupId, sReturn)
+{
+	if(sReturn == undefined){
+		sReturn = "";
+	}
+
+	if(sPopupId == "popNewSupplier"){
+		if(sReturn.length > 0){
+			this.gfn_alert("msg.kanban.supplier.added", [sReturn]);
+			this.fn_searchList();
+		}
+	}
+};
+
+this.grd_supplier_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	this.fn_gridSort(obj, e);
+};
+
+this.CONST_NONE_MARK = "";
+this.CONST_ASC_MARK = "↑";
+this.CONST_DESC_MARK = "↓";
+this.fn_gridSort = function (obj, e)
+{
+    if(obj.getCellProperty("head", e.cell, "displaytype") == "checkboxcontrol") return;
+    var objDs     = obj.getBindDataset();
+	var sColId    = obj.getCellProperty("body", e.cell, "text").split(":");
+	var sHeadText = "";
+
+	for(var i = 0; i<obj.getCellCount("head"); i++)
+	{
+		sHeadText = obj.getCellText(-1, i) ;
+		if(i == e.cell){
+			if (sHeadText.substr(sHeadText.length-1) == this.CONST_ASC_MARK) {
+				obj.setCellProperty("head", i, "text", sHeadText.substr(0, sHeadText.length - 1) + this.CONST_DESC_MARK);
+				objDs.keystring = "S:-" + sColId[1];
+			}
+			else if (sHeadText.substr(sHeadText.length-1) == this.CONST_DESC_MARK) {
+				obj.setCellProperty("head", i, "text", sHeadText.substr(0, sHeadText.length - 1) + this.CONST_ASC_MARK);
+				objDs.keystring = "S:+" + sColId[1];
+			}
+			else {
+				obj.setCellProperty("head", i, "text", sHeadText + this.CONST_ASC_MARK);
+				objDs.keystring = "S:+" + sColId[1];
+			}
+		}
+		else {
+			if(sHeadText != null & sHeadText != ""){
+				if (sHeadText.substr(sHeadText.length - 1) == this.CONST_ASC_MARK || sHeadText.substr(sHeadText.length - 1) == this.CONST_DESC_MARK) {
+					obj.setCellProperty("head", i, "text", sHeadText.substr(0, sHeadText.length - 1));
+				}
+			}
+		}
+	}
+}
+]]></Script>
+  </Form>
+</FDL>

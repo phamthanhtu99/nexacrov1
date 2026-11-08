@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_NewSupplier" width="480" height="626" titletext="New Supplier" background="#ffffff" onload="Form_onload" ondrop="Form_ondrop">
+    <Layouts>
+      <Layout height="626" width="480">
+        <Static id="sta_title" taborder="20" text="New Supplier" left="24" top="16" width="300" height="36" color="#383e49" font="600 20px &quot;Segoe UI&quot;"/>
+        <Static id="sta_line_top" taborder="21" left="0" top="60" right="0" height="1" background="#f0f1f3"/>
+        <Static id="sta_drop" taborder="22" left="24" top="72" width="432" height="100" background="#f9fafb" border="1px dashed #d0d5dd" borderRadius="8px"/>
+        <ImageViewer id="img_photo" taborder="23" left="48" top="86" width="72" height="72" image="url('imagerc::kanban/img_avatar.png')" stretch="fit" border="0px none" background="transparent" borderRadius="36px"/>
+        <Static id="sta_drag" taborder="24" text="Drag image here" left="140" top="92" width="300" height="22" color="#667085" font="14px &quot;Segoe UI&quot;"/>
+        <Static id="sta_or" taborder="25" text="or" left="140" top="112" width="20" height="22" color="#858d9d" font="13px &quot;Segoe UI&quot;"/>
+        <Static id="sta_browse" taborder="0" text="Browse image" left="160" top="112" width="110" height="22" color="#1a5fd9" font="600 13px &quot;Segoe UI&quot;" cursor="pointer" onclick="sta_browse_onclick"/>
+        <Static id="sta_l_name" taborder="27" text="Supplier Name" left="24" top="186" width="130" height="40" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
+        <Edit id="edt_name" taborder="1" left="160" top="186" width="296" height="40" maxlength="100" displaynulltext="Enter supplier name" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 12px" font="14px &quot;Segoe UI&quot;"/>
+        <Static id="sta_l_product" taborder="29" text="Product" left="24" top="246" width="130" height="40" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
+        <Edit id="edt_product" taborder="2" left="160" top="246" width="296" height="40" maxlength="100" displaynulltext="Enter product" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 12px" font="14px &quot;Segoe UI&quot;"/>
+        <Static id="sta_l_category" taborder="31" text="Category" left="24" top="306" width="130" height="40" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
+        <Combo id="cmb_category" taborder="3" innerdataset="ds_category" codecolumn="CODE" datacolumn="CODE_NAME" left="160" top="306" width="296" height="40" displaynulltext="Select product category" borderRadius="8px" border="1px solid #d0d5dd" font="14px &quot;Segoe UI&quot;"/>
+        <Static id="sta_l_price" taborder="33" text="Buying Price" left="24" top="366" width="130" height="40" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
+        <Edit id="edt_price" taborder="4" left="160" top="366" width="296" height="40" maxlength="12" inputtype="digit" displaynulltext="Enter buying price" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 12px" font="14px &quot;Segoe UI&quot;"/>
+        <Static id="sta_l_contact" taborder="35" text="Contact Number" left="24" top="426" width="130" height="40" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
+        <Edit id="edt_contact" taborder="5" left="160" top="426" width="296" height="40" maxlength="15" inputtype="digit" displaynulltext="Enter supplier contact number" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 12px" font="14px &quot;Segoe UI&quot;"/>
+        <Static id="sta_l_type" taborder="37" text="Type" left="24" top="486" width="130" height="40" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
+        <Button id="btn_not_taking" taborder="6" text="Not taking return" left="160" top="486" width="144" height="40" background="#ffffff" color="#5d6679" borderRadius="8px" border="1px solid #d0d5dd" font="13px &quot;Segoe UI&quot;" onclick="btn_type_onclick"/>
+        <Button id="btn_taking" taborder="7" text="Taking return" left="312" top="486" width="144" height="40" background="#ffffff" color="#5d6679" borderRadius="8px" border="1px solid #d0d5dd" font="13px &quot;Segoe UI&quot;" onclick="btn_type_onclick"/>
+        <Static id="sta_line_bottom" taborder="39" left="0" top="556" right="0" height="1" background="#f0f1f3"/>
+        <Button id="btn_discard" taborder="8" text="Discard" left="240" top="570" width="88" height="40" background="#ffffff" color="#5d6679" borderRadius="8px" border="1px solid #d0d5dd" font="600 13px &quot;Segoe UI&quot;" onclick="btn_discard_onclick"/>
+        <Button id="btn_save" taborder="9" text="Add Supplier" left="336" top="570" width="120" height="40" background="#1a5fd9" color="#ffffff" borderRadius="8px" border="0px none" font="600 13px &quot;Segoe UI&quot;" onclick="btn_save_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_supplier">
+        <ColumnInfo>
+          <Column id="SUPPLIER_NAME" type="STRING" size="100"/>
+          <Column id="PRODUCT_NAME" type="STRING" size="100"/>
+          <Column id="CATEGORY_CODE" type="STRING" size="30"/>
+          <Column id="BUYING_PRICE" type="STRING" size="15"/>
+          <Column id="CONTACT_NUMBER" type="STRING" size="15"/>
+          <Column id="RETURN_TYPE" type="STRING" size="20"/>
+          <Column id="IMAGE_DATA" type="STRING" size="2000000"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_result"/>
+      <Dataset id="ds_codeCond">
+        <ColumnInfo>
+          <Column id="GROUP_CODES" type="STRING" size="200"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_code"/>
+      <Dataset id="ds_category">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="30"/>
+          <Column id="CODE_NAME" type="STRING" size="100"/>
+        </ColumnInfo>
+      </Dataset>
+      <FileDialog id="fdl_image" filter="Images(*.png;*.jpg;*.jpeg;*.gif)|*.png;*.jpg;*.jpeg;*.gif|" onclose="fdl_image_onclose"/>
+      <FileUpTransfer id="fut_image" onsuccess="fut_image_onsuccess" onerror="fut_image_onerror"/>
+    </Objects>
+    <Bind>
+      <BindItem id="bind_name" compid="edt_name" propid="value" datasetid="ds_supplier" columnid="SUPPLIER_NAME"/>
+      <BindItem id="bind_product" compid="edt_product" propid="value" datasetid="ds_supplier" columnid="PRODUCT_NAME"/>
+      <BindItem id="bind_category" compid="cmb_category" propid="value" datasetid="ds_supplier" columnid="CATEGORY_CODE"/>
+      <BindItem id="bind_price" compid="edt_price" propid="value" datasetid="ds_supplier" columnid="BUYING_PRICE"/>
+      <BindItem id="bind_contact" compid="edt_contact" propid="value" datasetid="ds_supplier" columnid="CONTACT_NUMBER"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[include "Lib::Lib_Comm.xjs";
+
+this.fv_oType = null;
+
+this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fn_searchCode();
+	this.edt_name.setFocus();
+};
+
+// common codes of the Category combo
+this.fn_searchCode = function()
+{
+	this.ds_codeCond.setColumn(0, "GROUP_CODES", "CATEGORY");
+
+    var sSvcID    = "svcCommonCode";
+    var sURL      = "KanbanUrl::common/code";
+    var sInDs     = "ds_cond=ds_codeCond";
+    var sOutDs    = "ds_code=ds_code";
+    var sParam    = "";
+    var sCallBack = "fn_callback";
+	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);
+};
+
+this.fn_callback = function(svcId, errCd, errMsg)
+{
+	if(errCd < 0){
+		this.btn_save.set_enable(true);
+		this.gfn_alert("msg.err.validator", [errMsg]);
+		return;
+	}
+
+	if(svcId == "svcCommonCode"){
+		var arrCode = new Array();
+		arrCode.push({codeGroup:"CATEGORY", obj:this.cmb_category, first:"2::Select product category"});
+		this.gfn_getCommonCode(arrCode, this.ds_code);
+	}
+	else if(svcId == "svcSaveSupplier"){
+		this.close(this.ds_supplier.getColumn(0, "SUPPLIER_NAME"));
+	}
+};
+
+// Browse image Link
+this.sta_browse_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	this.fdl_image.open("Select image", FileDialog.LOAD);
+};
+
+this.fdl_image_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{
+	if(e.virtualfiles && e.virtualfiles.length > 0){
+		this.fn_uploadImage(e.virtualfiles[0]);
+	}
+};
+
+// Drag image here
+this.Form_ondrop = function(obj:nexacro.Form,e:nexacro.DragEventInfo)
+{
+	if(e.filelist && e.filelist.length > 0){
+		this.fn_uploadImage(e.filelist[0]);
+	}
+};
+
+// uploads the image to file/upload (FileUpTransfer works in Nexacro Runtime and in a browser)
+this.fn_uploadImage = function(objFile)
+{
+	if(!/\.(png|jpe?g|gif)$/i.test(objFile.filename)){
+		this.gfn_alert("msg.kanban.image.type");
+		return;
+	}
+	// Save waits for the upload
+	this.btn_save.set_enable(false);
+	this.fut_image.clearFileList();
+	this.fut_image.addFile(objFile.filename, objFile);
+	this.fut_image.upload("KanbanUrl::file/upload");
+};
+
+this.fut_image_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferEventInfo)
+{
+	this.btn_save.set_enable(true);
+
+	// ds_file (FILE_PATH = "file/<name>")
+	var sPath = "";
+	var arrDs = e.datasets || [];
+	for(var i=0; i<arrDs.length; i++){
+		if(arrDs[i] && arrDs[i].getColIndex("FILE_PATH") > -1 && arrDs[i].rowcount > 0){
+			sPath = arrDs[i].getColumn(0, "FILE_PATH");
+		}
+	}
+	if(this.gfn_isNull(sPath)){
+		this.gfn_alert("msg.kanban.image.read");
+		return;
+	}
+	this.ds_supplier.setColumn(0, "IMAGE_DATA", sPath);
+	this.img_photo.set_stretch("fixaspectratio");
+	this.img_photo.set_image("url('" + nexacro.getEnvironment().services["KanbanUrl"].url + sPath + "')");
+};
+
+this.fut_image_onerror = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferErrorEventInfo)
+{
+	this.btn_save.set_enable(true);
+	this.gfn_alert("msg.err.validator", [e.errormsg]);
+};
+
+this.fn_setTypeStyle = function(objBtn, bSelected)
+{
+	objBtn.set_background(bSelected ? "#eff4ff" : "#ffffff");
+	objBtn.set_color(bSelected ? "#1a5fd9" : "#5d6679");
+	objBtn.set_border(bSelected ? "1px solid #1a5fd9" : "1px solid #d0d5dd");
+	objBtn.set_font((bSelected ? "600 " : "") + "13px \"Segoe UI\"");
+};
+
+// Not taking return / Taking return Button
+this.btn_type_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.fv_oType){
+		this.fn_setTypeStyle(this.fv_oType, false);
+	}
+	this.fn_setTypeStyle(obj, true);
+	this.fv_oType = obj;
+	this.ds_supplier.setColumn(0, "RETURN_TYPE", obj == this.btn_taking ? "TAKING" : "NOT_TAKING");
+};
+
+// Add Supplier Button
+this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.gfn_clearValidation(this.ds_supplier);
+	this.gfn_setValidation(this.ds_supplier, "SUPPLIER_NAME" , "Supplier name" , "required");
+	this.gfn_setValidation(this.ds_supplier, "PRODUCT_NAME"  , "Product"       , "required");
+	this.gfn_setValidation(this.ds_supplier, "CATEGORY_CODE" , "Category"      , "required");
+	this.gfn_setValidation(this.ds_supplier, "BUYING_PRICE"  , "Buying price"  , "required,digits");
+	this.gfn_setValidation(this.ds_supplier, "CONTACT_NUMBER", "Contact number", "required,digits,minlength:9");
+	this.gfn_setValidation(this.ds_supplier, "RETURN_TYPE"   , "Type"          , "required");
+	if(this.gfn_validation(this.ds_supplier, "A") == false) return;
+
+	this.btn_save.set_enable(false);
+
+    var sSvcID    = "svcSaveSupplier";
+    var sURL      = "KanbanUrl::supplier/insert";
+    var sInDs     = "ds_supplier=ds_supplier";
+    var sOutDs    = "ds_result=ds_result";
+    var sParam    = "";
+    var sCallBack = "fn_callback";
+	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);
+};
+
+// Discard Button
+this.btn_discard_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+  </Form>
+</FDL>

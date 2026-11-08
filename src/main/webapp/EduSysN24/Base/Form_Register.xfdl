@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Register" width="1280" height="720" titletext="Create an account" background="#ffffff">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Static id="sta_base" taborder="11" visible="false" left="0" top="0" width="50%" height="50%"/>
+        <Div id="div_brand" taborder="12" left="0" top="0" width="50%" bottom="0" border="0px none">
+          <Layouts>
+            <Layout>
+              <Static id="sta_center" taborder="0" visible="false" left="0" top="0" width="50%" height="50%"/>
+              <ImageViewer id="img_logo" taborder="1" left="sta_center:-130" top="sta_center:-170" width="260" height="260" image="url('imagerc::kanban_logo.png')" stretch="fit" border="0px none" background="transparent"/>
+              <Static id="sta_brand" taborder="2" text="KANBAN" left="sta_center:-130" top="sta_center:95" width="260" height="60" textAlign="center" color="#1e9ad6" font="bold 40px &quot;Segoe UI&quot;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="div_register" taborder="0" left="sta_base:90" top="sta_base:-300" width="380" height="600" border="0px none">
+          <Layouts>
+            <Layout>
+              <ImageViewer id="img_logo_small" taborder="9" left="166" top="0" width="48" height="48" image="url('imagerc::kanban_logo.png')" stretch="fit" border="0px none" background="transparent"/>
+              <Static id="sta_title" taborder="10" text="Create an account" left="0" top="62" width="380" height="40" textAlign="center" color="#101828" font="600 26px &quot;Segoe UI&quot;"/>
+              <Static id="sta_subtitle" taborder="11" text="Start your 30-day free trial." left="0" top="106" width="380" height="24" textAlign="center" color="#667085" font="14px &quot;Segoe UI&quot;"/>
+              <Static id="sta_name" taborder="12" text="Name*" left="0" top="146" width="380" height="20" color="#344054" font="13px &quot;Segoe UI&quot;"/>
+              <Edit id="edt_name" taborder="0" left="0" top="170" width="380" height="42" maxlength="200" displaynulltext="Enter your name" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 14px" font="14px &quot;Segoe UI&quot;" onkeydown="div_register_edt_onkeydown"/>
+              <Static id="sta_email" taborder="14" text="Email*" left="0" top="234" width="380" height="20" color="#344054" font="13px &quot;Segoe UI&quot;"/>
+              <Edit id="edt_email" taborder="1" left="0" top="258" width="380" height="42" maxlength="255" displaynulltext="Enter your email" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 14px" font="14px &quot;Segoe UI&quot;" onkeydown="div_register_edt_onkeydown"/>
+              <Static id="sta_password" taborder="16" text="Password*" left="0" top="322" width="380" height="20" color="#344054" font="13px &quot;Segoe UI&quot;"/>
+              <Edit id="edt_password" taborder="2" left="0" top="346" width="380" height="42" password="true" displaynulltext="Create a password" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 14px" font="14px &quot;Segoe UI&quot;" onkeydown="div_register_edt_onkeydown"/>
+              <Static id="sta_password_hint" taborder="17" text="Must be at least 8 characters." left="0" top="389" width="380" height="20" color="#667085" font="12px &quot;Segoe UI&quot;"/>
+              <Static id="sta_confirm" taborder="20" text="Confirm password*" left="0" top="412" width="380" height="20" color="#344054" font="13px &quot;Segoe UI&quot;"/>
+              <Edit id="edt_confirm" taborder="3" left="0" top="436" width="380" height="42" password="true" displaynulltext="Enter the password again" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 14px" font="14px &quot;Segoe UI&quot;" onkeydown="div_register_edt_onkeydown"/>
+              <Button id="btn_start" taborder="4" text="Get started" left="0" top="508" width="380" height="44" background="#1a5fd9" color="#ffffff" borderRadius="8px" border="0px none" font="600 15px &quot;Segoe UI&quot;" onclick="div_register_btn_start_onclick"/>
+              <Static id="sta_account" taborder="18" text="Already have an account?" left="70" top="568" width="175" height="24" textAlign="right" color="#667085" font="13px &quot;Segoe UI&quot;"/>
+              <Static id="sta_login" taborder="5" text="Log in" left="250" top="568" width="60" height="24" color="#1a5fd9" font="600 13px &quot;Segoe UI&quot;" cursor="pointer" onclick="div_register_sta_login_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_user">
+        <ColumnInfo>
+          <Column id="USER_NAME" type="STRING" size="100"/>
+          <Column id="EMAIL" type="STRING" size="255"/>
+          <Column id="PASSWORD" type="STRING" size="100"/>
+          <Column id="CONFIRM_PASSWORD" type="STRING" size="100"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="bind_name" compid="div_register.form.edt_name" propid="value" datasetid="ds_user" columnid="USER_NAME"/>
+      <BindItem id="bind_email" compid="div_register.form.edt_email" propid="value" datasetid="ds_user" columnid="EMAIL"/>
+      <BindItem id="bind_password" compid="div_register.form.edt_password" propid="value" datasetid="ds_user" columnid="PASSWORD"/>
+      <BindItem id="bind_confirm" compid="div_register.form.edt_confirm" propid="value" datasetid="ds_user" columnid="CONFIRM_PASSWORD"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[include "Lib::Lib_Comm.xjs";
+
+// Get started Button
+this.div_register_btn_start_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.gfn_clearValidation(this.ds_user);
+	this.gfn_setValidation(this.ds_user, "USER_NAME"       , "Name"                     , "required");
+	this.gfn_setValidation(this.ds_user, "EMAIL"           , "Email"                    , "required,isemail");
+	this.gfn_setValidation(this.ds_user, "PASSWORD"        , "Password"                 , "required,minlength:8");
+	this.gfn_setValidation(this.ds_user, "CONFIRM_PASSWORD", "Confirm password,Password", "required,equalto:PASSWORD");
+	if(this.gfn_validation(this.ds_user, "A") == false) return;
+
+	// the server also checks that the email is not registered yet
+    var sSvcID    = "svcSignup";
+    var sURL      = "KanbanUrl::auth/signup";
+    var sInDs     = "ds_user=ds_user";
+    var sOutDs    = "";
+    var sParam    = "";
+    var sCallBack = "fn_callback";
+	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);
+};
+
+this.fn_callback = function(svcId, errCd, errMsg)
+{
+	if(errCd < 0){
+		this.gfn_alert("msg.err.validator", [errMsg]);
+		return;
+	}
+
+	if(svcId == "svcSignup"){
+		this.gfn_alert("msg.kanban.signup.success", "", "msgSignup", "fn_callbackMsg");
+	}
+};
+
+this.fn_callbackMsg = function(sPopupId, sReturn)
+{
+	if(sPopupId == "msgSignup"){
+		this.getOwnerFrame().set_formurl("Base::Form_Login.xfdl");
+	}
+};
+
+this.div_register_edt_onkeydown = function(obj:nexacro.Edit,e:nexacro.KeyEventInfo)
+{
+	if(e.keycode == 13){
+		this.div_register_btn_start_onclick(this.div_register.form.btn_start, e);
+	}
+};
+
+// Log in Link
+this.div_register_sta_login_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	this.getOwnerFrame().set_formurl("Base::Form_Login.xfdl");
+};
+]]></Script>
+  </Form>
+</FDL>

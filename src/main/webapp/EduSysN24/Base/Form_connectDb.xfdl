@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_connectDb" width="1280" height="720" titletext="Employee Management" onload="Form_onload">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Static id="sta_title" taborder="0" text="Employee Management - TUPT7" left="20" top="0" width="400" height="50" cssclass="sta_WF_Title3"/>
+        <Static id="sta_keyword" taborder="1" text="Keyword" left="20" top="60" width="60" height="30"/>
+        <Edit id="edt_keyword" taborder="2" left="85" top="60" width="200" height="30" onkeydown="edt_search_onkeydown"/>
+        <Static id="sta_dept" taborder="3" text="Department" left="305" top="60" width="80" height="30"/>
+        <Edit id="edt_dept" taborder="4" left="390" top="60" width="150" height="30" onkeydown="edt_search_onkeydown"/>
+        <Static id="sta_status" taborder="5" text="Status" left="560" top="60" width="50" height="30"/>
+        <Combo id="cmb_s_status" taborder="6" left="615" top="60" width="120" height="30" innerdataset="ds_status_s" codecolumn="code" datacolumn="name" index="0"/>
+        <Button id="btn_search" taborder="7" text="Search" left="755" top="60" width="80" height="30" onclick="btn_search_onclick" cssclass="btn_WF_FillRed"/>
+        <Static id="sta_count" taborder="8" text="Total: 0" left="20" top="95" width="200" height="20"/>
+        <Grid id="grd_employee" taborder="9" left="20" top="120" width="740" height="580" binddataset="ds_employee" autofittype="none">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="70"/>
+                <Column size="130"/>
+                <Column size="170"/>
+                <Column size="90"/>
+                <Column size="110"/>
+                <Column size="90"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="Code"/>
+                <Cell col="1" text="Full name"/>
+                <Cell col="2" text="Email"/>
+                <Cell col="3" text="Department"/>
+                <Cell col="4" text="Position"/>
+                <Cell col="5" text="Salary"/>
+                <Cell col="6" text="Hire date"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:EMPLOYEE_CODE" textAlign="center"/>
+                <Cell col="1" text="bind:FULL_NAME"/>
+                <Cell col="2" text="bind:EMAIL"/>
+                <Cell col="3" text="bind:DEPARTMENT"/>
+                <Cell col="4" text="bind:POSITION"/>
+                <Cell col="5" text="bind:SALARY" textAlign="right"/>
+                <Cell col="6" displaytype="date" text="bind:HIRE_DATE" calendardateformat="yyyy-MM-dd" textAlign="center"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="sta_l_code" taborder="10" text="Code *" left="780" top="120" width="110" height="30"/>
+        <Edit id="edt_code" taborder="11" left="895" top="120" width="365" height="30" maxlength="20"/>
+        <Static id="sta_l_name" taborder="12" text="Full name *" left="780" top="160" width="110" height="30"/>
+        <Edit id="edt_name" taborder="13" left="895" top="160" width="365" height="30" maxlength="200"/>
+        <Static id="sta_l_email" taborder="14" text="Email *" left="780" top="200" width="110" height="30"/>
+        <Edit id="edt_email" taborder="15" left="895" top="200" width="365" height="30" maxlength="255"/>
+        <Static id="sta_l_phone" taborder="16" text="Phone" left="780" top="240" width="110" height="30"/>
+        <Edit id="edt_phone" taborder="17" left="895" top="240" width="365" height="30" maxlength="20"/>
+        <Static id="sta_l_gender" taborder="18" text="Gender" left="780" top="280" width="110" height="30"/>
+        <Combo id="cmb_gender" taborder="19" left="895" top="280" width="365" height="30" innerdataset="ds_gender" codecolumn="code" datacolumn="name"/>
+        <Static id="sta_l_birth" taborder="20" text="Birth date" left="780" top="320" width="110" height="30"/>
+        <Calendar id="cal_birth" taborder="21" left="895" top="320" width="365" height="30" dateformat="yyyy-MM-dd"/>
+        <Static id="sta_l_dept" taborder="22" text="Department" left="780" top="360" width="110" height="30"/>
+        <Edit id="edt_department" taborder="23" left="895" top="360" width="365" height="30" maxlength="100"/>
+        <Static id="sta_l_position" taborder="24" text="Position" left="780" top="400" width="110" height="30"/>
+        <Edit id="edt_position" taborder="25" left="895" top="400" width="365" height="30" maxlength="100"/>
+        <Static id="sta_l_salary" taborder="26" text="Salary" left="780" top="440" width="110" height="30"/>
+        <Edit id="edt_salary" taborder="27" left="895" top="440" width="365" height="30" maxlength="15"/>
+        <Static id="sta_l_hire" taborder="28" text="Hire date *" left="780" top="480" width="110" height="30"/>
+        <Calendar id="cal_hire" taborder="29" left="895" top="480" width="365" height="30" dateformat="yyyy-MM-dd"/>
+        <Static id="sta_l_resign" taborder="30" text="Resign date" left="780" top="520" width="110" height="30"/>
+        <Calendar id="cal_resign" taborder="31" left="895" top="520" width="365" height="30" dateformat="yyyy-MM-dd"/>
+        <Static id="sta_l_status" taborder="32" text="Status" left="780" top="560" width="110" height="30"/>
+        <Combo id="cmb_status" taborder="33" left="895" top="560" width="365" height="30" innerdataset="ds_status" codecolumn="code" datacolumn="name"/>
+        <Button id="btn_new" taborder="34" text="New" left="895" top="620" width="110" height="36" onclick="btn_new_onclick" cssclass="btn_WF_FillGray"/>
+        <Button id="btn_save" taborder="35" text="Save" left="1015" top="620" width="110" height="36" onclick="btn_save_onclick" cssclass="btn_WF_FillRed"/>
+        <Button id="btn_delete" taborder="36" text="Delete" left="1135" top="620" width="110" height="36" onclick="btn_delete_onclick" cssclass="btn_WF_FillGray"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_employee">
+        <ColumnInfo>
+          <Column id="EMPLOYEE_ID" type="STRING" size="20"/>
+          <Column id="EMPLOYEE_CODE" type="STRING" size="20"/>
+          <Column id="FULL_NAME" type="STRING" size="200"/>
+          <Column id="EMAIL" type="STRING" size="255"/>
+          <Column id="PHONE_NUMBER" type="STRING" size="20"/>
+          <Column id="GENDER" type="STRING" size="1"/>
+          <Column id="BIRTH_DATE" type="STRING" size="8"/>
+          <Column id="DEPARTMENT" type="STRING" size="100"/>
+          <Column id="POSITION" type="STRING" size="100"/>
+          <Column id="SALARY" type="STRING" size="20"/>
+          <Column id="HIRE_DATE" type="STRING" size="8"/>
+          <Column id="RESIGN_DATE" type="STRING" size="8"/>
+          <Column id="STATUS" type="STRING" size="20"/>
+          <Column id="CREATED_AT" type="STRING" size="30"/>
+          <Column id="UPDATED_AT" type="STRING" size="30"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_cond">
+        <ColumnInfo>
+          <Column id="KEYWORD" type="STRING" size="100"/>
+          <Column id="DEPARTMENT" type="STRING" size="100"/>
+          <Column id="STATUS" type="STRING" size="20"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_save">
+        <ColumnInfo>
+          <Column id="EMPLOYEE_ID" type="STRING" size="20"/>
+          <Column id="EMPLOYEE_CODE" type="STRING" size="20"/>
+          <Column id="FULL_NAME" type="STRING" size="200"/>
+          <Column id="EMAIL" type="STRING" size="255"/>
+          <Column id="PHONE_NUMBER" type="STRING" size="20"/>
+          <Column id="GENDER" type="STRING" size="1"/>
+          <Column id="BIRTH_DATE" type="STRING" size="8"/>
+          <Column id="DEPARTMENT" type="STRING" size="100"/>
+          <Column id="POSITION" type="STRING" size="100"/>
+          <Column id="SALARY" type="STRING" size="20"/>
+          <Column id="HIRE_DATE" type="STRING" size="8"/>
+          <Column id="RESIGN_DATE" type="STRING" size="8"/>
+          <Column id="STATUS" type="STRING" size="20"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_gender">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="1"/>
+          <Column id="name" type="STRING" size="10"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">M</Col>
+            <Col id="name">Male</Col>
+          </Row>
+          <Row>
+            <Col id="code">F</Col>
+            <Col id="name">Female</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_status">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="20"/>
+          <Column id="name" type="STRING" size="20"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">ACTIVE</Col>
+            <Col id="name">ACTIVE</Col>
+          </Row>
+          <Row>
+            <Col id="code">INACTIVE</Col>
+            <Col id="name">INACTIVE</Col>
+          </Row>
+          <Row>
+            <Col id="code">RESIGNED</Col>
+            <Col id="name">RESIGNED</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_status_s">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="20"/>
+          <Column id="name" type="STRING" size="20"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code"/>
+            <Col id="name">All</Col>
+          </Row>
+          <Row>
+            <Col id="code">ACTIVE</Col>
+            <Col id="name">ACTIVE</Col>
+          </Row>
+          <Row>
+            <Col id="code">INACTIVE</Col>
+            <Col id="name">INACTIVE</Col>
+          </Row>
+          <Row>
+            <Col id="code">RESIGNED</Col>
+            <Col id="name">RESIGNED</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="edt_code" propid="value" datasetid="ds_employee" columnid="EMPLOYEE_CODE"/>
+      <BindItem id="item1" compid="edt_name" propid="value" datasetid="ds_employee" columnid="FULL_NAME"/>
+      <BindItem id="item2" compid="edt_email" propid="value" datasetid="ds_employee" columnid="EMAIL"/>
+      <BindItem id="item3" compid="edt_phone" propid="value" datasetid="ds_employee" columnid="PHONE_NUMBER"/>
+      <BindItem id="item4" compid="cmb_gender" propid="value" datasetid="ds_employee" columnid="GENDER"/>
+      <BindItem id="item5" compid="cal_birth" propid="value" datasetid="ds_employee" columnid="BIRTH_DATE"/>
+      <BindItem id="item6" compid="edt_department" propid="value" datasetid="ds_employee" columnid="DEPARTMENT"/>
+      <BindItem id="item7" compid="edt_position" propid="value" datasetid="ds_employee" columnid="POSITION"/>
+      <BindItem id="item8" compid="edt_salary" propid="value" datasetid="ds_employee" columnid="SALARY"/>
+      <BindItem id="item9" compid="cal_hire" propid="value" datasetid="ds_employee" columnid="HIRE_DATE"/>
+      <BindItem id="item10" compid="cal_resign" propid="value" datasetid="ds_employee" columnid="RESIGN_DATE"/>
+      <BindItem id="item11" compid="cmb_status" propid="value" datasetid="ds_employee" columnid="STATUS"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[
+/*
+ * Employee CRUD screen. Calls Spring Boot endpoints:
+ *   POST /employee/select | insert | update | delete
+ * The server reads only the FIRST row of the dataset it receives,
+ * so save/delete send the one-row dataset ds_save.
+ */
+
+this.fn_getUrl = function(sPath)
+{
+	var sBase = "http://localhost:8080";
+	// served by the same Spring Boot app in a web browser -> same origin
+	if (system.navigatorname != "nexacro") {
+		sBase = window.location.protocol + "//" + window.location.host;
+	}
+	return sBase + "/employee/" + sPath;
+};
+
+this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fn_search();
+};
+
+this.fn_search = function()
+{
+	this.ds_cond.clearData();
+	this.ds_cond.addRow();
+	this.ds_cond.setColumn(0, "KEYWORD", this.edt_keyword.value);
+	this.ds_cond.setColumn(0, "DEPARTMENT", this.edt_dept.value);
+	this.ds_cond.setColumn(0, "STATUS", this.cmb_s_status.value);
+
+	// the server sends no dataset when nothing matches, so clear it first
+	this.ds_employee.clearData();
+
+	this.transaction("selectEmployee"
+	                ,this.fn_getUrl("select")
+	                ,"ds_cond=ds_cond"
+	                ,"ds_employee=ds_employee"
+	                ,""
+	                ,"fn_callback");
+};
+
+// copy the current row of ds_employee into the one-row ds_save
+this.fn_fillSave = function(nRow)
+{
+	this.ds_save.clearData();
+	this.ds_save.addRow();
+	for (var i = 0; i < this.ds_save.getColCount(); i++) {
+		var sCol = this.ds_save.getColID(i);
+		this.ds_save.setColumn(0, sCol, this.ds_employee.getColumn(nRow, sCol));
+	}
+};
+
+this.fn_isEmpty = function(sValue)
+{
+	return sValue == null || String(sValue).trim() == "";
+};
+
+this.btn_search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fn_search();
+};
+
+this.edt_search_onkeydown = function(obj:nexacro.Edit,e:nexacro.KeyEventInfo)
+{
+	if (e.keycode == 13) {
+		this.fn_search();
+	}
+};
+
+this.btn_new_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var nRow = this.ds_employee.addRow();
+	this.ds_employee.setColumn(nRow, "STATUS", "ACTIVE");
+	this.ds_employee.set_rowposition(nRow);
+	this.edt_code.setFocus();
+};
+
+this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var nRow = this.ds_employee.rowposition;
+	if (nRow < 0) {
+		this.alert("Select an employee or click New.");
+		return;
+	}
+
+	if (this.fn_isEmpty(this.ds_employee.getColumn(nRow, "EMPLOYEE_CODE"))) {
+		this.alert("Code is required.");
+		this.edt_code.setFocus();
+		return;
+	}
+	if (this.fn_isEmpty(this.ds_employee.getColumn(nRow, "FULL_NAME"))) {
+		this.alert("Full name is required.");
+		this.edt_name.setFocus();
+		return;
+	}
+	if (this.fn_isEmpty(this.ds_employee.getColumn(nRow, "EMAIL"))) {
+		this.alert("Email is required.");
+		this.edt_email.setFocus();
+		return;
+	}
+	if (this.fn_isEmpty(this.ds_employee.getColumn(nRow, "HIRE_DATE"))) {
+		this.alert("Hire date is required.");
+		this.cal_hire.setFocus();
+		return;
+	}
+
+	this.fn_fillSave(nRow);
+
+	var bUpdate = !this.fn_isEmpty(this.ds_employee.getColumn(nRow, "EMPLOYEE_ID"));
+	this.transaction(bUpdate ? "updateEmployee" : "insertEmployee"
+	                ,this.fn_getUrl(bUpdate ? "update" : "insert")
+	                ,"ds_employee=ds_save"
+	                ,""
+	                ,""
+	                ,"fn_callback");
+};
+
+this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var nRow = this.ds_employee.rowposition;
+	if (nRow < 0) {
+		return;
+	}
+
+	// row that was never saved: just drop it from the grid
+	if (this.fn_isEmpty(this.ds_employee.getColumn(nRow, "EMPLOYEE_ID"))) {
+		this.ds_employee.deleteRow(nRow);
+		return;
+	}
+
+	if (!this.confirm("Delete employee " + this.ds_employee.getColumn(nRow, "FULL_NAME") + "?")) {
+		return;
+	}
+
+	this.fn_fillSave(nRow);
+	this.transaction("deleteEmployee"
+	                ,this.fn_getUrl("delete")
+	                ,"ds_employee=ds_save"
+	                ,""
+	                ,""
+	                ,"fn_callback");
+};
+
+this.fn_callback = function(svcId, errCd, errMsg)
+{
+	if (errCd < 0) {
+		this.alert("Error: " + errMsg);
+		return;
+	}
+
+	switch (svcId) {
+		case "selectEmployee":
+			this.sta_count.set_text("Total: " + this.ds_employee.rowcount);
+			break;
+		case "insertEmployee":
+		case "updateEmployee":
+			this.alert("Saved.");
+			this.fn_search();
+			break;
+		case "deleteEmployee":
+			this.alert("Deleted.");
+			this.fn_search();
+			break;
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

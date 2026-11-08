@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Layout" width="1280" height="720" titletext="Kanban" background="#f0f1f3" ontimer="Form_ontimer">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Div id="div_menu" taborder="0" left="0" top="0" width="230" bottom="0" url="Base::Form_Menu.xfdl" border="0px none"/>
+        <Div id="div_header" taborder="1" left="230" top="0" right="0" height="72" url="Base::Form_Header.xfdl" border="0px none"/>
+        <Div id="div_content" taborder="2" left="230" top="72" right="0" bottom="0" url="Base::Form_Inventory.xfdl" border="0px none"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_logout">
+        <ColumnInfo>
+          <Column id="TOKEN" type="STRING" size="64"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[include "Lib::Lib_Comm.xjs";
+
+this.CONST_PLACEHOLDER_URL = "Base::Form_Placeholder.xfdl";
+this.CONST_SEARCH_TIMER    = 1;
+this.CONST_TOKEN_KEY       = "kanban_token";
+this.fv_oMenuUrl = {
+	inventory : "Base::Form_Inventory.xfdl",
+	suppliers : "Base::Form_Suppliers.xfdl"
+};
+this.fv_sMenuTitle = "";
+this.fv_sProductId = "";
+this.fv_sKeyword   = "";
+
+// Called by Form_Menu: only div_content changes
+this.fn_openMenu = function(sMenuId, sTitle)
+{
+	var sUrl = this.fv_oMenuUrl[sMenuId] || this.CONST_PLACEHOLDER_URL;
+	this.fv_sMenuTitle = sTitle;
+	this.div_header.form.fn_clearSearch();
+
+	// same url does not reload, so just update the placeholder title
+	if(this.div_content.url == sUrl){
+		if(this.div_content.form.fn_setTitle){
+			this.div_content.form.fn_setTitle(sTitle);
+		}
+		return;
+	}
+	this.div_content.set_url(sUrl);
+};
+
+// Called by Form_Inventory when a product row is clicked
+this.fn_openProduct = function(sProductId)
+{
+	this.fv_sProductId = sProductId;
+	this.div_header.form.fn_clearSearch();
+	this.div_content.set_url("Base::Form_ProductInfo.xfdl");
+};
+
+// Called by Form_Header on every key: wait until typing stops before asking the server
+this.fn_search = function(sKeyword)
+{
+	this.fv_sKeyword = sKeyword;
+	this.killTimer(this.CONST_SEARCH_TIMER);
+	this.setTimer(this.CONST_SEARCH_TIMER, 300);
+};
+
+this.Form_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
+{
+	if(e.timerid != this.CONST_SEARCH_TIMER) return;
+
+	this.killTimer(this.CONST_SEARCH_TIMER);
+	// the current content decides how to search
+	if(this.div_content.form.fn_search){
+		this.div_content.form.fn_search(this.fv_sKeyword);
+	}
+};
+
+// Log Out Button (Form_Menu)
+this.fn_logout = function()
+{
+	this.gfn_alert("confirm.logout", "", "msgLogout", "fn_callbackMsg");
+};
+
+this.fn_callbackMsg = function(sPopupId, sReturn)
+{
+	if(sPopupId == "msgLogout"){
+		if(sReturn == true || sReturn == "true"){
+			this.ds_logout.setColumn(0, "TOKEN", nexacro.getEnvironmentVariable("ev_token"));
+
+		    var sSvcID    = "svcLogout";
+		    var sURL      = "KanbanUrl::auth/logout";
+		    var sInDs     = "ds_login=ds_logout";
+		    var sOutDs    = "";
+		    var sParam    = "";
+		    var sCallBack = "fn_callback";
+			this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);
+		}
+	}
+};
+
+this.fn_callback = function(svcId, errCd, errMsg)
+{
+	if(svcId == "svcLogout"){
+		// leave even when the server could not be reached
+		this.gfn_getApplication().gds_user.clearData();
+		nexacro.setEnvironmentVariable("ev_token", "");
+		nexacro.removePrivateProfile(this.CONST_TOKEN_KEY);
+		this.getOwnerFrame().set_formurl("Base::Form_Login.xfdl");
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

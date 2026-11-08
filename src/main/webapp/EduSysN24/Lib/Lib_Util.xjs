@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script version="1.0" type="xscript5.1"><![CDATA[
+/************************************************************************************************
+ * Common utilities (format, data binding helpers, image, token)
+ * Included by Lib_Comm.xjs
+ ************************************************************************************************/
+
+/**
+ * Formats yyyyMMdd (or yyyyMMddHHmmss).
+ * sFormat : "dd/MM/yy" (default), "dd MMM yyyy", "yyyy-MM-dd", "dd/MM/yyyy HH:mm"
+ */
+this.lfn_formatDate = function(sValue, sFormat)
+{
+	var s = this.lfn_isNull(sValue) ? "" : String(sValue);
+	if (s.length < 8) {
+		return "";
+	}
+	var arrMonth = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+	var sYear = s.substr(0, 4), sMonth = s.substr(4, 2), sDay = s.substr(6, 2);
+	var sTime = s.length >= 12 ? s.substr(8, 2) + ":" + s.substr(10, 2) : "";
+
+	switch (sFormat) {
+		case "dd MMM yyyy":
+			return sDay + " " + arrMonth[parseInt(sMonth, 10) - 1] + " " + sYear;
+		case "yyyy-MM-dd":
+			return sYear + "-" + sMonth + "-" + sDay;
+		case "dd/MM/yyyy HH:mm":
+			return sDay + "/" + sMonth + "/" + sYear + (sTime ? " " + sTime : "");
+		default:
+			return sDay + "/" + sMonth + "/" + sYear.substr(2, 2);
+	}
+};
+
+/** 25000 -> "25,000", 12.5 -> "12.50" */
+this.lfn_formatNumber = function(vValue)
+{
+	if (this.lfn_isNull(vValue) || isNaN(Number(vValue))) {
+		return "";
+	}
+	var nValue = Number(vValue);
+	var arrPart = (nValue % 1 == 0 ? String(nValue) : nValue.toFixed(2)).split(".");
+	arrPart[0] = arrPart[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	return arrPart.join(".");
+};
+
+/**
+ * Puts the values of an object in the first row of a dataset (creates missing columns).
+ * Used to build the one-row condition datasets sent to the server.
+ */
+this.lfn_setRow = function(objDs, oValues)
+{
+	objDs.set_enableevent(false);
+	for (var sCol in oValues) {
+		if (objDs.getColIndex(sCol) < 0) {
+			objDs.addColumn(sCol, "STRING");
+		}
+	}
+	objDs.clearData();
+	objDs.addRow();
+	for (var sKey in oValues) {
+		objDs.setColumn(0, sKey, oValues[sKey]);
+	}
+	objDs.set_enableevent(true);
+};
+
+/** Clears a bound one-row dataset so the bound components become empty. */
+this.lfn_resetRow = function(objDs)
+{
+	objDs.clearData();
+	objDs.addRow();
+};
+
+/**
+ * Uploads an image file (VirtualFile from FileDialog or a drop) to file/upload with
+ * FileUpTransfer, which works in Nexacro Runtime and in a web browser.
+ * Calls fnDone(sPath, sUrl) with the stored path ("file/<name>") and its url, or fnError(sMsg).
+ * The server checks the type and the 1 MB limit.
+ */
+this.lfn_uploadImage = function(objFile, fnDone, fnError)
+{
+	if (!/\.(png|jpe?g|gif)$/i.test(objFile.filename)) {
+		fnError.call(this, this.lfn_getMsg("msg.kanban.image.type"));
+		return;
+	}
+	if (!this.fut_lfnImage) {
+		var objUp = new FileUpTransfer("fut_lfnImage", this);
+		this.addChild("fut_lfnImage", objUp);
+		objUp.addEventHandler("onsuccess", this.lfn_uploadImage_onsuccess, this);
+		objUp.addEventHandler("onerror", this.lfn_uploadImage_onerror, this);
+	}
+	this.lfv_uploadDone = fnDone;
+	this.lfv_uploadError = fnError;
+	this.fut_lfnImage.clearFileList();
+	this.fut_lfnImage.addFile(objFile.filename, objFile);
+	this.fut_lfnImage.upload(this.lfn_getApiUrl("file/upload"));
+};
+
+this.lfn_uploadImage_onsuccess = function(obj:nexacro.FileUpTransfer, e:nexacro.FileUpTransferEventInfo)
+{
+	var sPath = "";
+	var arrDs = e.datasets || [];
+	for (var i = 0; i < arrDs.length; i++) {
+		if (arrDs[i] && arrDs[i].getColIndex && arrDs[i].getColIndex("FILE_PATH") > -1 && arrDs[i].rowcount > 0) {
+			sPath = arrDs[i].getColumn(0, "FILE_PATH");
+		}
+	}
+	if (this.lfn_isNull(sPath)) {
+		this.lfv_uploadError.call(this, this.lfn_getMsg("msg.kanban.image.read"));
+		return;
+	}
+	this.lfv_uploadDone.call(this, sPath, this.lfn_getImageUrl(sPath));
+};
+
+this.lfn_uploadImage_onerror = function(obj:nexacro.FileUpTransfer, e:nexacro.FileUpTransferErrorEventInfo)
+{
+	// -99 style session errors come here too: the server message says what to do
+	var sMsg = this.lfn_isNull(e.errormsg) ? this.lfn_getMsg("msg.kanban.image.read") : e.errormsg;
+	this.lfv_uploadError.call(this, sMsg);
+};
+
+/** Url to show a stored image ("file/<name>") in an ImageViewer, "" when there is none. */
+this.lfn_getImageUrl = function(sPath)
+{
+	if (this.lfn_isNull(sPath)) {
+		return "";
+	}
+	return "url('" + this.lfn_getApiUrl(sPath) + "')";
+};
+
+/************************************************************************************************
+ * Login token
+ * ev_token keeps it for this run, the private profile (browser storage) keeps it
+ * for "Remember for 30 days".
+ ************************************************************************************************/
+this.lfn_saveToken = function(sToken, bRemember)
+{
+	nexacro.setEnvironmentVariable("ev_token", sToken);
+	if (bRemember) {
+		nexacro.setPrivateProfile("kanban_token", sToken);
+	} else {
+		nexacro.removePrivateProfile("kanban_token");
+	}
+};
+
+this.lfn_getSavedToken = function()
+{
+	var sToken = nexacro.getPrivateProfile("kanban_token");
+	return this.lfn_isNull(sToken) ? "" : String(sToken);
+};
+
+this.lfn_clearToken = function()
+{
+	nexacro.setEnvironmentVariable("ev_token", "");
+	nexacro.removePrivateProfile("kanban_token");
+};
+]]></Script>
