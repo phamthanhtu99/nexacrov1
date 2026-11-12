@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Profile" width="440" height="476" titletext="My Profile" background="#ffffff" onload="Form_onload">
+    <Layouts>
+      <Layout height="476" width="440">
+        <Static id="sta_title" taborder="20" text="My Profile" left="24" top="16" width="300" height="36" color="#383e49" font="600 20px &quot;Segoe UI&quot;"/>
+        <Static id="sta_line_top" taborder="21" left="0" top="60" right="0" height="1" background="#f0f1f3"/>
+        <Static id="sta_l_name" taborder="22" text="Name" left="24" top="80" width="130" height="38" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
+        <Edit id="edt_name" taborder="0" left="160" top="80" width="256" height="38" maxlength="100" displaynulltext="Enter your name" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 12px" font="14px &quot;Segoe UI&quot;"/>
+        <Static id="sta_l_email" taborder="23" text="Email" left="24" top="134" width="130" height="38" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
+        <Edit id="edt_email" taborder="1" left="160" top="134" width="256" height="38" maxlength="255" displaynulltext="Enter your email" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 12px" font="14px &quot;Segoe UI&quot;"/>
+        <Static id="sta_password" taborder="24" text="Change password" left="24" top="192" width="300" height="24" color="#383e49" font="600 15px &quot;Segoe UI&quot;"/>
+        <Static id="sta_password_hint" taborder="25" text="Leave these empty to keep the current password." left="24" top="214" width="392" height="20" color="#858d9d" font="12px &quot;Segoe UI&quot;"/>
+        <Static id="sta_l_current" taborder="26" text="Current password" left="24" top="240" width="130" height="38" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
+        <Edit id="edt_current" taborder="2" left="160" top="240" width="256" height="38" password="true" displaynulltext="Current password" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 12px" font="14px &quot;Segoe UI&quot;"/>
+        <Static id="sta_l_new" taborder="27" text="New password" left="24" top="294" width="130" height="38" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
+        <Edit id="edt_new" taborder="3" left="160" top="294" width="256" height="38" password="true" displaynulltext="At least 8 characters" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 12px" font="14px &quot;Segoe UI&quot;"/>
+        <Static id="sta_l_confirm" taborder="28" text="Confirm password" left="24" top="348" width="130" height="38" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
+        <Edit id="edt_confirm" taborder="4" left="160" top="348" width="256" height="38" password="true" displaynulltext="Enter the new password again" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 12px" font="14px &quot;Segoe UI&quot;"/>
+        <Static id="sta_line_bottom" taborder="29" left="0" top="406" right="0" height="1" background="#f0f1f3"/>
+        <Button id="btn_cancel" taborder="5" text="Cancel" left="216" top="420" width="88" height="40" background="#ffffff" color="#5d6679" borderRadius="8px" border="1px solid #d0d5dd" font="600 13px &quot;Segoe UI&quot;" onclick="btn_cancel_onclick"/>
+        <Button id="btn_save" taborder="6" text="Save" left="312" top="420" width="104" height="40" background="#1a5fd9" color="#ffffff" borderRadius="8px" border="0px none" font="600 13px &quot;Segoe UI&quot;" onclick="btn_save_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_profile">
+        <ColumnInfo>
+          <Column id="USER_NAME" type="STRING" size="100"/>
+          <Column id="EMAIL" type="STRING" size="255"/>
+          <Column id="CURRENT_PASSWORD" type="STRING" size="100"/>
+          <Column id="NEW_PASSWORD" type="STRING" size="100"/>
+          <Column id="CONFIRM_PASSWORD" type="STRING" size="100"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_user"/>
+    </Objects>
+    <Bind>
+      <BindItem id="bind_name" compid="edt_name" propid="value" datasetid="ds_profile" columnid="USER_NAME"/>
+      <BindItem id="bind_email" compid="edt_email" propid="value" datasetid="ds_profile" columnid="EMAIL"/>
+      <BindItem id="bind_current" compid="edt_current" propid="value" datasetid="ds_profile" columnid="CURRENT_PASSWORD"/>
+      <BindItem id="bind_new" compid="edt_new" propid="value" datasetid="ds_profile" columnid="NEW_PASSWORD"/>
+      <BindItem id="bind_confirm" compid="edt_confirm" propid="value" datasetid="ds_profile" columnid="CONFIRM_PASSWORD"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[include "Lib::Lib_Comm.xjs";
+
+this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fn_searchProfile();
+	this.edt_name.setFocus();
+};
+
+// the logged in user (the server takes the user from the session)
+this.fn_searchProfile = function()
+{
+    var sSvcID    = "svcProfile";
+    var sURL      = "KanbanUrl::auth/profile";
+    var sInDs     = "";
+    var sOutDs    = "ds_user=ds_user";
+    var sParam    = "";
+    var sCallBack = "fn_callback";
+	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);
+};
+
+this.fn_callback = function(svcId, errCd, errMsg)
+{
+	if(errCd < 0){
+		this.btn_save.set_enable(true);
+		this.gfn_alert("msg.err.validator", [errMsg]);
+		return;
+	}
+
+	if(svcId == "svcProfile"){
+		this.ds_profile.setColumn(0, "USER_NAME", this.ds_user.getColumn(0, "USER_NAME"));
+		this.ds_profile.setColumn(0, "EMAIL"    , this.ds_user.getColumn(0, "EMAIL"));
+	}
+	else if(svcId == "svcUpdateProfile"){
+		// "name|email" like the sample popups
+		this.close(this.ds_user.getColumn(0, "USER_NAME") + "|" + this.ds_user.getColumn(0, "EMAIL"));
+	}
+};
+
+// Save Button
+this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.gfn_clearValidation(this.ds_profile);
+	this.gfn_setValidation(this.ds_profile, "USER_NAME", "Name" , "required");
+	this.gfn_setValidation(this.ds_profile, "EMAIL"    , "Email", "required,isemail");
+	// the password rules only when a new password is typed
+	if(!this.gfn_isNull(this.ds_profile.getColumn(0, "NEW_PASSWORD"))){
+		this.gfn_setValidation(this.ds_profile, "CURRENT_PASSWORD", "Current password"            , "required");
+		this.gfn_setValidation(this.ds_profile, "NEW_PASSWORD"    , "New password"                , "required,minlength:8");
+		this.gfn_setValidation(this.ds_profile, "CONFIRM_PASSWORD", "Confirm password,New password", "required,equalto:NEW_PASSWORD");
+	}
+	if(this.gfn_validation(this.ds_profile, "A") == false) return;
+
+	this.btn_save.set_enable(false);
+
+    var sSvcID    = "svcUpdateProfile";
+    var sURL      = "KanbanUrl::auth/updateProfile";
+    var sInDs     = "ds_profile=ds_profile";
+    var sOutDs    = "ds_user=ds_user";
+    var sParam    = "";
+    var sCallBack = "fn_callback";
+	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);
+};
+
+// Cancel Button
+this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+  </Form>
+</FDL>

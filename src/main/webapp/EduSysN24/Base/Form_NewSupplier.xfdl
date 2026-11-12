@@ -17,7 +17,7 @@
         <Static id="sta_l_category" taborder="31" text="Category" left="24" top="306" width="130" height="40" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
         <Combo id="cmb_category" taborder="3" innerdataset="ds_category" codecolumn="CODE" datacolumn="CODE_NAME" left="160" top="306" width="296" height="40" displaynulltext="Select product category" borderRadius="8px" border="1px solid #d0d5dd" font="14px &quot;Segoe UI&quot;"/>
         <Static id="sta_l_price" taborder="33" text="Buying Price" left="24" top="366" width="130" height="40" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
-        <Edit id="edt_price" taborder="4" left="160" top="366" width="296" height="40" maxlength="12" inputtype="digit" displaynulltext="Enter buying price" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 12px" font="14px &quot;Segoe UI&quot;"/>
+        <Edit id="edt_price" taborder="4" left="160" top="366" width="296" height="40" maxlength="12" inputtype="number" displaynulltext="Enter buying price" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 12px" font="14px &quot;Segoe UI&quot;"/>
         <Static id="sta_l_contact" taborder="35" text="Contact Number" left="24" top="426" width="130" height="40" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
         <Edit id="edt_contact" taborder="5" left="160" top="426" width="296" height="40" maxlength="15" inputtype="digit" displaynulltext="Enter supplier contact number" borderRadius="8px" border="1px solid #d0d5dd" padding="0px 12px" font="14px &quot;Segoe UI&quot;"/>
         <Static id="sta_l_type" taborder="37" text="Type" left="24" top="486" width="130" height="40" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
@@ -31,6 +31,7 @@
     <Objects>
       <Dataset id="ds_supplier">
         <ColumnInfo>
+          <Column id="SUPPLIER_ID" type="STRING" size="20"/>
           <Column id="SUPPLIER_NAME" type="STRING" size="100"/>
           <Column id="PRODUCT_NAME" type="STRING" size="100"/>
           <Column id="CATEGORY_CODE" type="STRING" size="30"/>
@@ -44,6 +45,15 @@
         </Rows>
       </Dataset>
       <Dataset id="ds_result"/>
+      <Dataset id="ds_detail"/>
+      <Dataset id="ds_cond">
+        <ColumnInfo>
+          <Column id="SUPPLIER_ID" type="STRING" size="20"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
       <Dataset id="ds_codeCond">
         <ColumnInfo>
           <Column id="GROUP_CODES" type="STRING" size="200"/>
@@ -73,10 +83,57 @@
 
 this.fv_oType = null;
 
+this.fv_sSupplierId = "";
+
 this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	// edit mode: Form_Suppliers opens this popup with {pSupplierId}
+	this.fv_sSupplierId = this.gfn_nvl(this.getOwnerFrame().pSupplierId, "");
+	if(this.fn_isEdit()){
+		this.sta_title.set_text("Edit Supplier");
+		this.btn_save.set_text("Save Changes");
+	}
 	this.fn_searchCode();
 	this.edt_name.setFocus();
+};
+
+this.fn_isEdit = function()
+{
+	return this.fv_sSupplierId != "";
+};
+
+// the supplier to edit (supplier/detail), after the category codes are loaded
+this.fn_searchDetail = function()
+{
+	this.ds_cond.setColumn(0, "SUPPLIER_ID", this.fv_sSupplierId);
+
+    var sSvcID    = "svcSupplierDetail";
+    var sURL      = "KanbanUrl::supplier/detail";
+    var sInDs     = "ds_cond=ds_cond";
+    var sOutDs    = "ds_detail=ds_supplier";
+    var sParam    = "";
+    var sCallBack = "fn_callback";
+	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);
+};
+
+// copies the detail into the bound one-row ds_supplier and shows the type and the image
+this.fn_setDetail = function()
+{
+	for(var i=0; i<this.ds_supplier.getColCount(); i++){
+		var sColId = this.ds_supplier.getColID(i);
+		this.ds_supplier.setColumn(0, sColId, this.ds_detail.getColumn(0, sColId));
+	}
+	// 140.00 -> 140
+	this.ds_supplier.setColumn(0, "BUYING_PRICE", String(Number(this.ds_detail.getColumn(0, "BUYING_PRICE"))));
+
+	var objType = this.ds_detail.getColumn(0, "RETURN_TYPE") == "TAKING" ? this.btn_taking : this.btn_not_taking;
+	this.btn_type_onclick(objType);
+
+	var sImage = this.ds_detail.getColumn(0, "IMAGE_DATA");
+	if(!this.gfn_isNull(sImage)){
+		this.img_photo.set_stretch("fixaspectratio");
+		this.img_photo.set_image("url('" + nexacro.getEnvironment().services["KanbanUrl"].url + sImage + "')");
+	}
 };
 
 // common codes of the Category combo
@@ -105,8 +162,15 @@ this.fn_callback = function(svcId, errCd, errMsg)
 		var arrCode = new Array();
 		arrCode.push({codeGroup:"CATEGORY", obj:this.cmb_category, first:"2::Select product category"});
 		this.gfn_getCommonCode(arrCode, this.ds_code);
+
+		if(this.fn_isEdit()){
+			this.fn_searchDetail();
+		}
 	}
-	else if(svcId == "svcSaveSupplier"){
+	else if(svcId == "svcSupplierDetail"){
+		this.fn_setDetail();
+	}
+	else if(svcId == "svcSaveSupplier" || svcId == "svcUpdateSupplier"){
 		this.close(this.ds_supplier.getColumn(0, "SUPPLIER_NAME"));
 	}
 };
@@ -192,24 +256,24 @@ this.btn_type_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.ds_supplier.setColumn(0, "RETURN_TYPE", obj == this.btn_taking ? "TAKING" : "NOT_TAKING");
 };
 
-// Add Supplier Button
+// Add Supplier / Save Changes Button
 this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.gfn_clearValidation(this.ds_supplier);
 	this.gfn_setValidation(this.ds_supplier, "SUPPLIER_NAME" , "Supplier name" , "required");
 	this.gfn_setValidation(this.ds_supplier, "PRODUCT_NAME"  , "Product"       , "required");
 	this.gfn_setValidation(this.ds_supplier, "CATEGORY_CODE" , "Category"      , "required");
-	this.gfn_setValidation(this.ds_supplier, "BUYING_PRICE"  , "Buying price"  , "required,digits");
+	this.gfn_setValidation(this.ds_supplier, "BUYING_PRICE"  , "Buying price"  , "required,min:0");
 	this.gfn_setValidation(this.ds_supplier, "CONTACT_NUMBER", "Contact number", "required,digits,minlength:9");
 	this.gfn_setValidation(this.ds_supplier, "RETURN_TYPE"   , "Type"          , "required");
 	if(this.gfn_validation(this.ds_supplier, "A") == false) return;
 
 	this.btn_save.set_enable(false);
 
-    var sSvcID    = "svcSaveSupplier";
-    var sURL      = "KanbanUrl::supplier/insert";
+    var sSvcID    = this.fn_isEdit() ? "svcUpdateSupplier" : "svcSaveSupplier";
+    var sURL      = this.fn_isEdit() ? "KanbanUrl::supplier/update" : "KanbanUrl::supplier/insert";
     var sInDs     = "ds_supplier=ds_supplier";
-    var sOutDs    = "ds_result=ds_result";
+    var sOutDs    = this.fn_isEdit() ? "" : "ds_result=ds_result";
     var sParam    = "";
     var sCallBack = "fn_callback";
 	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);

@@ -19,12 +19,22 @@
             
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_product", this);
-            obj._setContents({"ColumnInfo" : {"Column" : [ {"id" : "PRODUCT_NAME","type" : "STRING","size" : "100"},{"id" : "PRODUCT_CODE","type" : "STRING","size" : "30"},{"id" : "CATEGORY_CODE","type" : "STRING","size" : "30"},{"id" : "BUYING_PRICE","type" : "STRING","size" : "15"},{"id" : "QUANTITY","type" : "STRING","size" : "10"},{"id" : "UNIT","type" : "STRING","size" : "20"},{"id" : "EXPIRY_DATE","type" : "STRING","size" : "8"},{"id" : "THRESHOLD_VALUE","type" : "STRING","size" : "10"},{"id" : "IMAGE_DATA","type" : "STRING","size" : "2000000"}]},"Rows" : [{}]});
+            obj._setContents({"ColumnInfo" : {"Column" : [ {"id" : "PRODUCT_ID","type" : "STRING","size" : "20"},{"id" : "PRODUCT_NAME","type" : "STRING","size" : "100"},{"id" : "PRODUCT_CODE","type" : "STRING","size" : "30"},{"id" : "CATEGORY_CODE","type" : "STRING","size" : "30"},{"id" : "BUYING_PRICE","type" : "STRING","size" : "15"},{"id" : "QUANTITY","type" : "STRING","size" : "10"},{"id" : "UNIT","type" : "STRING","size" : "20"},{"id" : "EXPIRY_DATE","type" : "STRING","size" : "8"},{"id" : "THRESHOLD_VALUE","type" : "STRING","size" : "10"},{"id" : "IMAGE_DATA","type" : "STRING","size" : "2000000"}]},"Rows" : [{}]});
             this.addChild(obj.name, obj);
 
 
             obj = new Dataset("ds_result", this);
             obj._setContents({});
+            this.addChild(obj.name, obj);
+
+
+            obj = new Dataset("ds_detail", this);
+            obj._setContents({});
+            this.addChild(obj.name, obj);
+
+
+            obj = new Dataset("ds_cond", this);
+            obj._setContents({"ColumnInfo" : {"Column" : [ {"id" : "PRODUCT_ID","type" : "STRING","size" : "20"}]},"Rows" : [{}]});
             this.addChild(obj.name, obj);
 
 
@@ -163,7 +173,7 @@
             obj = new Edit("edt_price","160","342","296","38",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_maxlength("12");
-            obj.set_inputtype("digit");
+            obj.set_inputtype("number");
             obj.set_displaynulltext("Enter buying price");
             obj.set_borderRadius("8px");
             obj.set_border("1px solid #d0d5dd");
@@ -316,10 +326,56 @@
         this.registerScript("Form_NewProduct.xfdl", function() {
         this.executeIncludeScript("Lib::Lib_Comm.xjs"); /*include "Lib::Lib_Comm.xjs"*/;
 
+        this.fv_sProductId = "";
+
         this.Form_onload = function(obj,e)
         {
+        	// edit mode: Form_ProductInfo opens this popup with {pProductId}
+        	this.fv_sProductId = this.gfn_nvl(this.getOwnerFrame().pProductId, "");
+        	if(this.fn_isEdit()){
+        		this.sta_title.set_text("Edit Product");
+        		this.btn_save.set_text("Save Changes");
+        		// the quantity changes with stock movements, not here
+        		this.edt_quantity.set_readonly(true);
+        		this.edt_quantity.set_background("#f2f4f7");
+        	}
         	this.fn_searchCode();
         	this.edt_name.setFocus();
+        };
+
+        this.fn_isEdit = function()
+        {
+        	return this.fv_sProductId != "";
+        };
+
+        // the product to edit (product/detail), after the category codes are loaded
+        this.fn_searchDetail = function()
+        {
+        	this.ds_cond.setColumn(0, "PRODUCT_ID", this.fv_sProductId);
+
+            var sSvcID    = "svcProductDetail";
+            var sURL      = "KanbanUrl::product/detail";
+            var sInDs     = "ds_cond=ds_cond";
+            var sOutDs    = "ds_detail=ds_product";
+            var sParam    = "";
+            var sCallBack = "fn_callback";
+        	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);
+        };
+
+        // copies the detail into the bound one-row ds_product
+        this.fn_setDetail = function()
+        {
+        	for(var i=0; i<this.ds_product.getColCount(); i++){
+        		var sColId = this.ds_product.getColID(i);
+        		this.ds_product.setColumn(0, sColId, this.ds_detail.getColumn(0, sColId));
+        	}
+        	// 257.00 -> 257
+        	this.ds_product.setColumn(0, "BUYING_PRICE", String(Number(this.ds_detail.getColumn(0, "BUYING_PRICE"))));
+
+        	var sImage = this.ds_detail.getColumn(0, "IMAGE_DATA");
+        	if(!this.gfn_isNull(sImage)){
+        		this.img_photo.set_image("url('" + nexacro.getEnvironment().services["KanbanUrl"].url + sImage + "')");
+        	}
         };
 
         // common codes of the Category combo
@@ -348,8 +404,15 @@
         		var arrCode = new Array();
         		arrCode.push({codeGroup:"CATEGORY", obj:this.cmb_category, first:"2::Select product category"});
         		this.gfn_getCommonCode(arrCode, this.ds_code);
+
+        		if(this.fn_isEdit()){
+        			this.fn_searchDetail();
+        		}
         	}
-        	else if(svcId == "svcSaveProduct"){
+        	else if(svcId == "svcProductDetail"){
+        		this.fn_setDetail();
+        	}
+        	else if(svcId == "svcSaveProduct" || svcId == "svcUpdateProduct"){
         		this.close(this.ds_product.getColumn(0, "PRODUCT_NAME"));
         	}
         };
@@ -416,14 +479,14 @@
         	this.gfn_alert("msg.err.validator", [e.errormsg]);
         };
 
-        // Add Product Button
+        // Add Product / Save Changes Button
         this.btn_save_onclick = function(obj,e)
         {
         	this.gfn_clearValidation(this.ds_product);
         	this.gfn_setValidation(this.ds_product, "PRODUCT_NAME"   , "Product name"   , "required");
         	this.gfn_setValidation(this.ds_product, "PRODUCT_CODE"   , "Product ID"     , "required");
         	this.gfn_setValidation(this.ds_product, "CATEGORY_CODE"  , "Category"       , "required");
-        	this.gfn_setValidation(this.ds_product, "BUYING_PRICE"   , "Buying price"   , "required,digits");
+        	this.gfn_setValidation(this.ds_product, "BUYING_PRICE"   , "Buying price"   , "required,min:0");
         	this.gfn_setValidation(this.ds_product, "QUANTITY"       , "Quantity"       , "required,digits");
         	this.gfn_setValidation(this.ds_product, "UNIT"           , "Unit"           , "required");
         	this.gfn_setValidation(this.ds_product, "EXPIRY_DATE"    , "Expiry date"    , "required,date");
@@ -432,10 +495,10 @@
 
         	this.btn_save.set_enable(false);
 
-            var sSvcID    = "svcSaveProduct";
-            var sURL      = "KanbanUrl::product/insert";
+            var sSvcID    = this.fn_isEdit() ? "svcUpdateProduct" : "svcSaveProduct";
+            var sURL      = this.fn_isEdit() ? "KanbanUrl::product/update" : "KanbanUrl::product/insert";
             var sInDs     = "ds_product=ds_product";
-            var sOutDs    = "ds_result=ds_result";
+            var sOutDs    = this.fn_isEdit() ? "" : "ds_result=ds_result";
             var sParam    = "";
             var sCallBack = "fn_callback";
         	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);

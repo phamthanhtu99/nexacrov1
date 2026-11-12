@@ -25,6 +25,8 @@ public interface ProductMapper {
 
     int countByCode(Map<String, Object> param);
 
+    int update(Map<String, Object> param);
+
     /** Puts the new PRODUCT_ID into param. */
     int insert(Map<String, Object> param);
 

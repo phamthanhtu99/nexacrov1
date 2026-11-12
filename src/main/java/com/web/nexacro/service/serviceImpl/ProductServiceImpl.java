@@ -86,9 +86,8 @@ public class ProductServiceImpl implements ProductService {
         return productMapper.selectMovement(idParam(productId));
     }
 
-    @Override
-    @Transactional
-    public long insert(Map<String, Object> row, Object userId) {
+    /** Checks the fields shared by insert and update, and returns them trimmed. */
+    private Map<String, Object> checkProduct(Map<String, Object> row) {
         ValidationUtils.required(row, "PRODUCT_NAME", "Product name");
         ValidationUtils.maxLength(row, "PRODUCT_NAME", "Product name", 100);
         ValidationUtils.required(row, "PRODUCT_CODE", "Product ID");
@@ -96,7 +95,6 @@ public class ProductServiceImpl implements ProductService {
         ValidationUtils.required(row, "CATEGORY_CODE", "Category");
         commonCodeService.checkCode("CATEGORY", ValidationUtils.text(row, "CATEGORY_CODE"), "Category");
         ValidationUtils.decimal(row, "BUYING_PRICE", "Buying price");
-        int quantity = ValidationUtils.digits(row, "QUANTITY", "Quantity");
         ValidationUtils.required(row, "UNIT", "Unit");
         ValidationUtils.maxLength(row, "UNIT", "Unit", 20);
         ValidationUtils.date(row, "EXPIRY_DATE", "Expiry date");
@@ -104,13 +102,37 @@ public class ProductServiceImpl implements ProductService {
         ValidationUtils.imagePath(row, "IMAGE_DATA", "Image");
 
         Map<String, Object> product = new HashMap<>();
-        for (String key : new String[]{"PRODUCT_NAME", "PRODUCT_CODE", "CATEGORY_CODE", "BUYING_PRICE", "QUANTITY",
+        for (String key : new String[]{"PRODUCT_NAME", "PRODUCT_CODE", "CATEGORY_CODE", "BUYING_PRICE",
                 "UNIT", "EXPIRY_DATE", "THRESHOLD_VALUE", "IMAGE_DATA"}) {
             product.put(key, ValidationUtils.text(row, key));
         }
+        return product;
+    }
+
+    private void checkCodeIsFree(Map<String, Object> product) {
         if (productMapper.countByCode(product) > 0) {
             throw new BizException("Product ID " + product.get("PRODUCT_CODE") + " already exists.");
         }
+    }
+
+    @Override
+    @Transactional
+    public void update(Map<String, Object> row) {
+        Map<String, Object> product = checkProduct(row);
+        product.put("PRODUCT_ID", idParam(ValidationUtils.text(row, "PRODUCT_ID")).get("PRODUCT_ID"));
+        checkCodeIsFree(product);
+        if (productMapper.update(product) == 0) {
+            throw new BizException("Product is not found.");
+        }
+    }
+
+    @Override
+    @Transactional
+    public long insert(Map<String, Object> row, Object userId) {
+        Map<String, Object> product = checkProduct(row);
+        int quantity = ValidationUtils.digits(row, "QUANTITY", "Quantity");
+        product.put("QUANTITY", String.valueOf(quantity));
+        checkCodeIsFree(product);
         productMapper.insert(product);
         Object productId = product.get("PRODUCT_ID");
 

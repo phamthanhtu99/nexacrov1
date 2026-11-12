@@ -23,6 +23,8 @@
             // UI Components Initialize
             obj = new Static("sta_user",null,"16","240","40","122",null,null,null,null,null,this);
             obj.set_taborder("4");
+            obj.set_cursor("pointer");
+            obj.set_tooltiptext("My profile");
             obj.set_textAlign("right");
             obj.set_color("#48505e");
             obj.set_font("600 13px \"Segoe UI\"");
@@ -55,6 +57,8 @@
 
             obj = new ImageViewer("img_avatar",null,"16","40","40","30",null,null,null,null,null,this);
             obj.set_taborder("3");
+            obj.set_cursor("pointer");
+            obj.set_tooltiptext("My profile");
             obj.set_image("url(\'imagerc::kanban/img_avatar.png\')");
             obj.set_stretch("fit");
             obj.set_border("0px none");
@@ -78,7 +82,9 @@
         };
         
         // User Script
+        this.addIncludeScript("Form_Header.xfdl","Lib::Lib_Comm.xjs");
         this.registerScript("Form_Header.xfdl", function() {
+        this.executeIncludeScript("Lib::Lib_Comm.xjs"); /*include "Lib::Lib_Comm.xjs"*/;
 
         this.Form_onload = function(obj,e)
         {
@@ -89,6 +95,40 @@
         this.fn_clearSearch = function()
         {
         	this.edt_search.set_value("");
+        };
+
+        // user name / avatar -> My Profile popup
+        this.fn_profile_onclick = function(obj,e)
+        {
+        	var objChild = new ChildFrame("popProfile", 0, 0, 440, 476);
+        	objChild.formurl = "Base::Form_Profile.xfdl";
+        	objChild.openalign = "center middle";
+        	objChild.dragmovetype = "all";
+        	objChild.overlaycolor = "RGBA(0, 0, 0, 0.2)";
+        	objChild.set_showtitlebar(false);
+
+            objChild.showModal(this.getOwnerFrame()
+                             , {}
+                             , this
+                             , "fn_callbackPopup");
+        };
+
+        this.fn_callbackPopup = function(sPopupId, sReturn)
+        {
+        	if(sReturn == undefined){
+        		sReturn = "";
+        	}
+
+        	if(sPopupId == "popProfile"){
+        		if(sReturn.length > 0){
+        			var arrRtn = sReturn.split("|");
+        			var objUser = this.gfn_getApplication().gds_user;
+        			objUser.setColumn(0, "USER_NAME", arrRtn[0]);
+        			objUser.setColumn(0, "E_MAIL"   , arrRtn[1]);
+        			this.sta_user.set_text(arrRtn[0]);
+        			this.gfn_alert("msg.kanban.profile.updated");
+        		}
+        	}
         };
 
         this.edt_search_oninput = function(obj,e)
@@ -102,7 +142,9 @@
         this.on_initEvent = function()
         {
             this.addEventHandler("onload",this.Form_onload,this);
+            this.sta_user.addEventHandler("onclick",this.fn_profile_onclick,this);
             this.edt_search.addEventHandler("oninput",this.edt_search_oninput,this);
+            this.img_avatar.addEventHandler("onclick",this.fn_profile_onclick,this);
         };
         this.loadIncludeScript("Form_Header.xfdl");
         this.loadPreloadList();

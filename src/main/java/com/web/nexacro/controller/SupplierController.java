@@ -1,5 +1,6 @@
 package com.web.nexacro.controller;
 
+import com.web.nexacro.Utils.ValidationUtils;
 import com.web.nexacro.service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,20 @@ public class SupplierController extends BaseNexacroController {
     public ModelAndView list(HttpServletRequest request, ModelAndView modelAndView) throws IOException {
         return execute(request, modelAndView, (in, out) ->
                 out.setDataset("ds_supplier", supplierService.selectList(row(in, "ds_cond"))));
+    }
+
+    // in : ds_cond (SUPPLIER_ID)
+    // out: ds_supplier (one row with the image)
+    @PostMapping("/detail")
+    public ModelAndView detail(HttpServletRequest request, ModelAndView modelAndView) throws IOException {
+        return execute(request, modelAndView, (in, out) -> out.setDataset("ds_supplier",
+                Collections.singletonList(supplierService.selectDetail(ValidationUtils.text(row(in, "ds_cond"), "SUPPLIER_ID")))));
+    }
+
+    // in : ds_supplier (first row, with SUPPLIER_ID)
+    @PostMapping("/update")
+    public ModelAndView update(HttpServletRequest request, ModelAndView modelAndView) throws IOException {
+        return execute(request, modelAndView, (in, out) -> supplierService.update(row(in, "ds_supplier")));
     }
 
     // in : ds_supplier (first row)

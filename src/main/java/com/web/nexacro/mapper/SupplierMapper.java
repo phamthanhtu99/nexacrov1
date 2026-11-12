@@ -11,6 +11,10 @@ public interface SupplierMapper {
 
     List<Map<String, Object>> selectList(Map<String, Object> param);
 
+    Map<String, Object> selectDetail(Map<String, Object> param);
+
+    int update(Map<String, Object> param);
+
     /** Puts the new SUPPLIER_ID into param. */
     int insert(Map<String, Object> param);
 }

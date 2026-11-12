@@ -158,4 +158,74 @@ class InventoryServiceTests {
         assertThrows(BizException.class, () -> supplierService.insert(map("SUPPLIER_NAME", "X", "PRODUCT_NAME", "Y",
                 "CATEGORY_CODE", "DAIRY", "BUYING_PRICE", "10", "CONTACT_NUMBER", "09-123", "RETURN_TYPE", "TAKING")));
     }
+
+    @Test
+    void updateProduct() {
+        long id = productService.insert(map("PRODUCT_NAME", "UT Edit", "PRODUCT_CODE", "UT-EDIT-1", "CATEGORY_CODE", "SNACK",
+                "BUYING_PRICE", "10", "QUANTITY", "7", "UNIT", "Box", "EXPIRY_DATE", "20281231", "THRESHOLD_VALUE", "2"), null);
+
+        Map<String, Object> row = map("PRODUCT_ID", String.valueOf(id), "PRODUCT_NAME", "UT Edited", "PRODUCT_CODE", "UT-EDIT-1",
+                "CATEGORY_CODE", "DAIRY", "BUYING_PRICE", "12.50", "QUANTITY", "999", "UNIT", "Packets",
+                "EXPIRY_DATE", "20290115", "THRESHOLD_VALUE", "3", "IMAGE_DATA", "");
+        productService.update(row);
+
+        Map<String, Object> detail = productService.selectDetail(String.valueOf(id));
+        assertEquals("UT Edited", detail.get("PRODUCT_NAME"));
+        assertEquals("Dairy", detail.get("CATEGORY_NAME"));
+        assertEquals("20290115", detail.get("EXPIRY_DATE"));
+        assertEquals(7, ((Number) detail.get("QUANTITY")).intValue(), "the quantity is not edited");
+
+        // keeping its own code is fine, taking another product's code is not
+        row.put("PRODUCT_CODE", "P-1001");
+        assertEquals("Product ID P-1001 already exists.", assertThrows(BizException.class, () -> productService.update(row)).getMessage());
+
+        row.put("PRODUCT_CODE", "UT-EDIT-1");
+        row.put("PRODUCT_ID", "999999999");
+        assertThrows(BizException.class, () -> productService.update(row));
+    }
+
+    @Test
+    void updateSupplier() {
+        long id = supplierService.insert(map("SUPPLIER_NAME", "UT Supplier", "PRODUCT_NAME", "UT Product", "CATEGORY_CODE", "DAIRY",
+                "BUYING_PRICE", "10", "CONTACT_NUMBER", "0912345678", "EMAIL", "ut@example.com", "RETURN_TYPE", "TAKING"));
+
+        supplierService.update(map("SUPPLIER_ID", String.valueOf(id), "SUPPLIER_NAME", "UT Supplier 2", "PRODUCT_NAME", "UT Product",
+                "CATEGORY_CODE", "SNACK", "BUYING_PRICE", "11", "CONTACT_NUMBER", "0987654321", "RETURN_TYPE", "NOT_TAKING", "IMAGE_DATA", ""));
+
+        Map<String, Object> detail = supplierService.selectDetail(String.valueOf(id));
+        assertEquals("UT Supplier 2", detail.get("SUPPLIER_NAME"));
+        assertEquals("NOT_TAKING", detail.get("RETURN_TYPE"));
+        assertEquals("ut@example.com", detail.get("EMAIL"), "fields that are not in the popup are kept");
+
+        assertThrows(BizException.class, () -> supplierService.selectDetail("abc"));
+        assertThrows(BizException.class, () -> supplierService.update(map("SUPPLIER_ID", String.valueOf(id), "SUPPLIER_NAME", "")));
+    }
+
+    @Test
+    void updateProfile() {
+        long id = authService.signup(map("USER_NAME", "UT Profile", "EMAIL", "ut.profile@example.com",
+                "PASSWORD", "password1", "CONFIRM_PASSWORD", "password1"));
+        authService.signup(map("USER_NAME", "UT Other", "EMAIL", "ut.other@example.com",
+                "PASSWORD", "password1", "CONFIRM_PASSWORD", "password1"));
+
+        // name and email only
+        Map<String, Object> user = authService.updateProfile(id, map("USER_NAME", "UT Renamed", "EMAIL", "UT.Profile2@example.com"));
+        assertEquals("UT Renamed", user.get("USER_NAME"));
+        assertEquals("ut.profile2@example.com", user.get("EMAIL"));
+        assertFalse(user.containsKey("PASSWORD_HASH"));
+
+        assertEquals("This email is already registered.", assertThrows(BizException.class,
+                () -> authService.updateProfile(id, map("USER_NAME", "X", "EMAIL", "ut.other@example.com"))).getMessage());
+        assertEquals("Current password is incorrect.", assertThrows(BizException.class,
+                () -> authService.updateProfile(id, map("USER_NAME", "X", "EMAIL", "ut.profile2@example.com",
+                        "CURRENT_PASSWORD", "wrong", "NEW_PASSWORD", "password2", "CONFIRM_PASSWORD", "password2"))).getMessage());
+
+        // password change, then the new password logs in and the old one does not
+        authService.updateProfile(id, map("USER_NAME", "UT Renamed", "EMAIL", "ut.profile2@example.com",
+                "CURRENT_PASSWORD", "password1", "NEW_PASSWORD", "password2", "CONFIRM_PASSWORD", "password2"));
+        assertEquals("UT Renamed", authService.login(map("EMAIL", "ut.profile2@example.com", "PASSWORD", "password2")).get("USER_NAME"));
+        assertThrows(BizException.class, () -> authService.login(map("EMAIL", "ut.profile2@example.com", "PASSWORD", "password1")));
+
+        assertThrows(BizException.class, () -> authService.selectProfile(null));
+    }
 }

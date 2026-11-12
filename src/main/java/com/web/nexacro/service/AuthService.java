@@ -14,4 +14,13 @@ public interface AuthService {
     Map<String, Object> loginWithToken(String token);
 
     void logout(String token);
+
+    /** USER_ID, USER_NAME, EMAIL of a user. */
+    Map<String, Object> selectProfile(Object userId);
+
+    /**
+     * in: USER_NAME, EMAIL, and to change the password CURRENT_PASSWORD, NEW_PASSWORD, CONFIRM_PASSWORD.
+     * Returns the updated USER_ID, USER_NAME, EMAIL.
+     */
+    Map<String, Object> updateProfile(Object userId, Map<String, Object> row);
 }

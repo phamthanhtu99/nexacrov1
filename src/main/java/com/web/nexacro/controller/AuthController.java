@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -61,6 +62,31 @@ public class AuthController extends BaseNexacroController {
             authService.logout(ValidationUtils.text(row(in, "ds_login"), "TOKEN"));
             request.getSession().invalidate();
         });
+    }
+
+    // out: ds_user (USER_ID, USER_NAME, EMAIL) of the logged in user
+    // GET too: Nexacro sends a transaction without input datasets and arguments as GET
+    @RequestMapping(value = "/profile", method = {RequestMethod.GET, RequestMethod.POST})
+    public ModelAndView profile(HttpServletRequest request, ModelAndView modelAndView) throws IOException {
+        return execute(request, modelAndView, (in, out) ->
+                out.setDataset("ds_user", Collections.singletonList(authService.selectProfile(sessionUserId()))));
+    }
+
+    // in : ds_profile (USER_NAME, EMAIL, CURRENT_PASSWORD, NEW_PASSWORD, CONFIRM_PASSWORD)
+    // out: ds_user (USER_ID, USER_NAME, EMAIL)
+    @PostMapping("/updateProfile")
+    public ModelAndView updateProfile(HttpServletRequest request, ModelAndView modelAndView) throws IOException {
+        return execute(request, modelAndView, (in, out) -> {
+            Map<String, Object> user = authService.updateProfile(sessionUserId(), row(in, "ds_profile"));
+            SessionUtils.setSessionValue(SESSION_USER, new HashMap<>(user));
+            out.setDataset("ds_user", Collections.singletonList(user));
+        });
+    }
+
+    /** The user id always comes from the session, never from the request. */
+    private static Object sessionUserId() {
+        Map<?, ?> user = (Map<?, ?>) SessionUtils.getSession(SESSION_USER);
+        return user == null ? null : user.get("USER_ID");
     }
 
     private void startSession(HttpServletRequest request, Map<String, Object> user) {

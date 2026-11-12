@@ -24,9 +24,11 @@
         </if>
     </sql>
 
-    <!-- one page; the image is left out on purpose, it is only needed on the detail screen -->
+    <!-- one page; the image is left out on purpose, it is only needed on the detail screen.
+         TOTAL_COUNT (rows that match, before LIMIT) saves a second round trip for the count -->
     <select id="selectList" parameterType="map" resultType="map">
-        SELECT P.PRODUCT_ID, P.PRODUCT_CODE, P.PRODUCT_NAME, P.CATEGORY_CODE
+        SELECT COUNT(*) OVER() AS TOTAL_COUNT
+             , P.PRODUCT_ID, P.PRODUCT_CODE, P.PRODUCT_NAME, P.CATEGORY_CODE
              , P.BUYING_PRICE, P.QUANTITY, P.UNIT
              , TO_CHAR(P.EXPIRY_DATE, 'YYYYMMDD') AS EXPIRY_DATE
              , P.THRESHOLD_VALUE
@@ -84,6 +86,7 @@
                  WHERE A.GROUP_CODE = 'AVAILABILITY' AND A.CODE = <include refid="availability"/>) AS AVAILABILITY_NAME
              , TO_CHAR(P.CREATED_AT, 'YYYYMMDD') AS CREATED_DATE
              , S.SUPPLIER_ID, S.SUPPLIER_NAME, S.CONTACT_NUMBER AS SUPPLIER_CONTACT
+             , COALESCE(S.ON_THE_WAY, 0) AS ON_THE_WAY
              , S.EMAIL AS SUPPLIER_EMAIL, S.RETURN_TYPE AS SUPPLIER_RETURN_TYPE
              , (SELECT R.CODE_NAME FROM COMMON_CODE R
                  WHERE R.GROUP_CODE = 'RETURN_TYPE' AND R.CODE = S.RETURN_TYPE) AS SUPPLIER_RETURN_TYPE_NAME
@@ -121,11 +124,31 @@
          ORDER BY M.MOVEMENT_DATE DESC, M.MOVEMENT_ID DESC
     </select>
 
+    <!-- PRODUCT_ID (optional): the product being edited does not count as a duplicate -->
     <select id="countByCode" parameterType="map" resultType="int">
         SELECT COUNT(*)
           FROM PRODUCT
          WHERE LOWER(PRODUCT_CODE) = LOWER(#{PRODUCT_CODE})
+        <if test="PRODUCT_ID != null and PRODUCT_ID != ''">
+           AND PRODUCT_ID &lt;&gt; CAST(#{PRODUCT_ID} AS BIGINT)
+        </if>
     </select>
+
+    <!-- the quantity is not edited here: stock changes come from stock movements -->
+    <update id="update" parameterType="map">
+        UPDATE PRODUCT
+           SET PRODUCT_CODE    = #{PRODUCT_CODE}
+             , PRODUCT_NAME    = #{PRODUCT_NAME}
+             , CATEGORY_CODE   = #{CATEGORY_CODE}
+             , BUYING_PRICE    = CAST(#{BUYING_PRICE} AS NUMERIC)
+             , UNIT            = #{UNIT}
+             , EXPIRY_DATE     = TO_DATE(#{EXPIRY_DATE}, 'YYYYMMDD')
+             , THRESHOLD_VALUE = CAST(#{THRESHOLD_VALUE} AS INT)
+             , IMAGE_DATA      = NULLIF(CAST(#{IMAGE_DATA} AS TEXT), '')
+             , UPDATED_AT      = CURRENT_TIMESTAMP
+         WHERE PRODUCT_ID = CAST(#{PRODUCT_ID} AS BIGINT)
+           AND IS_DELETED = FALSE
+    </update>
 
     <insert id="insert" parameterType="map" useGeneratedKeys="true" keyProperty="PRODUCT_ID" keyColumn="product_id">
         INSERT INTO PRODUCT (PRODUCT_CODE, PRODUCT_NAME, CATEGORY_CODE, BUYING_PRICE, QUANTITY, UNIT,

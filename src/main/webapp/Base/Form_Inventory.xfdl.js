@@ -56,6 +56,11 @@
             obj = new Dataset("ds_availability", this);
             obj._setContents({"ColumnInfo" : {"Column" : [ {"id" : "CODE","type" : "STRING","size" : "30"},{"id" : "CODE_NAME","type" : "STRING","size" : "100"}]}});
             this.addChild(obj.name, obj);
+
+
+            obj = new Dataset("ds_columns", this);
+            obj._setContents({"ColumnInfo" : {"Column" : [ {"id" : "CODE","type" : "STRING","size" : "10"},{"id" : "NAME","type" : "STRING","size" : "100"}]}});
+            this.addChild(obj.name, obj);
             
             // UI Components Initialize
             obj = new Div("div_summary","24","16",null,"130","24",null,null,null,null,null,this);
@@ -297,7 +302,7 @@
             obj.set_border("0px none");
             obj.set_selecttype("row");
             obj.set_cursor("pointer");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"180\"/><Column size=\"150\"/><Column size=\"150\"/><Column size=\"160\"/><Column size=\"140\"/><Column size=\"130\"/></Columns><Rows><Row size=\"34\" band=\"head\"/><Row size=\"34\"/></Rows><Band id=\"head\"><Cell text=\"Products\" textAlign=\"left\" background=\"#ffffff\" color=\"#667085\" font=\"600 13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"1\" text=\"Buying Price\" textAlign=\"left\" background=\"#ffffff\" color=\"#667085\" font=\"600 13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"2\" text=\"Quantity\" textAlign=\"left\" background=\"#ffffff\" color=\"#667085\" font=\"600 13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"3\" text=\"Threshold Value\" textAlign=\"left\" background=\"#ffffff\" color=\"#667085\" font=\"600 13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"4\" text=\"Expiry Date\" textAlign=\"left\" background=\"#ffffff\" color=\"#667085\" font=\"600 13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"5\" text=\"Availability\" textAlign=\"left\" background=\"#ffffff\" color=\"#667085\" font=\"600 13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/></Band><Band id=\"body\"><Cell text=\"bind:PRODUCT_NAME\" textAlign=\"left\" color=\"#48505e\" font=\"13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"1\" text=\"expr:&apos;₹&apos; + comp.parent.gfn_appendComma(BUYING_PRICE)\" textAlign=\"left\" color=\"#48505e\" font=\"13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"2\" text=\"expr:QUANTITY + &apos; &apos; + UNIT\" textAlign=\"left\" color=\"#48505e\" font=\"13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"3\" text=\"expr:THRESHOLD_VALUE + &apos; &apos; + UNIT\" textAlign=\"left\" color=\"#48505e\" font=\"13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"4\" text=\"expr:comp.parent.fn_formatDate(EXPIRY_DATE)\" textAlign=\"left\" color=\"#48505e\" font=\"13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"5\" text=\"bind:AVAILABILITY_NAME\" textAlign=\"left\" cssclass=\"expr:AVAILABILITY==&apos;IN&apos;?&apos;cell_WF_StockIn&apos;:(AVAILABILITY==&apos;LOW&apos;?&apos;cell_WF_StockLow&apos;:&apos;cell_WF_StockOut&apos;)\" font=\"13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"180\"/><Column size=\"150\"/><Column size=\"150\"/><Column size=\"160\"/><Column size=\"140\"/><Column size=\"130\"/></Columns><Rows><Row size=\"34\" band=\"head\"/><Row size=\"34\"/></Rows><Band id=\"head\"><Cell text=\"Products\" textAlign=\"left\" background=\"#ffffff\" color=\"#667085\" font=\"600 13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"1\" text=\"Buying Price\" textAlign=\"left\" background=\"#ffffff\" color=\"#667085\" font=\"600 13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"2\" text=\"Quantity\" textAlign=\"left\" background=\"#ffffff\" color=\"#667085\" font=\"600 13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"3\" text=\"Threshold Value\" textAlign=\"left\" background=\"#ffffff\" color=\"#667085\" font=\"600 13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"4\" text=\"Expiry Date\" textAlign=\"left\" background=\"#ffffff\" color=\"#667085\" font=\"600 13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"5\" text=\"Availability\" textAlign=\"left\" background=\"#ffffff\" color=\"#667085\" font=\"600 13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/></Band><Band id=\"body\"><Cell text=\"bind:PRODUCT_NAME\" textAlign=\"left\" color=\"#48505e\" font=\"13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"1\" text=\"expr:comp.parent.gfn_appendComma(BUYING_PRICE, 2)\" textAlign=\"left\" color=\"#48505e\" font=\"13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"2\" text=\"expr:QUANTITY + &apos; &apos; + UNIT\" textAlign=\"left\" color=\"#48505e\" font=\"13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"3\" text=\"expr:THRESHOLD_VALUE + &apos; &apos; + UNIT\" textAlign=\"left\" color=\"#48505e\" font=\"13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"4\" text=\"expr:comp.parent.fn_formatDate(EXPIRY_DATE)\" textAlign=\"left\" color=\"#48505e\" font=\"13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/><Cell col=\"5\" text=\"bind:AVAILABILITY_NAME\" textAlign=\"left\" cssclass=\"expr:AVAILABILITY==&apos;IN&apos;?&apos;cell_WF_StockIn&apos;:(AVAILABILITY==&apos;LOW&apos;?&apos;cell_WF_StockLow&apos;:&apos;cell_WF_StockOut&apos;)\" font=\"13px &quot;Segoe UI&quot;\" padding=\"0px 4px 0px 0px\" border=\"0px none, 0px none, 1px solid #f0f1f3, 0px none\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Static("sta_nodata","40","290",null,"40","40",null,null,null,null,null,this);
@@ -336,7 +341,7 @@
             obj.set_font("13px \"Segoe UI\"");
             this.addChild(obj.name, obj);
 
-            obj = new PopupDiv("pdv_filter","0","0","260","210",null,null,null,null,null,null,this);
+            obj = new PopupDiv("pdv_filter","0","0","260","278",null,null,null,null,null,null,this);
             obj.set_visible("false");
             obj.set_background("#ffffff");
             obj.set_border("1px solid #e4e7ec");
@@ -375,8 +380,28 @@
             obj.set_font("13px \"Segoe UI\"");
             this.pdv_filter.addChild(obj.name, obj);
 
-            obj = new Button("btn_reset","16","156","108","36",null,null,null,null,null,null,this.pdv_filter.form);
+            obj = new Static("sta_l_columns","16","148","228","20",null,null,null,null,null,null,this.pdv_filter.form);
+            obj.set_taborder("6");
+            obj.set_text("Columns");
+            obj.set_color("#48505e");
+            obj.set_font("600 12px \"Segoe UI\"");
+            this.pdv_filter.addChild(obj.name, obj);
+
+            obj = new MultiCombo("mcb_columns","16","170","228","36",null,null,null,null,null,null,this.pdv_filter.form);
             obj.set_taborder("2");
+            obj.set_codecolumn("CODE");
+            obj.set_datacolumn("NAME");
+            obj.set_showselectallcheckbox("true");
+            obj.set_selectallcheckboxtext("All columns");
+            obj.set_edittype("count");
+            obj.set_counttextformat("{0} columns shown");
+            obj.set_borderRadius("6px");
+            obj.set_border("1px solid #d0d5dd");
+            obj.set_font("13px \"Segoe UI\"");
+            this.pdv_filter.addChild(obj.name, obj);
+
+            obj = new Button("btn_reset","16","224","108","36",null,null,null,null,null,null,this.pdv_filter.form);
+            obj.set_taborder("3");
             obj.set_text("Reset");
             obj.set_background("#ffffff");
             obj.set_color("#5d6679");
@@ -385,8 +410,8 @@
             obj.set_font("600 13px \"Segoe UI\"");
             this.pdv_filter.addChild(obj.name, obj);
 
-            obj = new Button("btn_apply","136","156","108","36",null,null,null,null,null,null,this.pdv_filter.form);
-            obj.set_taborder("3");
+            obj = new Button("btn_apply","136","224","108","36",null,null,null,null,null,null,this.pdv_filter.form);
+            obj.set_taborder("4");
             obj.set_text("Apply");
             obj.set_background("#1a5fd9");
             obj.set_color("#ffffff");
@@ -448,8 +473,12 @@
         	var oFilter = this.pdv_filter.form;
         	oFilter.cmb_category.set_innerdataset(this.ds_category);
         	oFilter.cmb_availability.set_innerdataset(this.ds_availability);
+        	this.fn_initColumns();
 
+        	// the list does not need the codes, so the three requests run at the same time
         	this.fn_searchCode();
+        	this.fn_searchSummary();
+        	this.fn_searchList(1);
         };
 
         // common codes of the filter combos
@@ -508,9 +537,6 @@
         		arrCode.push({codeGroup:"CATEGORY"    , obj:this.pdv_filter.form.cmb_category    , first:"2::All categories"});
         		arrCode.push({codeGroup:"AVAILABILITY", obj:this.pdv_filter.form.cmb_availability, first:"2::All"});
         		this.gfn_getCommonCode(arrCode, this.ds_code);
-
-        		this.fn_searchSummary();
-        		this.fn_searchList(1);
         	}
         	else if(svcId == "svcSummary"){
         		this.fn_showSummary();
@@ -571,6 +597,54 @@
         	this.fn_searchList(this.fv_nPage + 1);
         };
 
+        // Columns MultiCombo: one item per grid column (from the head texts), every column shown at first
+        this.fv_arrColSize = [];
+        this.fn_initColumns = function()
+        {
+        	var objGrid = this.grd_product;
+        	var objDs   = this.ds_columns;
+        	var arrCode = new Array();
+
+        	objDs.clearData();
+        	for(var i=0; i<objGrid.getFormatColCount(); i++){
+        		var nRow = objDs.addRow();
+        		objDs.setColumn(nRow, "CODE", String(i));
+        		objDs.setColumn(nRow, "NAME", objGrid.getCellProperty("head", i, "text"));
+        		this.fv_arrColSize[i] = objGrid.getFormatColSize(i);
+        		arrCode.push(String(i));
+        	}
+        	this.pdv_filter.form.mcb_columns.set_innerdataset(objDs);
+        	this.pdv_filter.form.mcb_columns.set_value(arrCode.join(","));
+        };
+
+        // hides the columns that are not selected (size 0), shows the others with their first size
+        this.fn_applyColumns = function()
+        {
+        	var objCombo = this.pdv_filter.form.mcb_columns;
+        	var sValue   = this.gfn_nvl(objCombo.value, "");
+        	if(sValue == ""){
+        		// at least one column must stay: show them all again
+        		this.gfn_alert("msg.kanban.column.required");
+        		this.fn_showAllColumns();
+        		return;
+        	}
+        	var arrShow = sValue.split(",");
+        	for(var i=0; i<this.fv_arrColSize.length; i++){
+        		var bShow = arrShow.indexOf(String(i)) > -1;
+        		this.grd_product.setFormatColProperty(i, "size", bShow ? this.fv_arrColSize[i] : 0);
+        	}
+        };
+
+        this.fn_showAllColumns = function()
+        {
+        	var arrCode = new Array();
+        	for(var i=0; i<this.fv_arrColSize.length; i++){
+        		arrCode.push(String(i));
+        	}
+        	this.pdv_filter.form.mcb_columns.set_value(arrCode.join(","));
+        	this.fn_applyColumns();
+        };
+
         // Filters Button
         this.btn_filter_onclick = function(obj,e)
         {
@@ -584,6 +658,7 @@
         	this.ds_cond.setColumn(0, "CATEGORY"    , oFilter.cmb_category.value);
         	this.ds_cond.setColumn(0, "AVAILABILITY", oFilter.cmb_availability.value);
         	this.pdv_filter.closePopup();
+        	this.fn_applyColumns();
 
         	var arrText = new Array();
         	if(!this.gfn_isNull(oFilter.cmb_category.value))     arrText.push(oFilter.cmb_category.text);
@@ -598,6 +673,7 @@
         {
         	this.pdv_filter.form.cmb_category.set_index(0);
         	this.pdv_filter.form.cmb_availability.set_index(0);
+        	this.fn_showAllColumns();
         	this.pdv_filter_btn_apply_onclick(obj, e);
         };
 

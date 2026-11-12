@@ -48,18 +48,23 @@ Availability is not stored, it is computed: `OUT` when quantity = 0, `LOW` when 
 | `/auth/login` | `ds_login` (EMAIL, PASSWORD, REMEMBER Y/N) | `ds_user` (USER_ID, USER_NAME, EMAIL, TOKEN) |
 | `/auth/tokenLogin` | `ds_login` (TOKEN) | `ds_user` |
 | `/auth/logout` | `ds_login` (TOKEN) | – |
+| `/auth/profile` | – (user of the session) | `ds_user` (USER_ID, USER_NAME, EMAIL) |
+| `/auth/updateProfile` | `ds_profile` (USER_NAME, EMAIL, CURRENT_PASSWORD, NEW_PASSWORD, CONFIRM_PASSWORD) | `ds_user` |
 | `/common/code` | `ds_cond` (GROUP_CODES, comma separated) | `ds_code` (GROUP, GROUP_NAME, CODE, CODE_NAME) |
 | `/product/list` | `ds_cond` (KEYWORD, CATEGORY, AVAILABILITY, PAGE, PAGE_SIZE) | `ds_product`, `ds_page` (TOTAL_COUNT) |
 | `/product/summary` | – | `ds_summary` |
 | `/product/detail` | `ds_cond` (PRODUCT_ID) | `ds_product`, `ds_stock`, `ds_movement` |
 | `/product/insert` | `ds_product` | `ds_result` (PRODUCT_ID) |
+| `/product/update` | `ds_product` (with PRODUCT_ID; the quantity is not changed) | – |
 | `/product/export` (GET) | KEYWORD, CATEGORY, AVAILABILITY | CSV file |
 | `/supplier/list` | `ds_cond` (KEYWORD, CATEGORY, RETURN_TYPE) | `ds_supplier` |
 | `/supplier/insert` | `ds_supplier` | `ds_result` (SUPPLIER_ID) |
+| `/supplier/detail` | `ds_cond` (SUPPLIER_ID) | `ds_supplier` (with the image) |
+| `/supplier/update` | `ds_supplier` (with SUPPLIER_ID) | – |
 | `/file/upload` (multipart, FileUpTransfer) | image file, PNG/JPG/GIF up to 5 MB | `ds_file` (FILE_PATH = `file/<uuid>.png`) |
 | `/file/<uuid>.png` (GET) | – | the image, cached 30 days |
 
-`/product/**`, `/supplier/**` and `/file/upload` need a logged in session (`LoginInterceptor`); without it the answer is `ErrorCode = -99`
+`/product/**`, `/supplier/**`, `/file/upload`, `/auth/profile` and `/auth/updateProfile` need a logged in session (`LoginInterceptor`); without it the answer is `ErrorCode = -99`
 and the client goes back to the login screen.
 
 ## Common functions

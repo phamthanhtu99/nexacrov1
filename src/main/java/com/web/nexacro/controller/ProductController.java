@@ -38,9 +38,11 @@ public class ProductController extends BaseNexacroController {
     public ModelAndView list(HttpServletRequest request, ModelAndView modelAndView) throws IOException {
         return execute(request, modelAndView, (in, out) -> {
             Map<String, Object> cond = row(in, "ds_cond");
-            out.setDataset("ds_product", productService.selectList(cond));
+            List<Map<String, Object>> rows = productService.selectList(cond);
+            out.setDataset("ds_product", rows);
             Map<String, Object> page = new HashMap<>();
-            page.put("TOTAL_COUNT", productService.selectCount(cond));
+            // every row carries TOTAL_COUNT; an empty page (after the last one) needs the count query
+            page.put("TOTAL_COUNT", rows.isEmpty() ? productService.selectCount(cond) : rows.get(0).get("TOTAL_COUNT"));
             out.setDataset("ds_page", Collections.singletonList(page));
         });
     }
@@ -76,6 +78,12 @@ public class ProductController extends BaseNexacroController {
             result.put("PRODUCT_ID", productId);
             out.setDataset("ds_result", Collections.singletonList(result));
         });
+    }
+
+    // in : ds_product (first row, with PRODUCT_ID); the quantity is not changed
+    @PostMapping("/update")
+    public ModelAndView update(HttpServletRequest request, ModelAndView modelAndView) throws IOException {
+        return execute(request, modelAndView, (in, out) -> productService.update(row(in, "ds_product")));
     }
 
     // "Download all": every product that matches the current search, as CSV for Excel

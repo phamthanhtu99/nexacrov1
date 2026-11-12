@@ -21,6 +21,9 @@ public interface ProductService {
 
     List<Map<String, Object>> selectMovement(String productId);
 
+    /** Updates the product information (not the quantity, that comes from stock movements). */
+    void update(Map<String, Object> row);
+
     /** Inserts the product, its main warehouse stock and the opening purchase. Returns PRODUCT_ID. */
     long insert(Map<String, Object> row, Object userId);
 }

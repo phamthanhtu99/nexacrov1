@@ -24,6 +24,30 @@
          ORDER BY S.SUPPLIER_ID DESC
     </select>
 
+    <!-- one supplier with its image, for the edit popup -->
+    <select id="selectDetail" parameterType="map" resultType="map">
+        SELECT S.SUPPLIER_ID, S.SUPPLIER_NAME, S.PRODUCT_NAME, S.CATEGORY_CODE
+             , S.BUYING_PRICE, S.CONTACT_NUMBER, S.EMAIL, S.RETURN_TYPE, S.ON_THE_WAY, S.IMAGE_DATA
+          FROM SUPPLIER S
+         WHERE S.SUPPLIER_ID = CAST(#{SUPPLIER_ID} AS BIGINT)
+           AND S.IS_DELETED = FALSE
+    </select>
+
+    <!-- email and "on the way" are not in the popup, so they are kept -->
+    <update id="update" parameterType="map">
+        UPDATE SUPPLIER
+           SET SUPPLIER_NAME  = #{SUPPLIER_NAME}
+             , PRODUCT_NAME   = #{PRODUCT_NAME}
+             , CATEGORY_CODE  = #{CATEGORY_CODE}
+             , BUYING_PRICE   = CAST(#{BUYING_PRICE} AS NUMERIC)
+             , CONTACT_NUMBER = #{CONTACT_NUMBER}
+             , RETURN_TYPE    = #{RETURN_TYPE}
+             , IMAGE_DATA     = NULLIF(CAST(#{IMAGE_DATA} AS TEXT), '')
+             , UPDATED_AT     = CURRENT_TIMESTAMP
+         WHERE SUPPLIER_ID = CAST(#{SUPPLIER_ID} AS BIGINT)
+           AND IS_DELETED = FALSE
+    </update>
+
     <insert id="insert" parameterType="map" useGeneratedKeys="true" keyProperty="SUPPLIER_ID" keyColumn="supplier_id">
         INSERT INTO SUPPLIER (SUPPLIER_NAME, PRODUCT_NAME, CATEGORY_CODE, BUYING_PRICE, CONTACT_NUMBER,
                               EMAIL, RETURN_TYPE, ON_THE_WAY, IMAGE_DATA)

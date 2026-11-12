@@ -792,7 +792,7 @@
         </Row>
         <Row>
           <Col id="MSG_ID">msg.err.validator.min</Col>
-          <Col id="MSG_TEXT">{0} 은(는) {1} 이상의 숫자만 입력 가능합니다.</Col>
+          <Col id="MSG_TEXT">{0} must be a numeric value greater than or equal to {1}.</Col>
           <Col id="MSG_TEXT_EN">{0} must be a numeric value greater than or equal to {1}.</Col>
           <Col id="MSG_TYPE">A</Col>
           <Col id="MSG_ICON">INF</Col>
@@ -1025,6 +1025,34 @@
           <Col id="MSG_ID">msg.kanban.type.required</Col>
           <Col id="MSG_TEXT">Please choose a type.</Col>
           <Col id="MSG_TEXT_EN">Please choose a type.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">INF</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.kanban.product.updated</Col>
+          <Col id="MSG_TEXT">Product {0} has been updated.</Col>
+          <Col id="MSG_TEXT_EN">Product {0} has been updated.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">INF</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.kanban.supplier.updated</Col>
+          <Col id="MSG_TEXT">Supplier {0} has been updated.</Col>
+          <Col id="MSG_TEXT_EN">Supplier {0} has been updated.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">INF</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.kanban.profile.updated</Col>
+          <Col id="MSG_TEXT">Your profile has been updated.</Col>
+          <Col id="MSG_TEXT_EN">Your profile has been updated.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">INF</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.kanban.column.required</Col>
+          <Col id="MSG_TEXT">Please choose at least one column.</Col>
+          <Col id="MSG_TEXT_EN">Please choose at least one column.</Col>
           <Col id="MSG_TYPE">A</Col>
           <Col id="MSG_ICON">INF</Col>
         </Row>

@@ -3,14 +3,15 @@
   <Form id="Form_Header" width="1050" height="72" titletext="Header" background="#ffffff" onload="Form_onload">
     <Layouts>
       <Layout height="72" width="1050">
-        <Static id="sta_user" taborder="4" right="122" top="16" width="240" height="40" textAlign="right" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
+        <Static id="sta_user" taborder="4" cursor="pointer" onclick="fn_profile_onclick" tooltiptext="My profile" right="122" top="16" width="240" height="40" textAlign="right" color="#48505e" font="600 13px &quot;Segoe UI&quot;"/>
         <Edit id="edt_search" taborder="0" left="24" top="16" width="280" height="40" displaynulltext="Search product, supplier, order" borderRadius="6px" border="1px solid #f0f1f3" padding="0px 12px 0px 40px" font="14px &quot;Segoe UI&quot;" oninput="edt_search_oninput"/>
         <ImageViewer id="img_search" taborder="1" left="36" top="26" width="20" height="20" image="url('imagerc::kanban/ic_search.png')" stretch="fit" border="0px none" background="transparent"/>
         <ImageViewer id="img_bell" taborder="2" right="84" top="26" width="20" height="20" image="url('imagerc::kanban/ic_bell.png')" stretch="fit" border="0px none" background="transparent"/>
-        <ImageViewer id="img_avatar" taborder="3" right="30" top="16" width="40" height="40" image="url('imagerc::kanban/img_avatar.png')" stretch="fit" border="0px none" background="transparent"/>
+        <ImageViewer id="img_avatar" taborder="3" cursor="pointer" onclick="fn_profile_onclick" tooltiptext="My profile" right="30" top="16" width="40" height="40" image="url('imagerc::kanban/img_avatar.png')" stretch="fit" border="0px none" background="transparent"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
+    <Script type="xscript5.1"><![CDATA[include "Lib::Lib_Comm.xjs";
+
 this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	var objUser = nexacro.getApplication().gds_user;
@@ -20,6 +21,40 @@ this.Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.fn_clearSearch = function()
 {
 	this.edt_search.set_value("");
+};
+
+// user name / avatar -> My Profile popup
+this.fn_profile_onclick = function(obj,e)
+{
+	var objChild = new ChildFrame("popProfile", 0, 0, 440, 476);
+	objChild.formurl = "Base::Form_Profile.xfdl";
+	objChild.openalign = "center middle";
+	objChild.dragmovetype = "all";
+	objChild.overlaycolor = "RGBA(0, 0, 0, 0.2)";
+	objChild.set_showtitlebar(false);
+
+    objChild.showModal(this.getOwnerFrame()
+                     , {}
+                     , this
+                     , "fn_callbackPopup");
+};
+
+this.fn_callbackPopup = function(sPopupId, sReturn)
+{
+	if(sReturn == undefined){
+		sReturn = "";
+	}
+
+	if(sPopupId == "popProfile"){
+		if(sReturn.length > 0){
+			var arrRtn = sReturn.split("|");
+			var objUser = this.gfn_getApplication().gds_user;
+			objUser.setColumn(0, "USER_NAME", arrRtn[0]);
+			objUser.setColumn(0, "E_MAIL"   , arrRtn[1]);
+			this.sta_user.set_text(arrRtn[0]);
+			this.gfn_alert("msg.kanban.profile.updated");
+		}
+	}
 };
 
 this.edt_search_oninput = function(obj:nexacro.Edit,e:nexacro.InputEventInfo)

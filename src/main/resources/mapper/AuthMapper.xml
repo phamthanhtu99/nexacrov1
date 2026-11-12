@@ -17,6 +17,31 @@
            AND T.EXPIRES_AT &gt; CURRENT_TIMESTAMP
     </select>
 
+    <select id="selectById" parameterType="map" resultType="map">
+        SELECT U.USER_ID, U.USER_NAME, U.EMAIL, U.PASSWORD_HASH
+          FROM APP_USER U
+         WHERE U.USER_ID = CAST(#{USER_ID} AS BIGINT)
+    </select>
+
+    <!-- another user with this email (the user being edited does not count) -->
+    <select id="countEmailOfOthers" parameterType="map" resultType="int">
+        SELECT COUNT(*)
+          FROM APP_USER
+         WHERE LOWER(EMAIL) = LOWER(#{EMAIL})
+           AND USER_ID &lt;&gt; CAST(#{USER_ID} AS BIGINT)
+    </select>
+
+    <!-- PASSWORD_HASH only when the password is changed -->
+    <update id="updateUser" parameterType="map">
+        UPDATE APP_USER
+           SET USER_NAME = #{USER_NAME}
+             , EMAIL     = LOWER(#{EMAIL})
+        <if test="PASSWORD_HASH != null and PASSWORD_HASH != ''">
+             , PASSWORD_HASH = #{PASSWORD_HASH}
+        </if>
+         WHERE USER_ID = CAST(#{USER_ID} AS BIGINT)
+    </update>
+
     <insert id="insertUser" parameterType="map" useGeneratedKeys="true" keyProperty="USER_ID" keyColumn="user_id">
         INSERT INTO APP_USER (USER_NAME, EMAIL, PASSWORD_HASH)
         VALUES (#{USER_NAME}, LOWER(#{EMAIL}), #{PASSWORD_HASH})
@@ -33,6 +58,20 @@
         VALUES (#{TOKEN}, CAST(#{USER_ID} AS BIGINT),
                 CURRENT_TIMESTAMP + CAST(#{DAYS} AS INT) * INTERVAL '1 day')
     </insert>
+
+    <!-- one round trip at login: drop expired tokens, save the new token, update the login time -->
+    <update id="saveLogin" parameterType="map">
+        WITH EXPIRED AS (
+            DELETE FROM USER_TOKEN WHERE EXPIRES_AT &lt;= CURRENT_TIMESTAMP
+        ), NEW_TOKEN AS (
+            INSERT INTO USER_TOKEN (TOKEN, USER_ID, EXPIRES_AT)
+            VALUES (#{TOKEN}, CAST(#{USER_ID} AS BIGINT),
+                    CURRENT_TIMESTAMP + CAST(#{DAYS} AS INT) * INTERVAL '1 day')
+        )
+        UPDATE APP_USER
+           SET LAST_LOGIN_AT = CURRENT_TIMESTAMP
+         WHERE USER_ID = CAST(#{USER_ID} AS BIGINT)
+    </update>
 
     <delete id="deleteToken" parameterType="map">
         DELETE FROM USER_TOKEN

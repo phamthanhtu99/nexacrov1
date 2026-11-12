@@ -9,6 +9,12 @@
       <Script rule_version="1.02"/>
       <GeneratorInfo rule_version="1.3"/>
     </Rule>
-    <Info project="D:\Study\Nexacro\nexacrov1\src\main\webapp\EduSysN24\" generated="D:\Study\Nexacro\nexacrov1\src\main\webapp\"><File url="environment.xml" checksum="20261026232303" errormsg=""/><File url="typedefinition.xml" checksum="20261107085127" errormsg=""/><File url="appvariables.xml" checksum="20261107085139" errormsg=""/><File url="_resource_\_theme_\theme_edu\theme.xcss" checksum="20261104185729" errormsg=""/><File url="_resource_\_stringrc_\stringresource.xstring" checksum="20260824183003" errormsg=""/><File url="_resource_\_xcss_\css_edu.xcss" checksum="20260824183004" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\framework\Framework.json" checksum="20260407090644" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\resources\Resource.json" checksum="20260407090644" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\CompBase.json" checksum="20260407090638" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\ComComp.json" checksum="20260407090638" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\Grid.json" checksum="20260407090640" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\ListView.json" checksum="20260407090644" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\DeviceAPI.json" checksum="20260407090640" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\MobileComp.json" checksum="20260407090646" errormsg=""/><File url="C:\Program Files (x86)\TOBESOFT\Nexacro N\SDK\24.0.0\nexacrolib\component\Graphics.json" checksum="20260407090642" errormsg=""/><File url="_extlib_\EduJS.json" checksum="20260824183002" errormsg=""/><File url="EduSysN24.xadl" checksum="20261107085127" errormsg=""/><File url="Base\Form_NewProduct.xfdl" checksum="20261107100043" errormsg=""/></Info>
+    <Info project="D:\Study\Nexacro\nexacrov1\src\main\webapp\EduSysN24\" generated="D:\Study\Nexacro\nexacrov1\src\main\webapp\">
+      <File url="environment.xml" checksum="20261026232303" errormsg=""/>
+      <File url="typedefinition.xml" checksum="20261107085127" errormsg=""/>
+      <File url="appvariables.xml" checksum="20261112175617" errormsg=""/>
+      <File url="_resource_\_theme_\theme_edu\theme.xcss" checksum="20261104185729" errormsg=""/>
+      <File url="_resource_\_stringrc_\stringresource.xstring" checksum="20260824183003" errormsg=""/>
+    </Info>
   </GenInfo>
 </root>

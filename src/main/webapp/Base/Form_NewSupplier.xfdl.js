@@ -19,12 +19,22 @@
             
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("ds_supplier", this);
-            obj._setContents({"ColumnInfo" : {"Column" : [ {"id" : "SUPPLIER_NAME","type" : "STRING","size" : "100"},{"id" : "PRODUCT_NAME","type" : "STRING","size" : "100"},{"id" : "CATEGORY_CODE","type" : "STRING","size" : "30"},{"id" : "BUYING_PRICE","type" : "STRING","size" : "15"},{"id" : "CONTACT_NUMBER","type" : "STRING","size" : "15"},{"id" : "RETURN_TYPE","type" : "STRING","size" : "20"},{"id" : "IMAGE_DATA","type" : "STRING","size" : "2000000"}]},"Rows" : [{}]});
+            obj._setContents({"ColumnInfo" : {"Column" : [ {"id" : "SUPPLIER_ID","type" : "STRING","size" : "20"},{"id" : "SUPPLIER_NAME","type" : "STRING","size" : "100"},{"id" : "PRODUCT_NAME","type" : "STRING","size" : "100"},{"id" : "CATEGORY_CODE","type" : "STRING","size" : "30"},{"id" : "BUYING_PRICE","type" : "STRING","size" : "15"},{"id" : "CONTACT_NUMBER","type" : "STRING","size" : "15"},{"id" : "RETURN_TYPE","type" : "STRING","size" : "20"},{"id" : "IMAGE_DATA","type" : "STRING","size" : "2000000"}]},"Rows" : [{}]});
             this.addChild(obj.name, obj);
 
 
             obj = new Dataset("ds_result", this);
             obj._setContents({});
+            this.addChild(obj.name, obj);
+
+
+            obj = new Dataset("ds_detail", this);
+            obj._setContents({});
+            this.addChild(obj.name, obj);
+
+
+            obj = new Dataset("ds_cond", this);
+            obj._setContents({"ColumnInfo" : {"Column" : [ {"id" : "SUPPLIER_ID","type" : "STRING","size" : "20"}]},"Rows" : [{}]});
             this.addChild(obj.name, obj);
 
 
@@ -164,7 +174,7 @@
             obj = new Edit("edt_price","160","366","296","40",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_maxlength("12");
-            obj.set_inputtype("digit");
+            obj.set_inputtype("number");
             obj.set_displaynulltext("Enter buying price");
             obj.set_borderRadius("8px");
             obj.set_border("1px solid #d0d5dd");
@@ -283,10 +293,57 @@
 
         this.fv_oType = null;
 
+        this.fv_sSupplierId = "";
+
         this.Form_onload = function(obj,e)
         {
+        	// edit mode: Form_Suppliers opens this popup with {pSupplierId}
+        	this.fv_sSupplierId = this.gfn_nvl(this.getOwnerFrame().pSupplierId, "");
+        	if(this.fn_isEdit()){
+        		this.sta_title.set_text("Edit Supplier");
+        		this.btn_save.set_text("Save Changes");
+        	}
         	this.fn_searchCode();
         	this.edt_name.setFocus();
+        };
+
+        this.fn_isEdit = function()
+        {
+        	return this.fv_sSupplierId != "";
+        };
+
+        // the supplier to edit (supplier/detail), after the category codes are loaded
+        this.fn_searchDetail = function()
+        {
+        	this.ds_cond.setColumn(0, "SUPPLIER_ID", this.fv_sSupplierId);
+
+            var sSvcID    = "svcSupplierDetail";
+            var sURL      = "KanbanUrl::supplier/detail";
+            var sInDs     = "ds_cond=ds_cond";
+            var sOutDs    = "ds_detail=ds_supplier";
+            var sParam    = "";
+            var sCallBack = "fn_callback";
+        	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);
+        };
+
+        // copies the detail into the bound one-row ds_supplier and shows the type and the image
+        this.fn_setDetail = function()
+        {
+        	for(var i=0; i<this.ds_supplier.getColCount(); i++){
+        		var sColId = this.ds_supplier.getColID(i);
+        		this.ds_supplier.setColumn(0, sColId, this.ds_detail.getColumn(0, sColId));
+        	}
+        	// 140.00 -> 140
+        	this.ds_supplier.setColumn(0, "BUYING_PRICE", String(Number(this.ds_detail.getColumn(0, "BUYING_PRICE"))));
+
+        	var objType = this.ds_detail.getColumn(0, "RETURN_TYPE") == "TAKING" ? this.btn_taking : this.btn_not_taking;
+        	this.btn_type_onclick(objType);
+
+        	var sImage = this.ds_detail.getColumn(0, "IMAGE_DATA");
+        	if(!this.gfn_isNull(sImage)){
+        		this.img_photo.set_stretch("fixaspectratio");
+        		this.img_photo.set_image("url('" + nexacro.getEnvironment().services["KanbanUrl"].url + sImage + "')");
+        	}
         };
 
         // common codes of the Category combo
@@ -315,8 +372,15 @@
         		var arrCode = new Array();
         		arrCode.push({codeGroup:"CATEGORY", obj:this.cmb_category, first:"2::Select product category"});
         		this.gfn_getCommonCode(arrCode, this.ds_code);
+
+        		if(this.fn_isEdit()){
+        			this.fn_searchDetail();
+        		}
         	}
-        	else if(svcId == "svcSaveSupplier"){
+        	else if(svcId == "svcSupplierDetail"){
+        		this.fn_setDetail();
+        	}
+        	else if(svcId == "svcSaveSupplier" || svcId == "svcUpdateSupplier"){
         		this.close(this.ds_supplier.getColumn(0, "SUPPLIER_NAME"));
         	}
         };
@@ -402,24 +466,24 @@
         	this.ds_supplier.setColumn(0, "RETURN_TYPE", obj == this.btn_taking ? "TAKING" : "NOT_TAKING");
         };
 
-        // Add Supplier Button
+        // Add Supplier / Save Changes Button
         this.btn_save_onclick = function(obj,e)
         {
         	this.gfn_clearValidation(this.ds_supplier);
         	this.gfn_setValidation(this.ds_supplier, "SUPPLIER_NAME" , "Supplier name" , "required");
         	this.gfn_setValidation(this.ds_supplier, "PRODUCT_NAME"  , "Product"       , "required");
         	this.gfn_setValidation(this.ds_supplier, "CATEGORY_CODE" , "Category"      , "required");
-        	this.gfn_setValidation(this.ds_supplier, "BUYING_PRICE"  , "Buying price"  , "required,digits");
+        	this.gfn_setValidation(this.ds_supplier, "BUYING_PRICE"  , "Buying price"  , "required,min:0");
         	this.gfn_setValidation(this.ds_supplier, "CONTACT_NUMBER", "Contact number", "required,digits,minlength:9");
         	this.gfn_setValidation(this.ds_supplier, "RETURN_TYPE"   , "Type"          , "required");
         	if(this.gfn_validation(this.ds_supplier, "A") == false) return;
 
         	this.btn_save.set_enable(false);
 
-            var sSvcID    = "svcSaveSupplier";
-            var sURL      = "KanbanUrl::supplier/insert";
+            var sSvcID    = this.fn_isEdit() ? "svcUpdateSupplier" : "svcSaveSupplier";
+            var sURL      = this.fn_isEdit() ? "KanbanUrl::supplier/update" : "KanbanUrl::supplier/insert";
             var sInDs     = "ds_supplier=ds_supplier";
-            var sOutDs    = "ds_result=ds_result";
+            var sOutDs    = this.fn_isEdit() ? "" : "ds_result=ds_result";
             var sParam    = "";
             var sCallBack = "fn_callback";
         	this.gfn_transaction(sSvcID, sURL, sInDs, sOutDs, sParam, sCallBack);

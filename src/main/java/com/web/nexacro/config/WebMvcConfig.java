@@ -10,6 +10,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new LoginInterceptor())
-                .addPathPatterns("/product/**", "/supplier/**", "/file/upload");
+                .addPathPatterns("/product/**", "/supplier/**", "/file/upload", "/auth/profile", "/auth/updateProfile");
     }
 }
